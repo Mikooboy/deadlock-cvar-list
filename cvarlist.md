@@ -2272,9 +2272,9 @@ csm_viewmodel_nearz | cheat | Default: 0.5<br>
 csm_viewmodel_shadows |  | Default: false<br>
 ctadel_camera_clear_ops | cl | Clear any camera operations that are active
 cv_collect_assert_stack_for_gc | sv, cl, rep | Default: false<br>When enabled and collecting asserts for the GC, this will generate stacks for the asserts
-cvar_unhide |  | 
+cvar_unhide | sv, release | 
 cvarlist | release | Show the list of convars/concommands.
-cvarlist_md |  | List all convars/concmds in Markdown format. Format: \[hidden\]
+cvarlist_md | sv, release | List all convars/concmds in Markdown format. Format: \[hidden\]
 cyclevar | norecord, release | Cycle through specified convar values.
 d3d_max_feature_level |  | Default: &lt;Not set&gt;<br>Report the maximum D3D feature level available.
 damage_indicator_safe_area | cl | Default: 6<br>
