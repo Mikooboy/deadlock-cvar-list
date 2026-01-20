@@ -463,7 +463,6 @@ citadel_ag2_remove_param | devonly, cl | Remove a param from AG2 graphs
 citadel_ag2_rename_param | devonly, cl | Rename a param in AG2 graphs
 citadel_ag2_run_to_stop_prime_speed | devonly, sv, cl, rep | Default: 85<br>
 citadel_ag2_run_to_stop_trigger_speed | devonly, sv, cl, rep | Default: 70<br>
-citadel_ag2_turn_spring_strength | devonly, sv, cl, rep | Default: 75<br>
 citadel_ai_path_pathing_time_ms_per_tick | devonly, sv | Default: 0.5<br>
 citadel_aim_capsule_trace_debugdraw | devonly, sv, cl, rep | Default: false<br>
 citadel_aim_debug_duration | devonly, sv, cl, rep | Default: 0<br>Duration to draw the various traces that formed a shot.  Set to a negative number to view the current angles without shooting.
@@ -1295,23 +1294,34 @@ citadel_player_pawn_ag2_enable | sv, cl, rep, release | Default: 1<br>Enable AG2
 citadel_player_ping_duration | sv, cheat | Default: 6<br>
 citadel_player_regen_zone_bonus_base | sv, cl, rep, cheat | Default: 60<br>When standing in a regen zone, how much extra do we regen per second?
 citadel_player_regen_zone_bonus_pct | sv, cl, rep, cheat | Default: 6<br>When standing in a regen zone, how much extra do we regen per second based on max health percentage?
+citadel_player_regen_zone_stamina_regen | sv, cl, rep, cheat | Default: 150<br>When standing in a regen zone, how much extra do we stamina percentage
 citadel_player_slide_breakable_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_player_slide_breakable_lookahead | devonly, sv, cl, rep | Default: 75.8<br>
 citadel_player_slide_breakable_radius | devonly, sv, cl, rep | Default: 35<br>
 citadel_player_slide_min_percent | devonly, sv, cl, rep | Default: 0.8<br>
 citadel_player_spawn_distance_from_other | devonly, sv | Default: 32<br>
-citadel_player_spawn_time_max_ramp_1 | devonly, sv | Default: 35<br>
+citadel_player_spawn_time_in_base_penalty | devonly, sv | Default: 10<br>
+citadel_player_spawn_time_max_ramp_1 | devonly, sv | Default: 30<br>
 citadel_player_spawn_time_max_ramp_1_time | devonly, sv | Default: 1140<br>
-citadel_player_spawn_time_max_ramp_2 | devonly, sv | Default: 75<br>
+citadel_player_spawn_time_max_ramp_2 | devonly, sv | Default: 70<br>
 citadel_player_spawn_time_max_ramp_2_time | devonly, sv | Default: 1800<br>
 citadel_player_spawn_time_max_ramp_3 | devonly, sv | Default: 85<br>
 citadel_player_spawn_time_max_ramp_3_time | devonly, sv | Default: 2400<br>
+citadel_player_spawn_time_max_respawn_time | devonly, sv | Default: 90<br>
 citadel_player_spawn_time_min_ramp_1 | devonly, sv | Default: 8<br>
 citadel_player_spawn_time_min_ramp_1_time | devonly, sv | Default: 300<br>
-citadel_player_spawn_time_min_ramp_2 | devonly, sv | Default: 35<br>
+citadel_player_spawn_time_min_ramp_2 | devonly, sv | Default: 30<br>
 citadel_player_spawn_time_min_ramp_2_time | devonly, sv | Default: 1140<br>
-citadel_player_spawn_time_min_ramp_3 | devonly, sv | Default: 75<br>
+citadel_player_spawn_time_min_ramp_3 | devonly, sv | Default: 70<br>
 citadel_player_spawn_time_min_ramp_3_time | devonly, sv | Default: 1800<br>
+citadel_player_spawn_time_rich_nw_penalty_max_ramp_behind_nw_pct | devonly, sv | Default: 20<br>
+citadel_player_spawn_time_rich_nw_penalty_max_ramp_extratime | devonly, sv | Default: 22<br>
+citadel_player_spawn_time_rich_nw_penalty_max_ramp_gametime | devonly, sv | Default: 1500<br>
+citadel_player_spawn_time_rich_nw_penalty_max_ramp_pct | devonly, sv | Default: 30<br>
+citadel_player_spawn_time_rich_nw_penalty_min_ramp_behind_nw_pct | devonly, sv | Default: 5<br>
+citadel_player_spawn_time_rich_nw_penalty_min_ramp_extratime | devonly, sv | Default: 6<br>
+citadel_player_spawn_time_rich_nw_penalty_min_ramp_gametime | devonly, sv | Default: 600<br>
+citadel_player_spawn_time_rich_nw_penalty_min_ramp_pct | devonly, sv | Default: 15<br>
 citadel_player_starting_death_penalty_gold | devonly, sv, rep | Default: 0<br>Initial deaht penalty gold for players.
 citadel_player_starting_gold | devonly, sv, cl, rep | Default: 600<br>Initial gold for players.
 citadel_player_starting_hero | devonly, sv, cl, rep | Default: <br>Which hero to auto-select the first time in the game.
