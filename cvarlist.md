@@ -1600,7 +1600,7 @@ citadel_show_minimap_reveal_indicators | devonly, cl | Default: false<br>
 citadel_show_modifier_history | devonly, cl | Default: false<br>Turns on/off debug display of modifiers
 citadel_show_movement_speed_in_units | devonly, cl | Default: false<br>Show the movement speed in units instead of m/s
 citadel_show_movespeed_on_hud | devonly, cl | Default: false<br>Turns on/off Movespeed indicator on the HUD
-citadel_show_new_damage_feedback_numbers | devonly, cl | Default: true<br>Use new damage numbers that emphasizes the individual hit and not the accumulated value.
+citadel_show_new_damage_feedback_numbers | devonly, cl | Default: false<br>Use new damage numbers that emphasizes the individual hit and not the accumulated value.
 citadel_show_new_mod_tooltips | devonly, cl | Default: true<br>
 citadel_show_new_topbar | devonly, cl | Default: false<br>Show new topbar
 citadel_show_new_ziplines | devonly, cl | Default: false<br>Turns on/off the new ziplines on the new minimap
@@ -1740,7 +1740,7 @@ citadel_trooper_celebration_delay | devonly, sv | Default: 1.2<br>
 citadel_trooper_crit_multiplier | devonly, sv, cl, rep | Default: 1.5<br>How much to scale damage when landing crits against Troopers
 citadel_trooper_do_neardeath_behavior | devonly, sv | Default: false<br>
 citadel_trooper_force_idle | devonly, sv | Default: false<br>
-citadel_trooper_glow_disabled | cl, release | Default: false<br>
+citadel_trooper_glow_disabled | cl, release | Default: true<br>
 citadel_trooper_gold_reward | devonly, sv | Default: 116<br>
 citadel_trooper_gold_reward_bonus_per_minute | devonly, sv | Default: 1.16<br>
 citadel_trooper_health_model_scale | devonly, sv | Default: 1.3<br>
@@ -1786,7 +1786,7 @@ citadel_ui_damage_impact_duration_fadeindelay | devonly, cl, rep | Default: 0<br
 citadel_ui_damage_impact_duration_fadeoutdelay | devonly, cl, rep | Default: 0.6<br>
 citadel_ui_damage_impact_kill_duration | devonly, cl, rep | Default: 5<br>
 citadel_ui_damage_impact_min_max_shield_width | devonly, cl, rep | Default: 0.1<br>
-citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: false<br>
+citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: true<br>
 citadel_ui_damage_impact_status_minimum_duration | devonly, cl | Default: 0.2<br>
 citadel_ui_fake_active_matches | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy matches to the active match list, useful for testing UI around these
 citadel_ui_fake_invite_parties | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy parties that have invites
