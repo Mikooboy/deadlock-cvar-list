@@ -1403,6 +1403,9 @@ citadel_player_neutral_gold_duration | devonly, sv | Default: 180<br>
 citadel_player_neutral_gold_fallrate | devonly, sv | Default: 300<br>
 citadel_player_outline_allies | devonly, cl | Default: false<br>
 citadel_player_outline_enemies | devonly, cl | Default: true<br>
+citadel_player_outline_fade_at_min | devonly, cl | Default: 0<br>
+citadel_player_outline_fade_range_max | devonly, cl | Default: 2200<br>
+citadel_player_outline_fade_range_min | devonly, cl | Default: 800<br>
 citadel_player_override_spawn_time | devonly, sv | Default: -1<br>
 citadel_player_pawn_ag1_wall_attach_enable | devonly, sv, cl, rep | Default: false<br>
 citadel_player_pawn_ag2_enable | devonly, sv, rep, release | Default: true<br>Enable AG2 for heroes who define an AG2 graph
@@ -1740,7 +1743,8 @@ citadel_trooper_celebration_delay | devonly, sv | Default: 1.2<br>
 citadel_trooper_crit_multiplier | devonly, sv, cl, rep | Default: 1.5<br>How much to scale damage when landing crits against Troopers
 citadel_trooper_do_neardeath_behavior | devonly, sv | Default: false<br>
 citadel_trooper_force_idle | devonly, sv | Default: false<br>
-citadel_trooper_glow_disabled | cl, release | Default: true<br>
+citadel_trooper_friendly_glow_disabled | cl, release | Default: true<br>Disable glow on friendly troopers except for through walls during laning
+citadel_trooper_glow_disabled | cl, release | Default: false<br>
 citadel_trooper_gold_reward | devonly, sv | Default: 116<br>
 citadel_trooper_gold_reward_bonus_per_minute | devonly, sv | Default: 1.16<br>
 citadel_trooper_health_model_scale | devonly, sv | Default: 1.3<br>
@@ -1805,7 +1809,7 @@ citadel_unit_status_health_per_minor_pip | devonly, cl | Default: 100<br>
 citadel_unit_status_health_per_pip | devonly, cl | Default: 100<br>
 citadel_unit_status_health_pips_per_row | devonly, cl | Default: 10<br>
 citadel_unit_status_healthbar_highlight_speed | devonly, cl | Default: 2<br>
-citadel_unit_status_height | devonly, cl | Default: 100<br>
+citadel_unit_status_height | devonly, cl | Default: 50<br>
 citadel_unit_status_hide_names | cl, cheat, release | Default: false<br>
 citadel_unit_status_max_distance_distance | devonly, cl | Default: 800<br>
 citadel_unit_status_max_distance_scale | devonly, cl | Default: 1<br>
@@ -4104,6 +4108,7 @@ r_JeepViewZHeight | sv, cl, nf, rep, cheat | Default: 10<br>
 r_RainAllowInSplitScreen | devonly, cl | Default: false<br>Allows rain in splitscreen
 r_RainParticleDensity | devonly, cl | Default: 1<br>Density of Particle Rain 0-1
 r_add_views_in_pre_output | devonly | Default: false<br>
+r_allow_low_gpu_memory_mode | release | Default: true<br>Allow Low GPU Memory mode (i.e. when building maps).
 r_allow_onesweep_gpusort | devonly | Default: true<br>
 r_always_render_all_windows | devonly | Default: false<br>Always force all engine & tools to render
 r_aoproxy_cull_dist | devonly | Default: 12<br>Distance to cull the AO proxy as a factor of size
@@ -4114,6 +4119,7 @@ r_aspectratio | devonly | Default: 0<br>
 r_async_compute_fog | devonly, cl | Default: false<br>
 r_async_shader_compile_notify_frequency | devonly | Default: 10<br>
 r_bloom_tent_filter_radius | devonly, cl, cheat | Default: 0<br>bloom mip up-sample filtering radius (using 3x3 tent filter, radius in mip level texels), 0.0 radius =&gt; box (2x2) filter with (fixed) 1.0 radius
+r_cache_pool_allocations | devonly | Default: true<br>
 r_camerapos | devonly | Prints out the current camera position + orientation to the console
 r_character_decal_monitor_draw_frustum | devonly | Default: false<br>
 r_character_decal_monitor_emissive | devonly | Default: false<br>
@@ -4347,6 +4353,8 @@ r_low_latency_trigger_flash | devonly | Default: true<br>NVIDIA Low Latency Trig
 r_mapextents | cl, cheat | Default: 16384<br>Set the max dimension for the map.  This determines the far clipping plane
 r_max_portal_render_targets | devonly, cl | Default: 2<br>
 r_max_texture_pool_size | devonly | Default: 0<br>Upper limit on texture pool size.
+r_memory_aliasing | devonly | Default: true<br>Allow disabling memory aliasing in the device memory pool.  This is just intended for testing/ruling out aliasing issues.
+r_mipgen_compute_shader | devonly | Default: true<br>Use compute shader for mipgen.
 r_mixed_shadows_fade_in_time | devonly, sv, cl, rep | Default: 0.5<br>
 r_mixed_shadows_fade_out_time | devonly, sv, cl, rep | Default: 0.5<br>
 r_monitor_3dskybox | devonly, cl | Default: true<br>
@@ -4412,6 +4420,7 @@ r_pixelvisibility_spew | cheat | Default: false<br>
 r_post_bloom | devonly, cl | Default: false<br>
 r_post_bloom_strength | devonly, cl | Default: -1<br>
 r_postprocess_enable | devonly, cl | Default: true<br>
+r_prefer_loop_unrolling | devonly | Default: true<br>Prefer shader loop unrolling.
 r_print_buffers | devonly | Print Vertex/Index/GPU buffers.
 r_print_texture_stats | devonly | Texture stats
 r_printdecalinfo | devonly, cl | Prints info about decals currently in the scene
@@ -4426,6 +4435,7 @@ r_render_world_node_bounds | cheat | Default: false<br>Render world node bounds
 r_renderdoc_auto_shader_pdbs | devonly | Default: true<br>Automatically generate shader debug info on capture
 r_renderdoc_capture_frame | devonly | Triggers a RenderDoc capture
 r_renderdoc_capture_window_dx11 | devonly | Triggers a RenderDoc capture of a specific Window
+r_renderdoc_capture_window_vulkan | devonly | Triggers a RenderDoc capture of a specific Window
 r_renderdoc_open_captures | devonly | Default: true<br>
 r_renderdoc_validation_error_capture_limit | devonly | Default: 5<br>
 r_rendersun | cheat | Default: true<br>Render sun lighting
@@ -4436,6 +4446,7 @@ r_screen_size_expansion | devonly, cl | Default: 0<br>
 r_setpos | devonly | Moves the camera position + orientation to the specified position
 r_shadows | cheat | Default: true<br>
 r_shadowtile_waveops |  | Default: false<br>
+r_show_gpu_memory_visualizer | devonly, cheat | Default: false<br>SceneSystem/Vulkan GPU Memory Visualizer
 r_showdebugoverlays | cheat | Default: false<br>Set to render debug overlays
 r_showdebugrendertarget | cheat | Default: false<br>Set the debug render target to show, 0 == disable
 r_showsceneobjectbounds | cheat | Default: false<br>Show scenesystem object bounding boxes
@@ -4489,6 +4500,16 @@ r_use_memory_budget_model | devonly | Default: false<br>Use a model of GPU memor
 r_validate_texture_streaming | devonly | Default: false<br>Dumps state of texture streaming at the next frame boundary.
 r_vconsole_foregroundforcerender | devonly | Default: true<br>When VConsole is in the foreground, force all engine & tools to render
 r_viewport | devonly | Slams viewport size to a specified value.
+r_vma_defrag_algorithm | devonly | Default: 1<br>Defrag algorithm 0=Fast 1=Balanced 2=full 3=Extensive
+r_vma_defrag_enabled | devonly | Default: true<br>
+r_vma_defrag_max_allocation_count_per_pass | devonly | Default: 256<br>During a VMA defrag, number of moves per pass.
+r_vma_defrag_max_allocation_size_per_pass | devonly | Default: 32<br>During a VMA defrag, number of MB in moves per pass.
+r_vma_defrag_moves_per_frame | devonly | Default: 20<br>During a VMA defrag, number of moves to process for a pass in a single frame update.
+r_vma_defrag_threshold_mb | release | Default: 256<br>
+r_vulkan_force_sync1 | devonly | Default: false<br>
+r_vulkan_sw_cmd_lists | release | Default: true<br>Enable Software Command lists for Vulkan
+r_vulkan_validation_filter_in | devonly | Default: <br>Comma delimited list of stristr filters for including validation messages.  Only messages matching filter will be included.
+r_vulkan_validation_filter_out | devonly | Default: <br>Comma delimited list of stristr filters for excluding validation messages.  Any messages matching filter will be excluded.
 r_wait_on_present | devonly | Default: false<br>
 r_world_frame_load_threshold_ms | devonly | Default: 10<br>
 r_world_wind_dir | devonly | Default: 0.707 0.707 0<br>
@@ -4587,6 +4608,8 @@ rr_forceconcept | sv, cheat | fire a response concept directly at a given charac
 rr_reloadresponsesystems | sv, cheat | Reload all response system scripts.
 rr_thenany_score_slop | sv, a, cheat | Default: 0<br>When computing respondents for a 'THEN ANY' rule, all rule-matching scores within this much of the best score will be considered.
 rs_dump_stats | devonly | rs_dump_stats - Dump resourcesystem stats.
+rtx_allow_blas_compact | devonly | Default: true<br>
+rtx_allow_blas_create | devonly | Default: true<br>
 rtx_dynamic_blas | devonly | Default: true<br>Allow dynamic BLAS creation for geometry going through the compute shader skinning path.
 rtx_dynamic_blas_caching | devonly | Default: true<br>Cache dynamic BLAS if geometry has not changed
 rtx_force_default_hitgroup | devonly | Default: false<br>Forces all ray traced geometry to use default hit shaders instead of specialized ones.
@@ -5754,6 +5777,20 @@ vprof_scope_entity_thinks | devonly, sv, cl, rep | Default: false<br>
 vprof_think_limit | devonly, sv | Default: false<br>
 vprof_time_scale | devonly | Scale used when displaying time (0 = use default)
 vtune | devonly | Controls VTune's sampling.
+vulkan_batch_size | devonly | Default: 500<br>
+vulkan_batch_submits | devonly | Default: true<br>
+vulkan_dedicated_allocation_threshold | devonly | Default: 512<br>Size (in KBs) above which textures should be allocated in dedicated memory (NV-only).
+vulkan_framebuffermgr_print | devonly | Prints out stats for the Vulkan Framebuffer manager
+vulkan_link_time_optimize_libraries | release | Default: true<br>
+vulkan_memgr_fragmentation_print | devonly | Prints out detailed memory fragmentation stats for the Vulkan memory manager
+vulkan_memgr_print | devonly | Prints out stats for the Vulkan memory manager
+vulkan_pipeline_compile_spew | devonly | Default: false<br>
+vulkan_pipeline_compile_throttle_ms | devonly | Default: 0<br>
+vulkan_pipelinemgr_print | devonly | Prints out stats for the Vulkan Pipeline manager
+vulkan_shader_table_print | devonly | Prints out stats for the Vulkan shader table
+vulkan_unpause_workers_after_each_texture_deallocation | devonly | Default: false<br>If true, the main thread pauses and unpauses the Vulkan worker threads around each texture deallocation, which allows the workers to make a little bit of progress but results in main thread stalls. If false, we keep the workers paused until all deallocations are done, allowing the deallocations to complete significantly faster.
+vulkan_vma_defrag | devonly | Force defragmenting memory with VMA
+vulkan_vma_gpu_mem_dump | devonly | Dump .json file for use by GpuMemDumpVis.py
 warp_onto_zipline | sv, cheat | warp onto the nearest point of the zipline lane passed in.  provides the zipline intro modifier as well
 weapon_switch | devonly, sv | Use a particular weapon	<br>Arguments: &lt;weapon_name&gt;
 wind_system_debug_volumes | devonly | Default: false<br>
