@@ -841,7 +841,7 @@ citadel_damage_text_show_effectiveness | devonly, cl | Default: false<br>Show th
 citadel_damage_text_spacing | devonly, cl | Default: 20<br>Spacing between floating damage numbers.
 citadel_damage_text_x_offset_far | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when far from the camera
 citadel_damage_text_x_offset_near | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when near the camera
-citadel_dead_zone_radius | devonly, cl | Default: 0.05<br>
+citadel_dead_zone_radius | devonly, cl | Default: 0.15<br>
 citadel_death_linger_time | devonly, sv | Default: 3<br>How logn does the player icon linger on the minimap after they die
 citadel_death_replay_enabled | sv, cl, rep, release | Default: false<br>
 citadel_death_replay_post_death_time | devonly, sv, cl, rep | Default: 2<br>
@@ -4190,6 +4190,7 @@ r_citadel_npr_outlines | devonly, cl, cheat | Default: true<br>Enable/Disable NP
 r_citadel_npr_outlines_max_dist | devonly, cl, cheat | Default: 1000<br>Maximum distance at which NPR outlines are rendered
 r_citadel_portrait_allow_particle_only | devonly, cl | Default: true<br>
 r_citadel_portrait_highlight_particle_only | devonly, cl | Default: false<br>
+r_citadel_render_game | devonly, cl, cheat | Default: true<br>Should you render the main game world
 r_citadel_screenspace_particles_full_res | devonly, cl | Default: true<br>Render screen space particles at full resolution
 r_citadel_see_thru_walls_opacity | devonly, cl, cheat | Default: 0.3<br>Opacity scale for see-thru UI
 r_citadel_selection_outline2_alpha | devonly, cl | Default: 0.8<br>Selection Outline Alpha
