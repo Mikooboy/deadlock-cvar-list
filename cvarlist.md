@@ -1404,8 +1404,8 @@ citadel_player_neutral_gold_fallrate | devonly, sv | Default: 300<br>
 citadel_player_outline_allies | devonly, cl | Default: false<br>
 citadel_player_outline_enemies | devonly, cl | Default: false<br>
 citadel_player_outline_fade_at_min | devonly, cl | Default: 0<br>
-citadel_player_outline_fade_range_max | devonly, cl | Default: 2200<br>
-citadel_player_outline_fade_range_min | devonly, cl | Default: 800<br>
+citadel_player_outline_fade_range_max | devonly, cl | Default: 1400<br>
+citadel_player_outline_fade_range_min | devonly, cl | Default: 400<br>
 citadel_player_override_spawn_time | devonly, sv | Default: -1<br>
 citadel_player_pawn_ag1_wall_attach_enable | devonly, sv, cl, rep | Default: false<br>
 citadel_player_pawn_ag2_enable | devonly, sv, rep, release | Default: true<br>Enable AG2 for heroes who define an AG2 graph
