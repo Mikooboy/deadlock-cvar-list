@@ -555,7 +555,7 @@ citadel_boss_tier_3_test_rocketbarrage | devonly, sv | Default: false<br>
 citadel_boss_tier_3_test_shrine_attack | devonly, sv | Default: false<br>
 citadel_boss_tier_3_testing_enter_phase2 | sv, cheat, release | Default: false<br>
 citadel_boss_tier_3_testing_reset | sv, cheat | Respawns the boss
-citadel_bot_attack_enemies | devonly | 
+citadel_bot_attack_enemies |  | 
 citadel_bot_brain_aim_angle_attack | sv, rep, release | Default: 0.9<br>Min Dot Product result from target that we will try to shoot from
 citadel_bot_brain_aim_inaccuracy | sv, rep, release | Default: 0<br>Max Angle for Inaccuracy
 citadel_bot_brain_aim_inaccuracy_speed | sv, rep, release | Default: 0.01<br>How fast the inaccuracy moves - mimic mouse movement correction
@@ -772,9 +772,9 @@ citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.65<br>0.0: tur
 citadel_crate_client_notification_time | sv, cheat | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
-citadel_crate_disable_early_spawn | devonly | 
-citadel_crate_early_spawn_delay | devonly | 
-citadel_crate_early_to_trooper_spawn_delay | devonly | 
+citadel_crate_disable_early_spawn |  | 
+citadel_crate_early_spawn_delay |  | 
+citadel_crate_early_to_trooper_spawn_delay |  | 
 citadel_crate_respawn_interval | sv, cheat | Default: 300<br>
 citadel_crate_reward_base | devonly, sv | Default: 1300<br>
 citadel_crate_reward_time_multiplier | devonly, sv | Default: 230<br>
@@ -1402,7 +1402,7 @@ citadel_player_neutral_gold_drop_min | devonly, sv | Default: 150<br>
 citadel_player_neutral_gold_duration | devonly, sv | Default: 180<br>
 citadel_player_neutral_gold_fallrate | devonly, sv | Default: 300<br>
 citadel_player_outline_allies | devonly, cl | Default: false<br>
-citadel_player_outline_enemies | devonly, cl | Default: true<br>
+citadel_player_outline_enemies | devonly, cl | Default: false<br>
 citadel_player_outline_fade_at_min | devonly, cl | Default: 0<br>
 citadel_player_outline_fade_range_max | devonly, cl | Default: 2200<br>
 citadel_player_outline_fade_range_min | devonly, cl | Default: 800<br>
@@ -1771,7 +1771,7 @@ citadel_trooper_shooting_enabled | devonly, sv | Default: true<br>
 citadel_trooper_siege_instant_gold_ratio | devonly, sv | Default: 0.5<br>
 citadel_trooper_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any troopers from spawning
 citadel_trooper_spawn_initial | devonly, sv | Default: 16<br>Initial trooper wave spawn time
-citadel_trooper_spawn_interval | devonly | 
+citadel_trooper_spawn_interval |  | 
 citadel_trooper_spawn_interval_early | devonly, sv | Default: 30<br># of seconds between trooper spawn waves.
 citadel_trooper_spawn_interval_late | devonly, sv | Default: 25<br># of seconds between trooper spawn waves. Starts after 25 minutes.
 citadel_trooper_spawn_interval_late_time | devonly, sv | Default: 20<br># of minutes before we start using the late trooper spawn interval.
