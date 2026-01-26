@@ -988,6 +988,7 @@ citadel_fake_subrank_for_match | devonly, sv, cl, rep | Default: -1<br>Set what 
 citadel_familiar_debug | devonly, sv, cl, rep, cheat | Default: -1<br>
 citadel_familiar_infiniteattach | devonly, sv, cl, rep, cheat | Default: false<br>
 citadel_familiar_sprites_debug | devonly, sv | Default: false<br>
+citadel_familiar_sprites_debug_spam | devonly, sv | Default: false<br>
 citadel_familiar_sprites_stuck_detection_duration | devonly, sv | Default: 0.2<br>
 citadel_fencer_lunge_debug_draw | devonly, cl | Default: false<br>
 citadel_fencer_max_charge_unlag_players | devonly, sv | Default: 0.12<br>
@@ -1371,6 +1372,8 @@ citadel_player_damage_from_trooper_scale | devonly, sv | Default: 0.5<br>
 citadel_player_dash_breakable_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_player_dash_breakable_lookahead | devonly, sv, cl, rep | Default: 75.8<br>
 citadel_player_dash_breakable_radius | devonly, sv, cl, rep | Default: 35<br>
+citadel_player_dash_down_stamina_cost | devonly, sv, cl, rep | Default: 0.5<br>
+citadel_player_dash_stamina_cost | devonly, sv, cl, rep | Default: 1<br>
 citadel_player_data_velocity_bucket_fast | devonly, sv | Default: 800<br>
 citadel_player_data_velocity_bucket_normal | devonly, sv | Default: 500<br>
 citadel_player_data_velocity_bucket_slow | devonly, sv | Default: 200<br>
@@ -1833,11 +1836,11 @@ citadel_unit_status_old_width | devonly, cl | Default: 100<br>
 citadel_unit_status_opaque_dist_sq | devonly, cl | Default: 50000<br>
 citadel_unit_status_recent_damage_time | devonly, cl | Default: 0.25<br>
 citadel_unit_status_show_stats | devonly, cl | Default: false<br>
-citadel_unit_status_single_bar_mode | cl, cheat | Default: false<br>Allow only a single health bar, no stacking.
+citadel_unit_status_single_bar_mode | cl, cheat | Default: true<br>Allow only a single health bar, no stacking.
 citadel_unit_status_stamina_consume_linger | devonly, cl | Default: 3<br>
 citadel_unit_status_transparent_dist_sq | devonly, cl | Default: 0<br>
 citadel_unit_status_use_new | cl, release | Default: false<br>
-citadel_unit_status_use_v2 | devonly, cl, cheat | Default: false<br>
+citadel_unit_status_use_v2 | devonly, cl, cheat | Default: true<br>
 citadel_unit_status_use_v2_for_nonplayers | devonly, cl, cheat | Default: false<br>
 citadel_unit_status_v2_height | devonly, cl | Default: 210<br>
 citadel_unit_status_v2_width | devonly, cl | Default: 200<br>
