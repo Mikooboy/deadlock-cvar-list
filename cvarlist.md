@@ -987,9 +987,10 @@ citadel_fake_report_ban_timestamp | devonly, cl | Default: 0<br>
 citadel_fake_subrank_for_match | devonly, sv, cl, rep | Default: -1<br>Set what subrank you want to fake for the match. -1 is disabled
 citadel_familiar_debug | devonly, sv, cl, rep, cheat | Default: -1<br>
 citadel_familiar_infiniteattach | devonly, sv, cl, rep, cheat | Default: false<br>
-citadel_familiar_sprites_debug | devonly, sv | Default: false<br>
-citadel_familiar_sprites_debug_spam | devonly, sv | Default: false<br>
+citadel_familiar_sprites_debug | sv, cheat, release | Default: false<br>
+citadel_familiar_sprites_debug_spam | sv, cheat, release | Default: false<br>
 citadel_familiar_sprites_stuck_detection_duration | devonly, sv | Default: 0.2<br>
+citadel_familiar_sprites_temp_debug | sv, cheat, release | Default: false<br>
 citadel_fencer_lunge_debug_draw | devonly, cl | Default: false<br>
 citadel_fencer_max_charge_unlag_players | devonly, sv | Default: 0.12<br>
 citadel_fetch_cheat_reports | cl, release | Request accounts recently reported for cheating
@@ -4210,9 +4211,7 @@ r_citadel_shadow_caching | devonly, cl | Default: true<br>
 r_citadel_shadow_caching_stats | devonly, cl | Print information about shadow caching
 r_citadel_shadow_quality | devonly, cl | Default: 1<br>Shadow Quality
 r_citadel_shadowdb | devonly, cl | Default: 2048<br>
-r_citadel_ssao_denoise_passes | devonly, cl | Default: 1<br>
 r_citadel_ssao_quality | devonly, cl | Default: 3<br>
-r_citadel_ssao_radius | devonly, cl | Default: 128<br>
 r_citadel_ssao_thin_occluder_compensation | devonly, cl | Default: 0.5<br>
 r_citadel_sun_shadow_slope_scale_depth_bias | devonly, cl | Default: 3.54<br>
 r_citadel_upscaling | devonly, cl | Default: 4<br>
