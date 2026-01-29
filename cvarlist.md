@@ -1334,7 +1334,7 @@ citadel_orb_velocity_decay_in_lagcomp | devonly, sv | Default: 0.85<br>Decay vel
 citadel_outer_radius_scaler | devonly, cl | Default: 0.25<br>
 citadel_party_invite_in_game | cl, release | Default: true<br>When set, only users in game can be invited
 citadel_passive_items_area_display_time | devonly, cl | Default: 1<br>
-citadel_passthrough_fakewall_combat_lockout_time | devonly, sv | Default: 4<br>
+citadel_passthrough_fakewall_combat_lockout_time | devonly, sv, cl, rep | Default: 4<br>
 citadel_passthrough_fakewall_draw_debug | devonly, sv | Default: false<br>
 citadel_pause | cl, release | Send a game pause request.
 citadel_pause_allow_immediate_if_single_player | devonly, sv | Default: false<br>When there is only a single player on the server, set whether or not we allow for instant pausing/unpausing
@@ -1608,7 +1608,7 @@ citadel_show_minimap_reveal_indicators | devonly, cl | Default: false<br>
 citadel_show_modifier_history | devonly, cl | Default: false<br>Turns on/off debug display of modifiers
 citadel_show_movement_speed_in_units | devonly, cl | Default: false<br>Show the movement speed in units instead of m/s
 citadel_show_movespeed_on_hud | devonly, cl | Default: false<br>Turns on/off Movespeed indicator on the HUD
-citadel_show_new_damage_feedback_numbers | devonly, cl | Default: true<br>Use new damage numbers that emphasizes the individual hit and not the accumulated value.
+citadel_show_new_damage_feedback_numbers | devonly, cl | Default: false<br>Use new damage numbers that emphasizes the individual hit and not the accumulated value.
 citadel_show_new_mod_tooltips | devonly, cl | Default: true<br>
 citadel_show_new_topbar | devonly, cl | Default: false<br>Show new topbar
 citadel_show_new_ziplines | devonly, cl | Default: false<br>Turns on/off the new ziplines on the new minimap
@@ -1796,7 +1796,7 @@ citadel_ui_damage_impact_duration_fadeindelay | devonly, cl, rep | Default: 0<br
 citadel_ui_damage_impact_duration_fadeoutdelay | devonly, cl, rep | Default: 0.6<br>
 citadel_ui_damage_impact_kill_duration | devonly, cl, rep | Default: 5<br>
 citadel_ui_damage_impact_min_max_shield_width | devonly, cl, rep | Default: 0.1<br>
-citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: false<br>
+citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: true<br>
 citadel_ui_damage_impact_status_minimum_duration | devonly, cl | Default: 0.2<br>
 citadel_ui_fake_active_matches | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy matches to the active match list, useful for testing UI around these
 citadel_ui_fake_invite_parties | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy parties that have invites
@@ -1815,7 +1815,7 @@ citadel_unit_status_health_per_minor_pip | devonly, cl | Default: 100<br>
 citadel_unit_status_health_per_pip | devonly, cl | Default: 100<br>
 citadel_unit_status_health_pips_per_row | devonly, cl | Default: 10<br>
 citadel_unit_status_healthbar_highlight_speed | devonly, cl | Default: 2<br>
-citadel_unit_status_height | devonly, cl | Default: 100<br>
+citadel_unit_status_height | devonly, cl | Default: 50<br>
 citadel_unit_status_hide_names | cl, cheat, release | Default: false<br>
 citadel_unit_status_max_distance_distance | devonly, cl | Default: 800<br>
 citadel_unit_status_max_distance_scale | devonly, cl | Default: 1<br>
