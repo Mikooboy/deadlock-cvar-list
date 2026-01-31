@@ -503,6 +503,7 @@ citadel_allow_spectated_text | cl, a, release | Default: true<br>
 citadel_allow_team_change_when_assigned | devonly, sv | Default: false<br>
 citadel_always_show_active_hud_stats | cl, a | Default: false<br>
 citadel_always_transmit_abilities | devonly, sv | Default: false<br>Enable to always force transmit ability entities
+citadel_announcement_banned_heroes_display_time | devonly, cl | Default: 10<br>
 citadel_announcement_display_time | devonly, cl | Default: 1<br>
 citadel_announcement_game_over_msg_display_time | devonly, cl | Default: 11<br>
 citadel_arrow_brightness | devonly, cl | Default: 0.6<br>Changes the zipline arrow brightness
@@ -639,6 +640,7 @@ citadel_bounty_aoe_radius_non_troopers_non_hero | sv, cl, rep, cheat | Default: 
 citadel_bounty_aoe_radius_troopers | sv, cl, rep, cheat | Default: 2165.35<br>The radius in which teammates gain a portion of things besides Neutrals and Players
 citadel_bounty_player_assist_window | sv, cl, rep, cheat | Default: 10<br>The recent damage time window to be counted as an assister for player kill
 citadel_brawl_hero_roster | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently selected brawl roster heroes
+citadel_brawl_hero_roster_banned | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently banned brawl roster heroes
 citadel_brawl_hero_roster_high_priority | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority brawl roster heroes
 citadel_brawl_hero_roster_preferred | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred brawl roster heroes
 citadel_brawl_hero_roster_random | cl, a, release | Default: false<br>Is the brawl hero roster set to random
@@ -860,6 +862,7 @@ citadel_debug_ent_los | sv, cl, rep, cheat | Default: false<br>Debug : Draw Sphe
 citadel_debug_find_ability_units_draw_all | devonly, sv, cl, rep, cheat | Default: false<br>When true, all FindUnits calls will be drawn
 citadel_debug_find_ability_units_duration | devonly, sv, cl, rep, cheat | Default: 0<br>Duration to display debug draw for FindAbilityUnits functions
 citadel_debug_find_ability_units_filter | devonly, sv, cl, rep, cheat | Default: <br>Filter ability name to debug FindAbilityUnits functions
+citadel_debug_force_property_value_context | devonly, sv, cl, rep | Default: -1<br>Force ability property value context. -1: No override, 0: MainLock, 1:StreetBrawl
 citadel_debug_glyph_paths | devonly, cl | Default: false<br>
 citadel_debug_minimap_height | devonly, sv | Default: false<br>
 citadel_debug_neutral_spawn_times | devonly, sv | Default: false<br>Outputs timings of neutral camp spawns.
@@ -875,7 +878,6 @@ citadel_default_reveal_duration | devonly, sv | Default: 0.25<br>
 citadel_demo_highlight_seconds_after | cl, release | Default: 2<br>How many seconds after the highlight event to show when viewing highlights.
 citadel_demo_highlight_seconds_before | cl, release | Default: 6<br>How many seconds before the highlight event to show when viewing highlights.
 citadel_demo_movie_preload_ticks | cl, release | Default: 2<br>How many ticks of demo playback before we activate movie recording.
-citadel_demo_movie_write_intervals | devonly, cl, release | Default: false<br>Write highlight interval metadata along with movie files when recording.
 citadel_deny_denied_percentage | devonly, sv | Default: 0<br>
 citadel_deny_denier_percentage | devonly, sv | Default: 1<br>
 citadel_deny_orb_scale | devonly, sv, cl, rep | Default: 1<br>
@@ -891,7 +893,6 @@ citadel_dev_book_force_unlocked | devonly, cl | Default: false<br>
 citadel_dev_boss_backdoor_protection_disabled | devonly, sv, cl, rep, cheat | Default: false<br>Set to Disable Backdoor Protection for Bosses
 citadel_dev_discord_link | devonly, cl | Default: false<br>
 citadel_dev_orb_freeze_time | devonly, sv | Default: 0<br>Time after launching for the orb to become stationary.
-citadel_dev_priority_token_hero | devonly, cl | Default: 0<br>If non-zero, this will force this hero to be token priority in the roster while clearing it on others. Just meant to test without having UI in place, short term
 citadel_dev_simulate_mm_response | devonly, cl | Default: -1<br>Allows for forcing MM to act like it returned the specified error for UI testing
 citadel_dev_test_end_game_fake_time | devonly, sv, cl, rep | Default: 0<br>
 citadel_dev_test_end_game_gold | devonly, sv | Default: 20000<br>
@@ -1062,6 +1063,7 @@ citadel_hero_lock_all | devonly, cl | Relocks all heroes for this account
 citadel_hero_release_vote_august_2025_debug_votes_cast_total | devonly, sv | Default: -1<br>
 citadel_hero_release_vote_debug_remaining_votes | devonly, cl | Default: -1<br>
 citadel_hero_roster | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently selected roster heroes
+citadel_hero_roster_banned | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently banned roster heroes
 citadel_hero_roster_high_priority | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority roster heroes
 citadel_hero_roster_preferred | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred roster heroes
 citadel_hero_roster_random | cl, a, release | Default: false<br>Is the hero roster set to random
@@ -1597,6 +1599,7 @@ citadel_show_active_slot_popup | cl, a, release | Default: false<br>
 citadel_show_all_purchase_toasts | cl, a | Default: false<br>If enabled, show purchase toasts for all item transactions, not just ones in your quickbuy queue
 citadel_show_average_rating_on_postgame | cl, a, release | Default: false<br>Show the rating average rating of a team in the post game.
 citadel_show_bullet_lag_compensation | sv, cl, rep, cheat | Default: 0<br>if &gt; 0.0, show lag compensated hitboxes (value is seconds) whenever a bullet is lag compensated and hits something.
+citadel_show_chat_wheel_time | devonly, cl | Default: 0.23<br>How long it takes after pressing the +ping command for the chat wheel to appear.
 citadel_show_disabled_heroes | devonly, cl, a | Default: false<br>Shows disabled heroes in hero selection
 citadel_show_falloff_in_world | devonly, cl | Default: false<br>
 citadel_show_global_leaderboard | cl, release | Default: false<br>Show Global Leaderboards
@@ -1704,6 +1707,7 @@ citadel_team_size | devonly, sv, cl, rep | Default: 6<br>
 citadel_tech_damage_vdata_tagging | devonly, cl | Command to Tag abilities with 'm_bIsAbilityDamageProperty = true'
 citadel_tech_power_scaling_vdata_tweak | devonly, cl | Command to tweak all ability tech power scaling, including ability upgrades.  Pass in scale factor, with 1.0 being no change.
 citadel_teleporter_enabled_time | sv, cl, rep, cheat | Default: 1<br>
+citadel_test_banned_heroes_message | devonly, cl | Draws the banned heroes message
 citadel_test_cinematic_intro | devonly, sv | Restart the cinematic intro sequence
 citadel_test_flex_unlocked_message | devonly, cl | Draws a test message: citadel_test_flex_unlocked_message \[1-4\]
 citadel_test_game_over_message | devonly, cl | Draws the game over message: citadel_test_game_over_message &lt;WINNING_TEAM&gt;
@@ -5271,7 +5275,7 @@ stop | release | Finish recording demo.
 stopdemos | release | Stop looping demos (current demo will complete).
 stopsound | cheat | 
 stopsoundscape | cl, cheat | Stops all soundscape processing and fades current looping sounds
-street_brawl_healing_multiplier | devonly, sv, cl, rep | Default: 0.6<br>
+street_brawl_healing_multiplier | devonly, sv, cl, rep | Default: 1<br>
 subclass_change | sv, cheat | Changes the subclass of the given entity.<br>	Arguments:   	&lt;new_subclass&gt; {entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 subclass_create | sv, cheat | Creates an entity of the given subclass where the player is looking.
 subtick_buttons_enabled | devonly, cl | Default: false<br>
@@ -5446,7 +5450,6 @@ sv_play_stats_CitadelLaneSwap_enabled | sv, release | Default: true<br>Enable / 
 sv_play_stats_CitadelLaneTrooperOrbs_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelLaneTrooperOrbs.
 sv_play_stats_CitadelMatch_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelMatch.
 sv_play_stats_CitadelObjective_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelObjective.
-sv_play_stats_CitadelPerfStats_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelPerfStats.
 sv_play_stats_CitadelPlayer_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelPlayer.
 sv_play_stats_CitadelServerLobby_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelServerLobby.
 sv_play_stats_CitadelTrooperUnstick_enabled | sv, release | Default: false<br>Enable / Disable Play Stat CitadelTrooperUnstick.
