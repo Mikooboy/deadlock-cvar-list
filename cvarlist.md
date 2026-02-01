@@ -472,7 +472,7 @@ citadel_ag2_remove_param | devonly, cl | Remove a param from AG2 graphs
 citadel_ag2_rename_param | devonly, cl | Rename a param in AG2 graphs
 citadel_ag2_run_to_stop_prime_speed | devonly, sv, cl, rep | Default: 85<br>
 citadel_ag2_run_to_stop_trigger_speed | devonly, sv, cl, rep | Default: 70<br>
-citadel_ag2_turn_spring_strength | devonly, sv, rep | Default: 75<br>
+citadel_ag2_turn_spring_strength | devonly, sv, cl, rep | Default: 75<br>
 citadel_ai_path_pathing_time_ms_per_tick | devonly, sv | Default: 0.5<br>
 citadel_aim_capsule_trace_debugdraw | devonly, sv, cl, rep | Default: false<br>
 citadel_aim_debug_duration | devonly, sv, cl, rep | Default: 0<br>Duration to draw the various traces that formed a shot.  Set to a negative number to view the current angles without shooting.
@@ -1800,7 +1800,7 @@ citadel_ui_damage_impact_duration_fadeindelay | devonly, cl, rep | Default: 0<br
 citadel_ui_damage_impact_duration_fadeoutdelay | devonly, cl, rep | Default: 0.6<br>
 citadel_ui_damage_impact_kill_duration | devonly, cl, rep | Default: 5<br>
 citadel_ui_damage_impact_min_max_shield_width | devonly, cl, rep | Default: 0.1<br>
-citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: true<br>
+citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: false<br>
 citadel_ui_damage_impact_status_minimum_duration | devonly, cl | Default: 0.2<br>
 citadel_ui_fake_active_matches | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy matches to the active match list, useful for testing UI around these
 citadel_ui_fake_invite_parties | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy parties that have invites
