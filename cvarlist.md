@@ -472,7 +472,7 @@ citadel_ag2_remove_param | devonly, cl | Remove a param from AG2 graphs
 citadel_ag2_rename_param | devonly, cl | Rename a param in AG2 graphs
 citadel_ag2_run_to_stop_prime_speed | devonly, sv, cl, rep | Default: 85<br>
 citadel_ag2_run_to_stop_trigger_speed | devonly, sv, cl, rep | Default: 70<br>
-citadel_ag2_turn_spring_strength | devonly, sv, cl, rep | Default: 75<br>
+citadel_ag2_turn_spring_strength | devonly, sv, rep | Default: 75<br>
 citadel_ai_path_pathing_time_ms_per_tick | devonly, sv | Default: 0.5<br>
 citadel_aim_capsule_trace_debugdraw | devonly, sv, cl, rep | Default: false<br>
 citadel_aim_debug_duration | devonly, sv, cl, rep | Default: 0<br>Duration to draw the various traces that formed a shot.  Set to a negative number to view the current angles without shooting.
