@@ -472,6 +472,7 @@ citadel_ag2_remove_param | devonly, cl | Remove a param from AG2 graphs
 citadel_ag2_rename_param | devonly, cl | Rename a param in AG2 graphs
 citadel_ag2_run_to_stop_prime_speed | devonly, sv, cl, rep | Default: 85<br>
 citadel_ag2_run_to_stop_trigger_speed | devonly, sv, cl, rep | Default: 70<br>
+citadel_ag2_turn_spring_strength | devonly, sv, cl, rep | Default: 75<br>
 citadel_ai_path_pathing_time_ms_per_tick | devonly, sv | Default: 0.5<br>
 citadel_aim_capsule_trace_debugdraw | devonly, sv, cl, rep | Default: false<br>
 citadel_aim_debug_duration | devonly, sv, cl, rep | Default: 0<br>Duration to draw the various traces that formed a shot.  Set to a negative number to view the current angles without shooting.
@@ -555,7 +556,7 @@ citadel_boss_tier_3_test_rocketbarrage | devonly, sv | Default: false<br>
 citadel_boss_tier_3_test_shrine_attack | devonly, sv | Default: false<br>
 citadel_boss_tier_3_testing_enter_phase2 | sv, cheat, release | Default: false<br>
 citadel_boss_tier_3_testing_reset | sv, cheat | Respawns the boss
-citadel_bot_attack_enemies | devonly | 
+citadel_bot_attack_enemies |  | 
 citadel_bot_brain_aim_angle_attack | sv, rep, release | Default: 0.9<br>Min Dot Product result from target that we will try to shoot from
 citadel_bot_brain_aim_inaccuracy | sv, rep, release | Default: 0<br>Max Angle for Inaccuracy
 citadel_bot_brain_aim_inaccuracy_speed | sv, rep, release | Default: 0.01<br>How fast the inaccuracy moves - mimic mouse movement correction
@@ -773,9 +774,9 @@ citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.65<br>0.0: tur
 citadel_crate_client_notification_time | sv, cheat | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
-citadel_crate_disable_early_spawn | devonly | 
-citadel_crate_early_spawn_delay | devonly | 
-citadel_crate_early_to_trooper_spawn_delay | devonly | 
+citadel_crate_disable_early_spawn |  | 
+citadel_crate_early_spawn_delay |  | 
+citadel_crate_early_to_trooper_spawn_delay |  | 
 citadel_crate_respawn_interval | sv, cheat | Default: 300<br>
 citadel_crate_reward_base | devonly, sv | Default: 1300<br>
 citadel_crate_reward_time_multiplier | devonly, sv | Default: 230<br>
@@ -932,7 +933,6 @@ citadel_dump_items_with_component | devonly, cl | Dump to Console All items with
 citadel_dump_keybindings | devonly, cl | Default: false<br>
 citadel_dump_player_stats | devonly, cl | Dump stat component values for local player
 citadel_dump_rank_data | devonly, cl | Request rank confidence score from GC.
-citadel_dump_scene_panel_state | devonly, cl | 
 citadel_enable_double_ping | devonly, cl | Default: true<br>Turns off the ability to have aggressive and passive pings.
 citadel_enable_duplicate_heroes | sv, cheat, release | Enable usage of Duplicate Heroes
 citadel_enable_fast_cooldowns | sv, cheat | Enables fast cooldowns
@@ -1316,6 +1316,7 @@ citadel_num_team_pauses_allowed | devonly, sv | Default: 3<br>Number of times a 
 citadel_observer_roaming_speed | cl, a | Default: 600<br>
 citadel_one_on_one_match | sv, cl, rep, release | Default: false<br>
 citadel_one_on_one_match_starting_gold | sv, cl, rep, cheat, release | Default: 0<br>
+citadel_only_think_thinkable_abilities | devonly, sv, cl, rep | Default: true<br>
 citadel_open_ability_vdata_by_name | cl, cheat | Open an ability by name in the VData editor
 citadel_open_ability_vdata_by_slot | cl, cheat | Open an ability by slot in the VData editor
 citadel_open_hero_selection | devonly, cl | Convar to open hero selection
@@ -1413,6 +1414,7 @@ citadel_player_outline_fade_at_min | devonly, cl | Default: 0<br>
 citadel_player_outline_fade_range_max | devonly, cl | Default: 1400<br>
 citadel_player_outline_fade_range_min | devonly, cl | Default: 400<br>
 citadel_player_override_spawn_time | devonly, sv | Default: -1<br>
+citadel_player_pawn_ag1_wall_attach_enable | devonly, sv, cl, rep | Default: false<br>
 citadel_player_pawn_ag2_enable | devonly, sv, rep, release | Default: true<br>Enable AG2 for heroes who define an AG2 graph
 citadel_player_ping_duration | sv, cheat | Default: 6<br>
 citadel_player_regen_zone_bonus_base | sv, cl, rep, cheat | Default: 60<br>When standing in a regen zone, how much extra do we regen per second?
@@ -1779,7 +1781,7 @@ citadel_trooper_shooting_enabled | devonly, sv | Default: true<br>
 citadel_trooper_siege_instant_gold_ratio | devonly, sv | Default: 0.5<br>
 citadel_trooper_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any troopers from spawning
 citadel_trooper_spawn_initial | devonly, sv | Default: 16<br>Initial trooper wave spawn time
-citadel_trooper_spawn_interval | devonly | 
+citadel_trooper_spawn_interval |  | 
 citadel_trooper_spawn_interval_early | devonly, sv | Default: 30<br># of seconds between trooper spawn waves.
 citadel_trooper_spawn_interval_late | devonly, sv | Default: 25<br># of seconds between trooper spawn waves. Starts after 25 minutes.
 citadel_trooper_spawn_interval_late_time | devonly, sv | Default: 20<br># of minutes before we start using the late trooper spawn interval.
@@ -1841,11 +1843,11 @@ citadel_unit_status_old_width | devonly, cl | Default: 100<br>
 citadel_unit_status_opaque_dist_sq | devonly, cl | Default: 50000<br>
 citadel_unit_status_recent_damage_time | devonly, cl | Default: 0.25<br>
 citadel_unit_status_show_stats | devonly, cl | Default: false<br>
-citadel_unit_status_single_bar_mode | cl, cheat | Default: true<br>Allow only a single health bar, no stacking.
+citadel_unit_status_single_bar_mode | cl, cheat | Default: false<br>Allow only a single health bar, no stacking.
 citadel_unit_status_stamina_consume_linger | devonly, cl | Default: 3<br>
 citadel_unit_status_transparent_dist_sq | devonly, cl | Default: 0<br>
 citadel_unit_status_use_new | cl, release | Default: false<br>
-citadel_unit_status_use_v2 | devonly, cl, cheat | Default: true<br>
+citadel_unit_status_use_v2 | devonly, cl, cheat | Default: false<br>
 citadel_unit_status_use_v2_for_nonplayers | devonly, cl, cheat | Default: false<br>
 citadel_unit_status_v2_height | devonly, cl | Default: 210<br>
 citadel_unit_status_v2_width | devonly, cl | Default: 200<br>
@@ -3188,7 +3190,6 @@ lua_shipping_assert_on_error | devonly | Default: false<br>
 m_pitch | cl, a, user, per_user | Default: 0.022<br>Mouse pitch factor.
 m_yaw | cl, a, user, per_user | Default: 0.022<br>Mouse yaw factor.
 map | release | map &lt;mapname&gt; :Load a new map.
-map_enable_portrait_worlds | cl, cheat | Enables/disables portrait worlds
 map_showspawnpoints | devonly, sv | Shows player spawn points (red=invalid)
 maps | release | Displays list of maps.
 markup_group_ent_bbox | sv, cheat | markup_group_ent_bbox &lt;markup_group name&gt; -&gt; toggle ent_bbox for all members of the named markup group
@@ -4109,7 +4110,6 @@ quit | release | Quit the game
 r_AirboatViewDampenDamp | sv, cl, nf, rep, cheat | Default: 1<br>
 r_AirboatViewDampenFreq | sv, cl, nf, rep, cheat | Default: 7<br>
 r_AirboatViewZHeight | sv, cl, nf, rep, cheat | Default: 0<br>
-r_Citadel_default_post_process_fade_ui | devonly, cl | Default: 1<br>
 r_JeepViewDampenDamp | sv, cl, nf, rep, cheat | Default: 1<br>
 r_JeepViewDampenFreq | sv, cl, nf, rep, cheat | Default: 7<br>
 r_JeepViewZHeight | sv, cl, nf, rep, cheat | Default: 10<br>
@@ -4134,7 +4134,6 @@ r_character_decal_monitor_emissive | devonly | Default: false<br>
 r_character_decal_monitor_render_res | devonly | Default: 512<br>
 r_character_decal_renderdoc_capture | devonly | Default: false<br>
 r_character_decal_resolution | devonly | Default: 1024<br>Resolution of character decal texture.
-r_citadel_allow_particle_only_portraits | devonly, cl | Default: true<br>
 r_citadel_antialiasing | devonly, cl | Default: 1<br>
 r_citadel_clip_sphere_cone_angle | devonly, cl, cheat | Default: 40<br>
 r_citadel_clip_sphere_dist | devonly, cl, cheat | Default: 0.45<br>
@@ -4194,7 +4193,6 @@ r_citadel_gpu_preview_denoise_normal_phi | devonly, cl | Default: 96<br>
 r_citadel_gpu_preview_denoise_passes | devonly, cl | Default: 3<br>
 r_citadel_gpu_preview_denoise_shadow_passes | devonly, cl | Default: 1<br>
 r_citadel_gpu_preview_denoise_signal_phi | devonly, cl | Default: 1<br>
-r_citadel_highlight_particle_only_portraits | devonly, cl | Default: false<br>
 r_citadel_mboit_bias | devonly, cl, cheat | Default: 5e-06<br>
 r_citadel_mboit_enabled | devonly, cl | Default: false<br>enable moments oit
 r_citadel_mboit_overestimation | devonly, cl, cheat | Default: 0.25<br>
@@ -4831,10 +4829,6 @@ setpause | release | Set the pause state of the server.
 setpos | sv, cheat | Move player to specified origin (must have sv_cheats).
 setpos_exact | sv, cheat | Move player to an exact specified origin (must have sv_cheats).
 setpos_player | sv, cheat | Move specified player to specified origin (must have sv_cheats).
-sf_loadout_rotate_drag | devonly, cl | Default: 0.19<br>
-sf_loadout_rotate_frametime_multiplier | devonly, cl | Default: 1<br>
-sf_loadout_rotate_grab_scale | devonly, cl | Default: 0.5<br>
-sf_loadout_rotate_scale | devonly, cl | Default: 2<br>
 shadowcachedebugger_showdebugwindow | devonly, cl, a, rep, cheat | Default: false<br>Citadel/Graphics/Shadow Cache Debugger
 shake | sv, cheat | Shake the screen.
 shake_show | devonly, cl | Default: false<br>Displays a list of the active screen shakes.
@@ -5344,6 +5338,7 @@ sv_enable_alternate_baselines | release | Default: 1<br>Allow alternate baseline
 sv_enable_delta_packing | release | Default: true<br>When enabled, this allows for entity packing to use the property changes for building up the data. This is many times faster, but can be disabled for error checking.
 sv_enable_donttransmit | devonly | Default: true<br>When encoding entity deltas, instead of unreliably deducing explicit deletions, actually send list of existing but not networked entities (dont_transmit list) to each client.
 sv_enable_hideout | sv, rep, release | Default: true<br>When registering for MM, we can be assigned hideouts
+sv_enable_lost_lobby | sv, rep, release | Default: true<br>Kill switch for the lost lobby functionality
 sv_enable_match | sv, rep, release | Default: true<br>When registering for MM, we can be assigned normal matches
 sv_enable_removearrayelementsoutsidemetadatabounds | release | Default: false<br>
 sv_ent_showonlyhitbox | sv, cheat | Default: -1<br>
