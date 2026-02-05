@@ -556,7 +556,7 @@ citadel_boss_tier_3_test_rocketbarrage | devonly, sv | Default: false<br>
 citadel_boss_tier_3_test_shrine_attack | devonly, sv | Default: false<br>
 citadel_boss_tier_3_testing_enter_phase2 | sv, cheat, release | Default: false<br>
 citadel_boss_tier_3_testing_reset | sv, cheat | Respawns the boss
-citadel_bot_attack_enemies | devonly | 
+citadel_bot_attack_enemies |  | 
 citadel_bot_brain_aim_angle_attack | sv, rep, release | Default: 0.9<br>Min Dot Product result from target that we will try to shoot from
 citadel_bot_brain_aim_inaccuracy | sv, rep, release | Default: 0<br>Max Angle for Inaccuracy
 citadel_bot_brain_aim_inaccuracy_speed | sv, rep, release | Default: 0.01<br>How fast the inaccuracy moves - mimic mouse movement correction
@@ -774,9 +774,9 @@ citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.65<br>0.0: tur
 citadel_crate_client_notification_time | sv, cheat | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
-citadel_crate_disable_early_spawn | devonly | 
-citadel_crate_early_spawn_delay | devonly | 
-citadel_crate_early_to_trooper_spawn_delay | devonly | 
+citadel_crate_disable_early_spawn |  | 
+citadel_crate_early_spawn_delay |  | 
+citadel_crate_early_to_trooper_spawn_delay |  | 
 citadel_crate_respawn_interval | sv, cheat | Default: 300<br>
 citadel_crate_reward_base | devonly, sv | Default: 1300<br>
 citadel_crate_reward_time_multiplier | devonly, sv | Default: 230<br>
@@ -834,16 +834,17 @@ citadel_damage_text_new_ability_offset_x | devonly, cl | Default: -20<br>
 citadel_damage_text_new_ability_offset_y | devonly, cl | Default: -25<br>
 citadel_damage_text_new_bullet_offset_x | devonly, cl | Default: 35<br>
 citadel_damage_text_new_bullet_offset_y | devonly, cl | Default: -25<br>
-citadel_damage_text_new_melee_offset_x | devonly, cl | Default: 0<br>
+citadel_damage_text_new_melee_offset_x | devonly, cl | Default: 20<br>
 citadel_damage_text_new_melee_offset_y | devonly, cl | Default: -60<br>
-citadel_damage_text_new_pure_offset_x | devonly, cl | Default: 0<br>
+citadel_damage_text_new_pure_offset_x | devonly, cl | Default: -20<br>
 citadel_damage_text_new_pure_offset_y | devonly, cl | Default: -60<br>
 citadel_damage_text_new_x_offset | devonly, cl | Default: 15<br>How much to offset damage numbers left
 citadel_damage_text_show_effectiveness | devonly, cl | Default: false<br>Show the damage effectiveness on every damage number
 citadel_damage_text_spacing | devonly, cl | Default: 20<br>Spacing between floating damage numbers.
 citadel_damage_text_x_offset_far | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when far from the camera
 citadel_damage_text_x_offset_near | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when near the camera
-citadel_dead_zone_radius | devonly, cl | Default: 0.15<br>
+citadel_dead_zone_radius | devonly, cl | Default: 0.05<br>
+citadel_dead_zone_radius_instant_wheel | devonly, cl | Default: 0.1<br>
 citadel_death_linger_time | devonly, sv | Default: 3<br>How logn does the player icon linger on the minimap after they die
 citadel_death_replay_enabled | sv, cl, rep, release | Default: false<br>
 citadel_death_replay_post_death_time | devonly, sv, cl, rep | Default: 2<br>
@@ -980,8 +981,6 @@ citadel_fake_low_pri_games_remaining | devonly, cl | Default: -1<br>
 citadel_fake_no_match_metadata | devonly, cl | Default: false<br>
 citadel_fake_number_of_games_played | cl, release | Default: -1<br>
 citadel_fake_party_roster_usage | devonly, cl | Default: false<br>
-citadel_fake_postgame_badge_rank_team1 | devonly, cl | Default: -1<br>Fake the post game badge ranking
-citadel_fake_postgame_badge_rank_team2 | devonly, cl | Default: -1<br>Fake the post game badge ranking
 citadel_fake_rank_for_match | devonly, sv, cl, rep | Default: -1<br>Set what rank you want to fake for the match. -1 is disabled
 citadel_fake_report_ban_timestamp | devonly, cl | Default: 0<br>
 citadel_fake_subrank_for_match | devonly, sv, cl, rep | Default: -1<br>Set what subrank you want to fake for the match. -1 is disabled
@@ -1203,7 +1202,6 @@ citadel_match_data_interval | devonly, sv | Default: 3<br>
 citadel_match_data_max_path_samples | devonly, sv | Default: 7200<br>
 citadel_match_data_path_sample_interval_s | devonly, sv | Default: 1<br>
 citadel_match_details | cl, release | &lt;MatchID&gt; \[Metadata Salt\] Opens the match details to the specified match
-citadel_match_details_account | devonly, cl | Default: 0<br>
 citadel_match_details_failure_delay_s | devonly, cl | Default: 3<br>
 citadel_match_details_flip_teams | devonly, cl | Default: false<br>
 citadel_match_details_lane_stats_time | devonly, cl | Default: 540<br>
@@ -1305,6 +1303,7 @@ citadel_npc_debug_look_target | devonly, sv | Default: false<br>
 citadel_npc_disable_cockroaches | devonly, sv, rep | Default: false<br>Disable Cockroaches
 citadel_npc_disable_floor_point_caching | devonly, sv | Default: true<br>
 citadel_npc_force_animate_every_tick | devonly, sv | Default: true<br>
+citadel_npc_jump_gravity_mult | devonly, sv | Default: 2<br>
 citadel_npc_max_direct_follow_distance | devonly, sv | Default: 1000<br>For far before a following NPC uses an approximate path to get to their follow target, instead of a direct calculation.
 citadel_npc_push_speed | devonly, sv | Default: 50<br>How quickly NPCs push their friends away
 citadel_npc_shoot_check_sphere_size | devonly, sv | Default: 6<br>How large a radius sphere we use for checking if an NPC can shoot a target
@@ -1362,7 +1361,7 @@ citadel_ping_allow_responses_to_yourself | devonly, cl | Default: false<br>Allow
 citadel_ping_indicator_display_time | devonly, cl | Default: 5.5<br>
 citadel_ping_indicator_duration | devonly, cl | Default: 6<br>The amount of time the in-world ping indicator stays.
 citadel_ping_indicator_duration_for_bosses | devonly, cl | Default: 2<br>The amount of time the in-world ping indicator stays when a boss pings itself.
-citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.37<br>Increase this to change how much you have to move your mouse to make the mousewheel visible.
+citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.37<br>LEGACY. See: citadel_show_chat_wheel_angle_threshold. Increase this to change how much you have to move your mouse to make the mousewheel visible.
 citadel_play_stats_laning_end_time | devonly, sv | Default: 540<br>
 citadel_player_aim_at_hero_query_angle | devonly, cl | Default: 6<br>
 citadel_player_aim_at_hero_query_distance | devonly, cl | Default: 2000<br>
@@ -1480,10 +1479,8 @@ citadel_playtest_kick_disconnected_players | devonly, cl | Reassign any network 
 citadel_port_muzzles | devonly, cl | Port old muzzle defs to the new
 citadel_portrait_unit_ag2_enable | devonly, cl | Default: true<br>Enable AG2 use in portrait units
 citadel_portrait_world_renderer_off | devonly, cl | Default: false<br>
-citadel_post_game_fake_player_slot | devonly, cl | Default: -1<br>Fake a player slot for the post game screen
 citadel_post_game_force_hero_id | devonly, cl | 
 citadel_post_game_local_player_screen_enabled | devonly, cl | Default: false<br>
-citadel_post_game_new | devonly, cl | Default: true<br>
 citadel_post_game_progress | devonly, cl | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
 citadel_post_game_progress_test_screen | devonly, cl | Default: <br>
 citadel_post_game_progress_use_test_data | devonly, cl | Default: false<br>
@@ -1564,7 +1561,6 @@ citadel_sat_volume_desat_amount | devonly, sv, cl, rep | Default: 0.6<br>
 citadel_sat_volume_desat_color | devonly, sv, cl, rep | Default: 100 100 114 255<br>
 citadel_sat_volume_outline_color | devonly, sv, cl, rep | Default: 200 200 200 255<br>
 citadel_sat_volume_sat_color | devonly, sv, cl, rep | Default: 255 255 255 255<br>
-citadel_seasonal_achievement_2025_unlock_toast | devonly, cl | &lt;Hero ID&gt;
 citadel_secondary_language_builds | cl, a | Default: -1<br>
 citadel_secure_gold_fixed | devonly, sv | Default: 1.6<br>
 citadel_secure_gold_fixed_growth | devonly, sv | Default: 0.08<br>
@@ -1599,6 +1595,8 @@ citadel_show_active_slot_popup | cl, a, release | Default: false<br>
 citadel_show_all_purchase_toasts | cl, a | Default: false<br>If enabled, show purchase toasts for all item transactions, not just ones in your quickbuy queue
 citadel_show_average_rating_on_postgame | cl, a, release | Default: false<br>Show the rating average rating of a team in the post game.
 citadel_show_bullet_lag_compensation | sv, cl, rep, cheat | Default: 0<br>if &gt; 0.0, show lag compensated hitboxes (value is seconds) whenever a bullet is lag compensated and hits something.
+citadel_show_chat_wheel_angle_threshold | devonly, cl | Default: 16<br>(degrees) Increase this to change how much you have to move your camera angle to make the Chat Wheel instantly visible while holding Ping.
+citadel_show_chat_wheel_debug | devonly, cl | Default: false<br>Increase this to change how much you have to move your camera angle to make the mousewheel visible (degrees)
 citadel_show_chat_wheel_time | devonly, cl | Default: 0.23<br>How long it takes after pressing the +ping command for the chat wheel to appear.
 citadel_show_disabled_heroes | devonly, cl, a | Default: false<br>Shows disabled heroes in hero selection
 citadel_show_falloff_in_world | devonly, cl | Default: false<br>
@@ -1611,7 +1609,6 @@ citadel_show_minimap_reveal_indicators | devonly, cl | Default: false<br>
 citadel_show_modifier_history | devonly, cl | Default: false<br>Turns on/off debug display of modifiers
 citadel_show_movement_speed_in_units | devonly, cl | Default: false<br>Show the movement speed in units instead of m/s
 citadel_show_movespeed_on_hud | devonly, cl | Default: false<br>Turns on/off Movespeed indicator on the HUD
-citadel_show_new_damage_feedback_numbers | devonly, cl | Default: false<br>Use new damage numbers that emphasizes the individual hit and not the accumulated value.
 citadel_show_new_mod_tooltips | devonly, cl | Default: true<br>
 citadel_show_new_topbar | devonly, cl | Default: false<br>Show new topbar
 citadel_show_new_ziplines | devonly, cl | Default: false<br>Turns on/off the new ziplines on the new minimap
@@ -1772,7 +1769,7 @@ citadel_trooper_neutral_aggro_time | devonly, sv | Default: 5<br>
 citadel_trooper_neutral_health_growth_pct_per_min | devonly, sv | Default: 2.1<br>
 citadel_trooper_neutral_scorer_time_window | devonly, sv | Default: 5<br>How long after damaging a neutral are players in the window to be considered scorers.
 citadel_trooper_neutral_sight_range | devonly, sv | Default: 1500<br>
-citadel_trooper_new_movement | devonly, sv | Default: true<br>
+citadel_trooper_new_movement | devonly, sv | Default: false<br>
 citadel_trooper_offscreen_indicator_range | devonly, cl | Default: 35<br>
 citadel_trooper_outline_enabled | cl, release | Default: false<br>
 citadel_trooper_reinforcement_gold_scale | devonly, sv | Default: 0.5<br>
@@ -1781,7 +1778,7 @@ citadel_trooper_shooting_enabled | devonly, sv | Default: true<br>
 citadel_trooper_siege_instant_gold_ratio | devonly, sv | Default: 0.5<br>
 citadel_trooper_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any troopers from spawning
 citadel_trooper_spawn_initial | devonly, sv | Default: 16<br>Initial trooper wave spawn time
-citadel_trooper_spawn_interval | devonly | 
+citadel_trooper_spawn_interval |  | 
 citadel_trooper_spawn_interval_early | devonly, sv | Default: 30<br># of seconds between trooper spawn waves.
 citadel_trooper_spawn_interval_late | devonly, sv | Default: 25<br># of seconds between trooper spawn waves. Starts after 25 minutes.
 citadel_trooper_spawn_interval_late_time | devonly, sv | Default: 20<br># of minutes before we start using the late trooper spawn interval.
@@ -4054,7 +4051,6 @@ player_ping_indicator_scale_max_distance | devonly, cl | Default: 4000<br>
 player_ping_indicator_scale_max_scale | devonly, cl | Default: 1<br>
 player_ping_indicator_scale_min_distance | devonly, cl | Default: 1300<br>
 player_ping_indicator_scale_min_scale | devonly, cl | Default: 0.5<br>
-player_report_minutes_after_game_start | devonly, cl | Default: 3600<br>Number of minutes after a mtach ends that people are allowed to report a player
 playsound | devonly | playsound &lt;soundname&gt;
 playsoundscape | cl, cheat | Forces a soundscape to play
 playvol | devonly | Play a sound at a specified volume.
@@ -5225,7 +5221,6 @@ spec_target | cl, release | Changes the target being spectated
 spec_track | devonly, cl | Default: 0<br>Tracks an entity in spec mode
 spew_fonts | devonly | Spew information about font manager fonts
 spew_gold_sources | devonly, sv | 
-spew_hero_anim_usage | devonly, sv | Spews usage of hero anims
 splitscreen_mode | a, cheat | Default: 0<br>
 splitscreen_testreadconfigconflict | devonly | 
 ss_add | devonly | Adds a splitscreen user.
