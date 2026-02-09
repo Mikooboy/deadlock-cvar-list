@@ -770,7 +770,7 @@ citadel_cooldown_scaling_vdata_tweak | devonly, cl | Command to tweak all abilit
 citadel_coop_sandbox | sv, cl, rep, release | Default: false<br>
 citadel_core_regen | devonly, sv | Default: 50<br>
 citadel_core_regen_pause_on_damage | devonly, sv | Default: 15<br>
-citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.65<br>0.0: turn off corner boosts. 1.0: raw corner boost.
+citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.6<br>0.0: turn off corner boosts. 1.0: raw corner boost.
 citadel_crate_client_notification_time | sv, cheat | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
@@ -5268,7 +5268,7 @@ subclass_create | sv, cheat | Creates an entity of the given subclass where the 
 subtick_buttons_enabled | devonly, cl | Default: false<br>
 surfaceprop | sv, cheat | Reports the surface properties at the cursor
 survey_chance | cl, release | Default: 0<br>Percentage chance of showing the survey questions when entering matchmaking
-survey_min_games_played | cl, release | Default: 10<br>Don't allow for showing the survey unless a minimum number of games have been played
+survey_min_games_played | cl, release | Default: 75<br>Don't allow for showing the survey unless a minimum number of games have been played
 sv_accelerate | sv, cl, nf, rep, release | Default: 10<br>
 sv_ag2_low_skel_lod | devonly, sv | Default: false<br>
 sv_ag2_record_entity_graph | devonly, sv | Default: <br>Automatically start AG2 recording when an entity with this name (wildcard) or id is created.
