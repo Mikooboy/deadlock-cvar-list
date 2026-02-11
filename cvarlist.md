@@ -1195,6 +1195,8 @@ citadel_mantle_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_mantle_horizontal_movement_distance | devonly, sv, cl, rep | Default: 16<br>How far forward the mantle will move the player onto the ledge
 citadel_mantle_max_height | sv, cl, rep, cheat | Default: 134<br>How high the maximum mantle is
 citadel_mantle_probe_depth | devonly, sv, cl, rep | Default: 32<br>How far in front of player to trace when looking for mantle ledges.
+citadel_match_abandoned | devonly, sv | Ends the current match as if players all abandoned.
+citadel_match_abandoned_display_time | devonly, cl | Default: 5<br>
 citadel_match_data_allow_meta_prefix | devonly, sv | Default: <br>A comma separated list of prefixes that will allow for recording of track groups to the metadata file
 citadel_match_data_block_meta_prefix | devonly, sv | Default: <br>A comma separated list of prefixes that will block recording of track groups to the metadata file
 citadel_match_data_incombat_duration | devonly, sv | Default: 5<br>
@@ -1840,11 +1842,11 @@ citadel_unit_status_old_width | devonly, cl | Default: 100<br>
 citadel_unit_status_opaque_dist_sq | devonly, cl | Default: 50000<br>
 citadel_unit_status_recent_damage_time | devonly, cl | Default: 0.25<br>
 citadel_unit_status_show_stats | devonly, cl | Default: false<br>
-citadel_unit_status_single_bar_mode | cl, cheat | Default: false<br>Allow only a single health bar, no stacking.
+citadel_unit_status_single_bar_mode | cl, cheat | Default: true<br>Allow only a single health bar, no stacking.
 citadel_unit_status_stamina_consume_linger | devonly, cl | Default: 3<br>
 citadel_unit_status_transparent_dist_sq | devonly, cl | Default: 0<br>
 citadel_unit_status_use_new | cl, release | Default: false<br>
-citadel_unit_status_use_v2 | devonly, cl, cheat | Default: false<br>
+citadel_unit_status_use_v2 | devonly, cl, cheat | Default: true<br>
 citadel_unit_status_use_v2_for_nonplayers | devonly, cl, cheat | Default: false<br>
 citadel_unit_status_v2_height | devonly, cl | Default: 210<br>
 citadel_unit_status_v2_width | devonly, cl | Default: 200<br>
@@ -3862,6 +3864,8 @@ panorama_dragscroll_maxflickvelocity | devonly, cl | Default: 8000<br>Maximum ve
 panorama_dragscroll_minflickvelocity | devonly, cl | Default: 60<br>Minimum velocity that the mouse must be moving as mouse up time to qualify as a drag scroll flick
 panorama_dragscroll_mintime | devonly | Default: 0.02<br>Minimum time that the mouse button must be down before a move is treated as a drag scroll
 panorama_dragscroll_velocitymultiplier | devonly | Default: 0.5<br>Multiplier for flick velocity off of actual measured velocity
+panorama_draw_text_fast_path | devonly | Default: true<br>
+panorama_draw_text_fast_path_text_shadow | devonly | Default: true<br>
 panorama_dump_symbols | devonly | &lt;ESymbolType&gt; Dump all of the symbols in the Panorama symbol table
 panorama_enable_secondary_layout_pass | devonly | Default: true<br>
 panorama_focus_world_panels | cl, a | Default: false<br>when set request key focus when a world panel is enabled
@@ -3891,6 +3895,7 @@ panorama_might_scroll_no_comp_layer | devonly | Default: true<br>
 panorama_min_comp_layer_cache_cost | devonly | Default: 4096<br>
 panorama_movie_async_load_size_bytes | devonly, cl | Default: 20971520<br>
 panorama_movie_force_not_ready_behavior | devonly, cl | Default: -1<br>
+panorama_panel_occlusion | devonly | Default: true<br>
 panorama_print_cache_status | devonly | Print internal panorama refcounts for every file
 panorama_print_svg_stats | devonly | 
 panorama_reload_animations | devonly | Default: 2<br>
@@ -3915,7 +3920,7 @@ panorama_transform_parents_no_layer_for_perspective | devonly | Default: false<b
 panorama_transforms_no_comp_layer | devonly | Default: false<br>
 panorama_transition_time_factor | devonly | Default: 1<br>A float representing a scale factor for transitions. 1.0 is normal, 2.0 would be twice as fast as normal, 0.5 half as fast
 panorama_use_backbuffer_directly | devonly | Default: true<br>
-panorama_use_new_occlusion_invalidation | devonly | Default: false<br>
+panorama_use_new_occlusion_invalidation | devonly | Default: true<br>
 panorama_worldpanel_update_cull_distance | devonly, cl | Default: 1000<br>
 panorama_worldpanel_update_cull_size_threshold | devonly, cl | Default: 5<br>
 panorama_worldpanel_update_culling | devonly, cl | Default: false<br>
