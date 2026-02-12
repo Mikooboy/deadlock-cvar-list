@@ -430,7 +430,7 @@ citadel_FindUnitsInRadius | devonly, sv | Run UTIL_FindUnitsInRadius centered ar
 citadel_abandon_match | devonly, cl | Force abandons current match
 citadel_abandon_pregame_if_not_connected_in_s | devonly, sv | Default: 180<br>After N seconds, if we don't have all the players connect to the match, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame
 citadel_abandon_pregame_if_not_connected_in_s_dev | devonly, sv | Default: 360<br>After N seconds, if we don't have all the players connect to the match, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
-citadel_abandon_pregame_if_not_connected_in_s_streaming | devonly, sv | Default: 60<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame
+citadel_abandon_pregame_if_not_connected_in_s_streaming | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame
 citadel_abandon_pregame_if_not_connected_in_s_streaming_dev | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
 citadel_abandon_time_for_match_not_scored | devonly, sv | Default: 300<br>If someone abandons before this match time (in seconds), we will call the match forfeit and not update mmr for anyone in the match.
 citadel_ability_busy_queue_time | devonly, sv, cl, rep | Default: 0.25<br>How long we will queue an ability activation to happen if the player tried to use it while busy.
@@ -464,6 +464,8 @@ citadel_ag2_crouch_spring_strength | devonly, sv, cl, rep | Default: 20<br>
 citadel_ag2_debug_draw_crouch_spring | devonly, sv, cl, rep | Default: false<br>
 citadel_ag2_debug_draw_facing | devonly, cl | Default: false<br>
 citadel_ag2_debug_draw_look_target | devonly, cl | Default: false<br>
+citadel_ag2_direction_commit_blend_time | devonly, sv, cl, rep | Default: 0.15<br>
+citadel_ag2_direction_commit_min_time | devonly, sv, cl, rep | Default: 0.3<br>
 citadel_ag2_fidget_max_interval | devonly, sv, cl, rep | Default: 10<br>
 citadel_ag2_fidget_min_interval | devonly, sv, cl, rep | Default: 5<br>
 citadel_ag2_loco_lean_trigger_speed | devonly, sv, cl, rep | Default: 50<br>
@@ -741,7 +743,6 @@ citadel_catapult_on_damage_channel_time | devonly, sv, cl, rep | Default: 1.5<br
 citadel_catapult_on_damage_disable_time | devonly, sv, cl, rep | Default: 3<br>
 citadel_chat_fade_time | devonly, cl | Default: 10<br>
 citadel_chat_fade_time_extension | devonly, cl | Default: 7<br>
-citadel_chat_style | devonly, cl | Default: 1<br>
 citadel_cinematic_intro_duration_npc | sv, cheat | Default: 7.5<br>How long is the cinematic intro applied to npcs (shrine/patron)
 citadel_cinematic_intro_duration_player | sv, cheat | Default: 9.5<br>How long is the cinematic intro applied to the player
 citadel_cinematic_intro_enabled | sv, cheat | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
@@ -1334,7 +1335,7 @@ citadel_orb_lagcomp_buffer_contested | devonly, sv | Default: 0.17<br>Extra time
 citadel_orb_lagcomp_buffer_uncontested | devonly, sv | Default: 0.25<br>Extra time for an orb to linger to allow lag compensated players to contest
 citadel_orb_required_bullets_to_claim_override | devonly, sv, cl, rep | Default: 0<br>When &gt; 0, defines the number of bullets that need to hit an orb to claim it, otherwise uses the hero defined values.
 citadel_orb_velocity_decay_in_lagcomp | devonly, sv | Default: 0.85<br>Decay velocity to 0 by this amount during lag comp window
-citadel_outer_radius_scaler | devonly, cl | Default: 0.25<br>
+citadel_outer_radius_scaler | devonly, cl | Default: 0.2545<br>
 citadel_party_invite_in_game | cl, release | Default: true<br>When set, only users in game can be invited
 citadel_passive_items_area_display_time | devonly, cl | Default: 1<br>
 citadel_passthrough_fakewall_combat_lockout_time | devonly, sv, cl, rep | Default: 4<br>
@@ -1579,7 +1580,6 @@ citadel_set_party_mode | devonly, cl | Dispatches a request to change the party 
 citadel_set_server_convar | devonly, cl | \[convar\] \[value\] Set a server convar on the server that the player is currently connected to
 citadel_settings_dismissed_new_settings | cl, a | Default: <br>New Settings which have already been dismissed by the user
 citadel_settings_new_setting_newness_duration | devonly, cl | Default: 2592000<br>Maximum age a new setting will be shown without dismissing
-citadel_settings_old_show_popup | devonly, cl | 
 citadel_settings_reset_dismissed_settings | devonly, cl | 
 citadel_settings_seen_new_settings | cl, a | Default: <br>New Settings which have already been seen by the user
 citadel_settings_show_popup | devonly, cl | 
@@ -1687,6 +1687,7 @@ citadel_street_brawl_test_drafts | devonly, sv | Simulates and spews the results
 citadel_stuck_camera_trace_extra_length | sv, cl, rep, cheat | Default: 100<br>
 citadel_stuck_normal_find_trace_fallback_elevation | sv, cl, rep, cheat | Default: 24<br>
 citadel_stunme | devonly, sv | Stun the local player
+citadel_sub_nav_outer_radius_scaler | devonly, cl | Default: 0.412<br>
 citadel_subnav_select_time | devonly, cl | Default: 0<br>
 citadel_suggest_claim_reqs | devonly, sv | Print a crude recommended required bullets to claim an orb for every hero
 citadel_super_neutral_gold_reward | devonly, sv | Default: 2000<br>
@@ -1842,11 +1843,11 @@ citadel_unit_status_old_width | devonly, cl | Default: 100<br>
 citadel_unit_status_opaque_dist_sq | devonly, cl | Default: 50000<br>
 citadel_unit_status_recent_damage_time | devonly, cl | Default: 0.25<br>
 citadel_unit_status_show_stats | devonly, cl | Default: false<br>
-citadel_unit_status_single_bar_mode | cl, cheat | Default: true<br>Allow only a single health bar, no stacking.
+citadel_unit_status_single_bar_mode | cl, cheat | Default: false<br>Allow only a single health bar, no stacking.
 citadel_unit_status_stamina_consume_linger | devonly, cl | Default: 3<br>
 citadel_unit_status_transparent_dist_sq | devonly, cl | Default: 0<br>
 citadel_unit_status_use_new | cl, release | Default: false<br>
-citadel_unit_status_use_v2 | devonly, cl, cheat | Default: true<br>
+citadel_unit_status_use_v2 | devonly, cl, cheat | Default: false<br>
 citadel_unit_status_use_v2_for_nonplayers | devonly, cl, cheat | Default: false<br>
 citadel_unit_status_v2_height | devonly, cl | Default: 210<br>
 citadel_unit_status_v2_width | devonly, cl | Default: 200<br>
@@ -2491,6 +2492,8 @@ deadlock_disable_post_match_survey | cl, a | Default: false<br>Disable the early
 deadlock_early_development_warning_disabled | cl, a | Default: false<br>Disable the early dev build message
 deadlock_hero_debuts_seen | cl, a, release | Default: <br>
 deadlock_mm_preference | cl, a, release | Default: 1<br>What style of player do we want to try and match with in matchmaking
+deadlock_steam_input_debug | devonly, cl | Default: false<br>Show Steam Input Error Messages and Spew in console
+deadlock_steam_input_on_disc_manifest | devonly, cl | Default: false<br>Use local cfg\\steam_input_manifest.vdf as opposed to cloud manifest
 debug_ai_heat_sensing | devonly, sv | Default: false<br>
 debug_async_data_panel_override_state | devonly, cl | Default: -1<br>Force ALL async data panels to be in a specific state. -1:disabled, 0:failure, 1:loading, 2:success
 debug_destructible_parts | devonly, sv, cl, rep | Default: false<br>Draw debug information for destructible parts.
@@ -3000,7 +3003,7 @@ iv_interp | devonly, cl | Spew interpolated var info for entity.
 iv_off | devonly, cl | Turn off all interpolation variable spew.
 iv_on | devonly, cl | Spew both interpolated var debug info and history for entity.
 iv_parallel_latch | devonly, cl | Default: true<br>
-iv_parallel_restore | devonly, cl | Default: false<br>
+iv_parallel_restore | devonly, cl | Default: true<br>
 iv_wrapped_parallel_latch | devonly, cl | Default: true<br>
 joy_accel_filter | devonly, cl | Default: 0.2<br>
 joy_accelmax | devonly, cl | Default: 1<br>
@@ -4910,6 +4913,7 @@ snd_gamevoicevolume | a | Default: 1<br>Game v.o. volume
 snd_gamevolume | a | Default: 1<br>Game volume
 snd_get_physics_surface_properties | cheat | Get physics surface properties for all the materials.
 snd_group_cluster_debug | rep, cheat | Default: false<br>
+snd_group_occlusion_debug | devonly | Default: false<br>
 snd_group_priority_debug | rep, cheat | Default: false<br>
 snd_group_priority_max_tolerance | rep, cheat | Default: 0.05<br>
 snd_headphone_pan_exponent | devonly | Specifies the exponent for the pan xfade from phone to phone if the "exp" pan law is being used.
@@ -5273,6 +5277,7 @@ subclass_create | sv, cheat | Creates an entity of the given subclass where the 
 subtick_buttons_enabled | devonly, cl | Default: false<br>
 surfaceprop | sv, cheat | Reports the surface properties at the cursor
 survey_chance | cl, release | Default: 0<br>Percentage chance of showing the survey questions when entering matchmaking
+survey_force_question_type | devonly, cl | Default: 0<br>Force a specific survey question type for survey questions
 survey_min_games_played | cl, release | Default: 75<br>Don't allow for showing the survey unless a minimum number of games have been played
 sv_accelerate | sv, cl, nf, rep, release | Default: 10<br>
 sv_ag2_low_skel_lod | devonly, sv | Default: false<br>
