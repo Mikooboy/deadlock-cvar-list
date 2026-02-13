@@ -605,6 +605,7 @@ citadel_bot_melee | sv, rep, release | Default: 0<br>Forces citadel bots to mele
 citadel_bot_mimic_player_pitch | sv, rep, release | Default: true<br>User player's pitch in hero testing
 citadel_bot_move_random | sv, rep, release | Default: false<br>Forces citadel bots to move all around
 citadel_bot_net_worth_max_spawn_time | devonly, sv | Default: 10000<br>
+citadel_bot_override_spawn_time | devonly, sv | Default: -1<br>
 citadel_bot_parry | sv, rep, release | Default: false<br>Forces citadel bots to Parry continuously
 citadel_bot_passive_gold_enabled | devonly, sv | Default: true<br>
 citadel_bot_playrecording | sv, cheat | Play back commands recorded via 'citadel_bot_record'
@@ -1023,6 +1024,7 @@ citadel_get_rp | devonly, cl | Retrieves the rich presence of the user (leave bl
 citadel_gg_call_time | devonly, sv, cl, rep | Default: 10<br>
 citadel_give_gold | sv, cheat | &lt;gold&gt; Give gold value to all players
 citadel_give_player_gold | sv, cheat | &lt;player name&gt; &lt;gold&gt; Gives the specified player gold
+citadel_gold_bonus_scale_for_familiar_infest | devonly, sv | Default: 1.2<br>
 citadel_gold_flash_max_duration | devonly, cl | Default: 0.8<br>
 citadel_gold_flash_max_threshold | devonly, cl | Default: 500<br>
 citadel_gold_flash_med_threshold | devonly, cl | Default: 100<br>
@@ -1035,7 +1037,6 @@ citadel_grant_dev_account | devonly, cl | &lt;Account ID&gt; \[0/1\] Grants or r
 citadel_gravity_scaling_experiment | sv, cl, rep, cheat | Default: false<br>Increase gravity for players while they are moving at pedestrian speeds (lateral speeds below 300, up to 500)
 citadel_guide_bot_say | devonly, sv | &lt;line&gt; makes the guide bot say the specified line
 citadel_guided_bot_ap_boost | devonly, sv | Default: 10<br>
-citadel_guided_bot_match | sv, cl, rep, release | Default: false<br>
 citadel_guided_bot_match_countdown_time | devonly, sv | Default: 10<br>
 citadel_guided_bot_match_hint_time_mult | cl, release | Default: 0.25<br>How much faster/slower to show hints in guided bot match mode
 citadel_guided_bot_match_net_worth_boost | devonly, sv | Default: 20000<br>
@@ -1066,37 +1067,20 @@ citadel_hero_roster_banned | cl, a, release | Default: <br>A comma separated lis
 citadel_hero_roster_high_priority | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority roster heroes
 citadel_hero_roster_preferred | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred roster heroes
 citadel_hero_roster_random | cl, a, release | Default: false<br>Is the hero roster set to random
-citadel_hero_testing_ability1_state | sv, cl, rep, release | Default: 0<br>
-citadel_hero_testing_ability2_state | sv, cl, rep, release | Default: 0<br>
-citadel_hero_testing_ability3_state | sv, cl, rep, release | Default: 0<br>
-citadel_hero_testing_ability4_state | sv, cl, rep, release | Default: 0<br>
-citadel_hero_testing_ability_learn_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_ability_purchased_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_ability_upgrade_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_dash_finished | sv, cl, rep, release | Default: false<br>
 citadel_hero_testing_dummy_target | sv, release | Default: 55<br>Dummy Target heroID if non-specified
 citadel_hero_testing_enabled | sv, cl, rep, release | Default: false<br>
 citadel_hero_testing_give_abilities | sv, rep, release | Default: true<br>Grant Abilities on Character Spawn
-citadel_hero_testing_guided_sandbox | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_hide_mods | sv, cl, rep, release | Default: false<br>
 citadel_hero_testing_infinite_money | sv, cl, rep, release | Default: false<br>Enable infinite money in Hero Testing
-citadel_hero_testing_jump_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_mantle_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_mods_purchased_finished | sv, cl, rep, release | Default: false<br>
 citadel_hero_testing_money | sv, rep, release | Default: 4000<br>How much money to buffer item purchases in Hero Testing
-citadel_hero_testing_movement_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_reload_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_shoot_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_show_intro_modal | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_show_outro_modal | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_wasd_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_zipline_attach_finished | sv, cl, rep, release | Default: false<br>
-citadel_hero_testing_zoom_finished | sv, cl, rep, release | Default: false<br>
 citadel_hero_unlock | devonly, cl | &lt;Hero ID&gt; Unlocks the specified hero
 citadel_hero_unlock_all | devonly, cl | Unlocks all heroes for this account
 citadel_herolabs_schedule_override | devonly, cl | Default: 0<br>Override the hero labs schedule we think is assigned to your client
+citadel_hide_botbrawl_after_brawl_wins | devonly, cl | Default: 2<br>
+citadel_hide_botbrawl_after_normal_wins | devonly, cl | Default: 5<br>
 citadel_hide_modifier_bars_on_left_hud | devonly, cl | Default: false<br>
 citadel_hide_replay_hud | cl, release | Default: false<br>
+citadel_hide_tutorial_after_brawl_wins | devonly, cl | Default: 2<br>
+citadel_hide_tutorial_after_normal_games | devonly, cl | Default: 5<br>
 citadel_hideout_accept_request | cl, release | Accept an incoming request in the hideout
 citadel_hideout_ball_combat | devonly, sv | Default: 0<br>WIP Allow ball to transfer melee attacks.
 citadel_hideout_ball_debug | sv, cheat | Default: 0<br>Show custom collision, ball kick impulses etc.
@@ -1305,6 +1289,7 @@ citadel_npc_debug_enemies | devonly, sv | Default: false<br>Draws a line to the 
 citadel_npc_debug_look_target | devonly, sv | Default: false<br>
 citadel_npc_disable_cockroaches | devonly, sv, rep | Default: false<br>Disable Cockroaches
 citadel_npc_disable_floor_point_caching | devonly, sv | Default: true<br>
+citadel_npc_dps_multiplier | sv, cl, rep, cheat | Default: 1<br>Increase weapon damage for testing
 citadel_npc_force_animate_every_tick | devonly, sv | Default: true<br>
 citadel_npc_jump_gravity_mult | devonly, sv | Default: 2<br>
 citadel_npc_max_direct_follow_distance | devonly, sv | Default: 1000<br>For far before a following NPC uses an approximate path to get to their follow target, instead of a direct calculation.
@@ -1365,6 +1350,11 @@ citadel_ping_indicator_display_time | devonly, cl | Default: 5.5<br>
 citadel_ping_indicator_duration | devonly, cl | Default: 6<br>The amount of time the in-world ping indicator stays.
 citadel_ping_indicator_duration_for_bosses | devonly, cl | Default: 2<br>The amount of time the in-world ping indicator stays when a boss pings itself.
 citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.37<br>LEGACY. See: citadel_show_chat_wheel_angle_threshold. Increase this to change how much you have to move your mouse to make the mousewheel visible.
+citadel_play_page_fake_brawl_wins | devonly, cl | Default: 0<br>
+citadel_play_page_fake_data | devonly, cl | Default: false<br>
+citadel_play_page_fake_normal_losses | devonly, cl | Default: 0<br>
+citadel_play_page_fake_normal_wins | devonly, cl | Default: 0<br>
+citadel_play_page_finished_tutorial | devonly, cl | Default: false<br>
 citadel_play_stats_laning_end_time | devonly, sv | Default: 540<br>
 citadel_player_aim_at_hero_query_angle | devonly, cl | Default: 6<br>
 citadel_player_aim_at_hero_query_distance | devonly, cl | Default: 2000<br>
@@ -1668,6 +1658,7 @@ citadel_spoof_persona_name | devonly, cl | Default: <br>Allows overriding person
 citadel_spoof_profile_account | devonly, cl | Default: 0<br>
 citadel_spray_max_range | devonly, sv, cl, rep | Default: 512<br>Maximum range (in inches) in which a spray is valid
 citadel_start_calibration_bot_match | devonly, cl | Starts a calibration match
+citadel_start_players_on_zipline | sv, cl, rep, cheat | Default: true<br>
 citadel_stat_override_official_match | devonly, cl | Default: false<br>When set to true, the account stat cache system will act like it is in an official match when updated. Used for testing without being in official matches
 citadel_steamlearn_disable | devonly, sv | Default: false<br>
 citadel_steamlearn_mechanical_behavior_allowed_game_modes_bitfield | devonly, sv | Default: 2<br>This is a bitfield of elements in ECitadelGameMode that we want to record behavior for. eg: (1 &lt;&lt; k_ECitadelGameMode_Normal) \| (1 &lt;&lt; k_ECitadelGameMode_1v1Test)
@@ -1777,7 +1768,7 @@ citadel_trooper_offscreen_indicator_range | devonly, cl | Default: 35<br>
 citadel_trooper_outline_enabled | cl, release | Default: false<br>
 citadel_trooper_reinforcement_gold_scale | devonly, sv | Default: 0.5<br>
 citadel_trooper_run_test_path | devonly, sv | Default: 0<br>
-citadel_trooper_shooting_enabled | devonly, sv | Default: true<br>
+citadel_trooper_shooting_enabled | sv, rep, cheat | Default: true<br>
 citadel_trooper_siege_instant_gold_ratio | devonly, sv | Default: 0.5<br>
 citadel_trooper_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any troopers from spawning
 citadel_trooper_spawn_initial | devonly, sv | Default: 16<br>Initial trooper wave spawn time
@@ -1793,6 +1784,42 @@ citadel_trooper_suicide_orb_gold_ratio | devonly, sv | Default: 0<br>What percen
 citadel_trooper_use_ziplines | devonly, sv | Default: true<br>
 citadel_trooper_waypoint_threshold | devonly, sv | Default: 48<br>
 citadel_trooper_zipline_leap_speed | devonly, sv | Default: 200<br>
+citadel_tutorial_ability1_state | sv, cl, rep, release | Default: 0<br>
+citadel_tutorial_ability2_state | sv, cl, rep, release | Default: 0<br>
+citadel_tutorial_ability3_state | sv, cl, rep, release | Default: 0<br>
+citadel_tutorial_ability4_state | sv, cl, rep, release | Default: 0<br>
+citadel_tutorial_ability_learn_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_ability_purchased_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_ability_upgrade_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_ability_use_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_air_dash_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_auto_teleport_dist | sv, cl, rep, release | Default: 2000<br>
+citadel_tutorial_close_shop | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_dash_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_enabled | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_guardian_destroyed | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_heavy_melee_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_hide_mods | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_jump_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_kill_troopers_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_light_melee_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_mantle_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_match_on_dedicated_server | devonly, cl | Default: true<br>
+citadel_tutorial_mods_purchased_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_movement_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_near_guardian_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_parry_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_reload_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_shoot_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_show_intro_modal | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_show_outro_modal | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_slide_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_test | sv, release | Sets you to a specific spot in the tutorial
+citadel_tutorial_troopers_remaining | sv, cl, rep, release | Default: 0<br>
+citadel_tutorial_ultimate_used | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_wasd_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_zipline_attach_finished | sv, cl, rep, release | Default: false<br>
+citadel_tutorial_zoom_finished | sv, cl, rep, release | Default: false<br>
 citadel_tweak_hero_level_boons | devonly, cl | Command to tweak level boons.  Pass in scale factor
 citadel_ui_allow_feature_bot_test | cl, release | Default: true<br>When true, we can feature bot test matches
 citadel_ui_damage_impact_duration | devonly, cl, rep | Default: 2<br>
@@ -5187,6 +5214,7 @@ sparseshadowtree_renderdoc_capture_generation | devonly | Default: false<br>Capt
 sparseshadowtree_unpack_direct_to_shadow_atlas | devonly | Default: false<br>unpack SST directly into shadow atlas cascade vs via staging texture PS copy (NOTE - rendersystem fix reqd for AMD + driver fix required for NV + VK only.
 sparseshadowtree_uv_frac_offset_x | devonly | Default: 0<br>uv x offset during copy to cascade.
 sparseshadowtree_uv_frac_offset_y | devonly | Default: 0<br>uv y offset during copy to cascade.
+spawn_citadel_tutorial_controller | sv, release | Spawns an entity that activates tutorial mode controls.
 spawn_group_activate | sv, cheat | Activate specified spawngroup.
 spawn_group_load | sv, cheat | Load named spawn group.
 spawn_group_unload | sv, cheat | Unload named spawn group.
