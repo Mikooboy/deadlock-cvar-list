@@ -1200,7 +1200,7 @@ citadel_match_intro_force_enabled | devonly, sv, cl, rep | Default: false<br>
 citadel_match_intro_style | devonly, sv, cl, rep | Default: 1<br>0 = none, 1 = pregame simple, 2 = pregame full, 3 = in map
 citadel_match_status | devonly, sv | Prints information about the current match status
 citadel_max_disconnected_time | devonly, sv | Default: 300<br>How long a player needs to be disconnected before they count as a leaver and get punished.
-citadel_max_disconnected_time_pregame | devonly, sv | Default: 120<br>How long a player needs to be disconnected during pregame before they count as a leaver and get punished.
+citadel_max_disconnected_time_pregame | devonly, sv | Default: 90<br>How long a player needs to be disconnected during pregame before they count as a leaver and get punished.
 citadel_max_path_detour | devonly, sv | Default: 500<br>Max detour for pathing calculations.
 citadel_max_reconnect_time_secs | devonly, cl | Default: 7200<br>Max time to attempt a reconnect after a crash.
 citadel_max_separation_force | devonly, cl | Default: 256<br>
