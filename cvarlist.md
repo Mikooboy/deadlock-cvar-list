@@ -292,6 +292,7 @@ audio_enemy_relevance_targeting_range | devonly, cl | Default: 3500<br>Range to 
 audio_health_change_damage_priority_threshold | cl, cheat | Default: -0.02<br>Above this health fraction change damage audio is deprioritized in the sound system.
 audio_input_test_signal | devonly | Default: false<br>For testing the audio input pathway with a sine tone instead of SDL3.
 audio_input_use_sdl_roles | devonly | Default: false<br>
+audio_limiter_debug | sv, cl, rep, cheat | Default: false<br>Renders limiter debug spheres and enables logging.
 audio_log_damage_recency_bias | sv, cheat | Default: false<br>Prints player damage recency information.
 audio_relevance_debug_enabled | devonly, cl | Default: false<br>Displays audio relevance info.
 audio_render_mixlayer_debug | devonly, cl | Default: false<br>Renders mix layer debug.
@@ -1090,7 +1091,7 @@ citadel_hideout_button_interact_distance | devonly, sv, cl, rep | Default: 120<b
 citadel_hideout_cancel_matchmaking | cl, release | Remove yourself or your party from the matchmaking queue
 citadel_hideout_enable_testing_tools | devonly, cl | Default: false<br>
 citadel_hideout_exclusive_mode | devonly, cl | Default: true<br>
-citadel_hideout_hero_id | cl, a, release | Default: 6<br>
+citadel_hideout_hero_id | cl, a, release | Default: 63<br>
 citadel_hideout_intro_dismiss_escape_only | devonly, cl | Default: false<br>
 citadel_hideout_intro_version_seen | cl, a, release | Default: 0<br>
 citadel_hideout_map_enabled | devonly, sv, cl, rep | Default: false<br>Cheat to make that map pretend its the hideout
@@ -1173,8 +1174,6 @@ citadel_log_idle_time | devonly, sv | Default: false<br>
 citadel_log_in_combat_state | devonly, sv | Default: true<br>Enable to log extended MODIFIER_STATE_IN_COMBAT
 citadel_loot_table_spew_flattened_table | sv, cl, rep, cheat | Default: false<br>
 citadel_loot_table_spew_modifications | sv, cl, rep, cheat | Default: false<br>
-citadel_loot_table_test_draft | sv, cheat | Draft from the specified loot table
-citadel_loot_table_test_street_brawl_draft_round | sv, cheat | Start the specified street brawl draft round
 citadel_mantle_cancelling_allowed | sv, cl, rep, cheat | Default: false<br>Pulling away from the mantle interrupts it, putting you into falling state early.
 citadel_mantle_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_mantle_horizontal_movement_distance | devonly, sv, cl, rep | Default: 16<br>How far forward the mantle will move the player onto the ledge
@@ -1200,7 +1199,7 @@ citadel_match_intro_force_enabled | devonly, sv, cl, rep | Default: false<br>
 citadel_match_intro_style | devonly, sv, cl, rep | Default: 1<br>0 = none, 1 = pregame simple, 2 = pregame full, 3 = in map
 citadel_match_status | devonly, sv | Prints information about the current match status
 citadel_max_disconnected_time | devonly, sv | Default: 300<br>How long a player needs to be disconnected before they count as a leaver and get punished.
-citadel_max_disconnected_time_pregame | devonly, sv | Default: 90<br>How long a player needs to be disconnected during pregame before they count as a leaver and get punished.
+citadel_max_disconnected_time_pregame | devonly, sv | Default: 110<br>How long a player needs to be disconnected during pregame before they count as a leaver and get punished.
 citadel_max_path_detour | devonly, sv | Default: 500<br>Max detour for pathing calculations.
 citadel_max_reconnect_time_secs | devonly, cl | Default: 7200<br>Max time to attempt a reconnect after a crash.
 citadel_max_separation_force | devonly, cl | Default: 256<br>
@@ -1821,6 +1820,7 @@ citadel_tutorial_wasd_finished | sv, cl, rep, release | Default: false<br>
 citadel_tutorial_zipline_attach_finished | sv, cl, rep, release | Default: false<br>
 citadel_tutorial_zoom_finished | sv, cl, rep, release | Default: false<br>
 citadel_tweak_hero_level_boons | devonly, cl | Command to tweak level boons.  Pass in scale factor
+citadel_tweak_weights | devonly, cl | Tweaks the hero item bucketing.
 citadel_ui_allow_feature_bot_test | cl, release | Default: true<br>When true, we can feature bot test matches
 citadel_ui_damage_impact_duration | devonly, cl, rep | Default: 2<br>
 citadel_ui_damage_impact_duration_fadeindelay | devonly, cl, rep | Default: 0<br>
