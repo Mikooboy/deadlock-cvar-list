@@ -140,6 +140,7 @@ ai_motor_debug_state_deadlocks | sv, cheat | Default: false<br>
 ai_motor_debug_stop | sv, cheat | Default: false<br>
 ai_motor_debug_transitions | sv, cheat | Default: false<br>
 ai_motor_enable_move_heading_bad_zones | sv, cheat | Default: true<br>
+ai_motor_ground_enable_detailed_debug_data | sv, cheat | Default: false<br>
 ai_motor_max_state_time_active | sv, cheat | Default: 6<br>
 ai_motor_move_direction_lookahead | sv, cheat | Default: 6<br>
 ai_motor_nav_links_force_facing_time | sv, cheat | Default: 12<br>
@@ -290,6 +291,10 @@ audio_enclosure_speed | devonly, sv, cl, rep | Default: 0.45<br>Adjusts rate of 
 audio_enemy_relevance_debug | devonly, cl | Default: false<br>Enable debug spheres and screen text for enemy relevance.
 audio_enemy_relevance_targeting_range | devonly, cl | Default: 3500<br>Range to consider targeting local player.
 audio_health_change_damage_priority_threshold | cl, cheat | Default: -0.02<br>Above this health fraction change damage audio is deprioritized in the sound system.
+audio_health_delta_effect_release_rate | devonly, cl | Default: 0.25<br>Rate of interpolation once hold time has elapsed.
+audio_health_loss_effect_debug | devonly, cl | Default: false<br>Render health loss fraction change.
+audio_health_loss_effect_enabled | devonly, cl | Default: false<br>Enable/disable health loss audio effect.
+audio_health_loss_effect_hold_time | devonly, cl | Default: 0.5<br>Rate of interpolation once hold time has elapsed.
 audio_input_test_signal | devonly | Default: false<br>For testing the audio input pathway with a sine tone instead of SDL3.
 audio_input_use_sdl_roles | devonly | Default: false<br>
 audio_limiter_debug | sv, cl, rep, cheat | Default: false<br>Renders limiter debug spheres and enables logging.
@@ -648,8 +653,8 @@ citadel_brawl_hero_roster_banned | cl, a, release | Default: <br>A comma separat
 citadel_brawl_hero_roster_high_priority | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority brawl roster heroes
 citadel_brawl_hero_roster_preferred | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred brawl roster heroes
 citadel_brawl_hero_roster_random | cl, a, release | Default: false<br>Is the brawl hero roster set to random
-citadel_breakable_prop_break_airtime | devonly, sv, rep | Default: 0.6<br>
-citadel_breakable_prop_break_velocity | devonly, sv, rep | Default: 400<br>
+citadel_breakable_prop_break_airtime | devonly, sv, cl, rep | Default: 0.6<br>
+citadel_breakable_prop_break_velocity | devonly, sv, cl, rep | Default: 400<br>
 citadel_breakable_prop_breakable_enabled | devonly, sv | Default: true<br>
 citadel_breakable_prop_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all breakable_prop camps
 citadel_breakable_prop_respawn_spread | devonly, sv, rep | Default: 0.5<br>Spread the respawn of breakables out by this many seconds (perf)
@@ -780,12 +785,11 @@ citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
 citadel_crate_disable_early_spawn |  | 
 citadel_crate_early_spawn_delay |  | 
 citadel_crate_early_to_trooper_spawn_delay |  | 
-citadel_crate_respawn_interval | sv, cheat | Default: 300<br>
+citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 300<br>
 citadel_crate_reward_base | devonly, sv | Default: 1300<br>
 citadel_crate_reward_time_multiplier | devonly, sv | Default: 230<br>
 citadel_crate_spawn_enabled | devonly, sv | Default: true<br>
-citadel_crate_spawn_initial_delay | sv, cheat | Default: 600<br>
-citadel_create_test_time_warp | sv, cheat | Create a time warp volume at your feet
+citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 600<br>
 citadel_create_unit | sv | \[hero_name \| none\] \[team\] - Creates an unit.  Pass 'my_hero' as hero_name to use your current hero
 citadel_crosshair_clip_angle | devonly, cl | Default: 90<br>
 citadel_crosshair_clip_bullet_gap | devonly, cl | Default: 0.5<br>
@@ -902,6 +906,7 @@ citadel_dev_test_end_game_fake_time | devonly, sv, cl, rep | Default: 0<br>
 citadel_dev_test_end_game_gold | devonly, sv | Default: 20000<br>
 citadel_dev_test_endgame | cl, cheat, release | Set the Map to test End game content
 citadel_dev_test_endgame_server_cmd | sv, cheat, release | Set the Map to test End game content
+citadel_digger_debugburrow | devonly, sv | Default: false<br>
 citadel_disable_duplicate_heroes | sv, cheat, release | Disable usage of Duplicate Heroes
 citadel_disable_fast_cooldowns | sv, cheat | Disable fast cooldowns
 citadel_disable_fast_stamina | sv, cheat | Disable fast stamina
@@ -912,6 +917,7 @@ citadel_disable_unlimited_ammo | sv, cheat | Disable unlimited ammo
 citadel_display_new_player_recommendations | cl, release | Default: true<br>Do we want to show the decorations for new player friendly heroes?
 citadel_distance_mouse_move_for_minimap_drawing | cl, release | Default: 15<br>
 citadel_doorway_debug_draw | sv, cl, rep, cheat | Default: 0<br>
+citadel_doorway_glow_close_distance | sv, cl, rep, cheat | Default: 200<br>
 citadel_doorway_glow_other_distance | sv, cl, rep, cheat | Default: 1000<br>
 citadel_doorway_infinite_duration | sv, cl, rep, cheat | Default: false<br>
 citadel_doorway_portal_forward_offset | sv, cl, rep, cheat | Default: -3<br>
@@ -1048,6 +1054,7 @@ citadel_gun_boon_growth_vdata_tweak | devonly, cl | Command to tweak boon gun da
 citadel_gun_iron_sights_threshold | devonly, sv, cl, rep | Default: 0.9<br>When iron sights amount is greater than this value, we are considered in iron sights mode.
 citadel_gun_max_spread_penalty | sv, cl, rep, cheat | Default: 5<br>Max spread penalty you can incur from taking damage
 citadel_healthbars_enabled | cl, release | Default: true<br>
+citadel_hero_builds_universe | cl, a, release | Default: <br>
 citadel_hero_card_fake_party_member_count | devonly, cl | Default: -1<br>
 citadel_hero_challenge_status_fake_data | devonly, cl | Default: false<br>Shows fake data for hero challenge status
 citadel_hero_demo_enable_fast_stamina | sv, cl, a, rep, release | Default: false<br>Do we enable fast stamina cooldowns
@@ -1131,6 +1138,7 @@ citadel_hud_top_bar_enable_dynamic_player_position | devonly, cl | Default: true
 citadel_hud_visible | cl, release | Default: true<br>Turns on/off rendering the HUD
 citadel_idle_time | devonly, sv | Default: 300<br>How long a player needs to be idle before he counts as disconnected.
 citadel_idle_time_grace_period | devonly, sv | Default: 8<br>How long a player needs to be idle we start putting that time towards their stored idle time.
+citadel_in_world_item_panel_dpi | devonly, cl | Default: 2<br>In-world texture resolution scale
 citadel_inactive_time_grace_period | devonly, sv | Default: 30<br>How long a player needs to be inactive (i.e. not taking any meaningful actions) before we start putting that time towards their stored inactive time.
 citadel_increase_replay_speed | cl, release | Increase the Replay speed while watching a replay
 citadel_increment_killstreak | devonly, sv | citadel_increment_killstreak \[player_slot\] \[first_blood\]
@@ -1256,7 +1264,7 @@ citadel_movement_skyclip_push_distance | devonly, sv, cl, rep | Default: 196.85<
 citadel_movement_skyclip_push_min_force | devonly, sv, cl, rep | Default: 400<br>
 citadel_movement_slip_accel | devonly, sv, cl, rep | Default: 200<br>
 citadel_movement_solver_iterations | devonly, sv, cl, rep | Default: 16<br>
-citadel_movespeed_bonus_max | devonly, sv, cl, rep | Default: 393.701<br>Maximum Value for Movespeed bonuses (Diminishing Returns) in Hu
+citadel_movespeed_bonus_max | devonly, sv, cl, rep | Default: 433.071<br>Maximum Value for Movespeed bonuses (Diminishing Returns) in Hu
 citadel_mvp_calculate_now | devonly, sv | Run the MVP calculation right now
 citadel_mvp_enabled | devonly, sv | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
 citadel_mvp_score_kda_ratio | devonly, sv | Default: false<br>Use a KDA ratio for the mvp score instead of the real algorithm.
@@ -1278,7 +1286,7 @@ citadel_new_years_fireworks_force_start | devonly, sv, cl, rep | Default: 0<br>
 citadel_new_years_fireworks_test | sv, release | Sets fireworks start time to be N seconds in the future.
 citadel_news_entries_list_request_count | devonly, cl | Default: 10<br>
 citadel_news_entries_seen | cl, a, release | Default: <br>
-citadel_news_entry_override_latest | devonly, cl | Default: 519736513892714181<br>
+citadel_news_entry_override_latest | devonly, cl | Default: 0<br>
 citadel_no_orbs_on_hero_kill | sv, cl, rep, cheat | Default: true<br>
 citadel_no_orbs_on_objective_kill | sv, cl, rep, cheat | Default: true<br>
 citadel_npc_ag2_enable | devonly, sv, rep, release | Default: true<br>Enable AG2 in NPCs
@@ -1474,7 +1482,6 @@ citadel_portrait_world_renderer_off | devonly, cl | Default: false<br>
 citadel_post_game_force_hero_id | devonly, cl | 
 citadel_post_game_local_player_screen_enabled | devonly, cl | Default: false<br>
 citadel_post_game_progress | devonly, cl | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
-citadel_post_game_progress_test_screen | devonly, cl | Default: <br>
 citadel_post_game_progress_use_test_data | devonly, cl | Default: false<br>
 citadel_postgame_duration | sv, cheat | Default: 10<br>How long postgame lasts until play of the game
 citadel_powerup_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all powerup camps
@@ -1515,6 +1522,7 @@ citadel_quick_cast_select_effects_delay | devonly, sv, cl, rep | Default: 0.1<br
 citadel_quick_response_display_time | devonly, cl | Default: 6<br>
 citadel_quickbuy_auto_buy_default | cl, a, user | Default: false<br>Default for whether auto-buy is enabled in normal games.
 citadel_quickbuy_enable | cl, a | Default: true<br>If enabled, show quickbuy in the HUD
+citadel_quit_delay | devonly, cl | Default: 0.5<br>
 citadel_radial_ability_suggestion_weight | devonly, cl | Default: 0<br>How much extra weight to give a segment when it's the next recommended ability.
 citadel_radial_distortion | devonly, cl | Default: 0<br>0: Off 1: Distorts the visible distribution of arcs based on the mouse pointer.
 citadel_radial_distortion_growth_factor | devonly, cl | Default: 1.25<br>When the cursor enters a radial arc fully, how much should it grow by (in terms of weight)
@@ -1565,7 +1573,6 @@ citadel_server_long_frame_threshold_ms | devonly, sv | Default: 40<br>How long a
 citadel_server_max_spectator_slots | sv, release | Default: 3<br>The maximum number of spectator slots we allow. This is so that the GC can restrict this remotely if we need to. -1 disables this limit
 citadel_server_mm_ignore_engine_version | devonly, sv | Default: false<br>Ignore engine build version. Useful for testing release locally
 citadel_set_mmr | devonly, cl | &lt;Account ID&gt; &lt;MMR&gt; Sets the MMR of the specified account
-citadel_set_party_mode | devonly, cl | Dispatches a request to change the party mode
 citadel_set_server_convar | devonly, cl | \[convar\] \[value\] Set a server convar on the server that the player is currently connected to
 citadel_settings_dismissed_new_settings | cl, a | Default: <br>New Settings which have already been dismissed by the user
 citadel_settings_new_setting_newness_duration | devonly, cl | Default: 2592000<br>Maximum age a new setting will be shown without dismissing
@@ -1593,7 +1600,6 @@ citadel_show_disabled_heroes | devonly, cl, a | Default: false<br>Shows disabled
 citadel_show_falloff_in_world | devonly, cl | Default: false<br>
 citadel_show_global_leaderboard | cl, release | Default: false<br>Show Global Leaderboards
 citadel_show_hero_debut_popup | devonly, cl | \[hero id\] \[allow swap\]
-citadel_show_hero_lab_heroes | cl, a | Default: false<br>Show Hero Labs Heroes in hero grid
 citadel_show_hero_select_popup | devonly, cl | 
 citadel_show_localization_errors | devonly, cl | Default: false<br>
 citadel_show_minimap_reveal_indicators | devonly, cl | Default: false<br>
@@ -1680,7 +1686,7 @@ citadel_stunme | devonly, sv | Stun the local player
 citadel_sub_nav_outer_radius_scaler | devonly, cl | Default: 0.412<br>
 citadel_subnav_select_time | devonly, cl | Default: 0<br>
 citadel_suggest_claim_reqs | devonly, sv | Print a crude recommended required bullets to claim an orb for every hero
-citadel_super_neutral_gold_reward | devonly, sv | Default: 2000<br>
+citadel_super_neutral_gold_reward | devonly, sv | Default: 3000<br>
 citadel_super_neutral_gold_reward_bonus_per_minute | devonly, sv | Default: 50<br>
 citadel_super_neutral_inner_attack_range | devonly, sv | Default: 250<br>
 citadel_super_neutral_middle_attack_range | devonly, sv | Default: 400<br>
@@ -1773,8 +1779,10 @@ citadel_trooper_spawn_enabled | devonly, sv | Default: true<br>set to false to p
 citadel_trooper_spawn_initial | devonly, sv | Default: 16<br>Initial trooper wave spawn time
 citadel_trooper_spawn_interval |  | 
 citadel_trooper_spawn_interval_early | devonly, sv | Default: 30<br># of seconds between trooper spawn waves.
-citadel_trooper_spawn_interval_late | devonly, sv | Default: 25<br># of seconds between trooper spawn waves. Starts after 25 minutes.
+citadel_trooper_spawn_interval_late | devonly, sv | Default: 25<br># of seconds between trooper spawn waves.
 citadel_trooper_spawn_interval_late_time | devonly, sv | Default: 20<br># of minutes before we start using the late trooper spawn interval.
+citadel_trooper_spawn_interval_very_late | devonly, sv | Default: 20<br># of seconds between trooper spawn waves.
+citadel_trooper_spawn_interval_very_late_time | devonly, sv | Default: 35<br># of minutes before we start using the late trooper spawn interval.
 citadel_trooper_spawn_wave_spread | devonly, sv | Default: 0.4<br># of seconds between troopers on a zipline in a single wave.
 citadel_trooper_squad_size | devonly, sv | Default: 4<br>How many troopers spawn together in a squad
 citadel_trooper_stuck_detection_duration | devonly, sv | Default: 0.2<br>
@@ -3368,7 +3376,6 @@ music_hideout_afk_timer_fade_in_duration_seconds | devonly, cl | Default: 1<br>F
 music_hideout_afk_timer_fade_out_duration_seconds | devonly, cl | Default: 15<br>Fade out time once AFK duration is exceeded.
 music_hideout_debug_enabled | devonly, cl | Default: false<br>Displays music manager debug info for hideout.
 music_log_abandoned_priorities | devonly, cl | Default: false<br>Prints a log message whenever low priority cues are discarded.
-music_queue_match_intro_connecting | devonly, cl | Default: false<br>Triggers match intro connecting
 music_resume_fade_time_seconds | devonly, cl | Default: 2<br>When resuming, fades music in over this duration of time.
 music_resume_window_seconds | devonly, cl | Default: 15<br>Seeks into music if resumed during this period of time.
 muzzle_flash_debug | devonly, cl | Default: false<br>
@@ -4014,6 +4021,7 @@ phys_dump_main_world | devonly, sv | Dump physics main world to file
 phys_dump_memory | devonly, sv | Dump memory usage
 phys_dynamic_scaling | sv, cl, rep, cheat | Default: true<br>
 phys_expensive_shape_threshold | cl, cheat | Default: 6<br>
+phys_force_controller_debug | devonly, sv | Default: false<br>
 phys_highlight_expensive_objects | cheat | Default: false<br>Highlight expensive physics objects
 phys_highlight_expensive_objects_strength | cheat | Default: 0.02<br>Highlight expensive physics objects strength
 phys_impactforcescale | devonly, sv | Default: 1<br>
@@ -4402,7 +4410,7 @@ r_muzzleflashbrightness | cl, rep, cheat | Default: 0.4<br>
 r_muzzleflashlinear | cl, rep, cheat | Default: 0.05<br>
 r_nearz | cl, cheat | Default: -1<br>Override the near clipping plane. -1 means use the default.
 r_opaque | devonly, cl | Default: true<br>
-r_particle_allowprerender | devonly | Default: true<br>
+r_particle_allowprerender | devonly | Default: false<br>
 r_particle_batch_collections | devonly | Default: false<br>
 r_particle_cables_cast_shadows | devonly | Default: true<br>
 r_particle_cables_culling | devonly | Default: 1<br>
