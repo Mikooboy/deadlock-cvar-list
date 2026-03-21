@@ -440,8 +440,8 @@ citadel_abandon_pregame_if_not_connected_in_s_streaming | devonly, sv | Default:
 citadel_abandon_pregame_if_not_connected_in_s_streaming_dev | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
 citadel_abandon_time_for_match_not_scored | devonly, sv | Default: 300<br>If someone abandons before this match time (in seconds), we will call the match forfeit and not update mmr for anyone in the match.
 citadel_ability_busy_queue_time | devonly, sv, cl, rep | Default: 0.25<br>How long we will queue an ability activation to happen if the player tried to use it while busy.
-citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0.2<br>Min Time for a Channel before we can cancel it
-citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0.2<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
+citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0<br>Min Time for a Channel before we can cancel it
+citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
 citadel_ability_cooldown_max | sv, cl, rep, cheat | Default: 0<br>
 citadel_ability_damage_falloff | devonly, sv, cl, rep | Default: 40 70 0<br>Ability ability damage falloff (start_dist, end_dist, end_scale_pct)
 citadel_ability_damage_vdata_tweak | devonly, cl | Command to tweak base damage from abilities. <br>** Usage<br>- arg1 - Scale Value 1.0 being no change.<br>- arg2 - 2: Affect Abilities and Upgrades, 1: Affects Upgrades Only, 0: Do no Affect Upgrades\]
@@ -450,7 +450,7 @@ citadel_ability_force_gold_collection | devonly, sv, cl, rep | Default: false<br
 citadel_ability_maintain | devonly, cl | Command to tweak level boons.  Pass in scale factor
 citadel_ability_preview_path_debug_draw_dt | cl, a | Default: 0.075<br>DT for debug drawing ability preview path.
 citadel_ability_property_usage | devonly, cl | Command to tweak level boons.  Pass in scale factor
-citadel_ability_select_mash_protection_time | devonly, sv, cl, rep | Default: 0.25<br>Pressing a recently selected or cast ability within this time is ignored
+citadel_ability_select_mash_protection_time | devonly, sv, cl, rep | Default: 0<br>Pressing a recently selected or cast ability within this time is ignored
 citadel_ability_target_debug | sv, cl, rep, cheat | Default: 0<br>
 citadel_ability_target_use_head_bone | sv, cl, rep, cheat | Default: false<br>
 citadel_ability_upgrade_sell_time | devonly, sv, cl, rep | Default: 10<br>
@@ -1258,7 +1258,9 @@ citadel_mm_server_command | devonly, cl | Default: <br>Allows sending up a comma
 citadel_mobile_resupply_healthbar_pos | devonly, cl | Default: 10<br>
 citadel_model_hit_size_debug | devonly, cl | Default: false<br>Turn on some model hit size debug visuals
 citadel_modifier_history_show_time | devonly, cl | Default: 6<br>
-citadel_modifier_hud_message_display_time | devonly, cl | Default: 2<br>
+citadel_modifier_hud_message_display_clear | devonly, cl | Default: false<br>
+citadel_modifier_hud_message_display_min_panel_count | devonly, cl | Default: 4<br>
+citadel_modifier_hud_message_display_time | devonly, cl | Default: 2.5<br>
 citadel_move_goal_tolerance | sv, cheat | Default: 8<br>Some extra tolerance for considering an NPC moved to a goal; can be reduced as we fix other issues
 citadel_movement_debugdraw | devonly, sv, cl, rep | Default: false<br>
 citadel_movement_skyclip_push_distance | devonly, sv, cl, rep | Default: 196.85<br>
@@ -1951,7 +1953,6 @@ citadel_zipline_capture | devonly, sv | Captures the closest zipline node
 citadel_zipline_capture_all | devonly, sv | sets all ziplines nodes to the specified team
 citadel_zipline_capture_trigger_thickness | devonly, sv | Default: 400<br>
 citadel_zipline_capture_trigger_width | devonly, sv | Default: 1200<br>
-citadel_zipline_capture_trigger_width_trooper_node_buffer | devonly, sv | Default: 200<br>
 citadel_zipline_curve_sampling_size | devonly, sv, cl, rep | Default: 24<br>
 citadel_zipline_debug_draw | devonly, cl | Default: false<br>
 citadel_zipline_debug_draw_node_entity | devonly, cl | Default: 0<br>if non-zero, only draw zipline curves extending from this node.
@@ -3739,7 +3740,7 @@ net_max_message_queue_size | devonly | Default: 0<br>Maximum number of messages 
 net_max_polymorphic_spew | devonly | Default: 5<br>Max polymorphic variants to spew when spewing a flattened serializer.
 net_messageinfo | cheat | Display info about a message (by classname or id)
 net_option | release | Get or set SteamNetworkingSockets options such as fake packet lag and loss
-net_p2p_listen_dedicated | devonly | Default: false<br>Should dedicated server listen for new-style P2P?
+net_p2p_listen_dedicated | devonly | Default: true<br>Should dedicated server listen for new-style P2P?
 net_print_sdr_ping_times | release | Print current ping times to SDR points of presence, and selected route
 net_public_adr | release | Default: <br>For servers behind NAT/DHCP meant to be exposed to the public internet, this is the public facing ip address string: ("x.x.x.x" )
 net_qosinterval_spew | devonly | Default: false<br>Spew QoS interval data as we gather it
@@ -4412,7 +4413,7 @@ r_muzzleflashbrightness | cl, rep, cheat | Default: 0.4<br>
 r_muzzleflashlinear | cl, rep, cheat | Default: 0.05<br>
 r_nearz | cl, cheat | Default: -1<br>Override the near clipping plane. -1 means use the default.
 r_opaque | devonly, cl | Default: true<br>
-r_particle_allowprerender | devonly | Default: false<br>
+r_particle_allowprerender | devonly | Default: true<br>
 r_particle_batch_collections | devonly | Default: false<br>
 r_particle_cables_cast_shadows | devonly | Default: true<br>
 r_particle_cables_culling | devonly | Default: 1<br>
