@@ -18,8 +18,6 @@
 -herochatwheel | cl, release | Executes the highlighted hero chatwheel menu item
 -in_ability_ping | cl, release | Ping button released
 -show_ability_upgrade_radial | devonly, cl | Closest radial abilities menu on release
-CarpetBombDrone_Max_Height | devonly, sv, rep | Default: 600<br>
-CarpetBombDrone_Min_Height | devonly, sv, rep | Default: 300<br>
 StackStats_Dump | devonly | Dump a named stackstats structure to disk. Usage: stackstats_dump "structname" \["filename"\]
 Test_Checkpoint | devonly | Indicate to a test script that a checkpoint has been reached
 Test_CreateEntity | sv, cheat | 
@@ -440,8 +438,8 @@ citadel_abandon_pregame_if_not_connected_in_s_streaming | devonly, sv | Default:
 citadel_abandon_pregame_if_not_connected_in_s_streaming_dev | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
 citadel_abandon_time_for_match_not_scored | devonly, sv | Default: 300<br>If someone abandons before this match time (in seconds), we will call the match forfeit and not update mmr for anyone in the match.
 citadel_ability_busy_queue_time | devonly, sv, cl, rep | Default: 0.25<br>How long we will queue an ability activation to happen if the player tried to use it while busy.
-citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0<br>Min Time for a Channel before we can cancel it
-citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
+citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0.2<br>Min Time for a Channel before we can cancel it
+citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0.2<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
 citadel_ability_cooldown_max | sv, cl, rep, cheat | Default: 0<br>
 citadel_ability_damage_falloff | devonly, sv, cl, rep | Default: 40 70 0<br>Ability ability damage falloff (start_dist, end_dist, end_scale_pct)
 citadel_ability_damage_vdata_tweak | devonly, cl | Command to tweak base damage from abilities. <br>** Usage<br>- arg1 - Scale Value 1.0 being no change.<br>- arg2 - 2: Affect Abilities and Upgrades, 1: Affects Upgrades Only, 0: Do no Affect Upgrades\]
@@ -450,7 +448,7 @@ citadel_ability_force_gold_collection | devonly, sv, cl, rep | Default: false<br
 citadel_ability_maintain | devonly, cl | Command to tweak level boons.  Pass in scale factor
 citadel_ability_preview_path_debug_draw_dt | cl, a | Default: 0.075<br>DT for debug drawing ability preview path.
 citadel_ability_property_usage | devonly, cl | Command to tweak level boons.  Pass in scale factor
-citadel_ability_select_mash_protection_time | devonly, sv, cl, rep | Default: 0<br>Pressing a recently selected or cast ability within this time is ignored
+citadel_ability_select_mash_protection_time | devonly, sv, cl, rep | Default: 0.25<br>Pressing a recently selected or cast ability within this time is ignored
 citadel_ability_target_debug | sv, cl, rep, cheat | Default: 0<br>
 citadel_ability_target_use_head_bone | sv, cl, rep, cheat | Default: false<br>
 citadel_ability_upgrade_sell_time | devonly, sv, cl, rep | Default: 10<br>
@@ -907,6 +905,7 @@ citadel_dev_test_end_game_gold | devonly, sv | Default: 20000<br>
 citadel_dev_test_endgame | cl, cheat, release | Set the Map to test End game content
 citadel_dev_test_endgame_server_cmd | sv, cheat, release | Set the Map to test End game content
 citadel_digger_debugburrow | devonly, sv | Default: false<br>
+citadel_disable_check_on_ground | sv, cheat | Default: false<br>Don't run CheckOnGround ever. Do we even need it?
 citadel_disable_duplicate_heroes | sv, cheat, release | Disable usage of Duplicate Heroes
 citadel_disable_fast_cooldowns | sv, cheat | Disable fast cooldowns
 citadel_disable_fast_stamina | sv, cheat | Disable fast stamina
@@ -1831,7 +1830,9 @@ citadel_tutorial_ultimate_used | sv, cl, rep, release | Default: false<br>
 citadel_tutorial_wasd_finished | sv, cl, rep, release | Default: false<br>
 citadel_tutorial_zipline_attach_finished | sv, cl, rep, release | Default: false<br>
 citadel_tutorial_zoom_finished | sv, cl, rep, release | Default: false<br>
+citadel_tweak_hero_base_health | devonly, cl | Command to tweak base health.  Pass in scale factor and constant increase
 citadel_tweak_hero_level_boons | devonly, cl | Command to tweak level boons.  Pass in scale factor
+citadel_tweak_hero_level_boons_health | devonly, cl | Command to tweak level boons for health.  Pass in scale factor and fixed increase
 citadel_tweak_weights | devonly, cl | Tweaks the hero item bucketing.
 citadel_ui_allow_feature_bot_test | cl, release | Default: true<br>When true, we can feature bot test matches
 citadel_ui_damage_impact_duration | devonly, cl, rep | Default: 2<br>
@@ -2794,14 +2795,6 @@ firetarget | sv, cheat |
 firstperson | cl, release, per_tick | Switch to firstperson camera.
 fish_debug | cl, cheat | Default: false<br>Show debug info for fish
 fish_dormant | sv, rep, cheat | Default: false<br>Turns off interactive fish behavior. Fish become immobile and unresponsive.
-flying_drone_behind_left_back | devonly, sv | Default: 40<br>
-flying_drone_behind_left_height_offset | devonly, sv | Default: -20<br>
-flying_drone_behind_left_left | devonly, sv | Default: 80<br>
-flying_drone_front_height_offset | devonly, sv | Default: 0<br>
-flying_drone_front_horizontal_offset | devonly, sv | Default: -50<br>
-flying_drone_left_shoulder_back | devonly, sv | Default: 0<br>
-flying_drone_left_shoulder_height_offset | devonly, sv | Default: 30<br>
-flying_drone_left_shoulder_left | devonly, sv | Default: 20<br>
 fog_color | cl, cheat | Default: -1 -1 -1<br>
 fog_colorskybox | cl, cheat | Default: -1 -1 -1<br>
 fog_enable | cl, cheat | Default: true<br>Enable fog
