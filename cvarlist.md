@@ -1410,7 +1410,7 @@ citadel_player_neutral_gold_drop_min | devonly, sv | Default: 150<br>
 citadel_player_neutral_gold_duration | devonly, sv | Default: 180<br>
 citadel_player_neutral_gold_fallrate | devonly, sv | Default: 300<br>
 citadel_player_outline_allies | devonly, cl | Default: false<br>
-citadel_player_outline_enemies | devonly, cl | Default: false<br>
+citadel_player_outline_enemies | devonly, cl | Default: true<br>
 citadel_player_outline_fade_at_min | devonly, cl | Default: 0<br>
 citadel_player_outline_fade_range_max | devonly, cl | Default: 1400<br>
 citadel_player_outline_fade_range_min | devonly, cl | Default: 400<br>
