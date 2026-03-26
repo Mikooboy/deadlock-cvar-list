@@ -1484,7 +1484,6 @@ citadel_portrait_world_renderer_off | devonly, cl | Default: false<br>
 citadel_post_game_force_hero_id | devonly, cl | 
 citadel_post_game_local_player_screen_enabled | devonly, cl | Default: false<br>
 citadel_post_game_progress | devonly, cl | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
-citadel_post_game_progress_use_test_data | devonly, cl | Default: false<br>
 citadel_postgame_duration | sv, cheat | Default: 10<br>How long postgame lasts until play of the game
 citadel_powerup_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all powerup camps
 citadel_powerup_spawn_enabled | devonly, sv | Default: true<br>
