@@ -1210,7 +1210,6 @@ citadel_max_disconnected_time | devonly, sv | Default: 300<br>How long a player 
 citadel_max_disconnected_time_pregame | devonly, sv | Default: 110<br>How long a player needs to be disconnected during pregame before they count as a leaver and get punished.
 citadel_max_path_detour | devonly, sv | Default: 500<br>Max detour for pathing calculations.
 citadel_max_reconnect_time_secs | devonly, cl | Default: 7200<br>Max time to attempt a reconnect after a crash.
-citadel_max_separation_force | devonly, cl | Default: 256<br>
 citadel_max_videomode_matches | devonly, cl | Default: 20<br>Max number of video resolutions to show in UI.
 citadel_medic_minion_sight_range | devonly, sv, cl, rep | Default: 2400<br>
 citadel_melee_damage_scale | devonly, sv | Default: 1<br>
@@ -2300,7 +2299,6 @@ cl_pred_print_every_cmd | cl, release | Default: false<br>Print something every 
 cl_pred_track | devonly, cl | &lt;entindex&gt; &lt;fieldname&gt;:  Track changes to entity index entindex, for field fieldname.
 cl_pred_track_off | devonly, cl | clear field track changes.
 cl_predict | cl, user, cheat | Default: true<br>Perform client side prediction.
-cl_predict_after_every_createmove | devonly | Default: true<br>run prediction after every CreateMove instead of only after CreateMove for the final tick in a frame.
 cl_prediction_savedata_postentitypacketreceived | cl, release | Default: false<br>Experimental optimization.  If you are reading this in 2026, please delete this convar.
 cl_predictioncopy_describe | devonly, cl | Describe datamap_t for entindex
 cl_predictioncopy_print | devonly, cl | Print simple description of prediction copy fields for entindex
@@ -2400,7 +2398,6 @@ cl_tickpacket_recvmargin_minsamples | devonly | Default: 10<br>Recvmargin-based 
 cl_tickpacket_recvmargin_spew_interval | release | Default: 0<br>
 cl_tickpacket_recvmargin_timeconstant | devonly | Default: 0.4<br>Recvmargin-based usercommand pacing will remove 63.2% of the error in N seconds
 cl_tickpacket_recvmargin_window | devonly | Default: 4<br>Recvmargin-based usercommand pacing will use past N seconds
-cl_tickpacket_send_every_tick | devonly | Default: true<br>Send a network packet each time we generate a new usercommand, even if our frame rate is slow and we generate multiple commands in one frame
 cl_ticks_net_print_threshold | release | Default: 2<br>Print a message if network issues cause problems with server snapshots of user commands not being available when needed, if the percentage (0...100) exceeds this value.  A value of 0 will cause the message to always print each time it is calculated
 cl_ticks_warning_level | release | Default: 0<br>Print a message about problems with ticks and interpolation.  0=never, 1=warnings, 2=all, even if hidden by interpolation
 cl_ticktiming | norecord, release | {print\|&lt;interval&gt;} \[summary\|detail\]  Print timing stats now, or set report interval
@@ -4157,7 +4154,7 @@ r_aoproxy_cull_dist | devonly | Default: 12<br>Distance to cull the AO proxy as 
 r_aoproxy_min_dist | devonly | Default: 3<br>
 r_aoproxy_min_dist_box | devonly | Default: 1<br>
 r_arealights | devonly, cl | Default: true<br>
-r_aspectratio | devonly | Default: 2<br>
+r_aspectratio | devonly | Default: 0<br>
 r_async_compute_fog | devonly, cl | Default: false<br>
 r_async_shader_compile_notify_frequency | devonly | Default: 10<br>
 r_bloom_tent_filter_radius | devonly, cl, cheat | Default: 0<br>bloom mip up-sample filtering radius (using 3x3 tent filter, radius in mip level texels), 0.0 radius =&gt; box (2x2) filter with (fixed) 1.0 radius
