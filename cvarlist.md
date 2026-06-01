@@ -493,6 +493,7 @@ citadel_airheart_freefly | devonly, sv, cl, rep, cheat | Default: false<br>
 citadel_allow_ally_pings | cl, a, release | Default: true<br>
 citadel_allow_ally_text | cl, a, release | Default: true<br>
 citadel_allow_ally_voice | cl, a, release | Default: true<br>
+citadel_allow_biased_urn_pickups | devonly, sv, cl, rep | Default: true<br>
 citadel_allow_client_higher_version_for_reconnect | cl, release | Default: true<br>When set to true, the client is allowed to connect so long as the client compat version is higher than the server's
 citadel_allow_duplicate_heroes | sv, cl, rep, release | Default: false<br>If enabled, heroes can be selected by multiple players
 citadel_allow_new_player_flow_finished_override | devonly, cl, a | Default: false<br>citadel_new_player_flow_finished can't be turned off (because of the callback) unless you reset the other new player convars. This allows you to turn it off.
@@ -781,13 +782,14 @@ citadel_crate_client_notification_time | sv, cheat | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
 citadel_crate_disable_early_spawn |  | 
+citadel_crate_drop_duration_override | sv, cheat | Default: -1<br>
 citadel_crate_early_spawn_delay |  | 
 citadel_crate_early_to_trooper_spawn_delay |  | 
-citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 300<br>
+citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 360<br>
 citadel_crate_reward_base | devonly, sv | Default: 1300<br>
 citadel_crate_reward_time_multiplier | devonly, sv | Default: 230<br>
 citadel_crate_spawn_enabled | devonly, sv | Default: true<br>
-citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 600<br>
+citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 720<br>
 citadel_create_unit | sv | \[hero_name \| none\] \[team\] - Creates an unit.  Pass 'my_hero' as hero_name to use your current hero
 citadel_crosshair_clip_angle | devonly, cl | Default: 90<br>
 citadel_crosshair_clip_bullet_gap | devonly, cl | Default: 0.5<br>
@@ -1005,6 +1007,7 @@ citadel_fibonnaci_sphere_trace_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_fibonnaci_sphere_trace_fraction | devonly, sv, cl, rep | Default: 0.8<br>
 citadel_fibonnaci_sphere_trace_los_max | devonly, sv, cl, rep | Default: 160<br>How big to cap the size of the sphere when checking for really large explosion/effects
 citadel_finale_duration | devonly, sv | Default: 6<br>
+citadel_first_blood_disables_match_not_scored | devonly, sv | Default: true<br>Abandons must be before first blood for a match to not be scored.
 citadel_first_person | devonly, cl | Default: false<br>Enables first-person viewpoint
 citadel_fissure_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_fissure_forward_trace_distance | devonly, sv, cl, rep | Default: 75<br>
@@ -1021,8 +1024,8 @@ citadel_force_strict_abandon_rules | devonly, sv, cl, rep | Default: false<br>En
 citadel_force_subnav_options | devonly, cl | Default: false<br>
 citadel_force_unpause_cooldown | devonly, sv | Default: false<br>Force unpause cooldown if you're the pauser as if you weren't the pauser.
 citadel_forced_hero_model | devonly, sv, cheat | Default: <br>Forces all heroes to use this model
-citadel_forge_sentry_gold_reward | devonly, sv | Default: 80<br>
-citadel_forge_sentry_gold_reward_bonus_per_minute | devonly, sv | Default: 2<br>
+citadel_forge_sentry_gold_reward | devonly, sv | Default: 40<br>
+citadel_forge_sentry_gold_reward_bonus_per_minute | devonly, sv | Default: 4<br>
 citadel_fow_player_range | devonly, sv, rep | Default: 2500<br>Player Fow Vision Range
 citadel_gamemode_streetbrawl_enabled | sv, cl, rep, release | Default: false<br>
 citadel_generator_minimap_icon_radius | devonly, cl | Default: 24<br>
@@ -1138,6 +1141,7 @@ citadel_hud_top_bar_enable_dynamic_player_position | devonly, cl | Default: true
 citadel_hud_visible | cl, release | Default: true<br>Turns on/off rendering the HUD
 citadel_idle_time | devonly, sv | Default: 300<br>How long a player needs to be idle before he counts as disconnected.
 citadel_idle_time_grace_period | devonly, sv | Default: 8<br>How long a player needs to be idle we start putting that time towards their stored idle time.
+citadel_idol_think_bias_interval | sv, cheat | Default: 10<br>
 citadel_in_world_item_panel_dpi | devonly, cl | Default: 2<br>In-world texture resolution scale
 citadel_inactive_time_grace_period | devonly, sv | Default: 30<br>How long a player needs to be inactive (i.e. not taking any meaningful actions) before we start putting that time towards their stored inactive time.
 citadel_increase_replay_speed | cl, release | Increase the Replay speed while watching a replay
@@ -1241,8 +1245,6 @@ citadel_minimap_teleporter_active_dist | devonly, cl | Default: 400<br>
 citadel_minimap_teleporter_height_dist | devonly, cl | Default: 160<br>
 citadel_minimap_teleporter_nearby_dist | devonly, cl | Default: 1600<br>
 citadel_minimap_unit_click_radius | cl, release | Default: 200<br>
-citadel_minimap_use_canvas_for_neutrals | devonly, cl | Default: true<br>
-citadel_minimap_use_canvas_for_shop | devonly, cl | Default: true<br>
 citadel_minimap_use_effects | devonly, cl | Default: false<br>
 citadel_minimap_zip_line_thickness | cl, release | Default: 2<br>
 citadel_minimum_fire_rate | sv, cl, rep, cheat | Default: -50<br>Minimum value possible for fire rate
@@ -1265,7 +1267,7 @@ citadel_movement_skyclip_push_distance | devonly, sv, cl, rep | Default: 196.85<
 citadel_movement_skyclip_push_min_force | devonly, sv, cl, rep | Default: 400<br>
 citadel_movement_slip_accel | devonly, sv, cl, rep | Default: 200<br>
 citadel_movement_solver_iterations | devonly, sv, cl, rep | Default: 16<br>
-citadel_movespeed_bonus_max | devonly, sv, cl, rep | Default: 433.071<br>Maximum Value for Movespeed bonuses (Diminishing Returns) in Hu
+citadel_movespeed_bonus_max | devonly, sv, cl, rep | Default: 472.441<br>Maximum Value for Movespeed bonuses (Diminishing Returns) in Hu
 citadel_mvp_calculate_now | devonly, sv | Run the MVP calculation right now
 citadel_mvp_enabled | devonly, sv | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
 citadel_mvp_score_kda_ratio | devonly, sv | Default: false<br>Use a KDA ratio for the mvp score instead of the real algorithm.
@@ -1601,6 +1603,7 @@ citadel_show_falloff_in_world | devonly, cl | Default: false<br>
 citadel_show_global_leaderboard | cl, release | Default: false<br>Show Global Leaderboards
 citadel_show_hero_debut_popup | devonly, cl | \[hero id\] \[allow swap\]
 citadel_show_hero_select_popup | devonly, cl | 
+citadel_show_hidden_public_builds | devonly, cl, a | Default: false<br>
 citadel_show_localization_errors | devonly, cl | Default: false<br>
 citadel_show_minimap_reveal_indicators | devonly, cl | Default: false<br>
 citadel_show_modifier_history | devonly, cl | Default: false<br>Turns on/off debug display of modifiers
@@ -1946,14 +1949,15 @@ citadel_zipline_arrow_boost_brightness | devonly, cl | Default: 1<br>Changes the
 citadel_zipline_arrow_scale | devonly, cl | Default: 1<br>Changes the zipline arrow scale
 citadel_zipline_arrow_scoll_speed | devonly, cl | Default: 1<br>Changes the zipline arrow scroll speed
 citadel_zipline_attachment_debug | devonly, sv, cl, rep | Default: false<br>
-citadel_zipline_back_lane_speed_mult | devonly, sv, cl, rep | Default: 2<br>
 citadel_zipline_baselane_speed_mult | devonly, sv, cl, rep | Default: 0.7<br>
 citadel_zipline_capture | devonly, sv | Captures the closest zipline node
 citadel_zipline_capture_all | devonly, sv | sets all ziplines nodes to the specified team
-citadel_zipline_capture_trigger_thickness | devonly, sv | Default: 400<br>
+citadel_zipline_capture_trigger_max_thickness | devonly, sv | Default: 400<br>
+citadel_zipline_capture_trigger_min_thickness | devonly, sv | Default: 400<br>
 citadel_zipline_capture_trigger_width | devonly, sv | Default: 1200<br>
 citadel_zipline_curve_sampling_size | devonly, sv, cl, rep | Default: 24<br>
 citadel_zipline_debug_draw | devonly, cl | Default: false<br>
+citadel_zipline_debug_draw_capture | devonly, sv | Default: false<br>
 citadel_zipline_debug_draw_node_entity | devonly, cl | Default: 0<br>if non-zero, only draw zipline curves extending from this node.
 citadel_zipline_debug_draw_segments | devonly, cl | Default: 20<br>
 citadel_zipline_movement_debug | devonly, sv, cl, rep | Default: false<br>
@@ -3729,7 +3733,7 @@ net_max_message_queue_size | devonly | Default: 0<br>Maximum number of messages 
 net_max_polymorphic_spew | devonly | Default: 5<br>Max polymorphic variants to spew when spewing a flattened serializer.
 net_messageinfo | cheat | Display info about a message (by classname or id)
 net_option | release | Get or set SteamNetworkingSockets options such as fake packet lag and loss
-net_p2p_listen_dedicated | devonly | Default: true<br>Should dedicated server listen for new-style P2P?
+net_p2p_listen_dedicated | devonly | Default: false<br>Should dedicated server listen for new-style P2P?
 net_print_sdr_ping_times | release | Print current ping times to SDR points of presence, and selected route
 net_public_adr | release | Default: <br>For servers behind NAT/DHCP meant to be exposed to the public internet, this is the public facing ip address string: ("x.x.x.x" )
 net_qosinterval_spew | devonly | Default: false<br>Spew QoS interval data as we gather it
@@ -4146,7 +4150,7 @@ r_JeepViewDampenFreq | sv, cl, nf, rep, cheat | Default: 7<br>
 r_JeepViewZHeight | sv, cl, nf, rep, cheat | Default: 10<br>
 r_RainAllowInSplitScreen | devonly, cl | Default: false<br>Allows rain in splitscreen
 r_RainParticleDensity | devonly, cl | Default: 1<br>Density of Particle Rain 0-1
-r_add_views_in_pre_output | devonly | Default: false<br>
+r_add_views_in_pre_output | devonly | Default: true<br>
 r_allow_low_gpu_memory_mode | release | Default: true<br>Allow Low GPU Memory mode (i.e. when building maps).
 r_allow_onesweep_gpusort | devonly | Default: true<br>
 r_always_render_all_windows | devonly | Default: false<br>Always force all engine & tools to render
