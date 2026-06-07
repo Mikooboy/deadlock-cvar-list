@@ -441,7 +441,6 @@ citadel_ability_busy_queue_time | devonly, sv, cl, rep | Default: 0.25<br>How lo
 citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0.2<br>Min Time for a Channel before we can cancel it
 citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0.2<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
 citadel_ability_cooldown_max | sv, cl, rep, cheat | Default: 0<br>
-citadel_ability_damage_falloff | devonly, sv, cl, rep | Default: 40 70 0<br>Ability ability damage falloff (start_dist, end_dist, end_scale_pct)
 citadel_ability_damage_vdata_tweak | devonly, cl | Command to tweak base damage from abilities. <br>** Usage<br>- arg1 - Scale Value 1.0 being no change.<br>- arg2 - 2: Affect Abilities and Upgrades, 1: Affects Upgrades Only, 0: Do no Affect Upgrades\]
 citadel_ability_debug | sv, cl, rep, cheat | Default: false<br>
 citadel_ability_force_gold_collection | devonly, sv, cl, rep | Default: false<br>Adds the flag for ability targeting to find gold orbs. Sorta hacky.
@@ -511,7 +510,7 @@ citadel_allow_team_change_when_assigned | devonly, sv | Default: false<br>
 citadel_always_show_active_hud_stats | cl, a | Default: false<br>
 citadel_always_transmit_abilities | devonly, sv | Default: false<br>Enable to always force transmit ability entities
 citadel_announcement_banned_heroes_display_time | devonly, cl | Default: 10<br>
-citadel_announcement_display_time | devonly, cl | Default: 4<br>
+citadel_announcement_display_time | devonly, cl | Default: 8<br>
 citadel_announcement_game_over_msg_display_time | devonly, cl | Default: 11<br>
 citadel_arrow_brightness | devonly, cl | Default: 0.6<br>Changes the zipline arrow brightness
 citadel_assume_pawn_control | sv, cheat | Take control of the pawn under the crosshair, or by name if specified
@@ -786,8 +785,8 @@ citadel_crate_drop_duration_override | sv, cheat | Default: -1<br>
 citadel_crate_early_spawn_delay |  | 
 citadel_crate_early_to_trooper_spawn_delay |  | 
 citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 360<br>
-citadel_crate_reward_base | devonly, sv | Default: 1300<br>
-citadel_crate_reward_time_multiplier | devonly, sv | Default: 230<br>
+citadel_crate_reward_base | devonly, sv | Default: 1040<br>
+citadel_crate_reward_time_multiplier | devonly, sv | Default: 185<br>
 citadel_crate_spawn_enabled | devonly, sv | Default: true<br>
 citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 720<br>
 citadel_create_unit | sv | \[hero_name \| none\] \[team\] - Creates an unit.  Pass 'my_hero' as hero_name to use your current hero
@@ -821,6 +820,7 @@ citadel_damage_indicator_height | devonly, cl | Default: 120<br>
 citadel_damage_indicator_radius | devonly, cl | Default: 300<br>
 citadel_damage_indicator_width | devonly, cl | Default: 120<br>
 citadel_damage_offscreen_indicator_disabled | cl, release | Default: true<br>
+citadel_damage_pipeline | devonly, sv | Default: 2<br>
 citadel_damage_radar_enemy_display_time | devonly, cl | Default: 2<br>
 citadel_damage_report_enable | devonly, cl | Default: true<br>If enabled, show damage report
 citadel_damage_report_show_adjusted_percent_min | devonly, cl | Default: 3<br>Hide buffed/resisted damage if it's below this percentage of change
@@ -1007,8 +1007,8 @@ citadel_fibonnaci_sphere_trace_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_fibonnaci_sphere_trace_fraction | devonly, sv, cl, rep | Default: 0.8<br>
 citadel_fibonnaci_sphere_trace_los_max | devonly, sv, cl, rep | Default: 160<br>How big to cap the size of the sphere when checking for really large explosion/effects
 citadel_finale_duration | devonly, sv | Default: 6<br>
-citadel_first_blood_disables_match_not_scored | devonly, sv | Default: true<br>Abandons must be before first blood for a match to not be scored.
 citadel_first_person | devonly, cl | Default: false<br>Enables first-person viewpoint
+citadel_first_tower_kill_disables_match_not_scored | devonly, sv | Default: true<br>Abandons must be before first blood for a match to not be scored.
 citadel_fissure_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_fissure_forward_trace_distance | devonly, sv, cl, rep | Default: 75<br>
 citadel_fissure_hit_debug | devonly, sv, cl, rep | Default: 0<br>
