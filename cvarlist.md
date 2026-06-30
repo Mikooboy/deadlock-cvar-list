@@ -777,18 +777,18 @@ citadel_coop_sandbox | sv, cl, rep, release | Default: false<br>
 citadel_core_regen | devonly, sv | Default: 50<br>
 citadel_core_regen_pause_on_damage | devonly, sv | Default: 15<br>
 citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.6<br>0.0: turn off corner boosts. 1.0: raw corner boost.
-citadel_crate_client_notification_time | sv, cheat | Default: 30<br>
+citadel_crate_client_notification_time | devonly, sv, cl, rep | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
 citadel_crate_disable_early_spawn |  | 
-citadel_crate_drop_duration_override | sv, cheat | Default: -1<br>
+citadel_crate_drop_duration_override | sv, cl, rep, cheat | Default: -1<br>
 citadel_crate_early_spawn_delay |  | 
 citadel_crate_early_to_trooper_spawn_delay |  | 
-citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 360<br>
-citadel_crate_reward_base | devonly, sv | Default: 1040<br>
-citadel_crate_reward_time_multiplier | devonly, sv | Default: 185<br>
-citadel_crate_spawn_enabled | devonly, sv | Default: true<br>
-citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 720<br>
+citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 300<br>
+citadel_crate_reward_base | sv, cl, rep, cheat | Default: 250<br>
+citadel_crate_reward_time_multiplier | sv, cl, rep, cheat | Default: 70<br>
+citadel_crate_spawn_enabled | devonly, sv, cl, rep | Default: true<br>
+citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 600<br>
 citadel_create_unit | sv | \[hero_name \| none\] \[team\] - Creates an unit.  Pass 'my_hero' as hero_name to use your current hero
 citadel_crosshair_clip_angle | devonly, cl | Default: 90<br>
 citadel_crosshair_clip_bullet_gap | devonly, cl | Default: 0.5<br>
@@ -1016,10 +1016,11 @@ citadel_fissure_max_offset_down | devonly, sv, cl, rep | Default: -2000<br>
 citadel_fissure_max_offset_up | devonly, sv, cl, rep | Default: 150<br>
 citadel_fly_accelerate | sv, cl, rep, cheat | Default: 2<br>
 citadel_force_assigned_lane | devonly, sv | Default: 0<br>forces the local player to be assigned to the specified lane #
+citadel_force_koth_spawn | devonly, sv | Force Spawning Koth Capture point with Warning
 citadel_force_on_upgrade_for_all_abilities | devonly, sv | Force all abilities to call OnUpgrade()
 citadel_force_playofthegame | devonly, sv | Force begin play of the game
 citadel_force_resolution | devonly, cl | Force a resolution change even if it's not supported on your monitor. \[h\] \[w\] \[refresh rate\]
-citadel_force_spawn_idol | devonly, sv | Force idol spawn
+citadel_force_spawn_idol | sv, cheat, release | Force idol spawn
 citadel_force_strict_abandon_rules | devonly, sv, cl, rep | Default: false<br>Enforce strict matchmaking style abandon rules even in practice/bot matches (useful for testing)
 citadel_force_subnav_options | devonly, cl | Default: false<br>
 citadel_force_unpause_cooldown | devonly, sv | Default: false<br>Force unpause cooldown if you're the pauser as if you weren't the pauser.
@@ -1141,6 +1142,10 @@ citadel_hud_top_bar_enable_dynamic_player_position | devonly, cl | Default: true
 citadel_hud_visible | cl, release | Default: true<br>Turns on/off rendering the HUD
 citadel_idle_time | devonly, sv | Default: 300<br>How long a player needs to be idle before he counts as disconnected.
 citadel_idle_time_grace_period | devonly, sv | Default: 8<br>How long a player needs to be idle we start putting that time towards their stored idle time.
+citadel_idol_cashin_buff_count | sv, cheat | Default: 4<br>
+citadel_idol_decay_duration | sv, cl, rep, cheat | Default: 45<br>
+citadel_idol_duration_until_decay | sv, cl, rep, cheat | Default: 45<br>
+citadel_idol_orbs_to_spawn | sv, cheat | Default: 10<br>
 citadel_idol_think_bias_interval | sv, cheat | Default: 10<br>
 citadel_in_world_item_panel_dpi | devonly, cl | Default: 2<br>In-world texture resolution scale
 citadel_inactive_time_grace_period | devonly, sv | Default: 30<br>How long a player needs to be inactive (i.e. not taking any meaningful actions) before we start putting that time towards their stored inactive time.
@@ -1166,6 +1171,17 @@ citadel_jump_overhead_clearance | devonly, sv, cl, rep | Default: 73<br>Distance
 citadel_keybind_default_hold_duration | devonly, cl | Default: 1<br>
 citadel_keybindings_cloud_disable | devonly, cl | Default: false<br>
 citadel_kick_disconnected_players | devonly, sv | Clear out all players who aren't connected, removing them from any teams
+citadel_koth_dev_test_spawn | sv, cheat, release | Start the Early Warning of Koth and Teleport the active player there
+citadel_koth_early_warning_time | sv, cl, rep, cheat | Default: 60<br>
+citadel_koth_enabled | devonly, sv, cl, rep | Default: true<br>
+citadel_koth_respawn_interval | sv, cl, rep, cheat | Default: 420<br>
+citadel_koth_reward_base | sv, cl, rep, cheat | Default: 1260<br>
+citadel_koth_reward_buff_count | sv, cl, rep, cheat | Default: 0<br>
+citadel_koth_reward_time_multiplier | sv, cl, rep, cheat | Default: 222<br>
+citadel_koth_spawn_initial_delay | sv, cl, rep, cheat | Default: 720<br>
+citadel_koth_spawn_location_deck_count | sv, cl, rep, cheat | Default: 4<br>
+citadel_koth_spawn_window | sv, cl, rep, cheat | Default: 60<br>
+citadel_koth_warning_time | sv, cl, rep, cheat | Default: 25<br>
 citadel_landing_to_predicted | devonly, cl | Landing to prediction
 citadel_lane_matchups_mmr_variance | sv, release | Default: 0<br>specifies how much of a gap between MMR's we allow to randomize lane assignment
 citadel_lane_swap_available_duration | sv, cl, rep, cheat | Default: 40<br>How long lane swap is available, including pre-match time. Set to 0 to disable.
@@ -1233,6 +1249,7 @@ citadel_min_match_minutes_for_replay | devonly, sv | Default: 5<br>The minimum n
 citadel_minimap_arrow_show_distance_down | devonly, sv | Default: 100<br>
 citadel_minimap_arrow_show_distance_up | devonly, sv | Default: 200<br>
 citadel_minimap_draw_fow | cl, cheat | Default: false<br>
+citadel_minimap_koth_trooper_size | cl, release | Default: 4.5<br>
 citadel_minimap_local_player_width | cl, release | Default: 12<br>
 citadel_minimap_max_icon_shrink | cl, release | Default: 0.8<br>
 citadel_minimap_npc_reveal_duration | devonly, sv | Default: 0.25<br>
@@ -1244,6 +1261,7 @@ citadel_minimap_spectator_fow_team_view | cl, release | Default: 1<br>Which team
 citadel_minimap_teleporter_active_dist | devonly, cl | Default: 400<br>
 citadel_minimap_teleporter_height_dist | devonly, cl | Default: 160<br>
 citadel_minimap_teleporter_nearby_dist | devonly, cl | Default: 1600<br>
+citadel_minimap_trooper_size | cl, release | Default: 3<br>
 citadel_minimap_unit_click_radius | cl, release | Default: 200<br>
 citadel_minimap_use_effects | devonly, cl | Default: false<br>
 citadel_minimap_zip_line_thickness | cl, release | Default: 2<br>
@@ -1263,6 +1281,8 @@ citadel_modifier_hud_message_display_min_panel_count | devonly, cl | Default: 4<
 citadel_modifier_hud_message_display_time | devonly, cl | Default: 2.5<br>
 citadel_move_goal_tolerance | sv, cheat | Default: 8<br>Some extra tolerance for considering an NPC moved to a goal; can be reduced as we fix other issues
 citadel_movement_debugdraw | devonly, sv, cl, rep | Default: false<br>
+citadel_movement_plane_overlap_mult | devonly, sv, cl, rep | Default: 0<br>
+citadel_movement_resolve_origin | devonly, sv, cl, rep | Default: true<br>
 citadel_movement_skyclip_push_distance | devonly, sv, cl, rep | Default: 196.85<br>
 citadel_movement_skyclip_push_min_force | devonly, sv, cl, rep | Default: 400<br>
 citadel_movement_slip_accel | devonly, sv, cl, rep | Default: 200<br>
@@ -1392,22 +1412,23 @@ citadel_player_glow_when_in_combat | devonly, cl, cheat | Default: false<br>
 citadel_player_glow_when_in_combat_linger | devonly, cl, cheat | Default: 1<br>
 citadel_player_gold_comeback_assister_ratio | devonly, sv | Default: 1.5<br>
 citadel_player_gold_comeback_killer_fraction | devonly, sv | Default: 0.3<br>
-citadel_player_gold_comeback_multiplier | devonly, sv | Default: 2.1<br>
+citadel_player_gold_comeback_multiplier | devonly, sv | Default: 2.268<br>
 citadel_player_gold_comeback_npc_max_mutliplier_delta | devonly, sv | Default: 1.2<br>
-citadel_player_gold_comeback_npc_max_mutliplier_value | devonly, sv | Default: 1.22<br>
-citadel_player_gold_difficulty_multiplier | devonly, sv | Default: 2.3<br>
+citadel_player_gold_comeback_npc_max_mutliplier_value | devonly, sv | Default: 1.26<br>
+citadel_player_gold_difficulty_multiplier | devonly, sv | Default: 2.484<br>
 citadel_player_gold_killer_to_assist_ratio | devonly, sv | Default: 2.2<br>
 citadel_player_gold_per_level_postmax | devonly, sv, cl, rep | Default: 2000<br>Gold per 'level' after maxing out rewards
-citadel_player_gold_reward_first_kill_bonus | devonly, sv | Default: 150<br>
+citadel_player_gold_reward_first_kill_bonus | devonly, sv | Default: 125<br>
 citadel_player_gold_reward_max | devonly, sv | Default: 2200<br>
-citadel_player_gold_reward_min | devonly, sv | Default: 250<br>
+citadel_player_gold_reward_min | devonly, sv | Default: 200<br>
 citadel_player_gold_reward_time | devonly, sv | Default: 2400<br>
 citadel_player_ground_dash_max_percent | sv, cl, rep, cheat | Default: 2<br>Max ground dash scale
 citadel_player_ground_dash_min_percent | sv, cl, rep, cheat | Default: 0.5<br>Min ground dash scale
 citadel_player_level_hiding_extra_duration | devonly, cl | Default: 0.45<br>
 citadel_player_move_speed_min | sv, cl, rep, cheat | Default: 80<br>Min walk speed
 citadel_player_move_speed_scale | sv, cl, rep, cheat | Default: 1<br>Scales how fast players can move
-citadel_player_neutral_gold_drop_min | devonly, sv | Default: 150<br>
+citadel_player_neutral_gold_drop_min | devonly, sv | Default: 50<br>
+citadel_player_neutral_gold_drop_min_increase_per_minute | devonly, sv | Default: 5<br>
 citadel_player_neutral_gold_duration | devonly, sv | Default: 180<br>
 citadel_player_neutral_gold_fallrate | devonly, sv | Default: 300<br>
 citadel_player_outline_allies | devonly, cl | Default: false<br>
@@ -1428,8 +1449,8 @@ citadel_player_slide_breakable_radius | devonly, sv, cl, rep | Default: 35<br>
 citadel_player_slide_min_percent | devonly, sv, cl, rep | Default: 0.8<br>
 citadel_player_spawn_distance_from_other | devonly, sv | Default: 32<br>
 citadel_player_spawn_time_in_base_penalty | devonly, sv | Default: 10<br>
-citadel_player_spawn_time_max_ramp_1 | devonly, sv | Default: 30<br>
-citadel_player_spawn_time_max_ramp_1_time | devonly, sv | Default: 1140<br>
+citadel_player_spawn_time_max_ramp_1 | devonly, sv | Default: 35<br>
+citadel_player_spawn_time_max_ramp_1_time | devonly, sv | Default: 1200<br>
 citadel_player_spawn_time_max_ramp_2 | devonly, sv | Default: 70<br>
 citadel_player_spawn_time_max_ramp_2_time | devonly, sv | Default: 1800<br>
 citadel_player_spawn_time_max_ramp_3 | devonly, sv | Default: 85<br>
@@ -1437,8 +1458,8 @@ citadel_player_spawn_time_max_ramp_3_time | devonly, sv | Default: 2400<br>
 citadel_player_spawn_time_max_respawn_time | devonly, sv | Default: 90<br>
 citadel_player_spawn_time_min_ramp_1 | devonly, sv | Default: 8<br>
 citadel_player_spawn_time_min_ramp_1_time | devonly, sv | Default: 300<br>
-citadel_player_spawn_time_min_ramp_2 | devonly, sv | Default: 30<br>
-citadel_player_spawn_time_min_ramp_2_time | devonly, sv | Default: 1140<br>
+citadel_player_spawn_time_min_ramp_2 | devonly, sv | Default: 35<br>
+citadel_player_spawn_time_min_ramp_2_time | devonly, sv | Default: 1200<br>
 citadel_player_spawn_time_min_ramp_3 | devonly, sv | Default: 70<br>
 citadel_player_spawn_time_min_ramp_3_time | devonly, sv | Default: 1800<br>
 citadel_player_spawn_time_rich_nw_penalty_max_ramp_behind_nw_pct | devonly, sv | Default: 20<br>
@@ -1638,6 +1659,7 @@ citadel_spawn_all_heroes_in_a_line | sv, cheat | Spawn all of the heroes as bots
 citadel_spawn_combine_only | devonly, sv | Default: false<br>Only spawn creeps on one team
 citadel_spawn_escort | sv, cheat, release | Spawns the escort with an optional delay
 citadel_spawn_nearby_neutrals | sv, cheat, release | Spawns any neutral camps within 800 units (~20m)
+citadel_spawn_pickup_item | devonly, sv | Spawns an item pickup for a specific item. You can specify the item, or else you'll get a random one
 citadel_spawn_practice_bots | sv, release | Default: false<br>
 citadel_spawn_practice_bots_count | sv, release | Default: 1<br>
 citadel_spawn_rebels_only | devonly, sv | Default: false<br>Only spawn creeps on one team
@@ -1675,6 +1697,7 @@ citadel_steamlearn_new_player_threshold | devonly, sv | Default: 0.3<br>
 citadel_steamlearn_new_player_thresholds | devonly, sv | Default: 0=50, 10=60, 20=80, 30=100<br>Thresholds for mapping a player's played matches with a minimum allowed 'new player' score. If a new player with n games has a new player score less than to the value in this curve, log as a smurf.Map from games played (x) to min allowed new player score (y)
 citadel_steamtimeline_show_dev_messages | devonly, cl | Default: false<br>
 citadel_streaming_mode_enabled | cl, a, release | Default: false<br>Enable to alter various game UI elements
+citadel_street_brawl_ability_range_multiplier | sv, cl, rep, cheat | Default: 0.9<br>
 citadel_street_brawl_advance_state | devonly, sv | Advance the state of a street brawl game
 citadel_street_brawl_match_length_limits_enabled | devonly, sv, cl, rep | Default: false<br>
 citadel_street_brawl_match_length_override | devonly, sv, cl, rep | Default: 0<br>
@@ -1743,6 +1766,8 @@ citadel_toggle_mute | cl, release | Toggles muting/unmuting the audio.
 citadel_toggle_server_pause | devonly, sv | Toggle a server side pause.
 citadel_track_player_vs_player_accuracy | sv, cl, rep, cheat | Default: true<br>
 citadel_tracked_stats_dump | devonly, sv | \[all\|player\|team\|match\] Dump currently tracked stats.
+citadel_trailingteam_bias_threshold_max | devonly, sv, cl, rep | Default: 0.15<br>Max Difference between teams to get full trailing bonuses for Koth/Urn
+citadel_trailingteam_bias_threshold_min | devonly, sv, cl, rep | Default: 0<br>Min Difference between teams to start getting trailing bonuses for Koth/Urn
 citadel_trigger_rope_size | devonly, sv, rep | Default: 192<br>
 citadel_trooper_aggro_radius | devonly, sv | Default: 0<br>
 citadel_trooper_boss_melee_knockback | devonly, sv | Default: 400<br>
@@ -1754,14 +1779,14 @@ citadel_trooper_do_neardeath_behavior | devonly, sv | Default: false<br>
 citadel_trooper_force_idle | devonly, sv | Default: false<br>
 citadel_trooper_friendly_glow_disabled | cl, release | Default: true<br>Disable glow on friendly troopers except for through walls during laning
 citadel_trooper_glow_disabled | cl, release | Default: false<br>
-citadel_trooper_gold_reward | devonly, sv | Default: 116<br>
-citadel_trooper_gold_reward_bonus_per_minute | devonly, sv | Default: 1.16<br>
+citadel_trooper_gold_reward | devonly, sv | Default: 100<br>
+citadel_trooper_gold_reward_bonus_per_minute | devonly, sv | Default: 2<br>
 citadel_trooper_health_model_scale | devonly, sv | Default: 1.2<br>
 citadel_trooper_health_mult | devonly, sv | Default: 1.5<br>
 citadel_trooper_health_mult_gametime | devonly, sv | Default: 35<br>
 citadel_trooper_instant_gold_as_dropped_orbs | sv, release | Default: 2<br>0=instant gold 1=orbs in experimental only 2=orbs always
-citadel_trooper_instant_gold_ratio_laning | devonly, sv | Default: 0.6<br>
-citadel_trooper_instant_gold_ratio_postlaning | devonly, sv | Default: 0.6<br>
+citadel_trooper_instant_gold_ratio_laning | devonly, sv | Default: 0.5<br>
+citadel_trooper_instant_gold_ratio_postlaning | devonly, sv | Default: 0.5<br>
 citadel_trooper_lane_node_max_spacing | devonly, sv | Default: 150<br>Set to -1 to disable
 citadel_trooper_laning_gold_rules_end_time | devonly, sv | Default: 8<br>
 citadel_trooper_max_per_lane | devonly, sv | Default: 0<br>How many troopers can be active in a single lane (including canisters). Set to 0 to disable.
