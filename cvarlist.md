@@ -2509,6 +2509,7 @@ crash_thread | cheat | Cause the engine to crash in a brand new non-main thread 
 create_flare | devonly, sv | Create a flare on the local player's team
 create_orb | devonly, sv | Create an orb on the local player's team
 create_radius_damage | sv, cheat | Causes radius damage where you're looking, at the passed in radius.
+create_test_portal | devonly, sv | creates a portal
 creditsdone | devonly, sv | 
 crosshair_spread_scale | devonly, cl | Default: 3.6<br>
 csm_bias_override_0 | cheat | Default: 1<br>
