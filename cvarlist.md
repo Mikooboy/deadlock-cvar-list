@@ -436,7 +436,7 @@ citadel_abandon_pregame_if_not_connected_in_s | devonly, sv | Default: 180<br>Af
 citadel_abandon_pregame_if_not_connected_in_s_dev | devonly, sv | Default: 360<br>After N seconds, if we don't have all the players connect to the match, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
 citadel_abandon_pregame_if_not_connected_in_s_streaming | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame
 citadel_abandon_pregame_if_not_connected_in_s_streaming_dev | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
-citadel_abandon_time_for_match_not_scored | devonly, sv | Default: 300<br>If someone abandons before this match time (in seconds), we will call the match forfeit and not update mmr for anyone in the match.
+citadel_abandon_time_for_match_not_scored | devonly, sv | Default: 180<br>If someone abandons before this match time (in seconds), we will call the match forfeit and not update mmr for anyone in the match.
 citadel_ability_busy_queue_time | devonly, sv, cl, rep | Default: 0.25<br>How long we will queue an ability activation to happen if the player tried to use it while busy.
 citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0.2<br>Min Time for a Channel before we can cancel it
 citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0.2<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
@@ -596,11 +596,13 @@ citadel_bot_director_respawn_window | devonly, sv, rep | Default: 10<br>Amount o
 citadel_bot_director_zipline_min | devonly, sv, rep | Default: 0.1<br>Minimum % of Captured Zipline nodes we care about
 citadel_bot_director_zipline_stable | devonly, sv, rep | Default: 0.4<br>How much to push out a lane before deprioritizing it
 citadel_bot_disconnect_takeover_enabled | devonly, sv, cl, rep | Default: false<br>
+citadel_bot_force_abandon | devonly, sv | Force bot into the abandon state
 citadel_bot_give_all_abilities | devonly, sv | Gives all bots all abilities.  Use with citadel_bot_use_ability 1-4
 citadel_bot_give_all_abilities_base | devonly, sv | Gives all bots all abilities without perks.  Use with citadel_bot_use_ability 1-4
 citadel_bot_give_team_gold | sv, cheat | Give all bots on a particular team gold
 citadel_bot_hero_testing_pitch | sv, rep, release | Default: 5<br>Aim Pitch in Hero Testing
 citadel_bot_jump | sv, rep, release | Default: false<br>Forces citadel bots to jump
+citadel_bot_kick | devonly, sv | Kick bot &lt;name&gt;
 citadel_bot_list_ents | sv, cheat | List ent id of all players that are bots in this game
 citadel_bot_list_objectives_ent | sv, cheat | List all entities that are associated with a Citadel Game Objective
 citadel_bot_match_on_dedicated_server | devonly, cl | Default: true<br>
@@ -630,6 +632,7 @@ citadel_bot_takeover_time | sv, rep, release | Default: 30<br>Time for a disconn
 citadel_bot_team_sensing_tick_interval | devonly, sv, rep | Default: 100<br>How many ticks between the bot performing sensing
 citadel_bot_teamsense_homebase_range | devonly, sv, rep | Default: 75<br>Distance(m) from Base center to be considered in base
 citadel_bot_teamsense_pushed_range | devonly, sv, rep | Default: 20<br>Distance(m) from Objective to consider it pushed to
+citadel_bot_test_disconnect | devonly, sv | Default: false<br>
 citadel_bot_test_mode | sv, rep, release | Default: false<br>Set citadel bots to be and in test mode (default idle)
 citadel_bot_use_ability | sv, rep, release | Default: 0<br>Causes Bot to Constantly use Ability when its available
 citadel_bot_use_ability_once | sv, rep, release | Default: false<br>Set if you only want enemy to use ability once and stop
@@ -757,10 +760,11 @@ citadel_clear_killstreak | devonly, sv | citadel_clear_killstreak \[player_slot\
 citadel_client_mm_ignore_engine_version | devonly, cl | Default: false<br>Ignore the engine version number for matchmaking. Useful for testing locally in release.
 citadel_client_solo_mm_keep_alive_check_s | devonly, cl | Default: 45<br>Number of seconds between checking to make sure that the client is still in MM
 citadel_client_status_cycle_delay | devonly, cl | Default: 4<br>
-citadel_commend_fake_received | devonly, cl | 
-citadel_commend_player | devonly, cl | &lt;target account id&gt; \[match id\]
-citadel_commend_toast_enemy_seconds | devonly, cl | Default: 4<br>Number of seconds to show enemy commend toasts
-citadel_commend_toast_seconds | devonly, cl | Default: 30<br>Number of seconds to show commend toasts
+citadel_commend_fake_received | cl, release | 
+citadel_commend_player | cl, release | &lt;target account id&gt; \[match id\] \[hero_id\]
+citadel_commend_toast_enemy_seconds | devonly, cl | Default: 3<br>Number of seconds to show enemy commend toasts
+citadel_commend_toast_seconds | devonly, cl | Default: 5<br>Number of seconds to show commend toasts
+citadel_commend_use_toasts | cl, release | Default: true<br>Whether to use commend toasts (older) or the custom commend notification (newer)
 citadel_complete_new_player | cl, release | \[flag\] Marks the new player state as complete
 citadel_cone_view_alpha | devonly, cl | Default: 80<br>
 citadel_context_profile_page | devonly, cl | Default: true<br>
@@ -985,8 +989,11 @@ citadel_event_timer_min_view_angle | devonly, cl | Default: 12<br>
 citadel_event_timer_scale_on_direct_look | devonly, cl | Default: 1.33<br>
 citadel_exonerate_account | cl, release | &lt;Account ID&gt; Clear recent cheat reports on this account.
 citadel_fake_bots_as_pinging_player | sv, cheat | Default: false<br>
+citadel_fake_brawl_losses | devonly, cl | Default: -1<br>
+citadel_fake_brawl_wins | devonly, cl | Default: -1<br>
 citadel_fake_comms_ban_timestamp | devonly, cl | Default: 0<br>
 citadel_fake_death_gold | devonly, cl | Default: false<br>
+citadel_fake_losses | devonly, cl | Default: -1<br>
 citadel_fake_low_pri_games_remaining | devonly, cl | Default: -1<br>
 citadel_fake_no_match_metadata | devonly, cl | Default: false<br>
 citadel_fake_number_of_games_played | cl, release | Default: -1<br>
@@ -994,6 +1001,7 @@ citadel_fake_party_roster_usage | devonly, cl | Default: false<br>
 citadel_fake_rank_for_match | devonly, sv, cl, rep | Default: -1<br>Set what rank you want to fake for the match. -1 is disabled
 citadel_fake_report_ban_timestamp | devonly, cl | Default: 0<br>
 citadel_fake_subrank_for_match | devonly, sv, cl, rep | Default: -1<br>Set what subrank you want to fake for the match. -1 is disabled
+citadel_fake_wins | devonly, cl | Default: -1<br>
 citadel_familiar_debug | devonly, sv, cl, rep, cheat | Default: -1<br>
 citadel_familiar_infiniteattach | devonly, sv, cl, rep, cheat | Default: false<br>
 citadel_familiar_sprites_debug | devonly, sv | Default: false<br>
@@ -1102,6 +1110,9 @@ citadel_hideout_cancel_matchmaking | cl, release | Remove yourself or your party
 citadel_hideout_enable_testing_tools | devonly, cl | Default: false<br>
 citadel_hideout_exclusive_mode | devonly, cl | Default: true<br>
 citadel_hideout_hero_id | cl, a, release | Default: 63<br>
+citadel_hideout_in_world_ranked_doodle | devonly, cl | Default: -1<br>
+citadel_hideout_in_world_ranked_fake_eligible_heroes | devonly, cl | Default: -1<br>
+citadel_hideout_in_world_ranked_fake_last_match | devonly, cl | Default: false<br>
 citadel_hideout_intro_dismiss_escape_only | devonly, cl | Default: false<br>
 citadel_hideout_intro_version_seen | cl, a, release | Default: 0<br>
 citadel_hideout_map_enabled | devonly, sv, cl, rep | Default: false<br>Cheat to make that map pretend its the hideout
@@ -1140,7 +1151,7 @@ citadel_hud_objective_health_t1_max_range | devonly, cl | Default: 1900<br>
 citadel_hud_objective_health_t2_max_range | devonly, cl | Default: 2500<br>
 citadel_hud_top_bar_enable_dynamic_player_position | devonly, cl | Default: true<br>
 citadel_hud_visible | cl, release | Default: true<br>Turns on/off rendering the HUD
-citadel_idle_time | devonly, sv | Default: 300<br>How long a player needs to be idle before he counts as disconnected.
+citadel_idle_time | devonly, sv | Default: 180<br>How long a player needs to be idle before he counts as disconnected.
 citadel_idle_time_grace_period | devonly, sv | Default: 8<br>How long a player needs to be idle we start putting that time towards their stored idle time.
 citadel_idol_cashin_buff_count | sv, cheat | Default: 4<br>
 citadel_idol_decay_duration | sv, cl, rep, cheat | Default: 45<br>
@@ -1181,10 +1192,11 @@ citadel_koth_reward_time_multiplier | sv, cl, rep, cheat | Default: 222<br>
 citadel_koth_spawn_initial_delay | sv, cl, rep, cheat | Default: 720<br>
 citadel_koth_spawn_location_deck_count | sv, cl, rep, cheat | Default: 4<br>
 citadel_koth_spawn_window | sv, cl, rep, cheat | Default: 60<br>
-citadel_koth_warning_time | sv, cl, rep, cheat | Default: 25<br>
+citadel_koth_warning_time | sv, cl, rep, cheat | Default: 20<br>
 citadel_landing_to_predicted | devonly, cl | Landing to prediction
 citadel_lane_matchups_mmr_variance | sv, release | Default: 0<br>specifies how much of a gap between MMR's we allow to randomize lane assignment
-citadel_lane_swap_available_duration | sv, cl, rep, cheat | Default: 40<br>How long lane swap is available, including pre-match time. Set to 0 to disable.
+citadel_lane_swap_available_duration | sv, cl, rep, cheat | Default: 0<br>How long lane swap is available in-game. Set to 0 to disable, -1 for infinity.
+citadel_lane_swap_available_duration_prematch | sv, cl, rep, cheat | Default: -1<br>How long lane swap is available in pre-game wait. Set to 0 to disable, -1 for infinity.
 citadel_language_and_english_hero_names | devonly, cl | Default: <br>For data gathering.
 citadel_language_and_english_mod_names | devonly, cl | Default: <br>For data gathering.
 citadel_lash_ground_strike_debug | devonly, sv | Default: 0<br>
@@ -1220,7 +1232,7 @@ citadel_match_details_failure_delay_s | devonly, cl | Default: 3<br>
 citadel_match_details_flip_teams | devonly, cl | Default: false<br>
 citadel_match_details_lane_stats_time | devonly, cl | Default: 540<br>
 citadel_match_end | devonly, sv | Ends the current match
-citadel_match_history_failure_delay_s | devonly, cl | Default: 3<br>
+citadel_match_history_cache_duration_s | devonly, cl | Default: 300<br>
 citadel_match_intro_duration_full | sv, cheat | Default: 23<br>How long pre-match is until we start the match in the full version
 citadel_match_intro_duration_simple | sv, cheat | Default: 5<br>How long pre-match is until we start the match in the simple version.
 citadel_match_intro_force_enabled | devonly, sv, cl, rep | Default: false<br>
@@ -1302,6 +1314,9 @@ citadel_neutral_spawn_enabled | devonly, sv | Default: true<br>set to false to p
 citadel_neutral_spawn_interval_override | devonly, sv | Default: -1<br>If positive, override initial spawn interval (in seconds) for all neutral camps
 citadel_neutral_spawn_range | devonly, sv | Default: 100<br>Prevent spawning of neutrals if a player is in this range
 citadel_neutral_weakpoints_enabled | devonly, sv | Default: false<br>
+citadel_new_abandon_rules_early_end_countdown | devonly, sv, cl, rep | Default: 10<br>\[New Abandon Rules\] Auto-match end countdown.
+citadel_new_abandon_rules_early_t1 | devonly, sv | Default: false<br>\[New Abandon Rules\] Abandon is considered 'early' if this is before the first T1 kill, no matter the match time.
+citadel_new_abandon_rules_early_time | devonly, sv | Default: 300<br>\[New Abandon Rules\] Time for the 'early' trigger to take effect. Match will not be scored, etc.
 citadel_new_player_flow_visible | cl, a, release | Default: true<br>Are we still showing the new player instructions
 citadel_new_player_progress | cl, a, release | Default: 0<br>Tracks the local settings for the new player progress so they can be synchronized with the GC for client authoratative progress
 citadel_new_years_fireworks_epoch_override | devonly, sv, cl, rep | Default: 1767243600<br>
@@ -1357,12 +1372,13 @@ citadel_passthrough_fakewall_combat_lockout_time | devonly, sv, cl, rep | Defaul
 citadel_passthrough_fakewall_draw_debug | devonly, sv | Default: false<br>
 citadel_pause | cl, release | Send a game pause request.
 citadel_pause_allow_immediate_if_single_player | devonly, sv | Default: false<br>When there is only a single player on the server, set whether or not we allow for instant pausing/unpausing
+citadel_pause_allow_in_pregame | devonly, sv | Default: false<br>Allow pausing in the pregame state
 citadel_pause_cooldown_time | devonly, sv | Default: 900<br>Number of seconds before a player is allowed to pause again
 citadel_pause_count | devonly, sv | Default: 1<br>Number of times a player is allowed to pause the game. 0 Means unbounded
 citadel_pause_countdown | sv, cheat | Default: 0<br>Countdown timer to pause after a user has pressed pause
 citadel_pause_force_unpause_time | devonly, sv | Default: 10800<br>Number of seconds after which the game will automatically unpause
 citadel_pause_game_pause_silently | devonly, cl | Default: false<br>When set, we don't show the pause dialog when paused
-citadel_pause_matchtime_before_allow | devonly, sv | Default: 0<br>How much match time before pausing is allowed by clients
+citadel_pause_matchtime_before_allow | devonly, sv | Default: 120<br>How much match time before pausing is allowed by clients
 citadel_pause_minimum_time | sv, cheat | Default: 2<br>Disables unpausing for this many seconds after a pause occurs
 citadel_pause_resume_time | devonly, sv | Default: 30<br>Number of seconds resuming is restricted to the same team, after that either team can pause
 citadel_pause_resume_time_disconnected | devonly, sv | Default: 30<br>Number of seconds resuming is restricted to the same team if someone disconnected, after that either team can pause
@@ -1380,10 +1396,7 @@ citadel_ping_indicator_display_time | devonly, cl | Default: 5.5<br>
 citadel_ping_indicator_duration | devonly, cl | Default: 6<br>The amount of time the in-world ping indicator stays.
 citadel_ping_indicator_duration_for_bosses | devonly, cl | Default: 2<br>The amount of time the in-world ping indicator stays when a boss pings itself.
 citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.37<br>LEGACY. See: citadel_show_chat_wheel_angle_threshold. Increase this to change how much you have to move your mouse to make the mousewheel visible.
-citadel_play_page_fake_brawl_wins | devonly, cl | Default: 0<br>
 citadel_play_page_fake_data | devonly, cl | Default: false<br>
-citadel_play_page_fake_normal_losses | devonly, cl | Default: 0<br>
-citadel_play_page_fake_normal_wins | devonly, cl | Default: 0<br>
 citadel_play_page_finished_tutorial | devonly, cl | Default: false<br>
 citadel_play_stats_laning_end_time | devonly, sv | Default: 540<br>
 citadel_player_aim_at_hero_query_angle | devonly, cl | Default: 6<br>
@@ -1503,22 +1516,38 @@ citadel_playtest_kick_disconnected_players | devonly, cl | Reassign any network 
 citadel_port_muzzles | devonly, cl | Port old muzzle defs to the new
 citadel_portrait_unit_ag2_enable | devonly, cl | Default: true<br>Enable AG2 use in portrait units
 citadel_portrait_world_renderer_off | devonly, cl | Default: false<br>
+citadel_post_game_fake_local_account_id | devonly, cl | Default: 0<br>
+citadel_post_game_fake_local_hero | devonly, cl | Default: <br>Name of the hero that should be faked as the local player
 citadel_post_game_force_hero_id | devonly, cl | 
 citadel_post_game_local_player_screen_enabled | devonly, cl | Default: false<br>
+citadel_post_game_mvp_screen_enabled | devonly, cl | Default: true<br>
 citadel_post_game_progress | devonly, cl | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
+citadel_post_game_progress_use_test_data | devonly, cl | Default: false<br>
+citadel_post_game_ranked_screen_enabled | devonly, cl | Default: true<br>
+citadel_post_game_reset_commend_state | devonly, cl | Default: false<br>Temporarily resets the commend state for testing (will get set to false after a commend is triggered)
 citadel_postgame_duration | sv, cheat | Default: 10<br>How long postgame lasts until play of the game
 citadel_powerup_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all powerup camps
 citadel_powerup_spawn_enabled | devonly, sv | Default: true<br>
 citadel_powerup_spawn_interval_override | devonly, sv | Default: -1<br>If positive, override initial spawn interval (in seconds) for all powerup camps
 citadel_powerup_spawner_show_event_timer | devonly, cl, rep | Default: false<br>
-citadel_pregame_fake_game_state | devonly, cl | Default: -1<br>
+citadel_pregame_fake_game_state | devonly, cl | Default: EGameState_Invalid<br>
 citadel_pregame_fake_match_intro_duration | devonly, cl | Default: 23<br>
 citadel_pregame_fake_match_intro_state | devonly, cl | Default: -1<br>
 citadel_pregame_fake_team_reveal_heroes_1 | devonly, cl | Default: <br>Comma separated hero names or hero ids for the team reveal screen.
 citadel_pregame_fake_team_reveal_heroes_2 | devonly, cl | Default: <br>Comma separated hero names or hero ids for the team reveal screen.
+citadel_pregame_hero_draft_force_enabled | devonly, sv, cl, rep | Default: false<br>Turn on pre-game hero draft for testing
+citadel_pregame_hero_draft_notification_time | devonly, cl | Default: 8<br>
+citadel_pregame_hero_draft_num_changes | devonly, sv, cl, rep | Default: 1<br>Number of per-player hero changes allowed during pregame hero draft
+citadel_pregame_hero_draft_ranked | devonly, sv, cl, rep | Default: true<br>Turn on pre-game hero draft in ranked mode
+citadel_pregame_hero_draft_test | devonly, cl, cheat | Test pregame draft
+citadel_pregame_hero_draft_unranked | devonly, sv, cl, rep | Default: false<br>Turn on pre-game hero draft in unranked mode
 citadel_pregame_hero_reveal_duration | devonly, cl | Default: 7<br>
 citadel_pregame_hero_reveal_full_sequence | devonly, cl | Default: false<br>
-citadel_pregame_wait_duration | sv, cheat | Default: 5<br>How long pre-match is until we start the match
+citadel_pregame_ranked_summary_force_enabled | devonly, cl | Default: false<br>
+citadel_pregame_ranked_summary_test_state | devonly, cl | Default: -1<br>
+citadel_pregame_ranked_summary_time | devonly, sv, cl, rep | Default: 10<br>
+citadel_pregame_use_intro_spawn | devonly, sv | Default: false<br>Whether to use the special intro team spawn locations during pregame
+citadel_pregame_wait_duration | sv, cheat | Default: 30<br>How long pre-match is until we start the match
 citadel_previous_umuted_audio_level | cl, a | Default: 1<br>
 citadel_priority_token_fake_count | devonly, cl | Default: -1<br>Override the priority token count. -1 uses the real value.
 citadel_priority_token_fake_progress | devonly, cl | Default: -1<br>Override the priority token progress. -1 uses the real value.
@@ -1550,13 +1579,28 @@ citadel_radial_ability_suggestion_weight | devonly, cl | Default: 0<br>How much 
 citadel_radial_distortion | devonly, cl | Default: 0<br>0: Off 1: Distorts the visible distribution of arcs based on the mouse pointer.
 citadel_radial_distortion_growth_factor | devonly, cl | Default: 1.25<br>When the cursor enters a radial arc fully, how much should it grow by (in terms of weight)
 citadel_radial_testing | devonly, cl | Default: 0<br>0: Normal. 1: Inhibit showing the hud abilities' upgrade panel when the scoreboard is open.
+citadel_ranked_allow_overrides | devonly, cl | Default: true<br>
+citadel_ranked_hero_roster | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently selected brawl roster heroes
+citadel_ranked_hero_roster_banned | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently banned brawl roster heroes
+citadel_ranked_hero_roster_high_priority | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority brawl roster heroes
+citadel_ranked_hero_roster_preferred | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred brawl roster heroes
+citadel_ranked_hero_roster_random | cl, a, release | Default: false<br>Is the brawl hero roster set to random
+citadel_ranked_progress_fake_calibration_games | devonly, cl | Default: -1<br>
+citadel_ranked_progress_fake_demotion_protection_games | devonly, cl | Default: -1<br>
+citadel_ranked_progress_fake_match_count | devonly, cl | Default: -1<br>
+citadel_ranked_progress_fake_max_rank | devonly, cl | Default: -1<br>
+citadel_ranked_progress_fake_missing | devonly, cl | Default: false<br>
+citadel_ranked_progress_fake_rank | devonly, cl | Default: -1<br>
+citadel_ranked_progress_fake_win_mask | devonly, cl | Default: -1<br>
+citadel_ranked_progress_fake_win_streak | devonly, cl | Default: -1<br>
+citadel_ranked_season_match_history_fake_rank_changes | devonly, cl | Default: false<br>Turn to show fake versions of the rank history
+citadel_ranked_season_match_history_unfiltered | devonly, cl | Default: false<br>Turn on to show all matches in the ranked season view, not just matches from that ranked season.
 citadel_rapid_stamina_regen | sv, cl, rep, cheat | Default: false<br>
 citadel_recent_boss_damage_for_assist_time | devonly, sv | Default: 20<br>
 citadel_recent_comms_recording_window | sv, rep, release | Default: 10<br>
 citadel_recent_comms_session_attempt_throttled_count | sv, rep, release | Default: 75<br>
 citadel_recent_comms_throttling_limit | sv, rep, release | Default: 10<br>
 citadel_recent_comms_throttling_penalty | sv, rep, release | Default: 10<br>
-citadel_reconnect_idle_buffer_time | devonly, sv | Default: 45<br>How much extra time the player has after reconnecting before he gets marked as AFK.
 citadel_record_hero_animgraph | sv, cheat | Record the animgraph for a specified hero
 citadel_region_override | cl, release | Default: -1<br>Override the region of the client
 citadel_reload_rank_data | devonly, cl | Request rank confidence score from GC.
@@ -1577,6 +1621,7 @@ citadel_reset_survey_responses | devonly, cl | Clears out all survey questions f
 citadel_respond_to_ping_time | devonly, cl | Default: 5<br>The amount of time you have to respond to a ping from another player
 citadel_restore_components_only_during_sellback | devonly, sv, cl, rep | Default: true<br>
 citadel_roster_select_force_enable_priority_token | devonly, cl | Default: false<br>
+citadel_roster_select_force_select_any | devonly, cl | Default: false<br>
 citadel_roster_select_hover_delay | devonly, cl | Default: 0.2<br>
 citadel_rp_show_dev_messages | devonly, cl | Default: false<br>
 citadel_rr_killstreak_for_death_line | devonly, sv | Default: 2<br>If &gt;0, kill streak RR will play for the victim's team from the player with killstreak instead of victim's death line.
@@ -1614,7 +1659,6 @@ citadel_shop_reset_time | devonly, cl | Default: 10<br>
 citadel_show_account_ids | cl, release | Default: false<br>When set, account IDs will be shown on player tooltips
 citadel_show_active_slot_popup | cl, a, release | Default: false<br>
 citadel_show_all_purchase_toasts | cl, a | Default: false<br>If enabled, show purchase toasts for all item transactions, not just ones in your quickbuy queue
-citadel_show_average_rating_on_postgame | cl, a, release | Default: false<br>Show the rating average rating of a team in the post game.
 citadel_show_bullet_lag_compensation | sv, cl, rep, cheat | Default: 0<br>if &gt; 0.0, show lag compensated hitboxes (value is seconds) whenever a bullet is lag compensated and hits something.
 citadel_show_chat_wheel_angle_threshold | devonly, cl | Default: 16<br>(degrees) Increase this to change how much you have to move your camera angle to make the Chat Wheel instantly visible while holding Ping.
 citadel_show_chat_wheel_debug | devonly, cl | Default: false<br>Increase this to change how much you have to move your camera angle to make the mousewheel visible (degrees)
@@ -1639,7 +1683,8 @@ citadel_show_page_reload_button | cl, a | Default: true<br>Show beta db controls
 citadel_show_personal_best_duration | devonly, cl | Default: 5<br>
 citadel_show_playerintents | devonly, cl | Default: false<br>
 citadel_show_playerintents_bothteams | devonly, cl | Default: true<br>
-citadel_show_rating_notification_on_change | cl, a, release | Default: false<br>Show the rating notification on the post game if your rating changed that game.
+citadel_show_ranked_history_page | devonly, cl | 
+citadel_show_ranked_season_page | devonly, cl | 
 citadel_show_reportcard | devonly, cl | Default: true<br>
 citadel_show_reportcard_finished | devonly, cl | Default: false<br>
 citadel_show_reportcard_initial | devonly, cl | Default: false<br>
@@ -1683,11 +1728,10 @@ citadel_spoof_connection_status | devonly, cl | Default: -1<br>
 citadel_spoof_invalid_client_version | devonly, cl | Default: false<br>When set to true, this will cause the client to act like it has an invalid client version, useful for UI testing
 citadel_spoof_match_in_progress | devonly, cl | Default: false<br>
 citadel_spoof_matchmaking_status | devonly, cl | Default: -1<br>
-citadel_spoof_num_matches_on_profile | devonly, cl | Default: -1<br>
 citadel_spoof_persona_name | devonly, cl | Default: <br>Allows overriding persona names with this value for testing UI
 citadel_spoof_profile_account | devonly, cl | Default: 0<br>
 citadel_spray_max_range | devonly, sv, cl, rep | Default: 512<br>Maximum range (in inches) in which a spray is valid
-citadel_start_calibration_bot_match | devonly, cl | Starts a calibration match
+citadel_start_new_player_placement_bot_match | devonly, cl | Starts a new_player_placement match
 citadel_start_players_on_zipline | sv, cl, rep, cheat | Default: true<br>
 citadel_stat_override_official_match | devonly, cl | Default: false<br>When set to true, the account stat cache system will act like it is in an official match when updated. Used for testing without being in official matches
 citadel_steamlearn_disable | devonly, sv | Default: false<br>
@@ -1730,6 +1774,7 @@ citadel_team_size | devonly, sv, cl, rep | Default: 6<br>
 citadel_tech_damage_vdata_tagging | devonly, cl | Command to Tag abilities with 'm_bIsAbilityDamageProperty = true'
 citadel_tech_power_scaling_vdata_tweak | devonly, cl | Command to tweak all ability tech power scaling, including ability upgrades.  Pass in scale factor, with 1.0 being no change.
 citadel_teleporter_enabled_time | sv, cl, rep, cheat | Default: 1<br>
+citadel_test_abandon | devonly, sv | Test new abandon feature
 citadel_test_banned_heroes_message | devonly, cl | Draws the banned heroes message
 citadel_test_cinematic_intro | devonly, sv | Restart the cinematic intro sequence
 citadel_test_flex_unlocked_message | devonly, cl | Draws a test message: citadel_test_flex_unlocked_message \[1-4\]
@@ -1740,7 +1785,6 @@ citadel_test_pause_msg | devonly, cl | Draws a test pause message: citadel_test_
 citadel_test_player_ping | devonly, cl | Test pinging a player
 citadel_test_popup_news_post | devonly, cl | \[URL\]
 citadel_test_portal_trace | devonly, sv | Trace a sphere through portals and draw the results
-citadel_test_ranked_summary | devonly, cl | Default: false<br>Test Ranked Summary
 citadel_test_streetbrawl_scoring_message | devonly, cl | Draws the street brawl scoring message: citadel_test_streetbrawl_scoring_message &lt;ScoringTeam&gt;
 citadel_test_survey_popup | cl, cheat | Tests bringing up the survey popup
 citadel_test_team_msg | devonly, sv | Draws a test team message: citadel_test_team_msg &lt;EVENT_TYPE&gt; &lt;ISPOSITIVE&gt; &lt;LANECOLOR&gt; &lt;TEAM_NUMBER&gt; &lt;PLAYER_SLOT&gt;
@@ -1866,10 +1910,12 @@ citadel_ui_damage_impact_duration_fadeindelay | devonly, cl, rep | Default: 0<br
 citadel_ui_damage_impact_duration_fadeoutdelay | devonly, cl, rep | Default: 0.6<br>
 citadel_ui_damage_impact_kill_duration | devonly, cl, rep | Default: 5<br>
 citadel_ui_damage_impact_min_max_shield_width | devonly, cl, rep | Default: 0.1<br>
-citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: true<br>
+citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: false<br>
 citadel_ui_damage_impact_status_minimum_duration | devonly, cl | Default: 0.2<br>
 citadel_ui_fake_active_matches | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy matches to the active match list, useful for testing UI around these
 citadel_ui_fake_invite_parties | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy parties that have invites
+citadel_ui_hero_badge_debug_xp | devonly, cl | Default: -1<br>Force XP value for all badges (client only)
+citadel_ui_show_hero_progression | devonly, cl, a | Default: false<br>Show hero progression UI (i.e. hero levels)
 citadel_ui_spoof_active_match_bot_account | devonly, cl | Default: 0<br>When set to non-zero, it will use this account as the account for bots to test UI on the active match
 citadel_ui_test_ranked_highlight_time | devonly, cl | Default: 0<br>
 citadel_ui_watch_active_game_refresh_s | cl, release | Default: 5<br>The number of seconds to wait between refreshes of the active matches while on the watch page
@@ -1885,7 +1931,7 @@ citadel_unit_status_health_per_minor_pip | devonly, cl | Default: 100<br>
 citadel_unit_status_health_per_pip | devonly, cl | Default: 100<br>
 citadel_unit_status_health_pips_per_row | devonly, cl | Default: 10<br>
 citadel_unit_status_healthbar_highlight_speed | devonly, cl | Default: 2<br>
-citadel_unit_status_height | devonly, cl | Default: 50<br>
+citadel_unit_status_height | devonly, cl | Default: 100<br>
 citadel_unit_status_hide_names | cl, cheat, release | Default: false<br>
 citadel_unit_status_max_distance_distance | devonly, cl | Default: 800<br>
 citadel_unit_status_max_distance_scale | devonly, cl | Default: 1<br>
@@ -1933,6 +1979,9 @@ citadel_use_contextual_ping_wheel_option | cl, a | Default: true<br>
 citadel_use_csgo_style_recoil_follow_crosshair | devonly, cl, rep | Default: false<br>
 citadel_use_fake_lobby_signout_details | devonly, sv | Default: false<br>If enabled, fake the details to enable match signout to flow
 citadel_use_hold_sprint | devonly, sv, cl, rep | Default: false<br>Use hold sprint ability?
+citadel_use_new_abandon_rules_force_enabled | devonly, sv | Default: false<br>
+citadel_use_new_abandon_rules_ranked | devonly, sv | Default: true<br>
+citadel_use_new_abandon_rules_unranked | devonly, sv | Default: true<br>
 citadel_use_new_minimap | devonly, cl | Default: true<br>Turns on/off the new minimap
 citadel_use_pvs_for_players | devonly, sv | Default: false<br>
 citadel_use_shop_component_groupings | cl, a | Default: false<br>Use new component Grouping
@@ -4572,6 +4621,7 @@ r_vma_defrag_max_allocation_count_per_pass | devonly | Default: 256<br>During a 
 r_vma_defrag_max_allocation_size_per_pass | devonly | Default: 32<br>During a VMA defrag, number of MB in moves per pass.
 r_vma_defrag_moves_per_frame | devonly | Default: 20<br>During a VMA defrag, number of moves to process for a pass in a single frame update.
 r_vma_defrag_threshold_mb | release | Default: 256<br>
+r_vulkan_accurate_renderarea | release | Default: true<br>Sets the renderArea of a render pass to its viewport bounds (false will use RT size). More accurate renderArea, but results in more render passes.
 r_vulkan_force_sync1 | devonly | Default: false<br>
 r_vulkan_sw_cmd_lists | release | Default: true<br>Enable Software Command lists for Vulkan
 r_vulkan_validation_filter_in | devonly | Default: <br>Comma delimited list of stristr filters for including validation messages.  Only messages matching filter will be included.
