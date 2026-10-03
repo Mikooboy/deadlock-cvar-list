@@ -4,20 +4,14 @@
 +camdistance | devonly, cl | 
 +cammousemove | devonly, cl | 
 +chatwheel | cl, release | Opens chatwheel menu while held
-+chatwheel_pingwheel | cl, release | Opens the second chatwheel menu while held
 +citadel_swtich_player_cam | cl, release | Player Cam switching button pressed
-+herochatwheel | cl, release | Opens hero chatwheel menu while held
 +in_ability_ping | cl, release | Ping button pressed
-+show_ability_upgrade_radial | devonly, cl | Opens radial abilities menu while held
 -bugvoice | devonly, norecord | Finish recording bug voice attachment.
 -camdistance | devonly, cl | 
 -cammousemove | devonly, cl | 
 -chatwheel | cl, release | Executes the highlighted chatwheel menu item
--chatwheel_pingwheel | cl, release | Executes the highlighted chatwheel menu item
 -citadel_swtich_player_cam | cl, release | Player Cam switching button released
--herochatwheel | cl, release | Executes the highlighted hero chatwheel menu item
 -in_ability_ping | cl, release | Ping button released
--show_ability_upgrade_radial | devonly, cl | Closest radial abilities menu on release
 StackStats_Dump | devonly | Dump a named stackstats structure to disk. Usage: stackstats_dump "structname" \["filename"\]
 Test_Checkpoint | devonly | Indicate to a test script that a checkpoint has been reached
 Test_CreateEntity | sv, cheat | 
@@ -57,6 +51,7 @@ adsp_room_min | devonly | Default: 102<br>
 adsp_street_min | devonly | Default: 118<br>
 adsp_tunnel_min | devonly | Default: 114<br>
 adsp_wall_height | devonly | Default: 128<br>
+ag2_network_recipeshape_cache_size | devonly, sv, norecord | Default: 32<br>Cache size for recently-used pose recipe shapes.
 ag2_preserve_params_on_reload | devonly, sv, cl, rep | Default: false<br>When an animgraph is reloaded, should the underlying system restore all params?
 ag2_use_networked_serialization_context_demo | devonly, sv, cl, rep, norecord | Default: true<br>Use networked compatibility serialization context in demo playback.
 ag2_use_networked_serialization_context_game | devonly, sv, cl, rep | Default: false<br>Use networked compatibility serialization context in games.
@@ -65,42 +60,37 @@ ai_async_queue_debug | devonly, sv | Default: 0<br>Dump the ai async work queue 
 ai_async_queue_max_jobs | devonly, sv | Default: -1<br>Limit on number of jobs that will be run(serially) in a frame. - 1 = no limit
 ai_async_queue_stop_on_request | devonly, sv | Default: true<br>Should queue stop processing new jobs when the frame stop request happens?
 ai_auto_contact_solver | devonly, sv | Default: true<br>
-ai_auto_select_enemy_finder | devonly, sv | Default: true<br>1 = also npc select enemy finders in my squad
 ai_autoselect_class | devonly, sv | Default: <br>Automatically sets debug flags on NPCs spawned that match this class name. Flags with be set based on the value of the ai_autoselect_class_settings convar.
-ai_autoselect_class_settings | devonly, sv | Default: combat<br>Flag value to set on NPCs targeted by ai_autoselect_class. Valid values: 'combat', 'selected', 'tasks', 'all'.
+ai_autoselect_class_settings | devonly, sv | Default: combat<br>Flag value to set on NPCs targeted by ai_autoselect_class. Valid values: 'combat', 'selected', 'tasks', 'route', 'all'.
 ai_block_damage | devonly, sv | Default: false<br>
 ai_debug_decisionmaking | sv, a | Default: false<br>Draw sparks on NPCs in their thinks. Sparks at their feet mean they skipped decision making, sparks high above them means they didn't.
-ai_debug_detect_bad_schedules | devonly, sv | Default: true<br>
+ai_debug_detect_bad_schedules | devonly, sv | Default: false<br>
+ai_debug_detect_bad_schedules_ignore_movement | devonly, sv | Default: true<br>
 ai_debug_detect_bad_schedules_print_conditions | devonly, sv | Default: false<br>
-ai_debug_directnavprobe | devonly, sv | Default: false<br>
-ai_debug_doors | devonly, sv | Default: false<br>
 ai_debug_dyninteractions | sv, cheat | Default: 0<br>Debug the NPC dynamic interaction system.
 ai_debug_enemies | devonly, sv | Default: 0<br>
 ai_debug_enemy_position | sv, cheat | Default: false<br>Draw a debug line from a selected NPC to its enemy.
 ai_debug_initial_position | devonly, sv | Default: 0<br>Draw debug lines and boxes indicating how NPCs are initially positioned and oriented.
-ai_debug_interrupt_paths | devonly, sv | Default: false<br>
-ai_debug_loners | devonly, sv | Default: false<br>
+ai_debug_interrupt_paths | sv, cheat | Default: false<br>
 ai_debug_los | sv, cheat | Default: 0<br>NPC Line-Of-Sight debug mode. If 1, solid entities that block NPC LOC will be highlighted with white bounding boxes. If 2, it'll show non-solid entities that would do it if they were solid.
 ai_debug_nav | devonly, sv | Default: false<br>
 ai_debug_navlinks | devonly, sv, rep | Default: false<br>
-ai_debug_phys_force | devonly, sv | Default: false<br>
+ai_debug_pathcorner_lookahead | sv, cheat | Default: 0<br>Draw path corner look-ahead paths for N seconds (0 = off). Green = kept path to corner A, yellow = discarded look-ahead tail toward the next corner.
 ai_debug_radial_goal | devonly, sv | Default: false<br>
 ai_debug_ragdoll_magnets | devonly, sv | Default: false<br>
+ai_debug_schedule_one_select_per_think | devonly, sv | Default: true<br>
 ai_debug_schedule_stoppages | devonly, sv | Default: false<br>
+ai_debug_schedule_use_per_schedule_gather | devonly, sv | Default: false<br>
 ai_debug_scripted_sequence | sv, cheat | Default: false<br>
 ai_debug_shoot_positions | sv, cl, rep, cheat | Default: 0<br>
 ai_debug_speech | devonly, sv | Default: 0<br>
-ai_debug_squads | devonly, sv | Default: false<br>
-ai_debug_squadslotusage | sv, cheat | Default: false<br>Report squad slot usage for npc_selected NPCs.
 ai_debug_volumetric_event | devonly, sv | Default: 0<br>Reports events being entered into the AI events list. Set to 1 to see all events, set to 2 to only see DANGER events.
 ai_debug_volumetric_event_duration | devonly, sv | Default: 0.1<br>Length of time to display ai_debug_volumetric_event visual displays.
 ai_debugscriptconditions | devonly, sv | Default: false<br>
 ai_disable | sv, cheat | Bi-passes all AI logic routines and puts all NPCs into their idle animations.  Can be used to get NPCs out of your way and to test effect of AI logic routines on frame rate
 ai_disabled | sv, cl, rep, cheat | Default: false<br>
-ai_doors_force_animation | devonly, sv | Default: -1<br>
 ai_drop_hint | sv, cheat | Drop an ai_hint at the player's current eye position.
 ai_dump_hints | devonly, sv | 
-ai_elude_time | devonly, sv | Default: 8<br>
 ai_facingservices_debug_reasonablefacing | sv, cheat | Default: 0<br>Debug logic for finding reasonable facing.
 ai_facingservices_debug_spew | sv, cheat | Default: false<br>Adds spew to the facing target for the selected NPC
 ai_facingservices_draw_entity_facing | sv, cheat | Default: false<br>
@@ -113,14 +103,15 @@ ai_foot_sweep_move_scale | devonly, sv | Default: 1.4<br>
 ai_foot_sweep_perp_apply | devonly, sv | Default: 0.5<br>
 ai_foot_sweep_perp_base | devonly, sv | Default: 30<br>
 ai_foot_sweep_perp_scale | devonly, sv | Default: 0.5<br>
-ai_footstep_delay | devonly, sv | Default: 0.5<br>
 ai_force_serverside_ragdoll | devonly, sv | Default: false<br>
 ai_gather_conditions_async | devonly, sv | Default: false<br>Allow gathering of conditions to be done asynchronously.
+ai_ground_motor_strafe_debug | sv, cheat | Default: false<br>
+ai_ground_motor_strafe_lookahead | sv, cheat | Default: 12<br>
 ai_hull_trace_epsilon | devonly, sv | Default: 0.01<br>
 ai_ignore_collision_player_noclip | sv, a, cheat | Default: false<br>
 ai_inhibit_spawners | sv, cheat | Default: false<br>
 ai_keep_interrupt_path_across_schedules | sv, cheat | Default: true<br>
-ai_local_navigator_direct_test_versus_static_collision | devonly, sv | Default: true<br>
+ai_local_navigator_flying_enable | devonly, sv | Default: false<br>
 ai_local_navigator_navmesh_enable | devonly, sv | Default: true<br>
 ai_lod_auto_enabled | devonly, sv | Default: false<br>
 ai_lod_debug_display | devonly, sv | Default: 0<br>
@@ -129,61 +120,57 @@ ai_motor_debug_additional_movement_settings | sv, cheat | Default: false<br>
 ai_motor_debug_ag1_path | sv, cheat | Default: false<br>
 ai_motor_debug_hop | sv, cheat | Default: false<br>
 ai_motor_debug_idle_turn | sv, cheat | Default: false<br>
-ai_motor_debug_move_heading | sv, cheat | Default: false<br>
-ai_motor_debug_move_heading_bad_zones | sv, cheat | Default: false<br>
+ai_motor_debug_lean | sv, cheat | Default: false<br>
 ai_motor_debug_override_path | sv, cheat | Default: false<br>
+ai_motor_debug_path | devonly, sv, rep | Default: false<br>
+ai_motor_debug_path_direction | sv, cheat | Default: false<br>
 ai_motor_debug_show_current_state | sv, cheat | Default: false<br>
 ai_motor_debug_show_speed_info | sv, cheat | Default: false<br>
-ai_motor_debug_state_deadlocks | sv, cheat | Default: false<br>
 ai_motor_debug_stop | sv, cheat | Default: false<br>
 ai_motor_debug_transitions | sv, cheat | Default: false<br>
-ai_motor_enable_move_heading_bad_zones | sv, cheat | Default: true<br>
 ai_motor_ground_enable_detailed_debug_data | sv, cheat | Default: false<br>
 ai_motor_max_state_time_active | sv, cheat | Default: 6<br>
-ai_motor_move_direction_lookahead | sv, cheat | Default: 6<br>
 ai_motor_nav_links_force_facing_time | sv, cheat | Default: 12<br>
-ai_motor_path_alignment_max_angular_velocity | sv, cheat | Default: 300<br>
+ai_motor_path_direction_smoothing_factor | sv, cheat | Default: 0.1<br>
 ai_motor_planted_turn_lookahead_distance | sv, cheat | Default: 100<br>
 ai_motor_planted_turn_lookahead_distance_speed | sv, cheat | Default: 150<br>
 ai_motor_procedural_idle_turn_speed | sv, cheat | Default: 20<br>
 ai_motor_procedural_idle_turn_threshold | sv, cheat | Default: 2<br>
 ai_motor_procedural_turn_while_stopping_threshold | sv, cheat | Default: 5<br>
-ai_motor_use_fast_move_heading_bad_zone_pass | sv, cheat | Default: true<br>
+ai_motor_too_short_path_treshold | sv, cheat | Default: 4<br>
 ai_moveprobe_debug | devonly, sv | Default: false<br>
 ai_moveprobe_jump_debug | devonly, sv | Default: 0<br>
-ai_navigator_clipped_path_save | devonly, sv | Default: true<br>
-ai_navigator_clipped_path_use_interrupt | devonly, sv | Default: true<br>
 ai_navigator_disable_collision_on_stuck | sv, cheat | Default: true<br>
 ai_navigator_draw_type_change | devonly, sv | Default: 0<br>
 ai_navigator_draw_wait_for_facing | devonly, sv, rep | Default: false<br>Show when a NPC is waiting for facing tolerance to be reached while at the end of its path
 ai_navigator_place_waypoints_on_ground | devonly, sv, rep | Default: false<br>
 ai_navigator_repath_enable | sv, cheat | Default: true<br>Enable dynamic repathing based on goal movement.
 ai_navigator_repath_on_change | sv, cheat | Default: true<br>When nav mesh changes along an NPC's existing path, force a repath.
-ai_navigator_repath_tolerance_alpha | sv, cheat | Default: 20<br>The distance a target entity can move before triggering a repath is ( arrival time * ai_navigator_repath_tolerance_alpha ), clamped to the min / max allowed values.
-ai_navigator_repath_tolerance_max | sv, cheat | Default: 300<br>The maximum distance that a target entity can move before triggering a repath to that target.
-ai_navigator_repath_tolerance_min | sv, cheat | Default: 8<br>The minimum distance that a target entity can move before triggering a repath to that target.
-ai_navigator_repath_tolerance_min_speed | sv, cheat | Default: 100<br>When calculating repathing tolerance, clamp entity speed to be at least this value (i.e. consider slow entities to be this fast).
+ai_navigator_repath_tolerance_alpha | devonly, sv | Default: 20<br>The distance a target entity can move before triggering a repath is ( arrival time * ai_navigator_repath_tolerance_alpha ), clamped to the min / max allowed values.
+ai_navigator_repath_tolerance_max | devonly, sv | Default: 300<br>The maximum distance that a target entity can move before triggering a repath to that target.
+ai_navigator_repath_tolerance_min | devonly, sv | Default: 8<br>The minimum distance that a target entity can move before triggering a repath to that target.
+ai_navigator_repath_tolerance_min_speed | devonly, sv | Default: 100<br>When calculating repathing tolerance, clamp entity speed to be at least this value (i.e. consider slow entities to be this fast).
 ai_navigator_snap_to_ground_goal | sv, cheat | Default: false<br>
-ai_navigator_use_arrival_direction | sv, cheat | Default: true<br>
-ai_no_steer | devonly, sv | Default: false<br>
 ai_off_nav_show_nearest | sv, cheat | Default: false<br>
+ai_path_clip_against_goal_constraints | devonly, sv | Default: true<br>After pathfinding clip the path such that it ends at a location that satisfies the goal constraints if they're available.
+ai_path_discard_ignore_stops | devonly, sv | Default: false<br>
 ai_path_draw_active | devonly, sv, rep | Default: false<br>0 = no debug, 1 = draw waypoint path
-ai_path_draw_cached_values | devonly, sv, rep | Default: false<br>Display draw cached values like Actual Goal Position.
-ai_path_draw_fail | devonly, sv, rep | Default: 0<br>Draw failed pathfinding attempts
-ai_path_draw_on_calc | devonly, sv, rep | Default: 0<br>Number of seconds to draw an AI path after it is calculated.
-ai_path_draw_selected | devonly, sv, rep | Default: 0<br>If true, draw AI path for selected NPC.
-ai_path_draw_src | devonly, sv, rep | Default: false<br>Display calling code that created the path goal.
-ai_path_draw_waypoint_mark | devonly, sv, rep | Default: 0<br>0: Draw nothing at waypoints; 1: Draw a tick mark at waypoints; 2: Draw a shape around waypoints.
-ai_path_draw_waypoint_type_label | devonly, sv, rep | Default: false<br>1 = draw labels of waypoint types during ai_path_draw_active
-ai_path_draw_yaw | devonly, sv, rep | Default: false<br>Display yaw value for path goal.
+ai_path_draw_cached_values | devonly, sv | Default: false<br>Display draw cached values like Actual Goal Position.
+ai_path_draw_fail | sv, cheat | Default: 0<br>Draw failed pathfinding attempts
+ai_path_draw_nav_elem_info | devonly, sv | Default: 0<br>Draw info about the nav associated with this waypoint. 0 = off, 1 = show IDs, 2 = show nav elem.
+ai_path_draw_nav_search_id | devonly, sv | Default: false<br>Display the ID of the nav search that created this path.
+ai_path_draw_on_calc | sv, cheat | Default: 0<br>Number of seconds to draw an AI path after it is calculated.
+ai_path_draw_selected | sv, cheat | Default: 0<br>If true, draw AI path for selected NPC.
+ai_path_draw_src | devonly, sv | Default: false<br>Display calling code that created the path goal.
+ai_path_draw_waypoint_mark | devonly, sv | Default: 0<br>0: Draw nothing at waypoints; 1: Draw a tick mark at waypoints; 2: Draw a shape around waypoints.
+ai_path_draw_waypoint_type_label | devonly, sv | Default: false<br>1 = draw labels of waypoint types during ai_path_draw_active
+ai_path_draw_yaw | devonly, sv | Default: false<br>Display yaw value for path goal.
 ai_path_return_a | devonly, sv | Default: 0.5<br>
 ai_path_return_d | devonly, sv | Default: 50<br>
 ai_path_return_parallel_speed | devonly, sv | Default: 100<br>
 ai_path_return_t | devonly, sv | Default: 2<br>
-ai_path_show_discard_immediately | sv, cheat | Default: false<br>
-ai_plane_solver_debug | devonly, sv | Default: true<br>
-ai_plane_solver_use_navmesh | devonly, sv | Default: false<br>
-ai_ragdoll_phys_death_multiplier | devonly, sv | Default: 1<br>
+ai_path_show_discard_immediately | devonly, sv | Default: false<br>
+ai_pathfinder_max_path_detour | sv, cheat | Default: 500<br>How far a path may detour from the direct route. Negative means no limit.
 ai_report_task_timings_on_limit | sv, a | Default: false<br>
 ai_resume | sv, cheat | If NPC is stepping through tasks (see ai_step ) will resume normal processing.
 ai_select_box_alpha | sv, a | Default: 20<br>The select box alpha.
@@ -198,7 +185,6 @@ ai_show_task_fail | sv, cheat | Default: 0<br>
 ai_show_think_tolerance | devonly, sv | Default: 0<br>
 ai_step | sv, cheat | NPCs will freeze after completing their current task.  To complete the next task, use 'ai_step' again.  To resume processing normally use 'ai_resume'
 ai_strong_optimizations_no_checkstand | devonly, sv | Default: false<br>
-ai_temp_difference_for_instant_ignite | sv, cheat | Default: 100<br>how much hotter than the npc's flashpoint a heat source should be to instantly ignite them.
 ai_test_los_from_player_pov | devonly, sv | Test AI LOS from the player's POV
 ai_test_moveprobe_ignoresmall | devonly, sv | Default: false<br>
 ai_think_interval | devonly, sv | Default: 0.1<br>Time interval between NPC thinks
@@ -207,16 +193,14 @@ ai_think_interval_lod_med | devonly, sv | Default: 0.25<br>Time interval between
 ai_think_interval_lod_very_low | devonly, sv | Default: 1<br>Time interval between NPC thinks when set to AI LOD very low.
 ai_think_limit_label | sv, a | Default: false<br>
 ai_threaded_pathfind | devonly, sv | Default: true<br>
-ai_time_to_ignite | sv, cheat | Default: 0.3<br>How long an npc has to be exposed to heat above their flashpoint to catch on fire.
 ai_use_async_ragdoll_fixup | devonly, sv | Default: false<br>
 ai_use_visibility_cache | devonly, sv | Default: 1<br>Sets whether or not NPCs can cache their Visibility checks against other entities. If set to 2, also tests to make sure that NPC-&gt;Target results match that of Target-&gt;NPC.
 ai_use_visibility_cache_reciprocation | devonly, sv | Default: true<br>Sets whether or not the visibility check cache should be reciprocal.
-ai_vehicle_avoidance | sv, cheat | Default: true<br>
 ai_waypoint_arrival_tolerance | devonly, sv | Default: 2<br>
 ainet_generate_report | devonly, sv | Generate a report to the console.
 ainet_generate_report_only | devonly, sv | Generate a report to the console.
 alias | release | Alias a command.
-always_perform_full_spatial_partition_update | devonly, sv, cl, rep | Default: false<br>
+always_perform_full_spatial_partition_update | devonly, sv, cl, rep | Default: true<br>
 anim_decode_forcewritealltransforms | devonly | Default: false<br>Force BatchAnimationDecode to write transformations for all bones
 anim_disable | devonly, sv, cl, rep | Default: false<br>
 anim_eval_stats | devonly, sv | Displays stats about how many EvaluatePose calls are unused
@@ -224,6 +208,7 @@ anim_resource_validate_on_load | release | Default: true<br>Validates the animat
 animated_material_attributes | cl, cheat | Default: true<br>
 animevents_dump | sv, cheat | List all the currently registered anim events.<br>
 animgraph2_enable_parallel_update | devonly, sv, cl, rep | Default: true<br>
+animgraph2_serialize_pose_recipe_in_pre_pack_entities | devonly, sv, cl, rep | Default: true<br>
 animgraph_debug | sv, cl, rep, cheat | Default: false<br>Debug animation graph
 animgraph_debug_animevents | devonly, sv, cl, rep | Default: false<br>Print info about animevents emitted by AnimGraph
 animgraph_debug_entindex | sv, cl, rep, cheat | Default: 0<br>The entity to specifically debug
@@ -241,9 +226,6 @@ animgraph_draw_traces | devonly, sv, cl, rep | Default: false<br>
 animgraph_dump_update_list | devonly, sv | Displays stats about which animations are updating
 animgraph_enable | devonly, sv, cl, rep | Default: true<br>Enable animation graph
 animgraph_enable_dirty_netvar_optimization | devonly, rep | Default: true<br>
-animgraph_enable_parallel_op_evaluation | devonly, sv, cl, rep | Default: false<br>
-animgraph_enable_parallel_preupdate | devonly, sv, cl, rep | Default: false<br>
-animgraph_enable_parallel_update | devonly, sv, cl, rep | Default: true<br>
 animgraph_footlock_auto_ledge_detection | devonly, rep | Default: true<br>Attempt to detect when the foot is partially hanging off a ledge and stop it tilting to reach the bottom
 animgraph_footlock_auto_stair_detection | devonly, rep | Default: true<br>Attempt to detect when the foot is on a stair and will stop it from tilting to reach the next step
 animgraph_footlock_calculate_tilt | devonly, rep | Default: true<br>
@@ -263,17 +245,13 @@ animgraph_ik_debug | devonly, rep | Default: false<br>
 animgraph_motionmatching_print_compressionstats | devonly, rep | Default: false<br>
 animgraph_network_enable | devonly, sv, cl, rep | Default: true<br>Enable animation graph networking. The setting is only read at graph creation time; to use please set on the command line.
 animgraph_parallel_postdataupdate | devonly, cl | Default: true<br>
-animgraph_record_all | sv, cl, rep, cheat | Default: false<br>Automatically start recording AnimGraphs when they get created, and save them to disk when they are destroyed
 animgraph_slope_draw_raycasts | sv, cl, rep, cheat | Default: false<br>
 animgraph_slope_enable | sv, cl, rep, cheat | Default: false<br>
 animgraph_slowdownonslopes_enabled | devonly, rep | Default: true<br>
 animgraph_trace_ignore_prop_physics | devonly, sv, cl, rep | Default: true<br>
 animgraph_trace_static_only | sv, cl, rep, cheat | Default: false<br>
 animgraph_verify_dirty_netvar_optimization | devonly, rep | Default: false<br>
-announce_create | cl, release | &lt;title&gt; &lt;message&gt; &lt;URL&gt; \[Priority\] Create a new announcement with the specified title, message, and URL. use empty quotes if you want to skip message or URL
-announce_delete | cl, release | &lt;ID&gt; Deletes the specified announcement ID
 announce_show_ids | cl, release | Default: false<br>When set, will show the IDs of the various announcements, making updating/deleting easier
-announce_update | cl, release | &lt;ID&gt; &lt;title&gt; &lt;message&gt; &lt;URL&gt; \[Priority\] Create a new announcement with the specified title, message, and URL. use empty quotes if you want to skip message or URL
 announcer_vo_disable_hero_test | devonly, sv | Default: true<br>Toggles announcer in the hideout.
 announcer_vo_disable_hideout | devonly, sv | Default: true<br>Toggles announcer in the hideout.
 astro_bouncepad_early_inactive_time | devonly, sv, cl, rep | Default: 0.15<br>How long to deactivate the bounce pad prior to its deletion to compensate for the server.
@@ -281,17 +259,19 @@ attached_output_stall_ms | devonly | Default: 250<br>
 audio_debug_health_fraction_change | devonly, cl | Default: false<br>Prints/renders change in health fraction over course of buffer length.
 audio_display_soundstack_debug_base_3d | sv, cheat | Default: false<br>Displays citadel_base_3d sound stack debug.
 audio_display_soundstack_debug_dialog | sv, cheat | Default: false<br>Displays citadel_dialog sound stack debug.
+audio_draw_dimension_probe_debug | sv, cheat | Default: false<br>Toggle on debug spheres for enclosure/probe reverb
+audio_draw_enclosure_debug | devonly, sv, cl, rep | Default: false<br>Draws debug associated with amount interior vs exterior
 audio_draw_opvar_obb_debug | devonly, cl | Default: false<br>Draws obb opvar debug.
 audio_enable_spawn_mask_mix_layer | devonly, cl | Default: true<br>Enables the mix layer which mutes certain sounds at map load boundaries.
 audio_enable_vmix_mastering | cl, cheat | Default: true<br>Enables mastering DSP in vmix.
-audio_enclosure_calc_enabled | devonly, sv, cl, rep | Default: true<br>Enables/disabled calculations that determine entity interior vs exterior.
+audio_enclosure_calc_enabled | devonly, sv, cl, rep | Default: false<br>Enables/disabled calculations that determine entity interior vs exterior.
 audio_enclosure_speed | devonly, sv, cl, rep | Default: 0.45<br>Adjusts rate of change for enclosure value over time.
 audio_enemy_relevance_debug | devonly, cl | Default: false<br>Enable debug spheres and screen text for enemy relevance.
 audio_enemy_relevance_targeting_range | devonly, cl | Default: 3500<br>Range to consider targeting local player.
 audio_health_change_damage_priority_threshold | cl, cheat | Default: -0.02<br>Above this health fraction change damage audio is deprioritized in the sound system.
 audio_health_delta_effect_release_rate | devonly, cl | Default: 0.25<br>Rate of interpolation once hold time has elapsed.
 audio_health_loss_effect_debug | devonly, cl | Default: false<br>Render health loss fraction change.
-audio_health_loss_effect_enabled | devonly, cl | Default: false<br>Enable/disable health loss audio effect.
+audio_health_loss_effect_enabled | devonly, cl | Default: true<br>Enable/disable health loss audio effect.
 audio_health_loss_effect_hold_time | devonly, cl | Default: 0.5<br>Rate of interpolation once hold time has elapsed.
 audio_input_test_signal | devonly | Default: false<br>For testing the audio input pathway with a sine tone instead of SDL3.
 audio_input_use_sdl_roles | devonly | Default: false<br>
@@ -299,12 +279,12 @@ audio_limiter_debug | sv, cl, rep, cheat | Default: false<br>Renders limiter deb
 audio_log_damage_recency_bias | sv, cheat | Default: false<br>Prints player damage recency information.
 audio_relevance_debug_enabled | devonly, cl | Default: false<br>Displays audio relevance info.
 audio_render_mixlayer_debug | devonly, cl | Default: false<br>Renders mix layer debug.
+audio_render_processing_volume_debug | devonly, cl | Default: false<br>Renders audio processing volumes.
 audio_viewing_damage_debug | devonly, cl | Default: false<br>Enable debug spheres for recent damage.
 audio_viewing_damage_decay_time | devonly, cl | Default: 3<br>Duration for viewing damage to decays to 0.0.
 audio_viewing_damage_hold_time | devonly, cl | Default: 3<br>Duration before viewing damage begins to decay.
 audio_voice_volume_protection | cl, cheat | Default: 2<br>Sets linear scale volume limit for SOS.
 auto_bug | devonly, norecord | auto_bug : create non-interactive bug report.
-automatically_open_saved_animgraph_recording | sv, cl, a, rep | Default: false<br>
 autosave | devonly, sv | Autosave
 autosave_fully_async | devonly, sv | Default: true<br>Set to 1 to have autosaves execute completely on the save thread, forces 'render only' mode while the save completes
 autosavedangerous | devonly, sv | AutoSaveDangerous
@@ -313,7 +293,6 @@ axis | sv, cheat | Draw an axis<br>	Arguments:  x y z pitch yaw roll &lt;lifetim
 ban_ignore_after_player_abandons | sv, cheat | Default: 1<br>After this many players have abandoned a match, no longer penalize additional abandons for the match. Set to 0 to not penalize abandoners
 banid | devonly | Add a user ID to the ban list.
 banip | devonly | Add an IP address to the ban list.
-battery_saver | a | Default: false<br>OBSOLETE replaced by mobile_fps_* - Battery saver mode. 0=off, 1=on
 benchframe | release | Takes a snapshot of a particular frame in a time demo.
 bind | release | Bind a key.
 binddefaults | release | Bind all keys to their default values.
@@ -323,6 +302,7 @@ blink | devonly, norecord | Blink specified convar value between two values at t
 bookworm_debug_ult | devonly, sv, cl, rep | Default: false<br>
 boss_use_los_ultimate | devonly, sv, cl, rep | Default: true<br>
 bot_command | devonly, sv | &lt;bot name&gt; &lt;command string...&gt;. Sends specified command to one or more player bots: \[all\], \[east/west\], \[bot name\]
+bot_command_target | sv, cheat, release | Sends specified command to target bot under reticle
 bot_force_zipline | devonly, sv | Make all the bots get on nearby ziplines
 bot_kick_all | sv, cheat | Kick all the bots
 bot_mimic | sv, cl, rep, cheat, release | Default: 0<br>Allows bots to mimic player
@@ -392,15 +372,9 @@ cast_sphere | sv, cheat | Tests sphere cast
 cc_captiontrace | devonly, cl | Default: 1<br>Show missing closecaptions (0 = no, 1 = devconsole, 2 = show in hud)
 cc_delay_time | cl, a | Default: 0.25<br>Close caption delay before showing caption.
 cc_emit | devonly, cl | Emits a closed caption
-cc_findsound | devonly, cl | Searches for soundname which emits specified text.
-cc_flush | devonly, cl | Flushes async'd captions.
 cc_lang | cl, a | Default: <br>Current close caption language (emtpy = use game UI language)
 cc_linger_time | cl, a | Default: 1<br>Close caption linger time.
 cc_log | devonly, cl | Default: 0<br>Log caption names and contents (0 = off, 1 = found captions, 2 = unfound captions, 3 = all captions)
-cc_norepeat | devonly, sv | Default: 5<br>In multiplayer games, don't repeat captions more often than this many seconds.
-cc_random | devonly, cl | Emits a random caption
-cc_showblocks | devonly, cl | Toggles showing which blocks are pending/loaded async.
-cc_showmissing | devonly, sv, rep | Default: false<br>Show missing closecaption entries.
 cc_spectator_only | cl, a | Default: false<br>
 cc_subtitles | cl, a | Default: false<br>If set, don't show sound effect captions, just voice overs (i.e., won't help hearing impaired players).
 cc_vr_caption_catchup_interval | devonly, cl | Default: 0.3<br>Duration it takes for attached caption to ideal point
@@ -413,11 +387,15 @@ cc_vr_forward_offset | devonly, cl | Default: 30<br>Subtitle offset distance (fo
 cc_vr_vertical_offset | devonly, cl | Default: -6.5<br>Subtitle vertical offset distance (positive is up)
 cc_vr_width | cl, a | Default: 1<br>0 = narrow, 1 = med (default), 2 = wide
 changelevel | release | changelevel &lt;mapname&gt; :Multiplayer change level.
+chat_dismiss_after_send | devonly, cl | Default: true<br>
 chat_fake_player_say_all | devonly, cl | &lt;player_slot&gt; &lt;message&gt;
 chat_fake_player_say_allies | devonly, cl | &lt;player_slot&gt; &lt;message&gt;
 chat_fake_quick_response | devonly, cl | 
 chat_max_messages | devonly, cl | Default: 50<br>
-chat_ping_repeat_seconds | devonly, cl | Default: 5<br>
+chat_ping_repeat_location_tolerance | devonly, cl | Default: 256<br>How far apart, in 2D world units, two pings with no pinged entity can be and still count as the same ping.
+chat_ping_repeat_max | devonly, cl | Default: 16<br>How many times a ping can fold into one chat bubble before the next repeat starts a new bubble instead.
+chat_ping_repeat_requires_same_message | devonly, cl | Default: false<br>If set, a contextual ping only folds into the previous bubble when it resolved to the same line, not just the same target.
+chat_ping_repeat_seconds | devonly, cl | Default: 2.5<br>Seconds after a ping during which repeating it folds into the same chat bubble instead of making a new one. Restarts on each repeat.
 chat_sequence_max_messages | devonly, cl | Default: 10<br>
 chat_sequence_within_seconds | devonly, cl | Default: 10<br>
 chat_top_bar_max_messages | devonly, cl | Default: 6<br>The maximum amount of chat panels we allow total
@@ -430,17 +408,26 @@ citadel_1v1_bonus_tech_power | sv, cl, rep, cheat | Default: 0<br>
 citadel_1v1_bonus_weapon_power | sv, cl, rep, cheat | Default: 0<br>
 citadel_1v1_bullet_damage_multiplier | sv, cl, rep, cheat | Default: 1<br>
 citadel_1v1_tech_damage_multiplier | sv, cl, rep, cheat | Default: 1<br>
+citadel_21x9_clamp_hud | cl, a, per_user | Default: true<br>
 citadel_FindUnitsInRadius | devonly, sv | Run UTIL_FindUnitsInRadius centered around
 citadel_abandon_match | devonly, cl | Force abandons current match
 citadel_abandon_pregame_if_not_connected_in_s | devonly, sv | Default: 180<br>After N seconds, if we don't have all the players connect to the match, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame
-citadel_abandon_pregame_if_not_connected_in_s_dev | devonly, sv | Default: 360<br>After N seconds, if we don't have all the players connect to the match, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
+citadel_abandon_pregame_if_not_connected_in_s_dev | devonly, sv | Default: 600<br>After N seconds, if we don't have all the players connect to the match, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
 citadel_abandon_pregame_if_not_connected_in_s_streaming | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame
-citadel_abandon_pregame_if_not_connected_in_s_streaming_dev | devonly, sv | Default: 120<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
+citadel_abandon_pregame_if_not_connected_in_s_streaming_dev | devonly, sv | Default: 600<br>After N seconds, if we don't have all the players connect to the match with the streaming map, the match will be abandoned. This only applies to the initial match start when going from players connecting to pregame, for dev
 citadel_abandon_time_for_match_not_scored | devonly, sv | Default: 180<br>If someone abandons before this match time (in seconds), we will call the match forfeit and not update mmr for anyone in the match.
+citadel_ability_active_report | devonly, sv, cheat | Print per-ability active window transition counts and dwell times. Use citadel_ability_active_reset_stats to clear.
+citadel_ability_active_reset_stats | devonly, sv, cheat | Clear the counters printed by citadel_ability_active_report.
+citadel_ability_activeness_debug | sv, cl, rep, cheat | Default: false<br>Log every ability active reason edge, one line per opened or closed window.
+citadel_ability_activeness_modifier_values_audit | devonly, sv, cl, rep | Default: 0<br>Record ability MODIFIER_VALUE contributions that will stop counting once active-ness is enforced. 0=off, 1=silent counters, 2=also warn once per ability and value, 3=also assert.
+citadel_ability_activeness_modifier_values_enforce | devonly, sv, cl, rep | Default: false<br>Suppress MODIFIER_VALUE contributions from abilities that are not active.
+citadel_ability_activeness_report | devonly, sv | Print ability MODIFIER_VALUE contributions recorded while the ability was untrained or inactive. Use citadel_ability_activeness_reset_stats to clear.
+citadel_ability_activeness_reset_stats | devonly, sv | Clear the counters printed by citadel_ability_activeness_report.
+citadel_ability_activeness_validate | devonly, sv, cl, rep | Default: false<br>Recompute each ability's active reason mask from the raw predicates every think and assert on mismatch.
 citadel_ability_busy_queue_time | devonly, sv, cl, rep | Default: 0.25<br>How long we will queue an ability activation to happen if the player tried to use it while busy.
 citadel_ability_cancel_time | devonly, sv, cl, rep | Default: 0.2<br>Min Time for a Channel before we can cancel it
 citadel_ability_cast_cancel_mash_protection_time | devonly, sv, cl, rep | Default: 0.2<br>Pressing a recently cast or channeled ability key will extend its mash protection by this much
-citadel_ability_cooldown_max | sv, cl, rep, cheat | Default: 0<br>
+citadel_ability_cooldown_max | sv, cl, rep, cheat | Default: 0<br>Cheat cap applied to ability cooldowns/recharges. 0=off.
 citadel_ability_damage_vdata_tweak | devonly, cl | Command to tweak base damage from abilities. <br>** Usage<br>- arg1 - Scale Value 1.0 being no change.<br>- arg2 - 2: Affect Abilities and Upgrades, 1: Affects Upgrades Only, 0: Do no Affect Upgrades\]
 citadel_ability_debug | sv, cl, rep, cheat | Default: false<br>
 citadel_ability_force_gold_collection | devonly, sv, cl, rep | Default: false<br>Adds the flag for ability targeting to find gold orbs. Sorta hacky.
@@ -459,25 +446,14 @@ citadel_accolades_in_metadata_per_player | devonly, sv | Default: -1<br>The numb
 citadel_action_refresh_interval | devonly, cl | Default: 0.1<br>
 citadel_activate_cps_for_team | sv, cheat | Makes the CPs for a team available to capture
 citadel_activate_window_for_pregame | cl, release | Default: false<br>If set, brings Citadel to the foreground when unpaused
-citadel_activate_window_on_unpause | cl, a, release | Default: false<br>If set, brings Citadel to the foreground when unpaused
+citadel_activate_window_on_unpause | cl, a, per_user, release | Default: false<br>If set, brings Citadel to the foreground when unpaused
 citadel_active_lane | sv, cl, rep, release | Default: 0<br>Which lane should be active? 0 means all
 citadel_afk_detection_enabled | devonly, sv | Default: true<br>Is AFK detection turned on?
 citadel_ag2_controller_parallel_update_enabled | devonly, sv, cl, rep | Default: true<br>
-citadel_ag2_crouch_spring_strength | devonly, sv, cl, rep | Default: 20<br>
-citadel_ag2_debug_draw_crouch_spring | devonly, sv, cl, rep | Default: false<br>
 citadel_ag2_debug_draw_facing | devonly, cl | Default: false<br>
 citadel_ag2_debug_draw_look_target | devonly, cl | Default: false<br>
-citadel_ag2_direction_commit_blend_time | devonly, sv, cl, rep | Default: 0.15<br>
-citadel_ag2_direction_commit_min_time | devonly, sv, cl, rep | Default: 0.3<br>
-citadel_ag2_fidget_max_interval | devonly, sv, cl, rep | Default: 10<br>
-citadel_ag2_fidget_min_interval | devonly, sv, cl, rep | Default: 5<br>
-citadel_ag2_loco_lean_trigger_speed | devonly, sv, cl, rep | Default: 50<br>
-citadel_ag2_min_running_with_no_input_speed | devonly, sv, cl, rep | Default: 90<br>
 citadel_ag2_remove_param | devonly, cl | Remove a param from AG2 graphs
 citadel_ag2_rename_param | devonly, cl | Rename a param in AG2 graphs
-citadel_ag2_run_to_stop_prime_speed | devonly, sv, cl, rep | Default: 85<br>
-citadel_ag2_run_to_stop_trigger_speed | devonly, sv, cl, rep | Default: 70<br>
-citadel_ag2_turn_spring_strength | devonly, sv, cl, rep | Default: 75<br>
 citadel_ai_path_pathing_time_ms_per_tick | devonly, sv | Default: 0.5<br>
 citadel_aim_capsule_trace_debugdraw | devonly, sv, cl, rep | Default: false<br>
 citadel_aim_debug_duration | devonly, sv, cl, rep | Default: 0<br>Duration to draw the various traces that formed a shot.  Set to a negative number to view the current angles without shooting.
@@ -487,38 +463,36 @@ citadel_air_drag_min | sv, cl, rep, cheat | Default: 0.2<br>
 citadel_air_jumps_enabled | devonly, sv, cl, rep | Default: true<br>Enable to disable air jumps
 citadel_aircontrol_speed_fast | sv, cl, rep, cheat | Default: 50<br>
 citadel_aircontrol_speed_slow | sv, cl, rep, cheat | Default: 80<br>
-citadel_airheart_debugdraw | devonly, sv, cl, rep, cheat | Default: -1<br>
-citadel_airheart_freefly | devonly, sv, cl, rep, cheat | Default: false<br>
-citadel_allow_ally_pings | cl, a, release | Default: true<br>
-citadel_allow_ally_text | cl, a, release | Default: true<br>
-citadel_allow_ally_voice | cl, a, release | Default: true<br>
+citadel_allow_ally_pings | cl, a, per_user, release | Default: true<br>
+citadel_allow_ally_text | cl, a, per_user, release | Default: true<br>
+citadel_allow_ally_voice | cl, a, per_user, release | Default: true<br>
 citadel_allow_biased_urn_pickups | devonly, sv, cl, rep | Default: true<br>
 citadel_allow_client_higher_version_for_reconnect | cl, release | Default: true<br>When set to true, the client is allowed to connect so long as the client compat version is higher than the server's
 citadel_allow_duplicate_heroes | sv, cl, rep, release | Default: false<br>If enabled, heroes can be selected by multiple players
 citadel_allow_new_player_flow_finished_override | devonly, cl, a | Default: false<br>citadel_new_player_flow_finished can't be turned off (because of the callback) unless you reset the other new player convars. This allows you to turn it off.
-citadel_allow_opponent_text | cl, a, release | Default: true<br>
-citadel_allow_party_pings | cl, a, release | Default: true<br>
-citadel_allow_party_text | cl, a, release | Default: true<br>
-citadel_allow_party_voice | cl, a, release | Default: true<br>
+citadel_allow_opponent_text | cl, a, per_user, release | Default: true<br>
+citadel_allow_party_pings | cl, a, per_user, release | Default: true<br>
+citadel_allow_party_text | cl, a, per_user, release | Default: true<br>
+citadel_allow_party_voice | cl, a, per_user, release | Default: true<br>
 citadel_allow_pause_in_match | devonly, sv | Default: true<br>Allow players to pause in matchmade games
 citadel_allow_pausing | devonly, sv, cl, rep | Default: true<br>Determines if pausing is enabled. Temporary until we get pausing stable
 citadel_allow_playofthegame | sv, cl, rep, cheat, release | Default: false<br>If enabled, play of the game will happen
 citadel_allow_purchasing_anywhere | sv, cl, rep, cheat | Default: false<br>If enabled, you can purchase upgrades anywhere
-citadel_allow_spectated_pings | cl, a, release | Default: true<br>
-citadel_allow_spectated_text | cl, a, release | Default: true<br>
+citadel_allow_purchasing_corrupted_items_anywhere | sv, cheat | Default: false<br>
+citadel_allow_spectated_pings | cl, a, per_user, release | Default: true<br>
+citadel_allow_spectated_text | cl, a, per_user, release | Default: true<br>
 citadel_allow_team_change_when_assigned | devonly, sv | Default: false<br>
 citadel_always_show_active_hud_stats | cl, a | Default: false<br>
 citadel_always_transmit_abilities | devonly, sv | Default: false<br>Enable to always force transmit ability entities
 citadel_announcement_banned_heroes_display_time | devonly, cl | Default: 10<br>
 citadel_announcement_display_time | devonly, cl | Default: 8<br>
-citadel_announcement_game_over_msg_display_time | devonly, cl | Default: 11<br>
-citadel_arrow_brightness | devonly, cl | Default: 0.6<br>Changes the zipline arrow brightness
 citadel_assume_pawn_control | sv, cheat | Take control of the pawn under the crosshair, or by name if specified
 citadel_auto_highlight_seconds_after | cl, release | Default: 8<br>How many seconds after the highlight event to show when viewing highlights.
 citadel_auto_highlight_seconds_before | cl, release | Default: 20<br>How many seconds before the highlight event to show when viewing highlights.
-citadel_auto_ping_window | devonly, cl | Default: 0.35<br>If the chat wheel is opened and closed within this time, trigger a ping when it's closed.
+citadel_auto_ping_window | devonly, cl | Default: 0.35<br>If the ping button is opened and closed within this time, and no option is selected, chose this.
 citadel_auto_queue_build | cl, a, user | Default: false<br>Automatically queue the selected build at game start
 citadel_autobuy_refund_time | devonly, sv, cl, rep | Default: 12<br>Time Allowed for a full refund when buy anywhere (Auto/Quick Buy) is enabled
+citadel_autoqueue_build_window | devonly, cl | Default: 60<br>
 citadel_averaged_normal_debug_draw | devonly, sv, cl, rep | Default: 0<br>
 citadel_ban_account | cl, release | 
 citadel_ban_account_aim_assist | cl, release | 
@@ -541,18 +515,19 @@ citadel_bebop_beam_point_bias | devonly, sv, cl, rep | Default: 0.8<br>
 citadel_bebop_beam_wiggle_speed | devonly, sv, cl, rep | Default: 1<br>
 citadel_bebop_beam_wiggle_speed_x | devonly, sv, cl, rep | Default: 1<br>
 citadel_bebop_beam_wiggle_speed_x2 | devonly, sv, cl, rep | Default: 1.5<br>
+citadel_body_target_debugdraw | devonly, cl | Default: false<br>Debug draw result of BodyTarget()
 citadel_book_open | cl, release | \[BookID/Book Name\] Opens up the specified book by ID or name
 citadel_book_page_auto_play_delay_s | devonly, cl | Default: 2<br>When a page has no audio queue, this delay will be used before auto play advancing unless it specifies an override value
 citadel_book_page_sound_auto_play_delay_s | devonly, cl | Default: 0.2<br>When a page has an audio queue, this delay will be used before auto play advancing unless it specifies an override value
 citadel_book_reset | devonly, cl | \[BookID=1\] Resets the current book progress
 citadel_book_xp | devonly, cl | &lt;xp&gt; \[BookID=1\] Grants the specified amount of XP to the book
 citadel_boss_glow_disabled | cl, release | Default: false<br>
+citadel_boss_tier2_bull_wip | devonly, sv, cl, rep | Default: false<br>
 citadel_boss_tier2_ping_interval | devonly, sv | Default: 10<br>
-citadel_boss_tier2_use_wip_model | devonly, sv | Default: false<br>
-citadel_boss_tier3_use_wip_model | devonly, sv | Default: false<br>
 citadel_boss_tier_2_schedule_force | devonly, sv | Default: 0<br>
 citadel_boss_tier_3_check_pit_modifier | devonly, sv | Default: true<br>
 citadel_boss_tier_3_damage_reduction_no_troopers | devonly, sv | Default: 0.2<br>
+citadel_boss_tier_3_laser_disable_body_rotation | devonly, sv | Default: false<br>
 citadel_boss_tier_3_sight_range | devonly, sv | Default: 3000<br>
 citadel_boss_tier_3_test_arm_smash | devonly, sv | Default: false<br>
 citadel_boss_tier_3_test_bomb | devonly, sv | Default: false<br>
@@ -584,6 +559,7 @@ citadel_bot_brain_parry_tick_frequency | sv, rep, release | Default: 20<br>
 citadel_bot_brain_stop_shooting_los_time | sv, rep, release | Default: 0.5<br>Amount of time for no Los to stop shooting at enemy
 citadel_bot_broadcast_updates | devonly, sv | Default: false<br>Bots will say updates in all talk
 citadel_bot_buddy | sv, cl, rep, release | Default: <br>List of heroes to choose from that should follow a player around
+citadel_bot_copyrecording | sv, cheat | Copy a bot's recorded commands to the clipboard as a share code (aim at the bot, or the first bot with a recording)
 citadel_bot_crouch | sv, rep, release | Default: false<br>Forces citadel bots to crouch
 citadel_bot_director_base_threat_distance | devonly, sv, rep | Default: 3000<br>Distance from core we consider to be a threat
 citadel_bot_director_debug_spew | devonly, sv | Default: false<br>Enable for Bot Director log messages
@@ -597,28 +573,34 @@ citadel_bot_director_zipline_min | devonly, sv, rep | Default: 0.1<br>Minimum % 
 citadel_bot_director_zipline_stable | devonly, sv, rep | Default: 0.4<br>How much to push out a lane before deprioritizing it
 citadel_bot_disconnect_takeover_enabled | devonly, sv, cl, rep | Default: false<br>
 citadel_bot_force_abandon | devonly, sv | Force bot into the abandon state
-citadel_bot_give_all_abilities | devonly, sv | Gives all bots all abilities.  Use with citadel_bot_use_ability 1-4
+citadel_bot_forward_back | sv, rep, release | Default: false<br>Forces citadel bots to move back and forth
+citadel_bot_give_all_abilities | sv, cheat, release | Gives all bots all abilities.  Use with citadel_bot_use_ability 1-4
 citadel_bot_give_all_abilities_base | devonly, sv | Gives all bots all abilities without perks.  Use with citadel_bot_use_ability 1-4
+citadel_bot_give_all_bots_all_items | devonly, sv | Gives all bots all items. Not limited by slot count (last I checked, this resulted in ~200 items being added to every bot)
 citadel_bot_give_team_gold | sv, cheat | Give all bots on a particular team gold
 citadel_bot_hero_testing_pitch | sv, rep, release | Default: 5<br>Aim Pitch in Hero Testing
 citadel_bot_jump | sv, rep, release | Default: false<br>Forces citadel bots to jump
 citadel_bot_kick | devonly, sv | Kick bot &lt;name&gt;
 citadel_bot_list_ents | sv, cheat | List ent id of all players that are bots in this game
 citadel_bot_list_objectives_ent | sv, cheat | List all entities that are associated with a Citadel Game Objective
+citadel_bot_match_host_locally | cl, release | Default: false<br>Host solo bot matches locally instead of using a valve hosted dedicated server
+citadel_bot_match_host_locally_hide_console | devonly, cl | Default: true<br>Hide the console window of the local bot match server process - set this to false to see/interact with the console
+citadel_bot_match_host_locally_listen_server | cl, release | Default: false<br>When hosting a solo bot match locally, run it on our own listen server rather than in a dedicated server child process
 citadel_bot_match_on_dedicated_server | devonly, cl | Default: true<br>
-citadel_bot_max_path_length | devonly, sv | Default: 2000<br>Max path length for pathing calculations.
 citadel_bot_melee | sv, rep, release | Default: 0<br>Forces citadel bots to melee continuously, 1: light, 2:Heavy
 citadel_bot_mimic_player_pitch | sv, rep, release | Default: true<br>User player's pitch in hero testing
-citadel_bot_move_random | sv, rep, release | Default: false<br>Forces citadel bots to move all around
 citadel_bot_net_worth_max_spawn_time | devonly, sv | Default: 10000<br>
 citadel_bot_override_spawn_time | devonly, sv | Default: -1<br>
 citadel_bot_parry | sv, rep, release | Default: false<br>Forces citadel bots to Parry continuously
 citadel_bot_passive_gold_enabled | devonly, sv | Default: true<br>
+citadel_bot_pasterecording | sv, cheat | Load a bot recording share code from the clipboard. Aim at a bot to load it into that bot as the recorded hero, otherwise a new bot of that hero is spawned
 citadel_bot_playrecording | sv, cheat | Play back commands recorded via 'citadel_bot_record'
 citadel_bot_practice_opponent | sv, rep, release | Default: hero_gigawatt<br>
 citadel_bot_practice_teammate | sv, rep, release | Default: hero_kelvin<br>
 citadel_bot_purchase_random_draft_option | devonly, sv | Makes the bots purchase a random draft option
 citadel_bot_record | sv, rep, release | Default: 0<br>Causes bots to mimic your commands as well as record them to be replayed
+citadel_bot_record_loop | sv, rep, release | Default: false<br>Bot recording playback restarts from the recorded start each time it finishes
+citadel_bot_recordstop | sv, cheat | Stop bot recording and any bot recording playback
 citadel_bot_report_verbose | devonly, sv | Default: false<br>Bot Chat is Verbose (debug)
 citadel_bot_run_dps_test | devonly, sv | Run a gun DPS test and record the results<br>usage: &lt;hero_target&gt;
 citadel_bot_run_mantle_tests | devonly, sv | Causes bots to teleport to bot test nodes and attempt mantling<br>usage: &lt;all \| hero_name&gt;
@@ -635,10 +617,10 @@ citadel_bot_teamsense_pushed_range | devonly, sv, rep | Default: 20<br>Distance(
 citadel_bot_test_disconnect | devonly, sv | Default: false<br>
 citadel_bot_test_mode | sv, rep, release | Default: false<br>Set citadel bots to be and in test mode (default idle)
 citadel_bot_use_ability | sv, rep, release | Default: 0<br>Causes Bot to Constantly use Ability when its available
-citadel_bot_use_ability_once | sv, rep, release | Default: false<br>Set if you only want enemy to use ability once and stop
-citadel_bot_use_ability_rate | sv, rep, release | Default: -1<br>Interval in seconds that the bot attempts to use an ability
+citadel_bot_use_ability_rate | sv, rep, release | Default: 5<br>Interval in seconds that the bot attempts to use an ability
+citadel_bot_use_ability_repeated | sv, rep, release | Default: true<br>Set if you want bot to repeat ability over and over
 citadel_bot_use_item_ability | sv, rep, release | Default: 0<br>Causes Bot to Constantly use Ability when its available
-citadel_bot_zig_zag | sv, rep, release | Default: 0<br>Forces citadel bots to zig-zag side to side if &gt; 0 or back and forth if &lt; 0
+citadel_bot_zig_zag | sv, rep, release | Default: false<br>Forces citadel bots to zig-zag side to side
 citadel_botmatch_tick_rate_override | sv, cl, rep, release | Default: 32<br>
 citadel_bots_go_mid | devonly, sv | Default: false<br>Force bots to path to the origin
 citadel_bounty_allow_melee_autoclaim | sv, cl, rep, cheat | Default: true<br>Whether or not melees autoclaim orbs.
@@ -656,10 +638,15 @@ citadel_brawl_hero_roster_preferred | cl, a, release | Default: <br>A comma sepa
 citadel_brawl_hero_roster_random | cl, a, release | Default: false<br>Is the brawl hero roster set to random
 citadel_breakable_prop_break_airtime | devonly, sv, cl, rep | Default: 0.6<br>
 citadel_breakable_prop_break_velocity | devonly, sv, cl, rep | Default: 400<br>
-citadel_breakable_prop_breakable_enabled | devonly, sv | Default: true<br>
-citadel_breakable_prop_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all breakable_prop camps
+citadel_breakable_prop_breakable_enabled | sv, rep, cheat, release | Default: true<br>
+citadel_breakable_prop_initial_spawn_time_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn time (in seconds) for all breakable_prop camps
+citadel_breakable_prop_reject_cooldown | devonly, sv, cl, rep | Default: 0.75<br>
 citadel_breakable_prop_respawn_spread | devonly, sv, rep | Default: 0.5<br>Spread the respawn of breakables out by this many seconds (perf)
-citadel_breakable_prop_spawn_interval_override | devonly, sv | Default: -1<br>If positive, override initial spawn interval (in seconds) for all breakable_prop camps
+citadel_breakable_prop_spawn_interval_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn interval (in seconds) for all breakable_prop camps
+citadel_build_default_width_per_mod | devonly, cl | Default: 90<br>
+citadel_build_double_row_category_height | devonly, cl | Default: 274<br>
+citadel_build_double_row_count | devonly, cl | Default: 11<br>
+citadel_build_single_row_category_height | devonly, cl | Default: 171<br>
 citadel_build_tag_picker | devonly, cl | &lt;HeroID&gt;
 citadel_bullet_log_entities_hit | devonly, sv, cl, rep | Default: false<br>
 citadel_bullet_obscured_shot_distance | sv, cl, rep, cheat | Default: 256<br>
@@ -676,60 +663,75 @@ citadel_bullet_whiz_side_dot_tolerance | devonly, cl | Default: 0.98<br>
 citadel_buttons_tweak | devonly, cl | Command to tweak level boons.  Pass in scale factor
 citadel_bypass_reconnect_version_check | devonly, cl | Default: false<br>Ignore the compat version check when reconnecting to a server. This generally shouldn't be done as there could be legitimate differences.
 citadel_calc_guided_bot_match_report_card | devonly, sv | Default: true<br>
-citadel_camera_adjust_aim_fov | devonly, cl, cheat | Default: 1<br>0: Use Absolute GunZoom FOV. 1: Relative FOV - Add the difference between old default fov and absolute gun aim.
-citadel_camera_aiming_fov | devonly, cl | Default: 65<br>What aiming FOV is
-citadel_camera_allow_controller_when_controlling_other | cl, cheat | Default: true<br>
 citadel_camera_debug | devonly, cl | Default: 0<br>0: Off. 1: Show Stand-up trace. 2: Show stand up to ideal ParrotPos. 3: Show Parrot Pos to Desired Pos (cyan)
 citadel_camera_dist | devonly, sv, cl, rep | Default: 150<br>
 citadel_camera_draw_clip_sphere | cl, cheat | Default: false<br>
 citadel_camera_draw_vmdl_debug | devonly, cl | Default: false<br>Draw curves
 citadel_camera_fade_ally_tier2_far_dist | devonly, cl | Default: 400<br>At this distance ally tier2's opacity will be at 1
 citadel_camera_fade_entity_speed | devonly, cl | Default: 50<br>How rapidly we fade the character to transparent when using first person mode.
-citadel_camera_fade_other_far_dist | devonly, cl | Default: 100<br>At this distance non-viewed character's opacity will be at 1
-citadel_camera_fade_other_near_dist | devonly, cl | Default: 20<br>At this distance non-viewed character's opacity will be at citadel_camera_fade_other_near_opacity
-citadel_camera_fade_other_near_opacity | devonly, cl | Default: 0.4<br>The opacity of non-viewed character when they are at citadel_camera_fade_near_dist
-citadel_camera_fade_viewed_far_dist | devonly, cl | Default: 50<br>At this distance viewed character's opacity will be at 1
-citadel_camera_fade_viewed_near_dist | devonly, cl | Default: 20<br>At this distance viewed character's opacity will be at citadel_camera_fade_near_opacity
-citadel_camera_fade_viewed_near_opacity | devonly, cl | Default: 0.4<br>The opacity of viewed character when they are at citadel_camera_fade_near_dist
+citadel_camera_fade_other_far_dist | cl, a, release | Default: 100<br>While spectating or watching a replay, at this distance non-viewed character's opacity will be at 1
+citadel_camera_fade_other_near_dist | cl, a, release | Default: 20<br>While spectating or watching a replay, at this distance non-viewed character's opacity will be at citadel_camera_fade_other_near_opacity
+citadel_camera_fade_other_near_opacity | cl, a, release | Default: 0.4<br>While spectating or watching a replay, the opacity of non-viewed character when they are at citadel_camera_fade_other_near_dist
+citadel_camera_fade_viewed_far_dist | cl, a, release | Default: 50<br>While spectating or watching a replay, at this distance viewed character's opacity will be at 1
+citadel_camera_fade_viewed_near_dist | cl, a, release | Default: 20<br>While spectating or watching a replay, at this distance viewed character's opacity will be at citadel_camera_fade_near_opacity
+citadel_camera_fade_viewed_near_opacity | cl, a, release | Default: 0.4<br>While spectating or watching a replay, the opacity of viewed character when they are at citadel_camera_fade_near_dist
 citadel_camera_force_tunnel_alpha | devonly, cl, cheat | Default: -1<br>
 citadel_camera_fov | devonly, sv, cl, rep | Default: 75<br>The field of view angle of the camera.
 citadel_camera_free_roam | devonly, sv, cl, rep | Default: 0<br>Set to 1 to disconnect the camera from the player.  Set to 2 to allow moving the camera around with WASD
 citadel_camera_hard_trace_radius | devonly, sv, cl, rep | Default: 16<br>The radius of the cylinder to trace for hard camera occlusion.
 citadel_camera_height | cl, cheat | Default: 63<br>The look at point of the camera is vertically offset by this distance.
-citadel_camera_height_approach_speed | cl, cheat | Default: 800<br>
-citadel_camera_height_ceiling_distance | devonly, cl | Default: 20<br>
-citadel_camera_height_npc | cl, cheat | Default: 33<br>The look at point of the camera is vertically offset by this distance when viewing NPC units.
-citadel_camera_hero_fov | cl, a | Default: 90<br>The field of view angle of the camera when following a hero.
-citadel_camera_inspect_mode | devonly, sv, cl, rep | Default: 0<br>Set to 1 to allow orbiting the camera around the player.  Set to 2 to lock the camera, but then be able to directly control the player
+citadel_camera_height_approach_speed | cl, cheat | Default: 80<br>
+citadel_camera_hero_fov | cl, a, per_user | Default: 90<br>The field of view angle of the camera when following a hero.
+citadel_camera_hideout_backward_offset_max | devonly, cl | Default: 330<br>
+citadel_camera_hideout_backward_offset_min | devonly, cl | Default: 80<br>
+citadel_camera_hideout_upward_offset_max | devonly, cl | Default: 0<br>
+citadel_camera_hideout_upward_offset_min_frac | devonly, cl | Default: 0.75<br>Set the fraction of the character's pivot height that the fully zoomed in mode lands at. i.e. 0.5 looks at bellybutton, 1.0 at head, 0.0f feet.
+citadel_camera_inspect_mode | sv, cl, rep, cheat, release | Default: 0<br>Set to 1 to allow orbiting the camera around the player.  Set to 2 to lock the camera, but then be able to directly control the player
 citadel_camera_listening_offset | devonly, cl | Default: 0<br>
 citadel_camera_max_transition_distance | devonly, cl | Default: 1500<br>Max distance that the camera will transition to the next target.
-citadel_camera_offset | cl, cheat | Default: -25<br>The look at point of the camera is horizontally offset by this distance.
-citadel_camera_parrot_pov | devonly, cl | Default: false<br>Force the camera to be in parrot POV. Useful for tuning the closest position.
+citadel_camera_offset_shrink_ray_scaler | devonly, cl | Default: 0.5<br>How much to shrink the character's offsets by when they get shrunk.
+citadel_camera_override_ads_fov | cl, a, release | Default: 45<br>Override the base Fov from the player when aiming down sights
+citadel_camera_override_ads_x_offset | cl, a, release | Default: -110<br>Offset in the camera rotation space while aiming down sights: +Forward -Backward
+citadel_camera_override_ads_y_offset | cl, a, release | Default: -34<br>Offset in the camera rotation space while aiming down sights: +Left -Right
+citadel_camera_override_ads_z_offset | cl, a, release | Default: 0<br>Offset in the camera rotation space while aiming down sights: +Up -Down
+citadel_camera_override_fov | cl, a, release | Default: 90<br>Override the base Fov from the player
+citadel_camera_override_pivot_x_offset | cl, a, release | Default: 0<br>Camera Pivot Offset in the hero model space: +Forward -Backward
+citadel_camera_override_pivot_x_offset_crouching | cl, a, release | Default: 0<br>Camera Pivot Offset in the hero model space while crouching: +Forward -Backward
+citadel_camera_override_pivot_y_offset | cl, a, release | Default: 0<br>Camera Pivot Offset in the hero model space: +Left -Right
+citadel_camera_override_pivot_y_offset_crouching | cl, a, release | Default: 0<br>Camera Pivot Offset in the hero model space while crouching: +Left -Right
+citadel_camera_override_pivot_z_offset | cl, a, release | Default: 86<br>Camera Pivot Offset in the hero model space: +Up -Down
+citadel_camera_override_pivot_z_offset_crouching | cl, a, release | Default: 55<br>Camera Pivot Offset in the hero model space while crouching: +Up -Down
+citadel_camera_override_x_offset | cl, a, release | Default: -135<br>Offset in the camera rotation space: +Forward -Backward
+citadel_camera_override_x_worst_case_offset | cl, a, release | Default: -10<br>Offset in the camera rotation space while near walls: +Forward -Backward
+citadel_camera_override_y_offset | cl, a, release | Default: -34<br>Offset in the camera rotation space: +Left -Right
+citadel_camera_override_y_worst_case_offset | cl, a, release | Default: -10<br>Offset in the camera rotation space while near walls: +Left -Right
+citadel_camera_override_z_offset | cl, a, release | Default: 0<br>Offset in the camera rotation space: +Up -Down
+citadel_camera_override_z_worst_case_offset | cl, a, release | Default: 10<br>Offset in the camera rotation space while near walls: +Up -Down
+citadel_camera_overrides_enabled | cl, a, release | Default: false<br>Ignore hero camera offset data and explicitly use citadel_camera_overrides_xxx
 citadel_camera_parrot_pov_radius | devonly, cl | Default: 8.25<br>Radius of the parrot sausage cast
 citadel_camera_parrot_pov_x_offset | devonly, cl | Default: -10<br>X Axis offset from our camera pivot. +Forward and -Back.
 citadel_camera_parrot_pov_y_offset | devonly, cl | Default: -10<br>Y Axis offset from our camera pivot. +Left and -Right.
 citadel_camera_parrot_pov_z_offset | devonly, cl | Default: 10<br>Z Axis offset from our camera pivot. +Up and -Down
-citadel_camera_parrot_smoothing_rate | devonly, cl | Default: 60<br>When the camera stops being clipped, smooth the motion back to the desired resting position.
 citadel_camera_pitch_default | devonly, cl | Default: 20<br>The default camera pitch.
-citadel_camera_pitch_inverted | cl, a | Default: false<br>Set to 1 to have inverted mouse pitch
+citadel_camera_pitch_inverted | cl, a, per_user | Default: false<br>Set to 1 to have inverted mouse pitch
 citadel_camera_pitch_max | devonly, cl | Default: 89<br>The maximum pitch angle allowed on the camera.
 citadel_camera_pitch_min | devonly, cl | Default: -89<br>The minimum pitch angle allowed on the camera.
+citadel_camera_ragdoll_camera_distance | devonly, cl | Default: -300<br>How far forward/back to offset the camera, in camera rotation space, from the camera pivot. -Backwards/+Forwards
+citadel_camera_rig_debug | devonly, cl | Default: 0<br>0: Off. 1: Show all target camera rig poses
 citadel_camera_see_distance_max | devonly, sv, cl, rep | Default: 20000<br>Max Distance the camera can 'see' an entity
 citadel_camera_sensitivity | cl, a | Default: 1<br>Mouse sensitivity for the camera
 citadel_camera_sensitivity_modifier_debug | devonly, cl | Default: 0<br>0: Off 1: Log Sensitivity modifiers from various sources.
-citadel_camera_snapshot | devonly, cl | Default: false<br>Draw a debug display of the camera, then unset.
-citadel_camera_soft_collision | devonly, cl, rep | Default: 2<br>Experimental: Soften the camera to wall collision distance by using the gaussian weight of fibbonnaci cone of line traces. 2: Use soft collision system to inform hole punch.
-citadel_camera_soft_collision_angle | devonly, cl | Default: 75<br>Experimental: Soft camera collision cone arc angle in degrees. Larger cone angle results in earlier softening.
-citadel_camera_soft_collision_avoidance_bias | devonly, cl | Default: 5.75<br>Experimental: Soft camera collision avoidance bias. &gt; 1 pull camera in more aggressively in response to gaussian weighted samples. &lt; 1 Not recommended
+citadel_camera_soft_collision | devonly, cl, rep | Default: 1<br> Soften the camera to wall collision distance by using the gaussian weight of fibbonnaci cone of line traces. 2: Use soft collision system to inform hole punch.
+citadel_camera_soft_collision_angle | devonly, cl | Default: 75<br>Soft camera collision cone arc angle in degrees. Larger cone angle results in earlier softening.
+citadel_camera_soft_collision_avoidance_bias | devonly, cl | Default: 5.75<br>Soft camera collision avoidance bias. &gt; 1 pull camera in more aggressively in response to gaussian weighted samples. &lt; 1 Not recommended
 citadel_camera_soft_collision_debug | devonly, cl | Default: 0<br>Show debug drawing of all soft collision caches each time they're executed.
-citadel_camera_soft_collision_gausian_bias | devonly, cl | Default: 2<br>Experimental: Soft camera collision sample bias. &lt; 1 distance samples at the edge of the cone angle contribute more to the weight. &gt; 1 rely more on the central camera direction's distance sample.
-citadel_camera_soft_collision_max_sensor_range | devonly, cl | Default: 110<br>Experimental: the range of the traces can be constrained to this value if the distance between target camera position and parrot cam position is very large
+citadel_camera_soft_collision_gausian_bias | devonly, cl | Default: 2<br>Soft camera collision sample bias. &lt; 1 distance samples at the edge of the cone angle contribute more to the weight. &gt; 1 rely more on the central camera direction's distance sample.
+citadel_camera_soft_collision_max_sensor_range | devonly, cl | Default: 110<br>The range of the traces can be constrained to this value if the distance between target camera position and parrot cam position is very large
 citadel_camera_soft_collision_multi_thread | devonly, cl | Default: 8<br>Experimental: Use Multithreaded implementation. 0: Use regular style. &gt; 0 number of jobs to chunk the 128 traces into. Power of 2 only, please. 8 is great.
-citadel_camera_soft_collision_xy_scale | devonly, cl | Default: 0.75<br>Experimental: Shrink the length of the traces in the XY axis so that going into doorways is less affected by the soft collision system.
-citadel_camera_spectator_auto_target_view | devonly, cl | Default: true<br>Spectator camera automatically try to match target view after no input for sometime
-citadel_camera_spectator_dist | devonly, cl | Default: 200<br>How far back the spectator camera should be
+citadel_camera_soft_collision_xy_scale | devonly, cl | Default: 0.75<br>Shrink the length of the traces in the XY axis so that going into doorways is less affected by the soft collision system.
+citadel_camera_spectator_auto_target_view | cl, a, release | Default: true<br>Spectator camera automatically try to match target view after no input for sometime
+citadel_camera_spectator_dist | devonly, cl | Default: 250<br>How far back the spectator camera should be
 citadel_camera_spectator_fov | devonly, cl | Default: 90<br>The field of view angle of the camera when a spectator.
-citadel_camera_spectator_pitch | devonly, cl | Default: 15<br>How much to adjust view pitch when spectating a target
 citadel_camera_use_vmdl_far_pose | devonly, cl | Default: true<br>Selectively skip "Far" poses
 citadel_camera_use_vmdl_flatten_horizontal | devonly, cl | Default: true<br>For each camera pose set, use the average of X positions. This is a motion sickness reducing action.
 citadel_camera_use_vmdl_flatten_vertical | devonly, cl | Default: true<br>Zero the relative Z axis of the camera to reduce motion sickness.
@@ -747,10 +749,14 @@ citadel_capsule_movement_ground_box_percentage | devonly, sv, cl, rep | Default:
 citadel_capture_point_enable_fast_capture | sv, cl, rep, cheat | Default: false<br>
 citadel_capture_points_enabled | devonly, sv | Default: false<br>
 citadel_capturepoint_show_event_timer | devonly, sv, cl, rep | Default: false<br>
+citadel_catapult_draw_preview_paths | devonly, cl | Debug draw every catapult's predicted launch path for x seconds (default 5)
 citadel_catapult_on_damage_channel_time | devonly, sv, cl, rep | Default: 1.5<br>
 citadel_catapult_on_damage_disable_time | devonly, sv, cl, rep | Default: 3<br>
+citadel_catapult_respawn_pickup_trails | sv, cheat, release | Re-lays the pickup trail on every catapult that has one, clearing the old pickups first
 citadel_chat_fade_time | devonly, cl | Default: 10<br>
 citadel_chat_fade_time_extension | devonly, cl | Default: 7<br>
+citadel_chat_typing_indicator_fade_time | devonly, cl | Default: 5<br>
+citadel_chat_wheel_fade_out_duration | devonly, cl | Default: 0.35<br>Chat wheel must be propped open so that it can visible fade away while showing the user their selection. This controls that maximum time.
 citadel_cinematic_intro_duration_npc | sv, cheat | Default: 7.5<br>How long is the cinematic intro applied to npcs (shrine/patron)
 citadel_cinematic_intro_duration_player | sv, cheat | Default: 9.5<br>How long is the cinematic intro applied to the player
 citadel_cinematic_intro_enabled | sv, cheat | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
@@ -760,13 +766,36 @@ citadel_clear_killstreak | devonly, sv | citadel_clear_killstreak \[player_slot\
 citadel_client_mm_ignore_engine_version | devonly, cl | Default: false<br>Ignore the engine version number for matchmaking. Useful for testing locally in release.
 citadel_client_solo_mm_keep_alive_check_s | devonly, cl | Default: 45<br>Number of seconds between checking to make sure that the client is still in MM
 citadel_client_status_cycle_delay | devonly, cl | Default: 4<br>
+citadel_combat_log_compress | cl, a, release | Default: true<br>
+citadel_combat_log_enabled_in_lobbies | devonly, sv | Default: false<br>Turn on to enable combat log in matches with GC Lobbies
+citadel_combat_log_max_lines | cl, release | Default: 300<br>
+citadel_combat_log_show_abilities | cl, a, release | Default: false<br>
+citadel_combat_log_show_damage | cl, a, release | Default: true<br>
+citadel_combat_log_show_deaths | cl, a, release | Default: false<br>
+citadel_combat_log_show_healing | cl, a, release | Default: false<br>
+citadel_combat_log_show_health_deltas | cl, a, release | Default: false<br>
+citadel_combat_log_show_hidden_modifiers | cl, a, release | Default: false<br>
+citadel_combat_log_show_items | cl, a, release | Default: false<br>
+citadel_combat_log_show_modifiers | cl, a, release | Default: false<br>
+citadel_combat_log_time_window_seconds | cl, release | Default: 300<br>
+citadel_combat_log_update_interval | cl, cheat | Default: 1<br>
+citadel_combatlog_fight_idle_time | devonly, sv, cl, rep | Default: 5<br>The amount of time needed to determine a fight is over (no one involved in a fight did anything to anyone else involved in the fight).
+citadel_combatlog_file | devonly, cl | Default: <br>A file you want to write combatlog events to as they happen.
+citadel_combatlog_scan | devonly, cl | Scans for fights
+citadel_combatlog_size | devonly, cl | Calculates the total allocations for a combatlog
+citadel_combatlog_size_server | devonly, sv | 
+citadel_combatlog_update | sv | Send combat log to a client
+citadel_combatlog_write_test | devonly, cl | Writes combatlog to disk if you have citadel_combatlog_file set
+citadel_comeback_redirect_fraction | devonly, sv | Default: 0.7<br>Fraction of the comeback souls earned by a player above the enemy team's average net worth that is redirected to the tick gold pool for the two lowest net worth teammates
 citadel_commend_fake_received | cl, release | 
+citadel_commend_notification_anonymous_allies | devonly, cl | Default: false<br>Show ally commends as an anonymous thumbs up instead of the commender's hero and name
+citadel_commend_notification_anonymous_enemies | devonly, cl | Default: false<br>Show enemy commends as an anonymous thumbs up instead of the commender's hero and name
 citadel_commend_player | cl, release | &lt;target account id&gt; \[match id\] \[hero_id\]
+citadel_commend_player_clear | cl, release | Reset the commend notification UI, discarding any commends it has accumulated
 citadel_commend_toast_enemy_seconds | devonly, cl | Default: 3<br>Number of seconds to show enemy commend toasts
 citadel_commend_toast_seconds | devonly, cl | Default: 5<br>Number of seconds to show commend toasts
-citadel_commend_use_toasts | cl, release | Default: true<br>Whether to use commend toasts (older) or the custom commend notification (newer)
+citadel_commend_use_toasts | cl, release | Default: false<br>Whether to use commend toasts (older) or the custom commend notification (newer)
 citadel_complete_new_player | cl, release | \[flag\] Marks the new player state as complete
-citadel_cone_view_alpha | devonly, cl | Default: 80<br>
 citadel_context_profile_page | devonly, cl | Default: true<br>
 citadel_control_point_capture_rate_scale | devonly, sv, cl, rep | Default: 1<br>
 citadel_control_point_decay_delay | devonly, sv, cl, rep | Default: 60<br>
@@ -777,10 +806,21 @@ citadel_convert_deps | devonly, cl | Command to tweak level boons.  Pass in scal
 citadel_convert_particle_cfg | devonly, cl | Convert team_relative_particle_cfg to CitadelTeamRelativeParticleSettings_t
 citadel_convert_tight_camera_settings | devonly, cl | Bake citadel_tightcamera scale onto camera settings
 citadel_cooldown_scaling_vdata_tweak | devonly, cl | Command to tweak all ability cooldowns, including ability upgrades.  Pass in scale factor (with 1.0 being no change), and a min delta.
+citadel_cooldown_scaling_vdata_tweak_ult | devonly, cl | Command to tweak all ultimate ability cooldowns, including ability upgrades.  Pass in scale factor (with 1.0 being no change), and a min delta.
 citadel_coop_sandbox | sv, cl, rep, release | Default: false<br>
 citadel_core_regen | devonly, sv | Default: 50<br>
 citadel_core_regen_pause_on_damage | devonly, sv | Default: 15<br>
 citadel_corner_boost_strength | devonly, sv, cl, rep | Default: 0.6<br>0.0: turn off corner boosts. 1.0: raw corner boost.
+citadel_corrupted_item_bonus_variance_better | sv, cl, rep, cheat | Default: 15<br>Max percent a corrupted item's stat bonuses can roll above their authored values each match.
+citadel_corrupted_item_bonus_variance_worse | sv, cl, rep, cheat | Default: 15<br>Max percent a corrupted item's stat bonuses can roll below their authored values each match.
+citadel_corrupted_item_shop_enabled | sv, cl, rep, cheat | Default: false<br>
+citadel_corrupted_item_shop_num_items | sv, cl, rep, cheat | Default: 1<br>
+citadel_corrupted_item_shop_restock_interval | sv, cl, rep, cheat | Default: 900<br>Seconds between each additional corrupted item allowance after the shop opens. 0 disables restocking.
+citadel_corrupted_item_shop_spawn_time_base | sv, cl, rep, cheat | Default: 1800<br>
+citadel_corrupted_item_shop_spawn_time_variance | sv, cl, rep, cheat | Default: 120<br>Each corrupted shop opening and restock lands a random number of seconds within +/- this of its scheduled time.
+citadel_corrupted_items_force_variance | sv, cl, rep, cheat | Default: false<br>Apply the per-match corrupted item bonus and penalty variance in the sandbox and hideout too, where it is normally disabled.
+citadel_corrupted_penalty_seed | sv, cl, rep, cheat | Default: 0<br>Seed used to roll the corrupted item penalties at match start.  0 rolls a random seed.
+citadel_corrupted_penalty_variance | sv, cl, rep, cheat | Default: 15<br>Percent each corrupted penalty magnitude can roll above or below its authored value each match. Results round away from zero to whole numbers.
 citadel_crate_client_notification_time | devonly, sv, cl, rep | Default: 30<br>
 citadel_crate_delivery_base_payoff | sv, cheat | Default: 0<br>
 citadel_crate_delivery_overtime_bonus | sv, cheat | Default: 50<br>
@@ -791,78 +831,92 @@ citadel_crate_early_to_trooper_spawn_delay |  |
 citadel_crate_respawn_interval | sv, cl, rep, cheat | Default: 300<br>
 citadel_crate_reward_base | sv, cl, rep, cheat | Default: 250<br>
 citadel_crate_reward_time_multiplier | sv, cl, rep, cheat | Default: 70<br>
-citadel_crate_spawn_enabled | devonly, sv, cl, rep | Default: true<br>
+citadel_crate_spawn_enabled | sv, cl, rep, cheat, release | Default: true<br>
 citadel_crate_spawn_initial_delay | sv, cl, rep, cheat | Default: 600<br>
 citadel_create_unit | sv | \[hero_name \| none\] \[team\] - Creates an unit.  Pass 'my_hero' as hero_name to use your current hero
 citadel_crosshair_clip_angle | devonly, cl | Default: 90<br>
 citadel_crosshair_clip_bullet_gap | devonly, cl | Default: 0.5<br>
 citadel_crosshair_clip_offset_angle | devonly, cl | Default: 180<br>
-citadel_crosshair_color_b | cl, a | Default: 255<br>
-citadel_crosshair_color_g | cl, a | Default: 255<br>
-citadel_crosshair_color_r | cl, a | Default: 255<br>
-citadel_crosshair_disable_hero_specific_crosshairs | cl, a | Default: false<br>
-citadel_crosshair_dot_opacity | cl, a | Default: 0.7<br>
-citadel_crosshair_dot_outline_border | cl, a | Default: 2<br>
-citadel_crosshair_dot_outline_gap | cl, a | Default: 0<br>
-citadel_crosshair_dot_outline_opacity | cl, a | Default: 0.7<br>
-citadel_crosshair_dot_size | cl, a | Default: 4<br>
+citadel_crosshair_color_b | devonly, cl, per_user | Default: 255<br>
+citadel_crosshair_color_g | devonly, cl, per_user | Default: 255<br>
+citadel_crosshair_color_r | devonly, cl, per_user | Default: 255<br>
+citadel_crosshair_disable_hero_specific_crosshairs | devonly, cl, per_user | Default: false<br>
+citadel_crosshair_dot_opacity | devonly, cl, per_user | Default: 0.7<br>
+citadel_crosshair_dot_outline_border | devonly, cl, per_user | Default: 2<br>
+citadel_crosshair_dot_outline_gap | devonly, cl, per_user | Default: 0<br>
+citadel_crosshair_dot_outline_opacity | devonly, cl, per_user | Default: 0.7<br>
+citadel_crosshair_dot_size | devonly, cl, per_user | Default: 4<br>
+citadel_crosshair_enable_clip_status | cl, release | Default: false<br>
 citadel_crosshair_hit_marker_duration | cl, a | Default: 0.1<br>
 citadel_crosshair_out_of_range_dist | devonly, sv, cl, rep | Default: 50<br>
-citadel_crosshair_outline_color_b | cl, a | Default: 0<br>
-citadel_crosshair_outline_color_g | cl, a | Default: 0<br>
-citadel_crosshair_outline_color_r | cl, a | Default: 0<br>
-citadel_crosshair_pip_gap | cl, a | Default: 4<br>
-citadel_crosshair_pip_gap_static | cl, a | Default: false<br>
-citadel_crosshair_pip_height | cl, a | Default: 16<br>
-citadel_crosshair_pip_opacity | cl, a | Default: 0.5<br>
-citadel_crosshair_pip_outline_border | cl, a | Default: 1<br>
-citadel_crosshair_pip_outline_gap | cl, a | Default: 0<br>
-citadel_crosshair_pip_outline_opacity | cl, a | Default: 0.7<br>
-citadel_crosshair_pip_width | cl, a | Default: 2<br>
+citadel_crosshair_outline_color_b | devonly, cl, per_user | Default: 0<br>
+citadel_crosshair_outline_color_g | devonly, cl, per_user | Default: 0<br>
+citadel_crosshair_outline_color_r | devonly, cl, per_user | Default: 0<br>
+citadel_crosshair_pip_gap | devonly, cl, per_user | Default: 4<br>
+citadel_crosshair_pip_gap_static | devonly, cl, per_user | Default: false<br>
+citadel_crosshair_pip_height | devonly, cl, per_user | Default: 16<br>
+citadel_crosshair_pip_opacity | devonly, cl, per_user | Default: 0.5<br>
+citadel_crosshair_pip_outline_border | devonly, cl, per_user | Default: 1<br>
+citadel_crosshair_pip_outline_gap | devonly, cl, per_user | Default: 0<br>
+citadel_crosshair_pip_outline_opacity | devonly, cl, per_user | Default: 0.7<br>
+citadel_crosshair_pip_width | devonly, cl, per_user | Default: 2<br>
+citadel_custom_ui_colors | cl, a, per_user | Default: false<br>Enable colorblind-friendly colors and the player's custom UI colors.
 citadel_damage_indicator_enemy_display_time | devonly, cl | Default: 2<br>
 citadel_damage_indicator_height | devonly, cl | Default: 120<br>
 citadel_damage_indicator_radius | devonly, cl | Default: 300<br>
 citadel_damage_indicator_width | devonly, cl | Default: 120<br>
 citadel_damage_offscreen_indicator_disabled | cl, release | Default: true<br>
-citadel_damage_pipeline | devonly, sv | Default: 2<br>
 citadel_damage_radar_enemy_display_time | devonly, cl | Default: 2<br>
 citadel_damage_report_enable | devonly, cl | Default: true<br>If enabled, show damage report
+citadel_damage_report_ignore_neutral_subclass | devonly, cl | Default: 1<br>Treat all neutral damage as one attacker class bucket
+citadel_damage_report_ignore_trooper_subclass | devonly, cl | Default: 0<br>Treat all trooper damage as one attacker class bucket
 citadel_damage_report_show_adjusted_percent_min | devonly, cl | Default: 3<br>Hide buffed/resisted damage if it's below this percentage of change
 citadel_damage_report_show_always | devonly, cl, a | Default: false<br>If enabled, always show damage report, not just on alt.
 citadel_damage_summary_max_entries | devonly, cl | Default: 8<br>
 citadel_damage_summary_show_time | devonly, cl | Default: 12<br>
-citadel_damage_text_batching_window_ability | devonly, cl | Default: 1.05<br>When ability damage events are within this amount of time of each other, they will be added together into a single entry.
-citadel_damage_text_batching_window_bullet | devonly, cl | Default: 1.5<br>When bullet damage events are within this amount of time of each other, they will be added together into a single entry.
 citadel_damage_text_batching_window_cumulative | devonly, cl | Default: 1.5<br>When cumulative damage events are within this amount of time of each other, they will be added together into a single entry.
-citadel_damage_text_batching_window_pure | devonly, cl | Default: 1.05<br>When pure damage events are within this amount of time of each other, they will be added together into a single entry.
+citadel_damage_text_batching_window_individual | devonly, cl | Default: 0<br>When individual damage events are within this amount of time of each other, they will be added together into a single entry.
+citadel_damage_text_batching_window_individual_heal | devonly, cl | Default: 0.1<br>When individual healing events are within this amount of time of each other, they will be added together into a single entry.
+citadel_damage_text_cumulative_final_delay | devonly, cl | Default: 0.75<br>In cumulative mode 2, how long a victim must go without taking damage before the total is shown.
+citadel_damage_text_cumulative_final_lifetime | devonly, cl | Default: 3<br>In cumulative mode 2, how long the total lives once shown.
+citadel_damage_text_cumulative_mode | cl, a, user | Default: 0<br>0 = off, 1 = show a running total as damage is dealt, 2 = show the total once damage stops
+citadel_damage_text_cumulative_offset | devonly, cl | Default: 10 25 0<br>
 citadel_damage_text_distance_far | devonly, cl | Default: 4000<br>Far distances at which we use far offsets for damage numbers
 citadel_damage_text_distance_near | devonly, cl | Default: 100<br>Near distance at which we use the near offsets for damage numbers
+citadel_damage_text_dynamic_emphasis | devonly, cl | Default: true<br>Dynamically emphasize damage number over a certain percent of the targets max health. See citadel_damage_text_dynamic_emphasis_percent
+citadel_damage_text_dynamic_emphasis_percent | devonly, cl | Default: 0.25<br>Percent of the victims max health the damage needs to be, for it to be dynamically emphasized.
+citadel_damage_text_follow_healthbar_pos | devonly, cl | Default: true<br>Damage text follows the victim's healthbar position (only works on V2 healthbars)
+citadel_damage_text_follow_victim_pos | devonly, cl | Default: true<br>Damage text follows victim's position
+citadel_damage_text_healing_offset_x | devonly, cl | Default: 0<br>
+citadel_damage_text_healing_offset_y | devonly, cl | Default: -30<br>
 citadel_damage_text_height_offset_far | devonly, cl | Default: 200<br>How much to offset damage numbers above when far from the camera
 citadel_damage_text_height_offset_near | devonly, cl | Default: 130<br>How much to offset damage numbers above when near from the camera
-citadel_damage_text_lifetime | devonly, cl | Default: 1.5<br>How long do numbers live.
+citadel_damage_text_ignore_left_offset_on_heroes | devonly, cl | Default: true<br>Ignore the left offset on hero damage numbers (it mostly points the wrong way)
 citadel_damage_text_lifetime_new | devonly, cl | Default: 1.5<br>How long do accumulated numbers live.
-citadel_damage_text_new_ability_offset_x | devonly, cl | Default: -20<br>
-citadel_damage_text_new_ability_offset_y | devonly, cl | Default: -25<br>
-citadel_damage_text_new_bullet_offset_x | devonly, cl | Default: 35<br>
-citadel_damage_text_new_bullet_offset_y | devonly, cl | Default: -25<br>
+citadel_damage_text_new_ability_offset_x | devonly, cl | Default: 20<br>
+citadel_damage_text_new_ability_offset_y | devonly, cl | Default: -10<br>
+citadel_damage_text_new_bullet_offset_x | devonly, cl | Default: 30<br>
+citadel_damage_text_new_bullet_offset_y | devonly, cl | Default: 10<br>
 citadel_damage_text_new_melee_offset_x | devonly, cl | Default: 20<br>
-citadel_damage_text_new_melee_offset_y | devonly, cl | Default: -60<br>
-citadel_damage_text_new_pure_offset_x | devonly, cl | Default: -20<br>
-citadel_damage_text_new_pure_offset_y | devonly, cl | Default: -60<br>
-citadel_damage_text_new_x_offset | devonly, cl | Default: 15<br>How much to offset damage numbers left
-citadel_damage_text_show_effectiveness | devonly, cl | Default: false<br>Show the damage effectiveness on every damage number
+citadel_damage_text_new_melee_offset_y | devonly, cl | Default: 30<br>
+citadel_damage_text_new_pure_offset_x | devonly, cl | Default: 25<br>
+citadel_damage_text_new_pure_offset_y | devonly, cl | Default: 0<br>
+citadel_damage_text_show_effectiveness | cl, cheat | Default: false<br>Show the damage effectiveness on every damage number
+citadel_damage_text_show_unit_health | devonly, cl | Default: false<br>Show remaining unit health as the large (cumulative) number rather than the damage being done
 citadel_damage_text_spacing | devonly, cl | Default: 20<br>Spacing between floating damage numbers.
 citadel_damage_text_x_offset_far | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when far from the camera
 citadel_damage_text_x_offset_near | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when near the camera
-citadel_dead_zone_radius | devonly, cl | Default: 0.05<br>
-citadel_dead_zone_radius_instant_wheel | devonly, cl | Default: 0.1<br>
+citadel_dead_zone_radius | devonly, cl | Default: 0.075<br>
 citadel_death_linger_time | devonly, sv | Default: 3<br>How logn does the player icon linger on the minimap after they die
+citadel_death_ragdoll_duration | devonly, cl | Default: 5<br>How long a dead hero's ragdoll exists for before it despawns. Can outlive the death camera ( citadel_death_return_to_spawn_delay ) so that other players still see the body.
 citadel_death_replay_enabled | sv, cl, rep, release | Default: false<br>
 citadel_death_replay_post_death_time | devonly, sv, cl, rep | Default: 2<br>
 citadel_death_replay_pre_death_time | devonly, sv, cl, rep | Default: 12<br>
 citadel_death_replay_pre_death_time_quick | devonly, sv, cl, rep | Default: 8<br>
+citadel_death_return_to_spawn_delay | devonly, sv, cl, rep | Default: 4<br>How long after dying we are moved back to our spawn point, which is also how long the death camera watches our ragdoll and our killer for.
 citadel_debug_ability_beams | devonly, sv, cl, rep | Default: false<br>
 citadel_debug_barrier_damage_order | devonly, sv, cl, rep | Default: false<br>
+citadel_debug_current_nav_area_cache | devonly, sv | Default: false<br>
 citadel_debug_draw_bullet_time_warps | devonly, sv | Default: false<br>Draw debug overlays for active bullet time warp volumes
 citadel_debug_draw_hero_position_on_screen | devonly, cl | Default: false<br>
 citadel_debug_draw_move_down_ziplines | devonly, cl | Default: false<br>
@@ -871,16 +925,17 @@ citadel_debug_draw_move_down_ziplines_speed | devonly, cl | Default: 50<br>
 citadel_debug_draw_move_down_ziplines_starting_node_offset | devonly, cl | Default: 0<br>
 citadel_debug_draw_projectile_touch_volumes | devonly, sv, cl, rep | Default: false<br>Draw debug overlays for projectile touch volumes
 citadel_debug_ent_los | sv, cl, rep, cheat | Default: false<br>Debug : Draw Spheres on Ent Being Los Tested
+citadel_debug_equip_econ_item | devonly, cl | Equip an econ item &lt;item_id&gt; &lt;hero_id&gt; &lt;slot_id&gt;
 citadel_debug_find_ability_units_draw_all | devonly, sv, cl, rep, cheat | Default: false<br>When true, all FindUnits calls will be drawn
 citadel_debug_find_ability_units_duration | devonly, sv, cl, rep, cheat | Default: 0<br>Duration to display debug draw for FindAbilityUnits functions
 citadel_debug_find_ability_units_filter | devonly, sv, cl, rep, cheat | Default: <br>Filter ability name to debug FindAbilityUnits functions
-citadel_debug_force_property_value_context | devonly, sv, cl, rep | Default: -1<br>Force ability property value context. -1: No override, 0: MainLock, 1:StreetBrawl
+citadel_debug_force_property_value_context | sv, cl, rep, cheat | Default: -1<br>Force ability property value context. -1: No override, 0: MainLock, 1:StreetBrawl
 citadel_debug_glyph_paths | devonly, cl | Default: false<br>
 citadel_debug_minimap_height | devonly, sv | Default: false<br>
 citadel_debug_neutral_spawn_times | devonly, sv | Default: false<br>Outputs timings of neutral camp spawns.
 citadel_debug_pathing | devonly, sv | Default: false<br>Draw NPC pathing errors
+citadel_debug_phys_force | devonly, sv | Default: false<br>
 citadel_debug_player_speed_in_meters | devonly, sv, cl, rep | Default: true<br>Citadel/Player Speed/Speed in meters
-citadel_debug_trooper_look_target | sv, cheat | Default: false<br>
 citadel_debug_zipline_camera_height_add | sv, cl, rep, cheat | Default: 0<br>Add to zipline camera height offset
 citadel_debug_zipline_camera_side_add | sv, cl, rep, cheat | Default: 0<br>Add to zipline camera side offset
 citadel_decrease_replay_speed | cl, release | Decrease the Replay speed while watching a replay
@@ -895,12 +950,13 @@ citadel_deny_denier_percentage | devonly, sv | Default: 1<br>
 citadel_deny_orb_scale | devonly, sv, cl, rep | Default: 1<br>
 citadel_deny_text_height_offset | devonly, cl | Default: 35<br>How much higher should deny text show up.
 citadel_deny_text_max_distance | cl, a | Default: 4000<br>How far away before we stop showing in world deny events.
-citadel_deployment_max_height_offset_down | devonly, sv, cl, rep | Default: 1000<br>
+citadel_deployment_max_height_offset_down | devonly, sv, cl, rep | Default: 1500<br>
 citadel_deployment_max_height_offset_up | devonly, sv, cl, rep | Default: 125<br>
 citadel_destroy_all_bosses | devonly, sv | Kills all the guardians
 citadel_destroy_all_npcs | devonly, sv | Kills all bosses and troopers in the map
 citadel_destroyable_building_damage_scale | devonly, sv | Default: 1<br>
-citadel_dev_always_lethal_damage | devonly, sv, cl, rep | Default: false<br>
+citadel_detail_sticky_tooltips | devonly, cl | Default: false<br>
+citadel_dev_always_lethal_damage | devonly, sv, rep | Default: false<br>
 citadel_dev_book_force_unlocked | devonly, cl | Default: false<br>
 citadel_dev_boss_backdoor_protection_disabled | devonly, sv, cl, rep, cheat | Default: false<br>Set to Disable Backdoor Protection for Bosses
 citadel_dev_discord_link | devonly, cl | Default: false<br>
@@ -911,14 +967,9 @@ citadel_dev_test_end_game_gold | devonly, sv | Default: 20000<br>
 citadel_dev_test_endgame | cl, cheat, release | Set the Map to test End game content
 citadel_dev_test_endgame_server_cmd | sv, cheat, release | Set the Map to test End game content
 citadel_digger_debugburrow | devonly, sv | Default: false<br>
-citadel_disable_check_on_ground | sv, cheat | Default: false<br>Don't run CheckOnGround ever. Do we even need it?
 citadel_disable_duplicate_heroes | sv, cheat, release | Disable usage of Duplicate Heroes
-citadel_disable_fast_cooldowns | sv, cheat | Disable fast cooldowns
-citadel_disable_fast_stamina | sv, cheat | Disable fast stamina
-citadel_disable_no_hero_death | sv, cheat | Make heroes able to die
 citadel_disable_purchasing_in_combat | devonly, sv, cl, rep | Default: false<br>Disable purchasing if you deal or take damage from an enemy player.
 citadel_disable_quick_response | devonly, cl | Default: true<br>Turns quick response to ping messages off.
-citadel_disable_unlimited_ammo | sv, cheat | Disable unlimited ammo
 citadel_display_new_player_recommendations | cl, release | Default: true<br>Do we want to show the decorations for new player friendly heroes?
 citadel_distance_mouse_move_for_minimap_drawing | cl, release | Default: 15<br>
 citadel_doorway_debug_draw | sv, cl, rep, cheat | Default: 0<br>
@@ -926,45 +977,52 @@ citadel_doorway_glow_close_distance | sv, cl, rep, cheat | Default: 200<br>
 citadel_doorway_glow_other_distance | sv, cl, rep, cheat | Default: 1000<br>
 citadel_doorway_infinite_duration | sv, cl, rep, cheat | Default: false<br>
 citadel_doorway_portal_forward_offset | sv, cl, rep, cheat | Default: -3<br>
-citadel_dps_multiplier | sv, cl, rep, cheat | Default: 1<br>Increase weapon damage for testing
+citadel_dps_multiplier | sv, rep, cheat | Default: 1<br>Increase weapon damage for testing
 citadel_draw_bot_enemy | devonly, sv | Default: false<br>Draw line to target enemy
 citadel_draw_bot_follow_target | devonly, sv | Default: false<br>Draw bot follow target
 citadel_draw_bot_full_path | devonly, sv | Default: false<br>Draw bot pathing
 citadel_draw_bot_safety | devonly, sv | Default: false<br>Draw bot pathing goal / chosen enemy
-citadel_draw_cover_points | devonly, sv | visualizes all the trooper cover points
 citadel_draw_debug_guide_only | devonly, sv | Default: false<br>Debug drawing for bot only applies to guide bots
 citadel_draw_distant_trooper_nodes | devonly, sv | Default: false<br>
-citadel_draw_lanes | devonly, sv | Default: false<br>
-citadel_draw_lanes_filter | devonly, sv | Default: 0<br>If sets filters to drawing to a specific lane
 citadel_draw_trooper_lanes | devonly, sv | Default: false<br>
 citadel_draw_trooper_path | devonly, sv | Draws a path between two coordinates
 citadel_druid_debug_bush_network | devonly, sv, cl, rep | Default: false<br>
 citadel_duck_spam_slow_penalty_duration | devonly, sv, cl, rep | Default: 0.5<br>How long the slow penalty is for spamming duck is
 citadel_dump_build_tags | devonly, cl | dump all build tag tokens
 citadel_dump_bullets | devonly, sv | dump all bullet info to the console
+citadel_dump_corrupted_overrides | sv, release | Dumps every corrupted item's penalty exclusions, fixed bonuses and integer-rounded bonuses
+citadel_dump_corrupted_penalties | devonly, sv | Dumps the corrupted item penalty rolled for every corruptible item this match
 citadel_dump_deleted_entity_counts | devonly, cl | Displays counts of which kinds of entities have been deleted since map started
 citadel_dump_game_state | devonly, sv | Dumps current state of the game and all players
 citadel_dump_items_with_component | devonly, cl | Dump to Console All items with components and their components
 citadel_dump_keybindings | devonly, cl | Default: false<br>
 citadel_dump_player_stats | devonly, cl | Dump stat component values for local player
 citadel_dump_rank_data | devonly, cl | Request rank confidence score from GC.
+citadel_enable_chat_rate_limiting | devonly, sv | Default: true<br>
 citadel_enable_double_ping | devonly, cl | Default: true<br>Turns off the ability to have aggressive and passive pings.
 citadel_enable_duplicate_heroes | sv, cheat, release | Enable usage of Duplicate Heroes
-citadel_enable_fast_cooldowns | sv, cheat | Enables fast cooldowns
-citadel_enable_fast_stamina | sv, cheat | Enables fast stamina
 citadel_enable_nearby_capture_point | sv, cheat, release | Enables the first capture point found within 20m
 citadel_enable_new_ping_particle | devonly, cl | Default: false<br>Convar to test new ping particle
-citadel_enable_no_hero_death | sv, cheat | Make heroes unable to die
 citadel_enable_parties | devonly, cl | Default: true<br>Enable client side party UI
-citadel_enable_ping_rate_limiting | devonly, sv | Default: false<br>
+citadel_enable_ping_rate_limiting | devonly, sv | Default: true<br>
+citadel_enable_slows_affect_air_drag | sv, cl, rep, cheat, release | Default: true<br>Whether slows affect air drag
 citadel_enable_survey | devonly, cl | Default: true<br>Kill switch in case we want to make sure the survey isn't shown, or temporarily disable it
-citadel_enable_unlimited_ammo | sv, cheat | Enables unlimited ammo
 citadel_enable_vdata_sound_preload | devonly, cl | Default: true<br>
 citadel_end_of_match_additional_delay_s | devonly, sv, rep | Default: 10<br>How long in addition to the tv_delay do we wait at the end of the match before going to the score screen in seconds
 citadel_enemy_consume_stamina_notification_range_close | devonly, sv, cl, rep | Default: 10<br>If an enemy is this close, then we send a stamina consume usermessage to enemies.
 citadel_enemy_consume_stamina_notification_range_far | devonly, sv, cl, rep | Default: 100<br>If an enemy is this far, then we never send a stamina consume usermessage to enemies.
-citadel_english_hero_names | cl, a | Default: false<br>
-citadel_english_mod_names | cl, a | Default: false<br>
+citadel_enemy_damage_delta_color_b | cl, a, per_user | Default: 91<br>Blue channel of the color used for the part of an enemy health bar just lost to damage.
+citadel_enemy_damage_delta_color_g | cl, a, per_user | Default: 229<br>Green channel of the color used for the part of an enemy health bar just lost to damage.
+citadel_enemy_damage_delta_color_r | cl, a, per_user | Default: 255<br>Red channel of the color used for the part of an enemy health bar just lost to damage.
+citadel_enemy_ui_color_b | cl, a, per_user | Default: 50<br>Blue channel of the color used for enemy health bars and other enemy indicators in the UI.
+citadel_enemy_ui_color_g | cl, a, per_user | Default: 50<br>Green channel of the color used for enemy health bars and other enemy indicators in the UI.
+citadel_enemy_ui_color_r | cl, a, per_user | Default: 215<br>Red channel of the color used for enemy health bars and other enemy indicators in the UI.
+citadel_enemy_visible_upon_reveal_duration | devonly, cl | Default: 0.7<br>How long an enemy appears through walls (outline or ui icon) after taking damage. Must also have fog of war visibility.
+citadel_enemy_zipline_color_b | cl, a, per_user | Default: 38<br>Blue channel of the color used for enemy ziplines and enemy objectives on the minimap.
+citadel_enemy_zipline_color_g | cl, a, per_user | Default: 55<br>Green channel of the color used for enemy ziplines and enemy objectives on the minimap.
+citadel_enemy_zipline_color_r | cl, a, per_user | Default: 140<br>Red channel of the color used for enemy ziplines and enemy objectives on the minimap.
+citadel_english_hero_names | cl, a, per_user | Default: false<br>
+citadel_english_mod_names | cl, a, per_user | Default: false<br>
 citadel_entity_ping_duration | sv, cheat | Default: 6<br>
 citadel_event_collection_delay_s | devonly, cl | Default: 1<br>Number of seconds to buffer events before an initial send
 citadel_event_collection_retry_s | devonly, cl | Default: 1<br>Number of seconds to wait for a retry of events
@@ -1007,6 +1065,7 @@ citadel_familiar_infiniteattach | devonly, sv, cl, rep, cheat | Default: false<b
 citadel_familiar_sprites_debug | devonly, sv | Default: false<br>
 citadel_familiar_sprites_debug_spam | devonly, sv | Default: false<br>
 citadel_familiar_sprites_stuck_detection_duration | devonly, sv | Default: 0.2<br>
+citadel_fear_debug | devonly, sv, cl, rep | Default: false<br>Visualize where a feared victim decides to run.
 citadel_fencer_lunge_debug_draw | devonly, cl | Default: false<br>
 citadel_fencer_max_charge_unlag_players | devonly, sv | Default: 0.12<br>
 citadel_fetch_cheat_reports | cl, release | Request accounts recently reported for cheating
@@ -1022,9 +1081,11 @@ citadel_fissure_forward_trace_distance | devonly, sv, cl, rep | Default: 75<br>
 citadel_fissure_hit_debug | devonly, sv, cl, rep | Default: 0<br>
 citadel_fissure_max_offset_down | devonly, sv, cl, rep | Default: -2000<br>
 citadel_fissure_max_offset_up | devonly, sv, cl, rep | Default: 150<br>
+citadel_flame_graph_request | sv, cheat, release | Request a flame graph dump
 citadel_fly_accelerate | sv, cl, rep, cheat | Default: 2<br>
 citadel_force_assigned_lane | devonly, sv | Default: 0<br>forces the local player to be assigned to the specified lane #
-citadel_force_koth_spawn | devonly, sv | Force Spawning Koth Capture point with Warning
+citadel_force_kill | sv, cheat, release | Kill every unit of one type: troopers, neutrals, breakables, healing_snacks, guardians, walkers, base_guardians, shrines
+citadel_force_koth_spawn | sv, cheat, release | Force Spawning Koth Capture point with Warning
 citadel_force_on_upgrade_for_all_abilities | devonly, sv | Force all abilities to call OnUpgrade()
 citadel_force_playofthegame | devonly, sv | Force begin play of the game
 citadel_force_resolution | devonly, cl | Force a resolution change even if it's not supported on your monitor. \[h\] \[w\] \[refresh rate\]
@@ -1032,17 +1093,17 @@ citadel_force_spawn_idol | sv, cheat, release | Force idol spawn
 citadel_force_strict_abandon_rules | devonly, sv, cl, rep | Default: false<br>Enforce strict matchmaking style abandon rules even in practice/bot matches (useful for testing)
 citadel_force_subnav_options | devonly, cl | Default: false<br>
 citadel_force_unpause_cooldown | devonly, sv | Default: false<br>Force unpause cooldown if you're the pauser as if you weren't the pauser.
-citadel_forced_hero_model | devonly, sv, cheat | Default: <br>Forces all heroes to use this model
-citadel_forge_sentry_gold_reward | devonly, sv | Default: 40<br>
-citadel_forge_sentry_gold_reward_bonus_per_minute | devonly, sv | Default: 4<br>
+citadel_forge_sentry_gold_reward | devonly, sv, cl, rep | Default: 40<br>
+citadel_forge_sentry_gold_reward_bonus_per_minute | devonly, sv, cl, rep | Default: 4<br>
 citadel_fow_player_range | devonly, sv, rep | Default: 2500<br>Player Fow Vision Range
 citadel_gamemode_streetbrawl_enabled | sv, cl, rep, release | Default: false<br>
 citadel_generator_minimap_icon_radius | devonly, cl | Default: 24<br>
 citadel_get_rp | devonly, cl | Retrieves the rich presence of the user (leave blank for local or specify user with SteamID.Render() format).
 citadel_gg_call_time | devonly, sv, cl, rep | Default: 10<br>
-citadel_give_gold | sv, cheat | &lt;gold&gt; Give gold value to all players
+citadel_give_gold | sv, cheat | &lt;gold&gt; \[unsecure=0\|1\] Give gold value to all players
+citadel_give_permanent_buffs | sv, cheat, release | Gives you N random breakable permanent buffs at once, the same way a Sinner's Sacrifice jackpot does. Usage: citadel_give_permanent_buffs &lt;count&gt;
 citadel_give_player_gold | sv, cheat | &lt;player name&gt; &lt;gold&gt; Gives the specified player gold
-citadel_gold_bonus_scale_for_familiar_infest | devonly, sv | Default: 1.2<br>
+citadel_gold_bonus_scale_for_familiar_infest | devonly, sv, cl, rep | Default: 1.2<br>
 citadel_gold_flash_max_duration | devonly, cl | Default: 0.8<br>
 citadel_gold_flash_max_threshold | devonly, cl | Default: 500<br>
 citadel_gold_flash_med_threshold | devonly, cl | Default: 100<br>
@@ -1052,7 +1113,6 @@ citadel_gold_text_height_offset | devonly, cl | Default: 35<br>How much higher s
 citadel_golden_idol_balance_threshold | devonly, sv, cl, rep | Default: 0.9<br>
 citadel_golden_idol_balance_threshold_first_spawn | devonly, sv, cl, rep | Default: 0.85<br>
 citadel_grant_dev_account | devonly, cl | &lt;Account ID&gt; \[0/1\] Grants or removes dev access to an account
-citadel_gravity_scaling_experiment | sv, cl, rep, cheat | Default: false<br>Increase gravity for players while they are moving at pedestrian speeds (lateral speeds below 300, up to 500)
 citadel_guide_bot_say | devonly, sv | &lt;line&gt; makes the guide bot say the specified line
 citadel_guided_bot_ap_boost | devonly, sv | Default: 10<br>
 citadel_guided_bot_match_countdown_time | devonly, sv | Default: 10<br>
@@ -1064,32 +1124,41 @@ citadel_guided_bot_t1_boss_ignore_damage_threshold | sv, rep, release | Default:
 citadel_gun_boon_growth_vdata_tweak | devonly, cl | Command to tweak boon gun damage growth. <br>** Usage<br>- arg1 - Scale Value 1.0 being no change.
 citadel_gun_iron_sights_threshold | devonly, sv, cl, rep | Default: 0.9<br>When iron sights amount is greater than this value, we are considered in iron sights mode.
 citadel_gun_max_spread_penalty | sv, cl, rep, cheat | Default: 5<br>Max spread penalty you can incur from taking damage
-citadel_healthbars_enabled | cl, release | Default: true<br>
+citadel_heal_target | sv, cheat, release | Restore the unit under your crosshair to full health
+citadel_hero_builds_confirm_discard_edits | cl, a, release | Default: true<br>Prompt for confirmation before discarding unsaved hero build edits.
 citadel_hero_builds_universe | cl, a, release | Default: <br>
 citadel_hero_card_fake_party_member_count | devonly, cl | Default: -1<br>
 citadel_hero_challenge_status_fake_data | devonly, cl | Default: false<br>Shows fake data for hero challenge status
-citadel_hero_demo_enable_fast_stamina | sv, cl, a, rep, release | Default: false<br>Do we enable fast stamina cooldowns
-citadel_hero_demo_enable_unlimited_ammo | sv, cl, a, rep, release | Default: false<br>Do we enable unlimited ammo
 citadel_hero_demo_hero_spawn | sv, cl, a, rep, release | Default: hero_inferno<br>Which hero do we spawn when we spawn and enemy or ally hero
-citadel_hero_demo_infinite_resources | sv, cl, a, rep, release | Default: true<br>Do we start our hero demo with infinite resources
-citadel_hero_demo_no_cooldowns | sv, cl, a, rep, release | Default: false<br>Do we start withough cooldowns when launching the hero demo map
-citadel_hero_demo_no_death | sv, cl, a, rep, release | Default: false<br>Do we start withough death when launching the hero demo map
 citadel_hero_demo_no_troopers | sv, cl, a, rep, release | Default: false<br>Do we start withough troopers when launching the hero demo map
-citadel_hero_demo_persist_convars | sv, cl, a, rep, release | Default: false<br>Do we persist convars between sessions in hero demo
 citadel_hero_demo_spawn_items | sv, cl, rep, cheat, release | Default: <br>Items to give a hero post spawn
-citadel_hero_demo_unlock_flex_slots | sv, cl, a, rep, release | Default: false<br>Do we start flex slots unlocked
+citadel_hero_demo_unlock_flex_slots |  | 
+citadel_hero_distance_guides | cl, a, release | Default: false<br>Turn on guides (only when testing menu visible)
+citadel_hero_falloff_guides | cl, a, release | Default: false<br>Turn on gun damage falloff guides (only when testing menu visible)
 citadel_hero_lock_all | devonly, cl | Relocks all heroes for this account
 citadel_hero_release_vote_august_2025_debug_votes_cast_total | devonly, sv | Default: -1<br>
+citadel_hero_release_vote_clear_all_submitted | devonly, cl | 
+citadel_hero_release_vote_clear_submitted | devonly, cl | 
 citadel_hero_release_vote_debug_remaining_votes | devonly, cl | Default: -1<br>
-citadel_hero_roster | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently selected roster heroes
-citadel_hero_roster_banned | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently banned roster heroes
-citadel_hero_roster_high_priority | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority roster heroes
-citadel_hero_roster_preferred | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred roster heroes
-citadel_hero_roster_random | cl, a, release | Default: false<br>Is the hero roster set to random
+citadel_hero_release_vote_fake_received | devonly, cl | \[count\] \[delay seconds\] \[delay random extra seconds\]
+citadel_hero_release_vote_force_enabled | devonly, sv | Default: false<br>Always show the hero release vote, even if it'd be disabled in this type of game mode
+citadel_hero_release_vote_keep_visible | devonly, sv, cl, rep | Default: false<br>Keep the hero release vote terminal and ui visible even after the time it would normally disappear
+citadel_hero_roster | cl, a, per_user, release | Default: <br>A comma separated list of hero IDs that hold the currently selected roster heroes
+citadel_hero_roster_banned | cl, a, per_user, release | Default: <br>A comma separated list of hero IDs that hold the currently banned roster heroes
+citadel_hero_roster_high_priority | cl, a, per_user, release | Default: <br>A comma separated list of hero IDs that hold the currently high priority roster heroes
+citadel_hero_roster_preferred | cl, a, per_user, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred roster heroes
+citadel_hero_roster_random | cl, a, per_user, release | Default: false<br>Is the hero roster set to random
+citadel_hero_settings_cloud_disable | devonly, cl | Default: false<br>
+citadel_hero_testing_dummy_bullet_resist | sv, cl, rep, cheat | Default: 0<br>Bonus bullet resist % given to Target Dummies in Hero Testing
+citadel_hero_testing_dummy_debuff_resist | sv, cl, rep, cheat | Default: 0<br>Bonus debuff resist % given to Target Dummies in Hero Testing
+citadel_hero_testing_dummy_health_regen | sv, cl, rep, cheat | Default: 0<br>Bonus health regen per second given to Target Dummies in Hero Testing
+citadel_hero_testing_dummy_spirit_resist | sv, cl, rep, cheat | Default: 0<br>Bonus spirit resist % given to Target Dummies in Hero Testing
 citadel_hero_testing_dummy_target | sv, release | Default: 55<br>Dummy Target heroID if non-specified
 citadel_hero_testing_enabled | sv, cl, rep, release | Default: false<br>
+citadel_hero_testing_expanded | cl, a | Default: true<br>Remember state of Testing Tools Collapsed/Expanded
 citadel_hero_testing_give_abilities | sv, rep, release | Default: true<br>Grant Abilities on Character Spawn
 citadel_hero_testing_infinite_money | sv, cl, rep, release | Default: false<br>Enable infinite money in Hero Testing
+citadel_hero_testing_legendary_items | sv, cl, rep, cheat, release | Default: false<br>Show Street Brawl legendary items in the shop in Hero Testing
 citadel_hero_testing_money | sv, rep, release | Default: 4000<br>How much money to buffer item purchases in Hero Testing
 citadel_hero_unlock | devonly, cl | &lt;Hero ID&gt; Unlocks the specified hero
 citadel_hero_unlock_all | devonly, cl | Unlocks all heroes for this account
@@ -1106,6 +1175,8 @@ citadel_hideout_ball_debug | sv, cheat | Default: 0<br>Show custom collision, ba
 citadel_hideout_ball_show_juggle_count | devonly, sv | Default: 0<br>WIP Show juggle count on ball.
 citadel_hideout_ball_show_juggle_fx | devonly, sv | Default: 0<br>WIP Show fx when hitting apex/landing on floor.
 citadel_hideout_button_interact_distance | devonly, sv, cl, rep | Default: 120<br>
+citadel_hideout_camera_level_enter | devonly, sv, cl, rep | Default: 5<br>The  dolly step we enter when rolling the mouse wheel.
+citadel_hideout_camera_level_max | devonly, sv, cl, rep | Default: 16<br>Number of individual dolly steps the mouse wheel zoom has while in the hideout.
 citadel_hideout_cancel_matchmaking | cl, release | Remove yourself or your party from the matchmaking queue
 citadel_hideout_enable_testing_tools | devonly, cl | Default: false<br>
 citadel_hideout_exclusive_mode | devonly, cl | Default: true<br>
@@ -1130,18 +1201,26 @@ citadel_hint_activate | devonly, cl | Forces a hint to be ready to show in the H
 citadel_hint_system_disable | cl, release | Default: false<br>Set to disable hints
 citadel_hitbox_body_to_headshot_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_hitbox_body_to_headshot_threshold | devonly, sv, cl, rep | Default: 15<br>Distance threshold that we allow bullet to penetrate body to headshot.
+citadel_hud_active_stats_always_show_details | cl, a | Default: false<br>
+citadel_hud_active_stats_burst_time | devonly, cl | Default: 2<br>
+citadel_hud_active_stats_expire_time | devonly, cl | Default: 5<br>
+citadel_hud_active_stats_spike_threshold | devonly, cl | Default: 4800<br>
+citadel_hud_active_stats_statechange_time | devonly, cl | Default: 2<br>
 citadel_hud_announcement_display_time_all_queued | devonly, cl | Default: 7<br>
 citadel_hud_announcement_display_time_max | devonly, cl | Default: 3<br>
+citadel_hud_announcement_display_time_override | devonly, cl | Default: -1<br>
 citadel_hud_announcement_force_single_levelup | devonly, cl | Default: false<br>
 citadel_hud_build_category_max_height | devonly, cl | Default: 600<br>
-citadel_hud_build_category_min_height | devonly, cl | Default: 185<br>
-citadel_hud_build_category_min_width | devonly, cl | Default: 125<br>
+citadel_hud_build_category_min_height | devonly, cl | Default: 125<br>
+citadel_hud_build_category_min_width | devonly, cl | Default: 100<br>
+citadel_hud_build_compact_category_extra_height | devonly, cl | Default: 0<br>
+citadel_hud_build_compact_category_extra_width | devonly, cl | Default: 0<br>
 citadel_hud_chat_wheel | devonly, cl | Default: true<br>
-citadel_hud_damage_counter_duration | devonly, cl | Default: 4<br>
+citadel_hud_damage_counter_duration | devonly, cl | Default: 2<br>
 citadel_hud_exclusive_visible_id | cl, cheat | Default: <br>When set, only show the panel with the corresponding id
-citadel_hud_heal_counter_duration | devonly, cl | Default: 4<br>
-citadel_hud_healthbars_use_new | cl, cheat, release | Default: false<br>
-citadel_hud_healthbars_use_v2 | cl, cheat, release | Default: false<br>
+citadel_hud_experiments_enabled | devonly, cl, a | Default: false<br>Test hud experiments
+citadel_hud_heal_counter_duration | devonly, cl | Default: 2<br>
+citadel_hud_hide_own_health | cl, release | Default: false<br>Hides your own health bar on the HUD
 citadel_hud_objective_health_debug_show_midboss | devonly, cl | Default: false<br>
 citadel_hud_objective_health_debug_show_t3 | devonly, cl | Default: 0<br>0=default 1=friendly 2=enemy 3=both
 citadel_hud_objective_health_enabled | devonly, cl | Default: 2<br>Enable/Disable HUD-level objective health bars.  0=Off. 1=Shrines, Patron, Midboss. 2=T1s and T2s. 3=Barracks
@@ -1149,7 +1228,10 @@ citadel_hud_objective_health_idle_timeout | devonly, cl | Default: 7<br>After ho
 citadel_hud_objective_health_lane_max_range | devonly, cl | Default: 1000<br>
 citadel_hud_objective_health_t1_max_range | devonly, cl | Default: 1900<br>
 citadel_hud_objective_health_t2_max_range | devonly, cl | Default: 2500<br>
+citadel_hud_player_stats_delta_increment_time | devonly, cl | Default: 1<br>
+citadel_hud_player_stats_delta_time | devonly, cl | Default: 4<br>
 citadel_hud_top_bar_enable_dynamic_player_position | devonly, cl | Default: true<br>
+citadel_hud_unit_indicators_v2_enable | devonly, cl | Default: true<br>
 citadel_hud_visible | cl, release | Default: true<br>Turns on/off rendering the HUD
 citadel_idle_time | devonly, sv | Default: 180<br>How long a player needs to be idle before he counts as disconnected.
 citadel_idle_time_grace_period | devonly, sv | Default: 8<br>How long a player needs to be idle we start putting that time towards their stored idle time.
@@ -1164,27 +1246,30 @@ citadel_increase_replay_speed | cl, release | Increase the Replay speed while wa
 citadel_increment_killstreak | devonly, sv | citadel_increment_killstreak \[player_slot\] \[first_blood\]
 citadel_initial_wall_jump_stamina_cost | devonly, sv, cl, rep | Default: 0<br>How much stamina is required, and costs, to perform your first wall jump.
 citadel_invalidate_player_stats_cache | devonly, cl | Invalidate player stats cache so it's pulled from the GC
-citadel_invert_ping_type | cl, a | Default: false<br>Inverts the ping types so single ping would be aggressive and double ping would be passive
 citadel_item_draft_enabled | sv, cl, rep, release | Default: 1<br>Use item drafting?  1=only street brawl 2=always
 citadel_item_draft_force_all_rares | devonly, sv | Default: false<br>
 citadel_item_draft_force_draw | devonly, sv | Default: <br>Comma-separated list of localized item names to force draft.  Ignores tier requirements.  ex, spirit lifesteal, extra charge
 citadel_item_early_gold_duration | sv, cheat | Default: 30<br>
-citadel_item_glow_local_dist | cl, cheat | Default: 800<br>
+citadel_item_glow_local_dist | cl, cheat | Default: 2000<br>
 citadel_item_idol_label_offset | cl, cheat | Default: 50<br>
 citadel_item_neutral_gold_label_offset | cl, cheat | Default: 6<br>
 citadel_item_pickup_fall_tolerance | sv, cheat | Default: 16<br>
 citadel_item_pickup_fallrate | sv, cheat | Default: 5<br>
+citadel_item_purchases_force_corrupted | sv, cheat | Default: false<br>While true, all items purchased will be corrupted if they have a corrupted variant
 citadel_item_purchases_force_enhanced | sv, cheat | Default: false<br>While true, all items purchased/drafted will be enhanced
 citadel_item_rejuvenator_label_offset | cl, cheat | Default: 160<br>
 citadel_item_sell_price_ratio | devonly, sv, cl, rep | Default: 0.5<br>
+citadel_item_tooltip_show_deltas | devonly, cl | Default: false<br>
 citadel_item_used_text_height_offset | devonly, cl | Default: 25<br>How much higher item used text show up.
 citadel_jump_overhead_clearance | devonly, sv, cl, rep | Default: 73<br>Distance above player step height that needs to be clear to allow for jumping
 citadel_keybind_default_hold_duration | devonly, cl | Default: 1<br>
+citadel_keybind_map_keyboard_layout | cl, a | Default: <br>Keyboard layout the settings keybind map draws, by ID (us, uk, german...). Empty or unknown auto-detects it from the keyboard layout and languages.
 citadel_keybindings_cloud_disable | devonly, cl | Default: false<br>
 citadel_kick_disconnected_players | devonly, sv | Clear out all players who aren't connected, removing them from any teams
+citadel_kill_streak_min | devonly, cl | Default: 3<br>
 citadel_koth_dev_test_spawn | sv, cheat, release | Start the Early Warning of Koth and Teleport the active player there
 citadel_koth_early_warning_time | sv, cl, rep, cheat | Default: 60<br>
-citadel_koth_enabled | devonly, sv, cl, rep | Default: true<br>
+citadel_koth_enabled | sv, cl, rep, cheat, release | Default: true<br>
 citadel_koth_respawn_interval | sv, cl, rep, cheat | Default: 420<br>
 citadel_koth_reward_base | sv, cl, rep, cheat | Default: 1260<br>
 citadel_koth_reward_buff_count | sv, cl, rep, cheat | Default: 0<br>
@@ -1200,6 +1285,7 @@ citadel_lane_swap_available_duration_prematch | sv, cl, rep, cheat | Default: -1
 citadel_language_and_english_hero_names | devonly, cl | Default: <br>For data gathering.
 citadel_language_and_english_mod_names | devonly, cl | Default: <br>For data gathering.
 citadel_lash_ground_strike_debug | devonly, sv | Default: 0<br>
+citadel_last_reporter_updates_check_games | cl, a, release | Default: 0<br>
 citadel_last_used_hero_builds | cl, a, release | Default: <br>
 citadel_leaderboard_cache_duration | devonly, cl | Default: 43200<br>Number of seconds before re-requesting data for the leaderboard
 citadel_leaderboard_empty_cache_duration | devonly, cl | Default: 20<br>Number of seconds before re-requesting data for the leaderboard
@@ -1212,8 +1298,8 @@ citadel_lock_flex_slots | sv, cheat | &lt;team number&gt; - Lock the flex slots 
 citadel_lock_mmr | devonly, cl | &lt;Account ID&gt; \[MMR\] Locks a user to the current MMR (optionally can set the MMR as well)
 citadel_log_idle_time | devonly, sv | Default: false<br>
 citadel_log_in_combat_state | devonly, sv | Default: true<br>Enable to log extended MODIFIER_STATE_IN_COMBAT
-citadel_loot_table_spew_flattened_table | sv, cl, rep, cheat | Default: false<br>
 citadel_loot_table_spew_modifications | sv, cl, rep, cheat | Default: false<br>
+citadel_mantle_auto_step_check_inset | devonly, sv, cl, rep | Default: 4<br>How far in front of a ledge's lip auto-mantle looks for a lower step. If the drop there is within step height the ledge can be walked up to (stairs), so auto-mantle skips it.
 citadel_mantle_cancelling_allowed | sv, cl, rep, cheat | Default: false<br>Pulling away from the mantle interrupts it, putting you into falling state early.
 citadel_mantle_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_mantle_horizontal_movement_distance | devonly, sv, cl, rep | Default: 16<br>How far forward the mantle will move the player onto the ledge
@@ -1237,12 +1323,11 @@ citadel_match_intro_duration_full | sv, cheat | Default: 23<br>How long pre-matc
 citadel_match_intro_duration_simple | sv, cheat | Default: 5<br>How long pre-match is until we start the match in the simple version.
 citadel_match_intro_force_enabled | devonly, sv, cl, rep | Default: false<br>
 citadel_match_intro_style | devonly, sv, cl, rep | Default: 1<br>0 = none, 1 = pregame simple, 2 = pregame full, 3 = in map
+citadel_match_pre_trooper_spawn_brawl_time | devonly, sv, cl, rep | Default: 40<br>
 citadel_match_status | devonly, sv | Prints information about the current match status
 citadel_max_disconnected_time | devonly, sv | Default: 300<br>How long a player needs to be disconnected before they count as a leaver and get punished.
 citadel_max_disconnected_time_pregame | devonly, sv | Default: 110<br>How long a player needs to be disconnected during pregame before they count as a leaver and get punished.
-citadel_max_path_detour | devonly, sv | Default: 500<br>Max detour for pathing calculations.
 citadel_max_reconnect_time_secs | devonly, cl | Default: 7200<br>Max time to attempt a reconnect after a crash.
-citadel_max_videomode_matches | devonly, cl | Default: 20<br>Max number of video resolutions to show in UI.
 citadel_medic_minion_sight_range | devonly, sv, cl, rep | Default: 2400<br>
 citadel_melee_damage_scale | devonly, sv | Default: 1<br>
 citadel_melee_draw_traces | devonly, sv | Default: false<br>
@@ -1253,20 +1338,19 @@ citadel_melee_hit_delay_max_time | devonly, sv | Default: 0.1<br>
 citadel_melee_shake_amplitude | devonly, sv | Default: 0.55<br>
 citadel_melee_shake_duration | devonly, sv | Default: 0.1<br>
 citadel_melee_shake_frequency | devonly, sv | Default: 0.2<br>
-citadel_metal_expire_time | devonly, sv | Default: 30<br>
-citadel_midboss_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for midboss
-citadel_midboss_spawn_interval_override | devonly, sv | Default: -1<br>If positive, override initial spawn interval (in seconds) for midboss
+citadel_midboss_initial_spawn_time_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn time (in seconds) for midboss
+citadel_midboss_spawn_interval_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn interval (in seconds) for midboss
 citadel_min_accel_speed | sv, cl, rep, cheat | Default: 400<br>How fast we accelerate depends on our move speed - this lower bound ensures it doesn't go below ground friction
 citadel_min_match_minutes_for_replay | devonly, sv | Default: 5<br>The minimum number of minutes a match needs to be in order to be considered valid for replay uploading
 citadel_minimap_arrow_show_distance_down | devonly, sv | Default: 100<br>
 citadel_minimap_arrow_show_distance_up | devonly, sv | Default: 200<br>
-citadel_minimap_draw_fow | cl, cheat | Default: false<br>
 citadel_minimap_koth_trooper_size | cl, release | Default: 4.5<br>
 citadel_minimap_local_player_width | cl, release | Default: 12<br>
 citadel_minimap_max_icon_shrink | cl, release | Default: 0.8<br>
-citadel_minimap_npc_reveal_duration | devonly, sv | Default: 0.25<br>
+citadel_minimap_npc_reveal_duration | devonly, sv | Default: 0.75<br>
 citadel_minimap_objective_damaged_reveal_duration | devonly, sv | Default: 1<br>
 citadel_minimap_overlap_scan_distance | cl, release | Default: 12.5<br>
+citadel_minimap_ping_panel_lifetime | devonly, cl | Default: 4.5<br>How long a ping panel lasts for. &lt; 0 for infinite
 citadel_minimap_player_width | cl, release | Default: 7<br>
 citadel_minimap_show_hitboxes | devonly, cl | Default: false<br>
 citadel_minimap_spectator_fow_team_view | cl, release | Default: 1<br>Which team to view the minimap as when freeflying
@@ -1276,12 +1360,13 @@ citadel_minimap_teleporter_nearby_dist | devonly, cl | Default: 1600<br>
 citadel_minimap_trooper_size | cl, release | Default: 3<br>
 citadel_minimap_unit_click_radius | cl, release | Default: 200<br>
 citadel_minimap_use_effects | devonly, cl | Default: false<br>
+citadel_minimap_zip_line_hover_radius | cl, release | Default: 16<br>Extra pixels either side of a minimap zipline that still count as hovering it
+citadel_minimap_zip_line_hover_thickness_scale | cl, release | Default: 2<br>How much thicker a hovered minimap zipline lane draws
 citadel_minimap_zip_line_thickness | cl, release | Default: 2<br>
 citadel_minimum_fire_rate | sv, cl, rep, cheat | Default: -50<br>Minimum value possible for fire rate
 citadel_minimum_players_to_show_postgame | devonly, cl | Default: 6<br>
-citadel_minion_distance_to_owner | devonly, sv | Default: 200<br>
-citadel_minion_gold_reward | devonly, sv | Default: 25<br>
-citadel_minion_gold_reward_bonus_per_minute | devonly, sv | Default: 1<br>
+citadel_minion_gold_reward | devonly, sv, cl, rep | Default: 25<br>
+citadel_minion_gold_reward_bonus_per_minute | devonly, sv, cl, rep | Default: 1<br>
 citadel_mm_high_pri | devonly, cl | \[account id\] Marks an account for high priority match making for the next match
 citadel_mm_low_pri | devonly, cl | \[account id\] Marks an account for high priority match making for the next match
 citadel_mm_server_command | devonly, cl | Default: <br>Allows sending up a command string for the match maker to run on the server (dev only)
@@ -1291,32 +1376,54 @@ citadel_modifier_history_show_time | devonly, cl | Default: 6<br>
 citadel_modifier_hud_message_display_clear | devonly, cl | Default: false<br>
 citadel_modifier_hud_message_display_min_panel_count | devonly, cl | Default: 4<br>
 citadel_modifier_hud_message_display_time | devonly, cl | Default: 2.5<br>
-citadel_move_goal_tolerance | sv, cheat | Default: 8<br>Some extra tolerance for considering an NPC moved to a goal; can be reduced as we fix other issues
+citadel_mouse_cursor_scale | cl, a, per_user | Default: 1<br>Mouse cursor size scale factor.
+citadel_movement_client_only_mispredict_move | devonly, cl | Default: -1<br>
 citadel_movement_debugdraw | devonly, sv, cl, rep | Default: false<br>
+citadel_movement_override_separation_radius | devonly, sv, cl, rep | Default: true<br>
 citadel_movement_plane_overlap_mult | devonly, sv, cl, rep | Default: 0<br>
 citadel_movement_resolve_origin | devonly, sv, cl, rep | Default: true<br>
-citadel_movement_skyclip_push_distance | devonly, sv, cl, rep | Default: 196.85<br>
-citadel_movement_skyclip_push_min_force | devonly, sv, cl, rep | Default: 400<br>
 citadel_movement_slip_accel | devonly, sv, cl, rep | Default: 200<br>
 citadel_movement_solver_iterations | devonly, sv, cl, rep | Default: 16<br>
+citadel_movement_temp_blocker_new | devonly, sv, cl, rep | Default: true<br>
 citadel_movespeed_bonus_max | devonly, sv, cl, rep | Default: 472.441<br>Maximum Value for Movespeed bonuses (Diminishing Returns) in Hu
+citadel_movespeed_graph_duration | cl, cheat | Default: 5<br>How many samples in the graph
 citadel_mvp_calculate_now | devonly, sv | Run the MVP calculation right now
 citadel_mvp_enabled | devonly, sv | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
 citadel_mvp_score_kda_ratio | devonly, sv | Default: false<br>Use a KDA ratio for the mvp score instead of the real algorithm.
 citadel_nano_debugcatform | devonly, sv, cl, rep | Default: false<br>
 citadel_nano_set_shouldercat_bodygroup | devonly, sv, cl, rep | Default: true<br>
 citadel_napalm_projectile_show_debug | devonly, sv, cl, rep | Default: false<br>
-citadel_necro_skele_use_new_motor | sv, release | Default: true<br>
-citadel_neutral_camp_spawn_per_tick_limit | devonly, sv | Default: 2<br>Spawn this many neutral camps per tick (this is a limit, so if it's 1, we'll only spawn one per tick (perf)). Set this value to something large to effectively remove the limit. 0 or negative will prevent spawning.
+citadel_neutral_ability_dev_test | devonly, sv | Default: -1<br>Force use this ability. -1 off, 0 for Melee, 1-2-3 for Abilities
+citadel_neutral_aggro_time | devonly, sv | Default: 5<br>
+citadel_neutral_camp_spawn_per_tick_limit | devonly, sv | Default: 1<br>Spawn this many neutral camps per tick (this is a limit, so if it's 1, we'll only spawn one per tick (perf)). Set this value to something large to effectively remove the limit. 0 or negative will prevent spawning.
 citadel_neutral_gold_ratio | devonly, sv | Default: 1<br>What percent of gold is transfered instantly on neutral kills
-citadel_neutral_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all neutral camps
-citadel_neutral_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any neutrals from spawning
-citadel_neutral_spawn_interval_override | devonly, sv | Default: -1<br>If positive, override initial spawn interval (in seconds) for all neutral camps
-citadel_neutral_spawn_range | devonly, sv | Default: 100<br>Prevent spawning of neutrals if a player is in this range
-citadel_neutral_weakpoints_enabled | devonly, sv | Default: false<br>
+citadel_neutral_health_growth_pct_per_min | devonly, sv | Default: 2.1<br>
+citadel_neutral_initial_spawn_time_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn time (in seconds) for all neutral camps
+citadel_neutral_player_range_aabb_padding | devonly, sv, rep | Default: 100<br>
+citadel_neutral_player_range_debug | devonly, sv, rep | Default: false<br>
+citadel_neutral_player_range_normal_meters | devonly, sv, rep | Default: 30<br>
+citadel_neutral_player_range_strong_meters | devonly, sv, rep | Default: 50<br>
+citadel_neutral_player_range_weak_meters | devonly, sv, rep | Default: 20<br>
+citadel_neutral_scorer_time_window | devonly, sv | Default: 5<br>How long after damaging a neutral are players in the window to be considered scorers.
+citadel_neutral_sleep_time | devonly, sv | Default: 5<br>
+citadel_neutral_spawn_enabled | sv, rep, cheat, release | Default: true<br>set to false to prevent any neutrals from spawning
+citadel_neutral_spawn_interval_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn interval (in seconds) for all neutral camps
+citadel_neutral_tether_distance_window | devonly, sv | Default: 120<br>
+citadel_neutral_vault_minigame_force_speed | devonly, sv | Default: -1<br>
+citadel_neutral_vault_minigame_random | devonly, sv | Default: true<br>Add a random time phase to the neutral vault minigame
 citadel_new_abandon_rules_early_end_countdown | devonly, sv, cl, rep | Default: 10<br>\[New Abandon Rules\] Auto-match end countdown.
 citadel_new_abandon_rules_early_t1 | devonly, sv | Default: false<br>\[New Abandon Rules\] Abandon is considered 'early' if this is before the first T1 kill, no matter the match time.
 citadel_new_abandon_rules_early_time | devonly, sv | Default: 300<br>\[New Abandon Rules\] Time for the 'early' trigger to take effect. Match will not be scored, etc.
+citadel_new_mini_radial_delay_time | devonly, cl | Default: 0.125<br>
+citadel_new_ping_fow_window | devonly, cl | Default: 2<br>How long after an enemy drops off shared team vision they can still be pinged, in seconds.
+citadel_new_ping_free_cursor_world_trace | devonly, cl | Default: false<br>Allow free cursor pings to trace through the HUD into the world (entities and ziplines).
+citadel_new_ping_hitbox_self_test | devonly, cl | Default: false<br>When tracing in free cursor mode, turn on a more expensive trace vs the local player model (nearer objects will undergo more scrutiny)
+citadel_new_ping_minimap_left_click | devonly, cl | Default: true<br>With citadel_new_ping_system on, left clicking anywhere on the minimap opens the ping radial, same as the ping keybind. Never overrides a minimap targeting ability like Mirage's teleport.
+citadel_new_ping_system | devonly, cl, a | Default: 1<br>Allow Minimap Radial to appear. 0: Off. 1: On. 2: Spew
+citadel_new_ping_system_fixed_slot_icons | devonly, cl | Default: true<br>Draw the icon each slot pins in scripts/ping_targets.vdata on the radials whose layout is fixed, so the art stops moving when an override fires. A minimap sourced radial pins the generic_entity row's four, since one compass serves everything on the map; a radial from hud chrome pins its own row's, so a friendly and an enemy portrait stay distinct. 0 restores the per ping icons.
+citadel_new_ping_trace_pixel_radius | devonly, cl | Default: 60<br>Distance invariant capsule radius, in pixels at 1080 vertical res. This makes targets less finnicky to hit at a distance. Near range, we'll have already hit via hitbox.
+citadel_new_ping_world_volume_radius | devonly, cl | Default: 60<br>If we don't get a direct hit, iterate through entities that are inside a capsule constructed from the view or mouse ray.
+citadel_new_ping_zipline_range | devonly, cl | Default: 4200<br>2D range for the world-space zipline ping ray.
 citadel_new_player_flow_visible | cl, a, release | Default: true<br>Are we still showing the new player instructions
 citadel_new_player_progress | cl, a, release | Default: 0<br>Tracks the local settings for the new player progress so they can be synchronized with the GC for client authoratative progress
 citadel_new_years_fireworks_epoch_override | devonly, sv, cl, rep | Default: 1767243600<br>
@@ -1324,27 +1431,21 @@ citadel_new_years_fireworks_force_start | devonly, sv, cl, rep | Default: 0<br>
 citadel_new_years_fireworks_test | sv, release | Sets fireworks start time to be N seconds in the future.
 citadel_news_entries_list_request_count | devonly, cl | Default: 10<br>
 citadel_news_entries_seen | cl, a, release | Default: <br>
-citadel_news_entry_override_latest | devonly, cl | Default: 0<br>
+citadel_news_entry_override_latest | devonly, cl | Default: 694273194214819790<br>
 citadel_no_orbs_on_hero_kill | sv, cl, rep, cheat | Default: true<br>
 citadel_no_orbs_on_objective_kill | sv, cl, rep, cheat | Default: true<br>
-citadel_npc_ag2_enable | devonly, sv, rep, release | Default: true<br>Enable AG2 in NPCs
-citadel_npc_allow_climb | sv, rep, cheat | Default: false<br>Allow NPCs to climb.
-citadel_npc_allow_jump_down | sv, rep, cheat | Default: true<br>Allow NPCs to follow any drop-down navigation links.
-citadel_npc_debug_enemies | devonly, sv | Default: false<br>Draws a line to the enemy
 citadel_npc_debug_look_target | devonly, sv | Default: false<br>
 citadel_npc_disable_cockroaches | devonly, sv, rep | Default: false<br>Disable Cockroaches
-citadel_npc_disable_floor_point_caching | devonly, sv | Default: true<br>
-citadel_npc_dps_multiplier | sv, cl, rep, cheat | Default: 1<br>Increase weapon damage for testing
-citadel_npc_force_animate_every_tick | devonly, sv | Default: true<br>
+citadel_npc_dps_multiplier | sv, rep, cheat | Default: 1<br>Increase weapon damage for testing
+citadel_npc_enable_hitbox_interpolation | devonly, sv | Default: true<br>
 citadel_npc_jump_gravity_mult | devonly, sv | Default: 2<br>
-citadel_npc_max_direct_follow_distance | devonly, sv | Default: 1000<br>For far before a following NPC uses an approximate path to get to their follow target, instead of a direct calculation.
-citadel_npc_push_speed | devonly, sv | Default: 50<br>How quickly NPCs push their friends away
-citadel_npc_shoot_check_sphere_size | devonly, sv | Default: 6<br>How large a radius sphere we use for checking if an NPC can shoot a target
-citadel_npc_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any NPC from spawning
-citadel_npc_trooper_celebration_percent | devonly, sv | Default: 0.7<br>percent amount of troopers in the area to celebrate
-citadel_npc_trooper_celebration_radius | devonly, sv | Default: 2000<br>radius to collect enemy troopers near a destroyed objective to do celebration pose
+citadel_npc_motor_disable_ground_trace | devonly, sv | Default: false<br>Don't move npcs to exact ground positions when running. What does this break besides looks?
+citadel_npc_spawn_enabled | sv, rep, cheat, release | Default: true<br>set to false to prevent any NPC from spawning
+citadel_npc_ticks_per_anim_update | devonly, sv, cl, rep | Default: 2<br>
+citadel_npc_visibility_cache_duration | devonly, sv | Default: 0.25<br>How long CAI_CitadelNPC::FVisible() results stay cached
 citadel_num_matches_in_profile_history | devonly, cl | Default: 16<br>
 citadel_num_team_pauses_allowed | devonly, sv | Default: 3<br>Number of times a team is allowed to pause the game. 0 Means unbounded
+citadel_observer_max_dolly_level | devonly, cl | Default: 8<br>
 citadel_observer_roaming_speed | cl, a | Default: 600<br>
 citadel_one_on_one_match | sv, cl, rep, release | Default: false<br>
 citadel_one_on_one_match_starting_gold | sv, cl, rep, cheat, release | Default: 0<br>
@@ -1365,6 +1466,8 @@ citadel_orb_lagcomp_buffer_contested | devonly, sv | Default: 0.17<br>Extra time
 citadel_orb_lagcomp_buffer_uncontested | devonly, sv | Default: 0.25<br>Extra time for an orb to linger to allow lag compensated players to contest
 citadel_orb_required_bullets_to_claim_override | devonly, sv, cl, rep | Default: 0<br>When &gt; 0, defines the number of bullets that need to hit an orb to claim it, otherwise uses the hero defined values.
 citadel_orb_velocity_decay_in_lagcomp | devonly, sv | Default: 0.85<br>Decay velocity to 0 by this amount during lag comp window
+citadel_orbit_camera_in | cl, release | Move in the hideout zone camera
+citadel_orbit_camera_out | cl, release | Move in the hideout zone camera
 citadel_outer_radius_scaler | devonly, cl | Default: 0.2545<br>
 citadel_party_invite_in_game | cl, release | Default: true<br>When set, only users in game can be invited
 citadel_passive_items_area_display_time | devonly, cl | Default: 1<br>
@@ -1372,6 +1475,7 @@ citadel_passthrough_fakewall_combat_lockout_time | devonly, sv, cl, rep | Defaul
 citadel_passthrough_fakewall_draw_debug | devonly, sv | Default: false<br>
 citadel_pause | cl, release | Send a game pause request.
 citadel_pause_allow_immediate_if_single_player | devonly, sv | Default: false<br>When there is only a single player on the server, set whether or not we allow for instant pausing/unpausing
+citadel_pause_allow_in_combat | devonly, sv | Default: true<br>Allow pausing while in combat
 citadel_pause_allow_in_pregame | devonly, sv | Default: false<br>Allow pausing in the pregame state
 citadel_pause_cooldown_time | devonly, sv | Default: 900<br>Number of seconds before a player is allowed to pause again
 citadel_pause_count | devonly, sv | Default: 1<br>Number of times a player is allowed to pause the game. 0 Means unbounded
@@ -1382,20 +1486,34 @@ citadel_pause_matchtime_before_allow | devonly, sv | Default: 120<br>How much ma
 citadel_pause_minimum_time | sv, cheat | Default: 2<br>Disables unpausing for this many seconds after a pause occurs
 citadel_pause_resume_time | devonly, sv | Default: 30<br>Number of seconds resuming is restricted to the same team, after that either team can pause
 citadel_pause_resume_time_disconnected | devonly, sv | Default: 30<br>Number of seconds resuming is restricted to the same team if someone disconnected, after that either team can pause
-citadel_pending_incoming_heal_min_change_for_update | devonly, cl | Default: 3<br>
 citadel_pending_replay_force_failure | devonly, cl | Default: 0<br>
 citadel_pending_replay_num_retries | devonly, cl | Default: 30<br>
 citadel_pending_replay_retry_seconds | devonly, cl | Default: 300<br>
-citadel_per_unit_hotkeys_checked | cl, a | Default: false<br>
+citadel_per_unit_hotkeys_checked | cl, a, per_user | Default: false<br>
 citadel_per_weapon_per_surface_impact_effects | devonly, sv, cl, rep | Default: true<br>
 citadel_perf_interval_report_s | devonly, sv | Default: 60<br>The interval that we record performance stats to the log at measured in seconds
 citadel_perf_long_frame_time_threshold_ms | devonly, sv | Default: 17.5<br>The time in milliseconds where if a frame is beyond this, count it as a long frame
 citadel_perf_short_idle_time_threshold_ms | devonly, sv | Default: 3<br>The amount of time in milliseconds where if we have less than this in idle time, count it as a low idle frame
+citadel_photomode_enabled | cl, release | Default: false<br>Hides Healthbars, Local Hero, HUD
+citadel_pickup_spawner_enabled | sv, rep, cheat, release | Default: true<br>Set to false to stop citadel_pickup_spawner pickups (healing snacks) from spawning and respawning
+citadel_pickup_spawner_initial_spawn_time_override | sv, rep, cheat, release | Default: -1<br>If positive, override the initial spawn time (in seconds) for all citadel_pickup_spawner pickups
+citadel_pickup_spawner_spawn_interval_override | sv, rep, cheat, release | Default: -1<br>If positive, override the respawn interval (in seconds) for all citadel_pickup_spawner pickups
+citadel_ping_above_us_z | sv, cheat | Default: 500<br>If the pinged hero is above us by this many units, use the "above_us" voice variant
 citadel_ping_allow_responses_to_yourself | devonly, cl | Default: false<br>Allow you to respond to yourself.
+citadel_ping_almost_respawned_seconds | sv, cheat | Default: 10<br>Pinging a dead hero whose respawn is at most this many seconds away says they are almost back rather than dead.
+citadel_ping_below_us_z | sv, cheat | Default: 500<br>If the pinged hero is below us by this many units, use the "below_us" voice variant
+citadel_ping_can_heal_range | sv, cheat | Default: 2500<br>Pinging a low teammate offers a heal only if they are within this many units and in line of sight. Matches citadel_fow_player_range.
+citadel_ping_consecutive_window | devonly, cl | Default: 0.25<br>Seconds between taps on one subject for them to chain into a double (triple...) ping.
+citadel_ping_enemy_count_radius | cl, cheat | Default: 1500<br>How close another visible enemy has to be to the pinged position to count toward the group callout.
 citadel_ping_indicator_display_time | devonly, cl | Default: 5.5<br>
 citadel_ping_indicator_duration | devonly, cl | Default: 6<br>The amount of time the in-world ping indicator stays.
 citadel_ping_indicator_duration_for_bosses | devonly, cl | Default: 2<br>The amount of time the in-world ping indicator stays when a boss pings itself.
-citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.37<br>LEGACY. See: citadel_show_chat_wheel_angle_threshold. Increase this to change how much you have to move your mouse to make the mousewheel visible.
+citadel_ping_radial_anchor_mode | devonly, cl | Default: 1<br>Comms wheel quick reveal anchor mode 0: only compare to the heading we had when pressing down ping. 1: Use both the heading we had, AND the world space point we had at the start, updated based on our movement, and the target's relative movement, through space. Essentially a double deadzone center to help with pinging while moving fast through space. Distance from line as opposed to distance from point.
+citadel_ping_radial_debug_gesture | devonly, cl | Default: 0<br>Draw comms wheel quick reveal deadzone. 1: the pseudo deadzone capsule in the world plus a screen readout. 2: adds a per-frame console log.
+citadel_ping_radial_early_open_deflection_deg | devonly, cl | Default: 10<br>Degrees of camera deflection away from the thing we pressed on that force the radial open ahead of its delay. Degrees rather than pixels so the mouse sensitivity slider already normalises it. &lt;= 0, ignore gesture angle don't open
+citadel_ping_spam_hides_marker | sv, cheat | Default: false<br>Restores the old behaviour where repeat pings hid the marker as well as the sound. The marker is positional information the team needs; the noise is the spam.
+citadel_ping_teammate_alone_radius | sv, cheat | Default: 1500<br>A pinged teammate with no other living ally (the pinger included) within this many units is told to be careful.
+citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.6<br>Increase this to change how much you have to move your mouse to make the mousewheel visible.
 citadel_play_page_fake_data | devonly, cl | Default: false<br>
 citadel_play_page_finished_tutorial | devonly, cl | Default: false<br>
 citadel_play_stats_laning_end_time | devonly, sv | Default: 540<br>
@@ -1403,9 +1521,9 @@ citadel_player_aim_at_hero_query_angle | devonly, cl | Default: 6<br>
 citadel_player_aim_at_hero_query_distance | devonly, cl | Default: 2000<br>
 citadel_player_aim_at_hero_query_half_width | devonly, cl | Default: 50<br>
 citadel_player_aim_at_hero_query_interval | devonly, cl | Default: 0.2<br>
-citadel_player_anim_debug | devonly, cl | Default: false<br>Draws debug animation state when enabled.
 citadel_player_attack_enemy_npc_fow_reveal_duration | sv, cheat | Default: 2<br>How long a player is visible to enemy FOW after attacking an enemy trooper or boss
 citadel_player_attack_enemy_player_fow_reveal_duration | sv, cheat | Default: 1<br>How long a player is visible to enemy FOW after attacking an enemy player
+citadel_player_client_reprediction_disabled | cl, cheat, release | Default: false<br>
 citadel_player_crit_multiplier | devonly, sv, cl, rep | Default: 1.25<br>How much to scale damage when landing crits against Players
 citadel_player_damage_from_trooper_scale | devonly, sv | Default: 0.5<br>
 citadel_player_dash_breakable_debug | devonly, sv, cl, rep | Default: false<br>
@@ -1421,20 +1539,18 @@ citadel_player_debug_animgraph_movement | devonly, sv, cl, rep | Default: false<
 citadel_player_fov_default | devonly, sv, cl, rep | Default: 75<br>Default player FOV
 citadel_player_glow_disabled | cl, cheat, release | Default: false<br>
 citadel_player_glow_from_teammate_vision_max_range | devonly, cl | Default: 2000<br>
-citadel_player_glow_when_in_combat | devonly, cl, cheat | Default: false<br>
-citadel_player_glow_when_in_combat_linger | devonly, cl, cheat | Default: 1<br>
-citadel_player_gold_comeback_assister_ratio | devonly, sv | Default: 1.5<br>
-citadel_player_gold_comeback_killer_fraction | devonly, sv | Default: 0.3<br>
-citadel_player_gold_comeback_multiplier | devonly, sv | Default: 2.268<br>
-citadel_player_gold_comeback_npc_max_mutliplier_delta | devonly, sv | Default: 1.2<br>
-citadel_player_gold_comeback_npc_max_mutliplier_value | devonly, sv | Default: 1.26<br>
-citadel_player_gold_difficulty_multiplier | devonly, sv | Default: 2.484<br>
+citadel_player_gold_comeback_assister_ratio | devonly, sv, cl, rep | Default: 1.5<br>
+citadel_player_gold_comeback_killer_fraction | devonly, sv, cl, rep | Default: 0.3<br>
+citadel_player_gold_comeback_multiplier | devonly, sv, cl, rep | Default: 2.268<br>
+citadel_player_gold_comeback_npc_max_mutliplier_delta | devonly, sv, cl, rep | Default: 1.2<br>
+citadel_player_gold_comeback_npc_max_mutliplier_value | devonly, sv, cl, rep | Default: 1.26<br>
+citadel_player_gold_difficulty_multiplier | devonly, sv, cl, rep | Default: 2.484<br>
 citadel_player_gold_killer_to_assist_ratio | devonly, sv | Default: 2.2<br>
 citadel_player_gold_per_level_postmax | devonly, sv, cl, rep | Default: 2000<br>Gold per 'level' after maxing out rewards
-citadel_player_gold_reward_first_kill_bonus | devonly, sv | Default: 125<br>
-citadel_player_gold_reward_max | devonly, sv | Default: 2200<br>
-citadel_player_gold_reward_min | devonly, sv | Default: 200<br>
-citadel_player_gold_reward_time | devonly, sv | Default: 2400<br>
+citadel_player_gold_reward_first_kill_bonus | devonly, sv, cl, rep | Default: 125<br>
+citadel_player_gold_reward_max | devonly, sv, cl, rep | Default: 2200<br>
+citadel_player_gold_reward_min | devonly, sv, cl, rep | Default: 200<br>
+citadel_player_gold_reward_time | devonly, sv, cl, rep | Default: 2400<br>
 citadel_player_ground_dash_max_percent | sv, cl, rep, cheat | Default: 2<br>Max ground dash scale
 citadel_player_ground_dash_min_percent | sv, cl, rep, cheat | Default: 0.5<br>Min ground dash scale
 citadel_player_level_hiding_extra_duration | devonly, cl | Default: 0.45<br>
@@ -1450,19 +1566,18 @@ citadel_player_outline_fade_at_min | devonly, cl | Default: 0<br>
 citadel_player_outline_fade_range_max | devonly, cl | Default: 1400<br>
 citadel_player_outline_fade_range_min | devonly, cl | Default: 400<br>
 citadel_player_override_spawn_time | devonly, sv | Default: -1<br>
-citadel_player_pawn_ag1_wall_attach_enable | devonly, sv, cl, rep | Default: false<br>
-citadel_player_pawn_ag2_enable | devonly, sv, rep, release | Default: true<br>Enable AG2 for heroes who define an AG2 graph
 citadel_player_ping_duration | sv, cheat | Default: 6<br>
 citadel_player_regen_zone_bonus_base | sv, cl, rep, cheat | Default: 60<br>When standing in a regen zone, how much extra do we regen per second?
 citadel_player_regen_zone_bonus_pct | sv, cl, rep, cheat | Default: 6<br>When standing in a regen zone, how much extra do we regen per second based on max health percentage?
 citadel_player_regen_zone_stamina_regen | sv, cl, rep, cheat | Default: 150<br>When standing in a regen zone, how much extra do we stamina percentage
+citadel_player_reveal_notif | devonly, sv, cheat | Default: false<br>
 citadel_player_slide_breakable_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_player_slide_breakable_lookahead | devonly, sv, cl, rep | Default: 75.8<br>
 citadel_player_slide_breakable_radius | devonly, sv, cl, rep | Default: 35<br>
 citadel_player_slide_min_percent | devonly, sv, cl, rep | Default: 0.8<br>
 citadel_player_spawn_distance_from_other | devonly, sv | Default: 32<br>
 citadel_player_spawn_time_in_base_penalty | devonly, sv | Default: 10<br>
-citadel_player_spawn_time_max_ramp_1 | devonly, sv | Default: 35<br>
+citadel_player_spawn_time_max_ramp_1 | devonly, sv | Default: 38<br>
 citadel_player_spawn_time_max_ramp_1_time | devonly, sv | Default: 1200<br>
 citadel_player_spawn_time_max_ramp_2 | devonly, sv | Default: 70<br>
 citadel_player_spawn_time_max_ramp_2_time | devonly, sv | Default: 1800<br>
@@ -1471,7 +1586,7 @@ citadel_player_spawn_time_max_ramp_3_time | devonly, sv | Default: 2400<br>
 citadel_player_spawn_time_max_respawn_time | devonly, sv | Default: 90<br>
 citadel_player_spawn_time_min_ramp_1 | devonly, sv | Default: 8<br>
 citadel_player_spawn_time_min_ramp_1_time | devonly, sv | Default: 300<br>
-citadel_player_spawn_time_min_ramp_2 | devonly, sv | Default: 35<br>
+citadel_player_spawn_time_min_ramp_2 | devonly, sv | Default: 38<br>
 citadel_player_spawn_time_min_ramp_2_time | devonly, sv | Default: 1200<br>
 citadel_player_spawn_time_min_ramp_3 | devonly, sv | Default: 70<br>
 citadel_player_spawn_time_min_ramp_3_time | devonly, sv | Default: 1800<br>
@@ -1487,6 +1602,7 @@ citadel_player_starting_death_penalty_gold | devonly, sv, rep | Default: 0<br>In
 citadel_player_starting_gold | devonly, sv, cl, rep | Default: 600<br>Initial gold for players.
 citadel_player_starting_hero | devonly, sv, cl, rep | Default: <br>Which hero to auto-select the first time in the game.
 citadel_player_starting_team | devonly, sv, cl, rep | Default: 2<br>Which team to auto-select the first time in the game.
+citadel_player_tiny_character_max_height | sv, cl, rep, cheat | Default: 40<br>Max height of a character with IS_TINY_CHARACTER or IsShrunkCharacter enabled
 citadel_playofthegame_allow_showing_last_timeframe | devonly, sv | Default: false<br>
 citadel_playofthegame_debug_always_show_last_timeframe | devonly, sv | Default: false<br>
 citadel_playofthegame_debug_never_expire_events | devonly, sv | Default: false<br>
@@ -1513,12 +1629,23 @@ citadel_playtest_fake_coopbot_player_count | devonly, cl | Default: -1<br>
 citadel_playtest_fake_schedule | devonly, cl | Default: false<br>
 citadel_playtest_fake_unranked_player_count | devonly, cl | Default: -1<br>
 citadel_playtest_kick_disconnected_players | devonly, cl | Reassign any network disconnected players to the unnassigned team
+citadel_popular_items_app_universe | devonly, cl | Default: publicrel<br>
+citadel_popular_items_days_in_past | devonly, cl | Default: 7<br>
+citadel_popular_items_earlygame_endtime | devonly, sv, cl, rep | Default: 480<br>
+citadel_popular_items_hero_list | devonly, cl | Default: <br>
+citadel_popular_items_midgame_endtime | devonly, sv, cl, rep | Default: 1200<br>
+citadel_popular_items_min_games | devonly, cl | Default: 5000<br>
+citadel_popular_items_min_pick_pct_early_game | devonly, sv, cl, rep | Default: 10<br>
+citadel_popular_items_min_pick_pct_late_game | devonly, sv, cl, rep | Default: 10<br>
+citadel_popular_items_min_pick_pct_mid_game | devonly, sv, cl, rep | Default: 10<br>
+citadel_popular_items_min_pick_pct_vdata | devonly, sv, cl, rep | Default: 5<br>
+citadel_popular_items_min_winrate_pct | devonly, sv, cl, rep | Default: 0<br>
 citadel_port_muzzles | devonly, cl | Port old muzzle defs to the new
-citadel_portrait_unit_ag2_enable | devonly, cl | Default: true<br>Enable AG2 use in portrait units
 citadel_portrait_world_renderer_off | devonly, cl | Default: false<br>
 citadel_post_game_fake_local_account_id | devonly, cl | Default: 0<br>
 citadel_post_game_fake_local_hero | devonly, cl | Default: <br>Name of the hero that should be faked as the local player
 citadel_post_game_force_hero_id | devonly, cl | 
+citadel_post_game_hero_release_vote_results_screen_enabled | devonly, cl | Default: true<br>
 citadel_post_game_local_player_screen_enabled | devonly, cl | Default: false<br>
 citadel_post_game_mvp_screen_enabled | devonly, cl | Default: true<br>
 citadel_post_game_progress | devonly, cl | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
@@ -1526,9 +1653,9 @@ citadel_post_game_progress_use_test_data | devonly, cl | Default: false<br>
 citadel_post_game_ranked_screen_enabled | devonly, cl | Default: true<br>
 citadel_post_game_reset_commend_state | devonly, cl | Default: false<br>Temporarily resets the commend state for testing (will get set to false after a commend is triggered)
 citadel_postgame_duration | sv, cheat | Default: 10<br>How long postgame lasts until play of the game
-citadel_powerup_initial_spawn_time_override | devonly, sv | Default: -1<br>If positive, override initial spawn time (in seconds) for all powerup camps
-citadel_powerup_spawn_enabled | devonly, sv | Default: true<br>
-citadel_powerup_spawn_interval_override | devonly, sv | Default: -1<br>If positive, override initial spawn interval (in seconds) for all powerup camps
+citadel_powerup_initial_spawn_time_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn time (in seconds) for all powerup camps
+citadel_powerup_spawn_enabled | sv, rep, cheat, release | Default: true<br>
+citadel_powerup_spawn_interval_override | sv, rep, cheat, release | Default: -1<br>If positive, override initial spawn interval (in seconds) for all powerup camps
 citadel_powerup_spawner_show_event_timer | devonly, cl, rep | Default: false<br>
 citadel_pregame_fake_game_state | devonly, cl | Default: EGameState_Invalid<br>
 citadel_pregame_fake_match_intro_duration | devonly, cl | Default: 23<br>
@@ -1548,12 +1675,15 @@ citadel_pregame_ranked_summary_test_state | devonly, cl | Default: -1<br>
 citadel_pregame_ranked_summary_time | devonly, sv, cl, rep | Default: 10<br>
 citadel_pregame_use_intro_spawn | devonly, sv | Default: false<br>Whether to use the special intro team spawn locations during pregame
 citadel_pregame_wait_duration | sv, cheat | Default: 30<br>How long pre-match is until we start the match
+citadel_preview_video_settings_changes | cl, a, per_user | Default: true<br>Briefly hide the menu when modifying rendering or camera settings.
+citadel_preview_video_settings_duration | cl, a, per_user | Default: 2<br>Duration for which the menu will be hidden after modifying rendering or camera settings.
 citadel_previous_umuted_audio_level | cl, a | Default: 1<br>
 citadel_priority_token_fake_count | devonly, cl | Default: -1<br>Override the priority token count. -1 uses the real value.
 citadel_priority_token_fake_progress | devonly, cl | Default: -1<br>Override the priority token progress. -1 uses the real value.
 citadel_private_lobby_allow_no_players | devonly, cl | Default: true<br>Allow for a private lobby to not have players to help test with spectating
 citadel_private_lobby_bot_difficulty | cl, a, release | Default: 0<br>
 citadel_private_lobby_cheats_enabled | cl, a, release | Default: false<br>
+citadel_private_lobby_corrupted_item_shop_spawn_minutes | cl, a, release | Default: 30<br>
 citadel_private_lobby_duplicate_heroes_enabled | cl, a, release | Default: false<br>
 citadel_private_lobby_is_publicly_visible | cl, a, release | Default: false<br>
 citadel_private_lobby_randomize_lanes | cl, a, release | Default: false<br>
@@ -1575,10 +1705,12 @@ citadel_quick_response_display_time | devonly, cl | Default: 6<br>
 citadel_quickbuy_auto_buy_default | cl, a, user | Default: false<br>Default for whether auto-buy is enabled in normal games.
 citadel_quickbuy_enable | cl, a | Default: true<br>If enabled, show quickbuy in the HUD
 citadel_quit_delay | devonly, cl | Default: 0.5<br>
-citadel_radial_ability_suggestion_weight | devonly, cl | Default: 0<br>How much extra weight to give a segment when it's the next recommended ability.
-citadel_radial_distortion | devonly, cl | Default: 0<br>0: Off 1: Distorts the visible distribution of arcs based on the mouse pointer.
-citadel_radial_distortion_growth_factor | devonly, cl | Default: 1.25<br>When the cursor enters a radial arc fully, how much should it grow by (in terms of weight)
-citadel_radial_testing | devonly, cl | Default: 0<br>0: Normal. 1: Inhibit showing the hud abilities' upgrade panel when the scoreboard is open.
+citadel_radial_keep_open | devonly, cl | Default: false<br>Keep Radials Open (skip "close" commands)
+citadel_radial_skip_rotation | devonly, cl | Default: 0<br>0: Rotate Layout 1: Don't Rotate Layout
+citadel_radial_test_postgame | devonly, cl | Default: false<br>
+citadel_radial_test_pregame | devonly, cl | Default: false<br>
+citadel_radial_toggle_prop_open | devonly, cl | Toggle propping radial menus open. While on, an opened radial stays up and will not fire until toggled off again.
+citadel_ragdoll_phys_death_multiplier | devonly, sv | Default: 1<br>
 citadel_ranked_allow_overrides | devonly, cl | Default: true<br>
 citadel_ranked_hero_roster | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently selected brawl roster heroes
 citadel_ranked_hero_roster_banned | cl, a, release | Default: <br>A comma separated list of hero IDs that hold the currently banned brawl roster heroes
@@ -1597,11 +1729,11 @@ citadel_ranked_season_match_history_fake_rank_changes | devonly, cl | Default: f
 citadel_ranked_season_match_history_unfiltered | devonly, cl | Default: false<br>Turn on to show all matches in the ranked season view, not just matches from that ranked season.
 citadel_rapid_stamina_regen | sv, cl, rep, cheat | Default: false<br>
 citadel_recent_boss_damage_for_assist_time | devonly, sv | Default: 20<br>
-citadel_recent_comms_recording_window | sv, rep, release | Default: 10<br>
-citadel_recent_comms_session_attempt_throttled_count | sv, rep, release | Default: 75<br>
-citadel_recent_comms_throttling_limit | sv, rep, release | Default: 10<br>
+citadel_recent_comms_recording_window | sv, rep, release | Default: 5<br>
+citadel_recent_comms_session_attempt_throttled_count | sv, rep, release | Default: 9999999<br>
+citadel_recent_comms_throttling_limit | sv, rep, release | Default: 50<br>
 citadel_recent_comms_throttling_penalty | sv, rep, release | Default: 10<br>
-citadel_record_hero_animgraph | sv, cheat | Record the animgraph for a specified hero
+citadel_reduce_camera_shake | cl, a, per_user | Default: false<br>Turns off screen shake.
 citadel_region_override | cl, release | Default: -1<br>Override the region of the client
 citadel_reload_rank_data | devonly, cl | Request rank confidence score from GC.
 citadel_render_minimap | cl, release | Render the minimap
@@ -1612,40 +1744,69 @@ citadel_replay_prev_marker_threshold | devonly, cl | Default: 2<br>
 citadel_replay_toggle_pause | cl, release | Toggle a replay being paused
 citadel_report_card_dismissal_timeout | devonly, sv | Default: 40<br>How long do we wait for them to dismiss the popup dialog in lane training?
 citadel_report_card_tasks_complete | devonly, sv | Default: false<br>
-citadel_require_in_playtest_clear | devonly, cl | Clears that we need to be in the next playtest
-citadel_require_in_playtest_set | devonly, cl | Indicates that we need to be in the next playtest
+citadel_reporter_updates_poll_interval_games | cl, release | Default: 5<br>
 citadel_require_server_bullet_impacts_on_important_hits | devonly, sv, cl, rep | Default: false<br>
-citadel_reset_camera_speed | devonly, cl | Default: 0.5<br>Aggressiveness of Camera Reset Curve. Smaller = quicker. Larger = more gradual.
+citadel_reroll_corrupted_items | sv, cheat | \[seed\] Rerolls the random penalty and stat variance of every corrupted item.  Omit the seed or pass 0 for a random one.
+citadel_reset_camera_speed | devonly, cl | Default: 4000<br>How quickly the camera resets to the horizon. Higher is faster
+citadel_reset_gold | sv, cheat | Reset gold for all players
 citadel_reset_new_player | cl, release | Resets the new player experience back to the initial state
 citadel_reset_survey_responses | devonly, cl | Clears out all survey questions from this account and resets the state
+citadel_respawn_all_breakables | sv, cheat, release | Force Spawns every breakable on the map
+citadel_respawn_boss_barracks | sv, cheat, release | 
+citadel_respawn_boss_shrines | sv, cheat, release | 
+citadel_respawn_boss_t1 | sv, cheat, release | 
+citadel_respawn_boss_t2 | sv, cheat, release | 
+citadel_respawn_nearby_breakables | sv, cheat, release | Force Spawns any nearby breakables
 citadel_respond_to_ping_time | devonly, cl | Default: 5<br>The amount of time you have to respond to a ping from another player
 citadel_restore_components_only_during_sellback | devonly, sv, cl, rep | Default: true<br>
+citadel_reveal_notif_minimap | devonly, cl, cheat | Default: true<br>
+citadel_reveal_notif_particle | devonly, cl, cheat | Default: false<br>
+citadel_rootme | devonly, sv | Root the local player
 citadel_roster_select_force_enable_priority_token | devonly, cl | Default: false<br>
 citadel_roster_select_force_select_any | devonly, cl | Default: false<br>
 citadel_roster_select_hover_delay | devonly, cl | Default: 0.2<br>
+citadel_roster_select_screenshot_mode | devonly, cl | Default: false<br>Adds the gRosterScreenshotMode class to the roster select screen
 citadel_rp_show_dev_messages | devonly, cl | Default: false<br>
 citadel_rr_killstreak_for_death_line | devonly, sv | Default: 2<br>If &gt;0, kill streak RR will play for the victim's team from the player with killstreak instead of victim's death line.
 citadel_sat_volume_desat_amount | devonly, sv, cl, rep | Default: 0.6<br>
 citadel_sat_volume_desat_color | devonly, sv, cl, rep | Default: 100 100 114 255<br>
 citadel_sat_volume_outline_color | devonly, sv, cl, rep | Default: 200 200 200 255<br>
 citadel_sat_volume_sat_color | devonly, sv, cl, rep | Default: 255 255 255 255<br>
-citadel_secondary_language_builds | cl, a | Default: -1<br>
+citadel_scenepanel_use_intermediate_texture | devonly, cl | Default: false<br>
+citadel_secondary_language_builds | cl, a, per_user | Default: -1<br>
 citadel_secure_gold_fixed | devonly, sv | Default: 1.6<br>
 citadel_secure_gold_fixed_growth | devonly, sv | Default: 0.08<br>
 citadel_secure_gold_percent | devonly, sv | Default: 0.005<br>
 citadel_secure_gold_rate | devonly, sv | Default: 1<br>
+citadel_secure_souls_only_at_soul_dealer | devonly, sv | Default: false<br>When set, unsecured souls only convert inside a citadel_trigger_secure_souls volume. When clear, they secure over time anywhere and the trigger does nothing.
 citadel_send_gc_match_info_s | sv, cl, rep, release | Default: 30<br>Determines the rate that we should submit match info up to the GC, 0 disables this functionality
 citadel_send_text_chat_to_player_pings | devonly, cl | Default: true<br>
+citadel_server_all_players_disconnected_grace_period_dev_s | sv, release | Default: 600<br>Dev version of citadel_server_all_players_disconnected_grace_period_s (this is separate so it won't get stomped by .cfg files)
 citadel_server_all_players_disconnected_grace_period_s | sv, release | Default: 120<br>How long a server should run after all players have disconnected before notifying that all players have left
 citadel_server_long_frame_threshold_ms | devonly, sv | Default: 40<br>How long a frame must stall before we make a log message.
 citadel_server_max_spectator_slots | sv, release | Default: 3<br>The maximum number of spectator slots we allow. This is so that the GC can restrict this remotely if we need to. -1 disables this limit
 citadel_server_mm_ignore_engine_version | devonly, sv | Default: false<br>Ignore engine build version. Useful for testing release locally
 citadel_set_mmr | devonly, cl | &lt;Account ID&gt; &lt;MMR&gt; Sets the MMR of the specified account
 citadel_set_server_convar | devonly, cl | \[convar\] \[value\] Set a server convar on the server that the player is currently connected to
-citadel_settings_dismissed_new_settings | cl, a | Default: <br>New Settings which have already been dismissed by the user
+citadel_settings_active_settings_section_read_only | devonly, cl, a | Default: -1<br>Last viewed settings section
+citadel_settings_active_settings_subsection_read_only | devonly, cl, a | Default: -1<br>Last viewed settings subsection
+citadel_settings_always_show_all_settings | cl, a, per_user | Default: true<br>Keep the settings shared by all heroes visible while browsing a specific hero's settings
+citadel_settings_default_view | cl, a, per_user | Default: 0<br>Which hero the settings menu shows while hero-specific settings are enabled: 0 the hero being played, 1 the base settings
+citadel_settings_dismissed_new_settings | cl, a, per_user | Default: <br>New Settings which have already been dismissed by the user
+citadel_settings_hero_selector_search | cl, release | Default: true<br>When the Settings hero selector is expanded, typing in the search bar filters heroes instead of settings.
+citadel_settings_hide_hero_specific_disabled_notice | cl, a, per_user | Default: false<br>Suppress popups when disabling hero-specific settings
+citadel_settings_hide_hero_specific_enabled_notice | cl, a, per_user | Default: false<br>Suppress popups when enabling hero-specific settings
+citadel_settings_hide_keybind_delete_confirm | cl, a, per_user | Default: false<br>Suppress the confirmation popup when deleting a binding from the keybind map's Bind Key popup
+citadel_settings_hide_row_reset_confirm | cl, a, per_user | Default: false<br>Suppress confirmation popups when resetting individual settings
+citadel_settings_hide_show_all_settings_off_notice | cl, a, per_user | Default: false<br>Suppress the notice shown when 'Always show all settings' is turned off
+citadel_settings_last_scrollbar_position_read_only | devonly, cl, a | Default: 0<br>Last Settings menu scrollbar offset
 citadel_settings_new_setting_newness_duration | devonly, cl | Default: 2592000<br>Maximum age a new setting will be shown without dismissing
+citadel_settings_remember_selected_hero | cl, a, per_user | Default: true<br>Reopen the settings menu on the hero last selected in it, instead of its default view
 citadel_settings_reset_dismissed_settings | devonly, cl | 
-citadel_settings_seen_new_settings | cl, a | Default: <br>New Settings which have already been seen by the user
+citadel_settings_scroll_panel_height_read_only | devonly, cl, a | Default: 0<br>Last Settings menu total scroll panel height
+citadel_settings_seen_new_settings | cl, a, per_user | Default: <br>New Settings which have already been seen by the user
+citadel_settings_selected_base_settings | devonly, cl, a, per_user | Default: false<br>Whether the settings menu's base settings were deliberately selected
+citadel_settings_selected_hero_read_only | devonly, cl, a, per_user | Default: 0<br>Hero ID of the last selected hero in settings menu
 citadel_settings_show_popup | devonly, cl | 
 citadel_shield_generator_shield_scale | devonly, sv | Default: 7<br>
 citadel_shoot_forward_offset | devonly, sv, cl, rep | Default: 35<br>How far forward from the plane of hero and camera forward to move the shoot position
@@ -1653,30 +1814,38 @@ citadel_shoot_lean_extra_offset | devonly, sv, cl, rep | Default: 5<br>When lean
 citadel_shoot_lean_test_distance | devonly, sv, cl, rep | Default: 300<br>How far in front of the shoot position to check if the eyes can see for turning on the shoot lean
 citadel_shooting_test_target_attachment | devonly, sv | Default: ability_attach<br>
 citadel_shooting_test_tracker_window | devonly, sv | Default: 5<br>
+citadel_shop_always_show_names | cl, a | Default: true<br>
 citadel_shop_default_tab | cl, a, release | Default: -1<br>
-citadel_shop_items_appear_enhanced | cl, cheat | Default: false<br>Makes all of the items in the shop appear enhanced if they can be enhanced
+citadel_shop_filters_and_mode | cl, a | Default: false<br>
+citadel_shop_hide_empty_tiers | cl, a, release | Default: true<br>Hide empty tiers when searching/filtering
+citadel_shop_items_appear_corrupted | cl, cheat | Default: false<br>Makes all of the items in the shop appear corrupted if they can be corrupted
+citadel_shop_items_appear_enhanced | cl, release | Default: false<br>Makes all of the items in the shop appear enhanced if they can be enhanced
+citadel_shop_open_focus_search | cl, a | Default: false<br>Give the shop search box keyboard focus when the shop opens
 citadel_shop_reset_time | devonly, cl | Default: 10<br>
+citadel_shop_scroll_snap_threshold | cl, a, release | Default: 5<br>How many pixels of scroll delta triggers a snap.  Source2 mouse wheel is hardcoded to 3.0 per integral mouse wheel click.
+citadel_shop_scroll_snap_to_tiers | cl, a, release | Default: true<br>Snap mouse wheel scrolling in the shop's filtered tab to price tiers. The tier keybinds step a tier either way.
+citadel_shop_search_use_name_only | cl, a | Default: false<br>Only match items based on the name of the item when searching
 citadel_show_account_ids | cl, release | Default: false<br>When set, account IDs will be shown on player tooltips
-citadel_show_active_slot_popup | cl, a, release | Default: false<br>
+citadel_show_active_slot_popup | cl, a, per_user, release | Default: false<br>
 citadel_show_all_purchase_toasts | cl, a | Default: false<br>If enabled, show purchase toasts for all item transactions, not just ones in your quickbuy queue
 citadel_show_bullet_lag_compensation | sv, cl, rep, cheat | Default: 0<br>if &gt; 0.0, show lag compensated hitboxes (value is seconds) whenever a bullet is lag compensated and hits something.
-citadel_show_chat_wheel_angle_threshold | devonly, cl | Default: 16<br>(degrees) Increase this to change how much you have to move your camera angle to make the Chat Wheel instantly visible while holding Ping.
 citadel_show_chat_wheel_debug | devonly, cl | Default: false<br>Increase this to change how much you have to move your camera angle to make the mousewheel visible (degrees)
-citadel_show_chat_wheel_time | devonly, cl | Default: 0.23<br>How long it takes after pressing the +ping command for the chat wheel to appear.
+citadel_show_chat_wheel_time | cl, a | Default: 0.23<br>How long it takes after pressing the +ping command for the chat wheel to appear.
+citadel_show_combatlog | devonly, cl | 
 citadel_show_disabled_heroes | devonly, cl, a | Default: false<br>Shows disabled heroes in hero selection
 citadel_show_falloff_in_world | devonly, cl | Default: false<br>
 citadel_show_global_leaderboard | cl, release | Default: false<br>Show Global Leaderboards
 citadel_show_hero_debut_popup | devonly, cl | \[hero id\] \[allow swap\]
+citadel_show_hero_release_vote_page | devonly, cl | 
 citadel_show_hero_select_popup | devonly, cl | 
+citadel_show_hero_vo_test_page | cl, release | Open the Voice Lines page
 citadel_show_hidden_public_builds | devonly, cl, a | Default: false<br>
 citadel_show_localization_errors | devonly, cl | Default: false<br>
 citadel_show_minimap_reveal_indicators | devonly, cl | Default: false<br>
 citadel_show_modifier_history | devonly, cl | Default: false<br>Turns on/off debug display of modifiers
-citadel_show_movement_speed_in_units | devonly, cl | Default: false<br>Show the movement speed in units instead of m/s
-citadel_show_movespeed_on_hud | devonly, cl | Default: false<br>Turns on/off Movespeed indicator on the HUD
-citadel_show_new_mod_tooltips | devonly, cl | Default: true<br>
+citadel_show_movespeed_on_hud | cl, cheat | Default: false<br>Turns on/off Movespeed indicator on the HUD
+citadel_show_movespeed_units | cl, cheat | Default: 1<br>0 : nothing, 1 : meters, 2 : HammerUnits
 citadel_show_new_topbar | devonly, cl | Default: false<br>Show new topbar
-citadel_show_new_ziplines | devonly, cl | Default: false<br>Turns on/off the new ziplines on the new minimap
 citadel_show_npe_modal | cl, a, release | Default: true<br>Show the NPE modal when navigating to the roster select.
 citadel_show_old_neutral_camp_icons | devonly, cl | Default: true<br>Show the old neutral camp icons on the minimap
 citadel_show_page_reload_button | cl, a | Default: true<br>Show beta db controls in the upper left corner
@@ -1688,34 +1857,46 @@ citadel_show_ranked_season_page | devonly, cl |
 citadel_show_reportcard | devonly, cl | Default: true<br>
 citadel_show_reportcard_finished | devonly, cl | Default: false<br>
 citadel_show_reportcard_initial | devonly, cl | Default: false<br>
+citadel_show_reporter_updates_popup | cl, release | Shows the popup for a report you filed that we took action on, if there is one
+citadel_show_reporter_updates_popup_fake | devonly, cl | \[report type\] - Shows the reporter updates popup filled in with a fake update
 citadel_show_roster_select_popup | devonly, cl | 
 citadel_show_seasonal_kill_toast | devonly, cl | 
 citadel_show_stats_tooltips_on_scoreboard | devonly, cl | Default: true<br>
 citadel_show_survey | devonly, cl | Default: false<br>A way to force the survey UI on even outside of matchmaking
-citadel_show_telemetry_settings | cl, release | Default: false<br>Show HUD Telemetry Settings.
+citadel_show_telemetry_settings | cl, a, per_user, release | Default: false<br>Show HUD Telemetry Settings.
 citadel_shuffle_draft_order | devonly, sv | Shuffles the order in which players are drafting heroes
+citadel_silenceme | devonly, sv | Silence the local player
 citadel_skip_client_ping_caluclation_in_dev_universe | devonly, cl | Default: true<br>Skips ping calculation (only enabled if you're in dev universe)
+citadel_sleepme | devonly, sv | Sleep the local player
 citadel_slide_debug | devonly, sv, cl, rep | Default: 0<br>
 citadel_slide_delay | devonly, sv, cl, rep | Default: 0.15<br>
 citadel_slide_one_button_falling_max_lookahead_distance | devonly, sv, cl, rep | Default: 150<br>
+citadel_slow_air_drag_penalty_scale | sv, cl, rep, cheat | Default: 0.35<br>Fraction of an active movement slow that is also applied as additional air drag
 citadel_snowball_level_override | sv, cheat, release | Default: -1<br>Change the snowball level
 citadel_solo_bot_match | sv, cl, rep, release | Default: false<br>
+citadel_soul_rune_lane_experiment | devonly, sv, cl, rep | Default: false<br>Forces all players down the mid lane.
 citadel_spawn_all_heroes_in_a_line | sv, cheat | Spawn all of the heroes as bots in a line in front of you
+citadel_spawn_all_neutrals | sv, cheat, release | Spawns every neutral camp on the map
+citadel_spawn_all_pickup_spawners | sv, cheat, release | Spawns the pickup of every citadel_pickup_spawner (healing snacks) now
 citadel_spawn_combine_only | devonly, sv | Default: false<br>Only spawn creeps on one team
 citadel_spawn_escort | sv, cheat, release | Spawns the escort with an optional delay
+citadel_spawn_midboss_breakables | sv, cheat, release | Force spawns the breakables above the mid boss that normally first appear at 10 minutes
 citadel_spawn_nearby_neutrals | sv, cheat, release | Spawns any neutral camps within 800 units (~20m)
+citadel_spawn_pickup | devonly, sv | Spawns a pickup using a pickup subclass
 citadel_spawn_pickup_item | devonly, sv | Spawns an item pickup for a specific item. You can specify the item, or else you'll get a random one
 citadel_spawn_practice_bots | sv, release | Default: false<br>
 citadel_spawn_practice_bots_count | sv, release | Default: 1<br>
 citadel_spawn_rebels_only | devonly, sv | Default: false<br>Only spawn creeps on one team
-citadel_spawn_trooper | devonly, sv | Creates a new trooper NPC and spawn them in front of the player
+citadel_spawn_trooper | sv, cheat, release | Creates a new trooper NPC and spawn them in front of the player
 citadel_spawn_trooper_grid | devonly, sv | Creates a NxN trooper grid in front of the player. Supports same trooper types as citadel_spawn_trooper
+citadel_spawn_trooper_wave | sv, cheat, release | Spawns one trooper wave in every lane, even while trooper spawning is off
 citadel_spawn_trooper_zipline | devonly, sv | Spawn a trooper on a zipline
 citadel_spawn_urn | sv, cheat | Spawn an urn for testing
 citadel_spec_lock_to_accountid | devonly, cl | Default: 0<br>As an observer, lock the spectator target to the given accountid.
 citadel_spectate_account_id | devonly, cl | \[lobby id\] Attempts to spectate the specified player
 citadel_spectate_directed_mode_enabled | devonly, sv, cl, rep | Default: false<br>
 citadel_spectate_lobby_id | devonly, cl | \[lobby id\] Attempts to spectate the specified lobby ID
+citadel_spectate_topbar_player | cl, release | While spectating, switch to the Nth hero on the top bar, numbered 1-12 from left to right
 citadel_spectator_mode | devonly, cl | Default: 0<br>Toggles the spectator mode: 0=Directed - 1=Free Cam - 2=Hero Chase - 3=PlayerView
 citadel_spectator_voice_mode | cl, user | Default: true<br>Spectator voice transmit mode: 0 spectators and players, 1 spectators only
 citadel_spectator_voice_mode_toggle | cl, release | Toggle the value of citadel_spectator_voice_mode
@@ -1731,16 +1912,31 @@ citadel_spoof_matchmaking_status | devonly, cl | Default: -1<br>
 citadel_spoof_persona_name | devonly, cl | Default: <br>Allows overriding persona names with this value for testing UI
 citadel_spoof_profile_account | devonly, cl | Default: 0<br>
 citadel_spray_max_range | devonly, sv, cl, rep | Default: 512<br>Maximum range (in inches) in which a spray is valid
+citadel_stamina_ping_interval | devonly, sv, cheat | Default: 1<br>
+citadel_stamina_ping_threshold | devonly, sv, cheat | Default: 1<br>
+citadel_start_local_bot_match | sv, release | &lt;hex setup&gt; Hosts a client provided bot match on this listen server
 citadel_start_new_player_placement_bot_match | devonly, cl | Starts a new_player_placement match
 citadel_start_players_on_zipline | sv, cl, rep, cheat | Default: true<br>
+citadel_stat_cache_diagnostics | devonly, sv, cl, rep, cheat | Default: 0<br>Stat-dep registration diagnostics. 0=silent, 1=warn when a ScaleFunction registration consumes no EModifierValues (likely missing markup) or when cross-entity ability values suppress caching, 2=also log benign early outs.
+citadel_stat_cache_dump_deps | devonly, sv, cheat | Dump the full stat dependency graph for an entity. Usage: citadel_stat_cache_dump_deps \[entindex/name\]
+citadel_stat_cache_force_all_ignore_params | devonly, sv, cl, rep, cheat | Default: false<br>Force all non-opted-in stats to CacheEnabled_IgnoreParams (persist, skip hash check). Mutually exclusive with the other stat_cache_force_all_* convars. Resets stats on change.
+citadel_stat_cache_force_all_invalidate_on_tick | devonly, sv, cl, rep, cheat | Default: false<br>Force all non-opted-in stats to CacheEnabled_InvalidateOnTick. Mutually exclusive with the other stat_cache_force_all_* convars. Resets stats on change.
+citadel_stat_cache_force_all_invalidate_on_tick_ignore_params | devonly, sv, cl, rep, cheat | Default: false<br>Force all non-opted-in stats to CacheEnabled_InvalidateOnTick_IgnoreParams. Mutually exclusive with the other stat_cache_force_all_* convars. Resets stats on change.
+citadel_stat_cache_force_all_persist | devonly, sv, cl, rep, cheat | Default: false<br>Force all non-opted-in stats to CacheEnabled (persist across ticks). Mutually exclusive with the other stat_cache_force_all_* convars. Resets stats on change.
+citadel_stat_cache_log_deps_on_init | devonly, sv, cl, rep, cheat | Default: false<br>If set, CModifierProperty::DumpStatDepGraph is printed after each ability's runtime dependency registration completes. Each entity prints once per owned ability.
+citadel_stat_cache_report | devonly, sv, cheat | Print per-EStatsType cache statistics sorted by query volume. Use stat_cache_reset_stats to clear.
+citadel_stat_generation_gating | devonly, sv, cl, rep, cheat | Default: true<br>Gate per-tick stat polls (effective cooldown rescale, resource regen) on the stat cache generation counters. Disable to restore per-tick recomputation.
+citadel_stat_generation_watch_max_age | devonly, sv, cl, rep, cheat | Default: 1<br>Generation watches report 'changed' once their stamp is older than this many seconds of game time, bounding the staleness of any missed invalidation edge. This is here temporarily and for safety, and not intended to be standard behavior. 0=no limit.
 citadel_stat_override_official_match | devonly, cl | Default: false<br>When set to true, the account stat cache system will act like it is in an official match when updated. Used for testing without being in official matches
+citadel_stat_preview_item_caching | devonly, sv, cl, rep | Default: false<br>
+citadel_stat_preview_tier_bonuses | devonly, sv, cl, rep | Default: true<br>
 citadel_steamlearn_disable | devonly, sv | Default: false<br>
 citadel_steamlearn_mechanical_behavior_allowed_game_modes_bitfield | devonly, sv | Default: 2<br>This is a bitfield of elements in ECitadelGameMode that we want to record behavior for. eg: (1 &lt;&lt; k_ECitadelGameMode_Normal) \| (1 &lt;&lt; k_ECitadelGameMode_1v1Test)
 citadel_steamlearn_mechanical_behavior_allowed_match_modes_bitfield | devonly, sv | Default: 282<br>This is a bitfield of elements in ECitadelMatchMode that we want to record behavior for. eg: (1 &lt;&lt; k_ECitadelMatchMode_Unranked) \| (1 &lt;&lt; k_ECitadelMatchMode_Ranked)
 citadel_steamlearn_new_player_threshold | devonly, sv | Default: 0.3<br>
 citadel_steamlearn_new_player_thresholds | devonly, sv | Default: 0=50, 10=60, 20=80, 30=100<br>Thresholds for mapping a player's played matches with a minimum allowed 'new player' score. If a new player with n games has a new player score less than to the value in this curve, log as a smurf.Map from games played (x) to min allowed new player score (y)
 citadel_steamtimeline_show_dev_messages | devonly, cl | Default: false<br>
-citadel_streaming_mode_enabled | cl, a, release | Default: false<br>Enable to alter various game UI elements
+citadel_streaming_mode_enabled | cl, a, per_user, release | Default: false<br>Enable to alter various game UI elements
 citadel_street_brawl_ability_range_multiplier | sv, cl, rep, cheat | Default: 0.9<br>
 citadel_street_brawl_advance_state | devonly, sv | Advance the state of a street brawl game
 citadel_street_brawl_match_length_limits_enabled | devonly, sv, cl, rep | Default: false<br>
@@ -1755,14 +1951,25 @@ citadel_stuck_normal_find_trace_fallback_elevation | sv, cl, rep, cheat | Defaul
 citadel_stunme | devonly, sv | Stun the local player
 citadel_sub_nav_outer_radius_scaler | devonly, cl | Default: 0.412<br>
 citadel_subnav_select_time | devonly, cl | Default: 0<br>
+citadel_subtick_aim_data | devonly, sv, cl, rep | Default: false<br>Server wants sub-tick aim data
+citadel_subtitles_all_caps | cl, a, per_user | Default: false<br>Show the HUD subtitles in all caps.
+citadel_subtitles_background_color_b | cl, a, per_user | Default: 0<br>Blue channel of the HUD subtitle background color.
+citadel_subtitles_background_color_g | cl, a, per_user | Default: 0<br>Green channel of the HUD subtitle background color.
+citadel_subtitles_background_color_r | cl, a, per_user | Default: 0<br>Red channel of the HUD subtitle background color.
+citadel_subtitles_background_opacity | cl, a, per_user | Default: 93<br>Opacity, in percent, of the HUD subtitle background.
+citadel_subtitles_background_style | cl, a, per_user | Default: 0<br>Style of the HUD subtitle background: 0 solid, 1 outline.
+citadel_subtitles_bold_font | cl, a, per_user | Default: true<br>Show the HUD subtitles in a semi-bold font rather than normal weight.
+citadel_subtitles_custom_style | cl, a, per_user | Default: false<br>Show the HUD subtitles in the player's custom size, colors, and font rather than the default style.
+citadel_subtitles_font | cl, a, per_user | Default: 0<br>Font of the HUD subtitles: 0 default, 1 block, 2 stylized.
+citadel_subtitles_font_size | cl, a, per_user | Default: 16<br>Font size of the HUD subtitles.
+citadel_subtitles_outline_thickness | cl, a, per_user | Default: 2<br>Thickness, in pixels, of the outline around the HUD subtitles when their background style is outline.
+citadel_subtitles_text_color_b | cl, a, per_user | Default: 198<br>Blue channel of the HUD subtitle text color.
+citadel_subtitles_text_color_g | cl, a, per_user | Default: 198<br>Green channel of the HUD subtitle text color.
+citadel_subtitles_text_color_r | cl, a, per_user | Default: 198<br>Red channel of the HUD subtitle text color.
 citadel_suggest_claim_reqs | devonly, sv | Print a crude recommended required bullets to claim an orb for every hero
-citadel_super_neutral_gold_reward | devonly, sv | Default: 3000<br>
-citadel_super_neutral_gold_reward_bonus_per_minute | devonly, sv | Default: 50<br>
-citadel_super_neutral_inner_attack_range | devonly, sv | Default: 250<br>
-citadel_super_neutral_middle_attack_range | devonly, sv | Default: 400<br>
-citadel_super_neutral_old_behavior | devonly, sv | Default: true<br>
-citadel_super_neutral_outer_attack_range | devonly, sv | Default: 750<br>
-citadel_super_trooper_gold_mult | devonly, sv, rep | Default: 0.85<br>Mult Gold Bounty from Super Troopers by this amount
+citadel_super_neutral_gold_reward | devonly, sv, cl, rep | Default: 3000<br>
+citadel_super_neutral_gold_reward_bonus_per_minute | devonly, sv, cl, rep | Default: 50<br>
+citadel_super_trooper_gold_mult | devonly, sv, cl, rep | Default: 0.85<br>Mult Gold Bounty from Super Troopers by this amount
 citadel_t1_boss_aggro_radius | devonly, sv | Default: 600<br>
 citadel_t1_boss_aggro_time | devonly, sv | Default: 3<br>
 citadel_t1_boss_attackable_height_diff | devonly, sv | Default: 20<br>
@@ -1770,6 +1977,7 @@ citadel_t1_boss_hero_initial_weapon_reduction_pct | devonly, sv | Default: 65<br
 citadel_t1_boss_ignore_damage | devonly, sv | Default: false<br>
 citadel_t1_boss_max_attack_range | devonly, sv | Default: 1300<br>
 citadel_t1_boss_melee_damage | devonly, sv | Default: 200<br>
+citadel_targeting_range_cone_particle | devonly, cl | Default: false<br>Whether to draw a particle for targeting cone ranges.
 citadel_team_size | devonly, sv, cl, rep | Default: 6<br>
 citadel_tech_damage_vdata_tagging | devonly, cl | Command to Tag abilities with 'm_bIsAbilityDamageProperty = true'
 citadel_tech_power_scaling_vdata_tweak | devonly, cl | Command to tweak all ability tech power scaling, including ability upgrades.  Pass in scale factor, with 1.0 being no change.
@@ -1781,22 +1989,21 @@ citadel_test_flex_unlocked_message | devonly, cl | Draws a test message: citadel
 citadel_test_game_over_message | devonly, cl | Draws the game over message: citadel_test_game_over_message &lt;WINNING_TEAM&gt;
 citadel_test_hud_game_announcement | devonly, cl | Shows a test game announcement: \[title\] \[description\] \[classname\]
 citadel_test_level_up_msg | devonly, cl | Draws a test level up message
-citadel_test_pause_msg | devonly, cl | Draws a test pause message: citadel_test_team_msg &lt;Message ID&gt; &lt;Value&gt;
 citadel_test_player_ping | devonly, cl | Test pinging a player
 citadel_test_popup_news_post | devonly, cl | \[URL\]
 citadel_test_portal_trace | devonly, sv | Trace a sphere through portals and draw the results
 citadel_test_streetbrawl_scoring_message | devonly, cl | Draws the street brawl scoring message: citadel_test_streetbrawl_scoring_message &lt;ScoringTeam&gt;
 citadel_test_survey_popup | cl, cheat | Tests bringing up the survey popup
-citadel_test_team_msg | devonly, sv | Draws a test team message: citadel_test_team_msg &lt;EVENT_TYPE&gt; &lt;ISPOSITIVE&gt; &lt;LANECOLOR&gt; &lt;TEAM_NUMBER&gt; &lt;PLAYER_SLOT&gt;
 citadel_tether_pull_speed | sv, cl, rep, cheat | Default: 200<br>
 citadel_tether_pull_speed_scale_per_meter | sv, cl, rep, cheat | Default: 120<br>
 citadel_text_chat_enabled | devonly, sv, cl, rep | Default: true<br>
 citadel_throwsand_projectile_show_debug | devonly, sv, cl, rep | Default: false<br>
+citadel_tick_gold_comeback_redirect_payout | devonly, sv | Default: 1<br>Fraction of the redirected comeback souls pool paid out to the two lowest net worth players each period
 citadel_tick_gold_payout_for_lowest | devonly, sv | Default: 0.025<br>
 citadel_tick_gold_payout_for_second_lowest | devonly, sv | Default: 0.015<br>
-citadel_tick_gold_period_duration_s | devonly, sv | Default: 3<br>Duration of a period of accumulated tick gold. Larger values will result in longer between a team getting gold and a player getting the benefit.
+citadel_tick_gold_period_duration_s | devonly, sv | Default: 2<br>Duration of a period of accumulated tick gold. Larger values will result in longer between a team getting gold and a player getting the benefit.
 citadel_tick_gold_periods | devonly, sv | Default: 10<br>Number of periods of accumulated tick gold. Combine with citadel_tick_gold_period_duration_s to configure resolution and total duration.
-citadel_tick_gold_pulse_per_period | devonly, sv | Default: 3<br>Frequency of distributing available tick gold
+citadel_tick_gold_pulse_per_period | devonly, sv | Default: 2<br>Frequency of distributing available tick gold
 citadel_tick_gold_start_time | devonly, sv | Default: 480<br>
 citadel_tier1_minimap_icon_radius | devonly, cl | Default: 12<br>
 citadel_tier3_phase1_kill_respawn_reduction | devonly, sv | Default: 20<br>
@@ -1806,6 +2013,7 @@ citadel_time_after_damage_to_show_hints | cl, release | Default: 10<br>Time afte
 citadel_time_for_recent_heal_event | devonly, sv, cl, rep | Default: 5<br>
 citadel_time_for_recent_kill_event | devonly, sv, cl, rep | Default: 10<br>
 citadel_time_scale | devonly, sv, cl, rep | Default: -1<br>Set to something &gt;= 0 to test setting every unit's timescale to that value
+citadel_toggle_combatlog | devonly, cl | 
 citadel_toggle_mute | cl, release | Toggles muting/unmuting the audio.
 citadel_toggle_server_pause | devonly, sv | Toggle a server side pause.
 citadel_track_player_vs_player_accuracy | sv, cl, rep, cheat | Default: true<br>
@@ -1813,21 +2021,20 @@ citadel_tracked_stats_dump | devonly, sv | \[all\|player\|team\|match\] Dump cur
 citadel_trailingteam_bias_threshold_max | devonly, sv, cl, rep | Default: 0.15<br>Max Difference between teams to get full trailing bonuses for Koth/Urn
 citadel_trailingteam_bias_threshold_min | devonly, sv, cl, rep | Default: 0<br>Min Difference between teams to start getting trailing bonuses for Koth/Urn
 citadel_trigger_rope_size | devonly, sv, rep | Default: 192<br>
-citadel_trooper_aggro_radius | devonly, sv | Default: 0<br>
+citadel_trigger_secure_souls_indicator_threshold | devonly, sv, cl, rep | Default: 100<br>
 citadel_trooper_boss_melee_knockback | devonly, sv | Default: 400<br>
 citadel_trooper_boss_ping_interval | devonly, sv | Default: 10<br>
 citadel_trooper_boss_shield_disable_duration | devonly, sv, cl, rep | Default: 20<br>
-citadel_trooper_celebration_delay | devonly, sv | Default: 1.2<br>
 citadel_trooper_crit_multiplier | devonly, sv, cl, rep | Default: 1.5<br>How much to scale damage when landing crits against Troopers
-citadel_trooper_do_neardeath_behavior | devonly, sv | Default: false<br>
 citadel_trooper_force_idle | devonly, sv | Default: false<br>
 citadel_trooper_friendly_glow_disabled | cl, release | Default: true<br>Disable glow on friendly troopers except for through walls during laning
 citadel_trooper_glow_disabled | cl, release | Default: false<br>
-citadel_trooper_gold_reward | devonly, sv | Default: 100<br>
-citadel_trooper_gold_reward_bonus_per_minute | devonly, sv | Default: 2<br>
+citadel_trooper_gold_reward | devonly, sv, cl, rep | Default: 100<br>
+citadel_trooper_gold_reward_bonus_per_minute | devonly, sv, cl, rep | Default: 2<br>
 citadel_trooper_health_model_scale | devonly, sv | Default: 1.2<br>
 citadel_trooper_health_mult | devonly, sv | Default: 1.5<br>
 citadel_trooper_health_mult_gametime | devonly, sv | Default: 35<br>
+citadel_trooper_hop_down_jumps | devonly, sv | Default: false<br>
 citadel_trooper_instant_gold_as_dropped_orbs | sv, release | Default: 2<br>0=instant gold 1=orbs in experimental only 2=orbs always
 citadel_trooper_instant_gold_ratio_laning | devonly, sv | Default: 0.5<br>
 citadel_trooper_instant_gold_ratio_postlaning | devonly, sv | Default: 0.5<br>
@@ -1837,18 +2044,12 @@ citadel_trooper_max_per_lane | devonly, sv | Default: 0<br>How many troopers can
 citadel_trooper_medic_drops_health_pack | sv, release | Default: true<br>
 citadel_trooper_medics_use_heal_ability | sv, release | Default: false<br>
 citadel_trooper_minion_sight_range | devonly, sv, cl, rep | Default: 2000<br>
-citadel_trooper_neutral_aggro_time | devonly, sv | Default: 5<br>
-citadel_trooper_neutral_health_growth_pct_per_min | devonly, sv | Default: 2.1<br>
-citadel_trooper_neutral_scorer_time_window | devonly, sv | Default: 5<br>How long after damaging a neutral are players in the window to be considered scorers.
-citadel_trooper_neutral_sight_range | devonly, sv | Default: 1500<br>
-citadel_trooper_new_movement | devonly, sv | Default: false<br>
 citadel_trooper_offscreen_indicator_range | devonly, cl | Default: 35<br>
 citadel_trooper_outline_enabled | cl, release | Default: false<br>
-citadel_trooper_reinforcement_gold_scale | devonly, sv | Default: 0.5<br>
 citadel_trooper_run_test_path | devonly, sv | Default: 0<br>
 citadel_trooper_shooting_enabled | sv, rep, cheat | Default: true<br>
 citadel_trooper_siege_instant_gold_ratio | devonly, sv | Default: 0.5<br>
-citadel_trooper_spawn_enabled | devonly, sv | Default: true<br>set to false to prevent any troopers from spawning
+citadel_trooper_spawn_enabled | sv, rep, cheat, release | Default: true<br>set to false to prevent any troopers from spawning
 citadel_trooper_spawn_initial | devonly, sv | Default: 16<br>Initial trooper wave spawn time
 citadel_trooper_spawn_interval |  | 
 citadel_trooper_spawn_interval_early | devonly, sv | Default: 30<br># of seconds between trooper spawn waves.
@@ -1858,11 +2059,11 @@ citadel_trooper_spawn_interval_very_late | devonly, sv | Default: 20<br># of sec
 citadel_trooper_spawn_interval_very_late_time | devonly, sv | Default: 35<br># of minutes before we start using the late trooper spawn interval.
 citadel_trooper_spawn_wave_spread | devonly, sv | Default: 0.4<br># of seconds between troopers on a zipline in a single wave.
 citadel_trooper_squad_size | devonly, sv | Default: 4<br>How many troopers spawn together in a squad
-citadel_trooper_stuck_detection_duration | devonly, sv | Default: 0.2<br>
 citadel_trooper_suicide_instant_gold_ratio | devonly, sv | Default: 0<br>What percent of gold is transfered instantly if a trooper suicides.
 citadel_trooper_suicide_orb_gold_ratio | devonly, sv | Default: 0<br>What percent of gold is transfered into an orb if a trooper suicides.
-citadel_trooper_use_ziplines | devonly, sv | Default: true<br>
-citadel_trooper_waypoint_threshold | devonly, sv | Default: 48<br>
+citadel_trooper_test_spawner_type | devonly, sv | Default: normal<br>normal \| medic \| melee
+citadel_trooper_use_direct_path_movement | devonly, sv | Default: true<br>
+citadel_trooper_use_per_tick_think_override | devonly, sv | Default: true<br>
 citadel_trooper_zipline_leap_speed | devonly, sv | Default: 200<br>
 citadel_tutorial_ability1_state | sv, cl, rep, release | Default: 0<br>
 citadel_tutorial_ability2_state | sv, cl, rep, release | Default: 0<br>
@@ -1910,7 +2111,7 @@ citadel_ui_damage_impact_duration_fadeindelay | devonly, cl, rep | Default: 0<br
 citadel_ui_damage_impact_duration_fadeoutdelay | devonly, cl, rep | Default: 0.6<br>
 citadel_ui_damage_impact_kill_duration | devonly, cl, rep | Default: 5<br>
 citadel_ui_damage_impact_min_max_shield_width | devonly, cl, rep | Default: 0.1<br>
-citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: false<br>
+citadel_ui_damage_impact_show_for_everything | devonly, cl | Default: true<br>
 citadel_ui_damage_impact_status_minimum_duration | devonly, cl | Default: 0.2<br>
 citadel_ui_fake_active_matches | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy matches to the active match list, useful for testing UI around these
 citadel_ui_fake_invite_parties | devonly, cl | Default: 0<br>Set to &gt; 0 to add dummy parties that have invites
@@ -1919,51 +2120,54 @@ citadel_ui_show_hero_progression | devonly, cl, a | Default: false<br>Show hero 
 citadel_ui_spoof_active_match_bot_account | devonly, cl | Default: 0<br>When set to non-zero, it will use this account as the account for bots to test UI on the active match
 citadel_ui_test_ranked_highlight_time | devonly, cl | Default: 0<br>
 citadel_ui_watch_active_game_refresh_s | cl, release | Default: 5<br>The number of seconds to wait between refreshes of the active matches while on the watch page
+citadel_unit_query_benchmark | devonly, sv, cheat | Runs UnitQueries and physics queries and prints time spent: citadel_unit_query_benchmark \[queries\] \[repetitions\]
+citadel_unit_query_debug_draw_error_shape_duration | devonly, sv, cl, rep, cheat | Default: 15<br>Duration to display debug draw for UnitQuery errors
+citadel_unit_query_draw_all | devonly, sv, cl, rep, cheat | Default: false<br>
+citadel_unit_query_draw_all_shapes | devonly, sv, cl, rep, cheat | Default: <br>Limit citadel_unit_query_draw_all to these shapes, space or comma separated: sphere aabb obb capsule cone truncatedcone. Empty draws all
+citadel_unit_query_draw_mismatches | devonly, sv, cl, rep, cheat | Default: true<br>
+citadel_unit_query_draw_registry | devonly, sv, cheat | Default: false<br>
+citadel_unit_query_log_registry | devonly, sv, cl, rep, cheat | Default: <br>Log registry adds/removes for entities whose classname contains this substring, * for all
+citadel_unit_query_registry_report | devonly, sv, cheat | Print a per-bucket classname list of the unit query registry
+citadel_unit_query_stats | devonly, sv, cl, rep, cheat | Default: false<br>
+citadel_unit_query_test_randomized | devonly, sv, cheat | Fire randomized unit queries through the cached and physics paths and compare results
+citadel_unit_query_validate | devonly, sv, cl, rep, cheat | Default: false<br>
 citadel_unit_status_allies_see_thru_walls | devonly, cl | Default: true<br>
-citadel_unit_status_allies_see_thru_walls_max_distance | devonly, cl, cheat | Default: 0<br>How far to make allied players' unit status show through walls. Use values &lt;= 0 for no limit.
-citadel_unit_status_delta_decay_delay | devonly, cl | Default: 0.166667<br>
+citadel_unit_status_breakpoint_line_large_amt | devonly, cl | Default: 1000<br>
+citadel_unit_status_breakpoint_line_small_amt | devonly, cl | Default: 250<br>
+citadel_unit_status_delta_decay_delay | devonly, cl | Default: 0.3<br>
 citadel_unit_status_delta_decay_rate | devonly, cl | Default: 3<br>
-citadel_unit_status_dpi | devonly, cl | Default: 10<br>
 citadel_unit_status_draw_local | devonly, cl | Default: false<br>
-citadel_unit_status_enabled | cl, cheat, release | Default: true<br>
+citadel_unit_status_enabled | cl, cheat, release | Default: true<br>Show health bars and nameplates above units
 citadel_unit_status_fadeout_dist | devonly, cl | Default: 200<br>How far out of the players effective gun range do we show the health bar
-citadel_unit_status_health_per_minor_pip | devonly, cl | Default: 100<br>
-citadel_unit_status_health_per_pip | devonly, cl | Default: 100<br>
-citadel_unit_status_health_pips_per_row | devonly, cl | Default: 10<br>
 citadel_unit_status_healthbar_highlight_speed | devonly, cl | Default: 2<br>
-citadel_unit_status_height | devonly, cl | Default: 100<br>
+citadel_unit_status_height | devonly, cl | Default: 210<br>
+citadel_unit_status_hero_name_mode | cl, a, per_user, release | Default: 0<br>Name shown above hero health bars. 0: player name, 1: hero name, 2: none
 citadel_unit_status_hide_names | cl, cheat, release | Default: false<br>
 citadel_unit_status_max_distance_distance | devonly, cl | Default: 800<br>
 citadel_unit_status_max_distance_scale | devonly, cl | Default: 1<br>
 citadel_unit_status_max_health_per_bar | devonly, cl | Default: 1000<br>
 citadel_unit_status_max_health_segment_increment | devonly, cl | Default: 1000<br>
-citadel_unit_status_max_health_segments | devonly, cl | Default: 6<br>
-citadel_unit_status_max_total_bars | devonly, cl | Default: 6<br>
+citadel_unit_status_max_total_bars | devonly, cl | Default: -1<br>
 citadel_unit_status_min_distance_scale | devonly, cl | Default: 0.2<br>
-citadel_unit_status_minor_pip_per_major_pip | devonly, cl | Default: 5<br>
-citadel_unit_status_old_dpi | devonly, cl | Default: 4<br>
-citadel_unit_status_old_draw_local | devonly, cl | Default: false<br>
-citadel_unit_status_old_fadeout_dist | devonly, cl | Default: 200<br>How far out of the players effective gun range do we show the health bar
-citadel_unit_status_old_health_pips_per_row | devonly, cl | Default: 10<br>
-citadel_unit_status_old_height | devonly, cl | Default: 80<br>
-citadel_unit_status_old_hide_names | cl, cheat, release | Default: false<br>
-citadel_unit_status_old_opaque_dist_sq | devonly, cl | Default: 50000<br>
-citadel_unit_status_old_show_stats | devonly, cl | Default: false<br>
-citadel_unit_status_old_transparent_dist_sq | devonly, cl | Default: 0<br>
-citadel_unit_status_old_update_rate | devonly, cl | Default: 30<br>How many times per second the unit status can update (0 = every frame).
-citadel_unit_status_old_width | devonly, cl | Default: 100<br>
+citadel_unit_status_name_fade_end_dist | devonly, cl | Default: 35<br>Distance in meters from the camera at which names above health bars are fully faded out
+citadel_unit_status_name_fade_start_dist | devonly, cl | Default: 25<br>Distance in meters from the camera at which names above health bars start fading out
+citadel_unit_status_offset_player_min_z | devonly, cl | Default: 75<br>Min z offset for character's whose offset attachment go very low
+citadel_unit_status_offset_player_z_offset_adjustment | devonly, cl | Default: 16<br>Z Offset for all charcters, indpendent of the vmdl offset.
+citadel_unit_status_offset_smooth_large_delta | devonly, cl | Default: 10<br>&gt; this is a large delta
+citadel_unit_status_offset_smooth_max_rate | devonly, cl | Default: 30<br>Smoothing for large deltas
+citadel_unit_status_offset_smooth_min_rate | devonly, cl | Default: 2<br>Smoothing for small deltas
+citadel_unit_status_offset_smooth_small_delta | devonly, cl | Default: 2<br>Around this is a small delta
 citadel_unit_status_opaque_dist_sq | devonly, cl | Default: 50000<br>
 citadel_unit_status_recent_damage_time | devonly, cl | Default: 0.25<br>
+citadel_unit_status_show_ally_health_value | cl, a, per_user | Default: false<br>Show health numbers on allied heroes' health bars when they take damage.
+citadel_unit_status_show_critical_state | cl, a, user | Default: true<br>
+citadel_unit_status_show_health_value | cl, a, user | Default: true<br>
 citadel_unit_status_show_stats | devonly, cl | Default: false<br>
-citadel_unit_status_single_bar_mode | cl, cheat | Default: false<br>Allow only a single health bar, no stacking.
-citadel_unit_status_stamina_consume_linger | devonly, cl | Default: 3<br>
+citadel_unit_status_stamina_consume_linger | devonly, cl | Default: 5<br>
 citadel_unit_status_transparent_dist_sq | devonly, cl | Default: 0<br>
-citadel_unit_status_use_new | cl, release | Default: false<br>
-citadel_unit_status_use_v2 | devonly, cl, cheat | Default: false<br>
-citadel_unit_status_use_v2_for_nonplayers | devonly, cl, cheat | Default: false<br>
-citadel_unit_status_v2_height | devonly, cl | Default: 210<br>
-citadel_unit_status_v2_width | devonly, cl | Default: 200<br>
+citadel_unit_status_viewer_damage_match_window | devonly, cl | Default: 0.25<br>How long a viewing player damage message and an observed healthbar drop wait for each other before being discarded
 citadel_unit_status_width | devonly, cl | Default: 200<br>
+citadel_unit_status_window_scale | devonly, cl | Default: 2<br>
 citadel_unit_target_button_hint_mode | devonly, cl | Default: 0<br>
 citadel_unlock_flex_slots | sv, cheat | &lt;team number&gt; - Unlock the flex slots for a team (or both teams if you omit the team number)
 citadel_unpause_countdown | sv, cheat | Default: 3<br>Countdown duration to the unpause after a user unpauses
@@ -1975,7 +2179,8 @@ citadel_upload_metadata_enabled | devonly, sv | Default: true<br>Controls if mat
 citadel_upload_replay_enabled | sv, release | Default: true<br>Controls if replay uploading is enabled. Mainly used as a kill switch if something goes wrong
 citadel_upload_servertest_replays | devonly, sv | Default: false<br>When set, this will upload replays for server test matches, otherwise they will be discarded
 citadel_use_character_proxy | devonly, sv, cl, rep | Default: false<br>
-citadel_use_contextual_ping_wheel_option | cl, a | Default: true<br>
+citadel_use_connected_nearest_nav_for_flying_npcs | devonly, sv | Default: false<br>
+citadel_use_contextual_ping_wheel_option | cl, a, per_user | Default: true<br>
 citadel_use_csgo_style_recoil_follow_crosshair | devonly, cl, rep | Default: false<br>
 citadel_use_fake_lobby_signout_details | devonly, sv | Default: false<br>If enabled, fake the details to enable match signout to flow
 citadel_use_hold_sprint | devonly, sv, cl, rep | Default: false<br>Use hold sprint ability?
@@ -1984,13 +2189,16 @@ citadel_use_new_abandon_rules_ranked | devonly, sv | Default: true<br>
 citadel_use_new_abandon_rules_unranked | devonly, sv | Default: true<br>
 citadel_use_new_minimap | devonly, cl | Default: true<br>Turns on/off the new minimap
 citadel_use_pvs_for_players | devonly, sv | Default: false<br>
-citadel_use_shop_component_groupings | cl, a | Default: false<br>Use new component Grouping
 citadel_use_spectator_team_colors | devonly, cl | Default: false<br>Forces HUD and game to draw team colors as if you are a spectator
+citadel_use_stateful_ready_on_client | devonly, sv, cl, rep | Default: true<br>Use a stateful 'IsReadyOnClient' flag, used by stat caching.
 citadel_use_ui_keybindings | cl, a, release | Default: true<br>Use UI key bindings otherwise use engine keybindings.
+citadel_use_unit_query_system | devonly, sv, cl, rep | Default: true<br>Route the UTIL_FindUnits* family through the cached unit query system instead of the physics broadphase
 citadel_use_vertical_healthbars | devonly, cl | Default: false<br>
 citadel_use_wip_models | devonly, sv, cl, rep | Default: false<br>When true, uses the WIP models defined in the hero vdata
 citadel_vanguard_enabled | devonly, sv | Default: false<br>
 citadel_vanguard_instant_capture | devonly, sv | Default: false<br>
+citadel_vdata_open_in_system_editor | devonly, cl, a | Default: false<br>Open vdata nodes in the system editor instead of VData Editor (so it uses the Windows file assocation for .vdata/.vdata_inc)
+citadel_vdata_update_popular_items | devonly, cl | Command to update popular items in hero vdata.
 citadel_video_preset | cl, a | Default: 3<br>Rendering performance level.
 citadel_viewed_book_prototype | cl, a, release | Default: false<br>Track if they have opened up the book prototype or not yet
 citadel_viewpunch_damping | sv, cl, rep, cheat | Default: 9<br>Bigger number makes the response more damped, smaller is less damped
@@ -2000,6 +2208,7 @@ citadel_viscous_telepunch_trace_debug | devonly, sv, cl, rep | Default: false<br
 citadel_visibility_queue_rate | devonly, cl | Default: 2<br>
 citadel_visualize_tethers | sv, cl, rep, cheat | Default: false<br>
 citadel_voice_all_talk | devonly, sv | Default: false<br>If 1, all players can hear all other players.
+citadel_voicelines_show_unused | cl, release | Default: false<br>Show the Unused tab (voice lines without subtitles) on the Voice Lines page
 citadel_waiting_for_map_load_min_duration | sv, cheat | Default: 0<br>Force a certain duration in the waiting for map to load state
 citadel_wall_detection_debug | sv, cl, rep, cheat | Default: 0<br> 1: Show all wall normal planes detected
 citadel_wall_detection_skin | sv, cl, rep, cheat | Default: 8<br>Maximum distance to a wall in order to wall jump.
@@ -2014,20 +2223,16 @@ citadel_weapon_damage_multiplier_team_filter | sv, cl, rep, cheat | Default: -1<
 citadel_weapon_damage_reduction_for_melee | devonly, sv, cl, rep | Default: 0.5<br>What percent do we want weapon damage reduced for melee damage?
 citadel_weapon_normalize_recoil_with_firerate | sv, cl, rep, cheat | Default: true<br>Keep recoil constant even with fire rate changes.
 citadel_weapon_spread_debug | devonly, cl | Default: false<br>
-citadel_weapon_zoom_style | sv, cl, rep, cheat | Default: 1<br>0: Original Linear Interpolation. 1: Smooth Approach
+citadel_wheel_bind_hold_time | cl, release | Default: 0.3<br>How long a single mouse wheel tick counts as holding down the key for binds that requires a held key
 citadel_world_bullet_impacts_for_npcs | devonly, sv, cl, rep | Default: false<br>Turns on bullet impacts and decals on world from troopers and neutrals shooting
 citadel_zip_debug | devonly, sv | Prints debug info about the closest zip line node
 citadel_zipline_allow_direction_choice | devonly, sv, cl, rep | Default: true<br>0: Chose direction based solely on camera angle. 1: Chose direction at the moment of attachment, using the player's movement direction.
 citadel_zipline_animgraph_cuvature_max | devonly, sv, cl, rep | Default: 50<br>
-citadel_zipline_arrow_boost_brightness | devonly, cl | Default: 1<br>Changes the zipline arrow boost brightness
-citadel_zipline_arrow_scale | devonly, cl | Default: 1<br>Changes the zipline arrow scale
-citadel_zipline_arrow_scoll_speed | devonly, cl | Default: 1<br>Changes the zipline arrow scroll speed
 citadel_zipline_attachment_debug | devonly, sv, cl, rep | Default: false<br>
-citadel_zipline_baselane_speed_mult | devonly, sv, cl, rep | Default: 0.7<br>
 citadel_zipline_capture | devonly, sv | Captures the closest zipline node
 citadel_zipline_capture_all | devonly, sv | sets all ziplines nodes to the specified team
-citadel_zipline_capture_trigger_max_thickness | devonly, sv | Default: 400<br>
-citadel_zipline_capture_trigger_min_thickness | devonly, sv | Default: 400<br>
+citadel_zipline_capture_trigger_max_thickness | devonly, sv | Default: 1200<br>
+citadel_zipline_capture_trigger_min_thickness | devonly, sv | Default: 300<br>
 citadel_zipline_capture_trigger_width | devonly, sv | Default: 1200<br>
 citadel_zipline_curve_sampling_size | devonly, sv, cl, rep | Default: 24<br>
 citadel_zipline_debug_draw | devonly, cl | Default: false<br>
@@ -2035,6 +2240,7 @@ citadel_zipline_debug_draw_capture | devonly, sv | Default: false<br>
 citadel_zipline_debug_draw_node_entity | devonly, cl | Default: 0<br>if non-zero, only draw zipline curves extending from this node.
 citadel_zipline_debug_draw_segments | devonly, cl | Default: 20<br>
 citadel_zipline_movement_debug | devonly, sv, cl, rep | Default: false<br>
+citadel_zipline_node_distance_max | devonly, sv | Default: 300<br>
 citadel_zipline_nonbaselane_speed_mult | devonly, sv, cl, rep | Default: 1.1<br>
 citadel_zipline_pendulum_damping | devonly, sv, cl, rep | Default: 0.3<br>
 citadel_zipline_pendulum_debug | devonly, sv, cl, rep | Default: false<br>
@@ -2046,13 +2252,14 @@ citadel_zipline_percent_override_blue | devonly, cl | Default: -1<br>Changes the
 citadel_zipline_percent_override_green | devonly, cl | Default: -1<br>Changes the percent distance of the green lane
 citadel_zipline_percent_override_purple | devonly, cl | Default: -1<br>Changes the percent distance of the purple lane
 citadel_zipline_percent_override_yellow | devonly, cl | Default: -1<br>Changes the percent distance of the yellow lane
+citadel_zipline_ping_along_rope_angle | devonly, sv, cl, rep | Default: 60<br>Determine whether a player is aiming at the zipline toward base or away.
+citadel_zipline_ping_targeting_angle | devonly, sv, cl, rep | Default: 6<br>Max angle deflection from the cached zipline node that will result in a ping.
 citadel_zipline_rebuildpaths | devonly, sv | Rebuilds all zipline splines
 citadel_zipline_render_mode | devonly, cl | Default: 0<br>0=Model, 1=Particle, 2=Model+Particle
 citadel_zipline_show_enemy_boosting | sv, cl, rep, cheat | Default: 1<br>0 = no, 1 = yes, 2 = preview effect
 citadel_zipline_show_lane_colors_for_spectators | devonly, cl | Default: false<br>
 citadel_zipline_targeting_dot | devonly, sv, cl, rep | Default: 0.95<br>
 citadel_zipline_velocity_debug | devonly, sv, cl, rep | Default: false<br>
-citadel_zipline_width | devonly, cl | Default: 0.7<br>Changes the zipline width
 citadel_zoomed_in_minimap | devonly, cl | Default: false<br>Test zoomed in minimap
 citdael_targeting_aoe_desat_color | devonly, cl | Default: 150 207 184 255<br>The color of the desat area while targeting an AoE.
 citdael_targeting_aoe_outline_color | devonly, cl | Default: 150 207 184 255<br>The color of the outline area while targeting an AoE.
@@ -2066,7 +2273,6 @@ cl_aggregate_particles | devonly | Default: true<br>
 cl_anglespeedkey | devonly, cl | Default: 0.67<br>
 cl_anim_eval_stats | devonly, cl | Displays stats about how many EvaluatePose calls are unused
 cl_animgraph_dump_update_list | devonly, cl | Displays stats about which animations are updating
-cl_animgraph_history_force_temporal_consistency | devonly, cl | Default: true<br>
 cl_async_client_shatter | devonly, cl | Default: true<br>spawn client glass shards asynchronously during demos or when remotely connected.
 cl_async_restore_server_authoritative_state | devonly, cl | Default: false<br>
 cl_async_usercmd_send | devonly | Default: false<br>
@@ -2075,7 +2281,7 @@ cl_audio_debug_bullet_material | cl, cheat | Default: false<br>Visualize bullet 
 cl_audio_debug_pawn_surface_data | cl, cheat | Default: false<br>Visualize pawn surface data.
 cl_audio_display_soundstack_debug_base_3d | cl, cheat | Default: false<br>Displays citadel_base_3d sound stack debug.
 cl_audio_display_soundstack_debug_dialog | cl, cheat | Default: false<br>Displays citadel_dialog sound stack debug.
-cl_audio_draw_enclosure_debug | devonly, cl, rep | Default: false<br>Draws debug associated with amount interior vs exterior
+cl_audio_draw_dimension_probe_debug | cl, cheat | Default: false<br>Toggle on debug spheres for enclosure/probe reverb
 cl_audio_log_citadel_audio_filter | devonly, cl | Default: false<br>Logs sound event information for CCitadelAudioFilter.
 cl_audio_log_participant_start_messages | cl, cheat | Default: false<br>Prints when a participant sound message was sent.
 cl_auto_cursor_scale | a | Default: true<br>Automatic cursor size scaling.
@@ -2090,27 +2296,36 @@ cl_buffer_incoming_net_messages | release | Default: true<br>
 cl_bullet_travel_debug_path | cl, cheat | Default: 0<br>Debug: visualization time for lazily calculated bullet paths (0 = disable)
 cl_bullet_travel_debug_trace | cl, cheat | Default: 0<br>Debug: visualization time for active bullet traces (0 = disable)
 cl_cache_sendtable | devonly | Default: true<br>Cache sendtables
-cl_cameraoverride_fade_in_amount | devonly, cl | Default: 0<br>
-cl_cameraoverride_shadow_depth_bias | devonly, cl | Default: 0.006<br>
-cl_cameraoverride_shadow_end | devonly, cl | Default: 0.8<br>
 cl_change_callback_limit | cl, release | Default: 0.2<br>change callback msec warning limit
 cl_chat_active | devonly, cl | Default: 0<br>
 cl_checkdeclareclasses | cheat | Check game code serializers
-cl_citadel_ability_alt_cast_hold_time | cl, a, user | Default: 0.15<br>
-cl_citadel_ability_alt_cast_instant_cast_double_tap_timeout | cl, a, user | Default: 0.2<br>
-cl_citadel_ability_alt_cast_mode | cl, a, user | Default: 2<br>
+cl_citadel_ability_active_report | devonly, cl, cheat | Print per-ability active window transition counts and dwell times. Use citadel_ability_active_reset_stats to clear.
+cl_citadel_ability_active_reset_stats | devonly, cl, cheat | Clear the counters printed by citadel_ability_active_report.
+cl_citadel_ability_activeness_report | devonly, cl | Print ability MODIFIER_VALUE contributions recorded while the ability was untrained or inactive. Use citadel_ability_activeness_reset_stats to clear.
+cl_citadel_ability_activeness_reset_stats | devonly, cl | Clear the counters printed by citadel_ability_activeness_report.
+cl_citadel_ability_alt_cast_hold_time | cl, a, user, per_user | Default: 0.15<br>
+cl_citadel_ability_alt_cast_instant_cast_double_tap_timeout | cl, a, user, per_user | Default: 0.2<br>
 cl_citadel_ability_test_fail_all | devonly, cl, cheat | Default: false<br>
+cl_citadel_auto_fire | cl, a, per_user | Default: false<br>Shoot continuously, and press Fire to stop or resume shooting
+cl_citadel_auto_mantle_backward | cl, a, user, per_user | Default: false<br>Mantle automatically when moving backward into a ledge while on the ground
+cl_citadel_auto_mantle_forward | cl, a, user, per_user | Default: false<br>Mantle automatically when moving forward into a ledge while on the ground
+cl_citadel_auto_mantle_in_air | cl, a, user, per_user | Default: false<br>Mantle automatically when moving forward or backward into a ledge while airborne
+cl_citadel_auto_move | cl, a, per_user | Default: false<br>Double-tap Move Forward to keep moving forward until Move Forward or Move Back is pressed
+cl_citadel_auto_move_double_tap_time | cl, a, per_user | Default: 0.3<br>Max time between Move Forward presses to toggle auto-move
 cl_citadel_bebop_beam_draw_points | cl, cheat | Default: false<br>
-cl_citadel_camera_ops_debug | devonly, cl | Default: <br>
+cl_citadel_camera_ops_debug | devonly, cl | Default: <br>Valid Values: \[ dist \| fov \| pos \| vert \| offset \].  Note, use "cl_citadel_camera_ops_debug" or "sv_cl_citadel_camera_ops_debug" depending on debugging client or server.
 cl_citadel_camera_sequences_debug | devonly, cl | Default: false<br>
-cl_citadel_cancel_with_ability_key_enabled | cl, a, user | Default: false<br>
+cl_citadel_cancel_with_ability_key_enabled | cl, user, per_user | Default: false<br>
+cl_citadel_current_hero_ability_alt_cast_mode_read_only | devonly, cl, user | Default: 2<br>
 cl_citadel_debug_player_look_target | devonly, cl, rep | Default: false<br>Draw player look target data.  White is server, cyan is client.
 cl_citadel_deployment_preview_debug_draw | devonly, cl | Default: false<br>Enable debug draw for deployment preview.  Draws a sphere at the location for 0.1 seconds
-cl_citadel_deployment_targeting_debug_draw | devonly, cl | Default: 0<br>Enable debug draw for deployment targeting.  Debug draw is a one show that persists for n seconds
+cl_citadel_deployment_targeting_debug_draw | devonly, cl | Default: 0<br>Enable debug draw for deployment targeting.  Debug draw is enabled until it's disabled
 cl_citadel_deployment_targeting_debug_log | devonly, cl | Default: false<br>Enable debug log for deployment targeting
 cl_citadel_dump_bullets | devonly, cl | dump all bullet info to the console
+cl_citadel_dump_corrupted_overrides | cl, release | Dumps every corrupted item's penalty exclusions, fixed bonuses and integer-rounded bonuses
+cl_citadel_dump_corrupted_penalties | devonly, cl | Dumps the corrupted item penalty rolled for every corruptible item this match
 cl_citadel_force_on_upgrade_for_all_abilities | devonly, cl | Force all abilities to call OnUpgrade()
-cl_citadel_forceangles | devonly, cl | Force third person camera angles
+cl_citadel_forceangles | cl, cheat | Force third person camera angles
 cl_citadel_hornet_blast_debug_physics | devonly, cl | Default: false<br>
 cl_citadel_items_quickcast_mode | cl, a, user | Default: 0<br>
 cl_citadel_player_voting_poster_current_hero_id | sv, cl, a, user | Default: 0<br>Hero ID to spray
@@ -2118,10 +2333,16 @@ cl_citadel_quickcast_ability1 | cl, a, user | Default: 0<br>
 cl_citadel_quickcast_ability2 | cl, a, user | Default: 0<br>
 cl_citadel_quickcast_ability3 | cl, a, user | Default: 0<br>
 cl_citadel_quickcast_ability4 | cl, a, user | Default: 0<br>
-cl_citadel_record_hero_animgraph | cl, cheat | Record the animgraph for a specified hero
+cl_citadel_stat_cache_dump_deps | devonly, cl, cheat | Dump the full stat dependency graph for an entity. Usage: citadel_stat_cache_dump_deps \[entindex/name\]
+cl_citadel_stat_cache_report | devonly, cl, cheat | Print per-EStatsType cache statistics sorted by query volume. Use stat_cache_reset_stats to clear.
+cl_citadel_stat_value_cache_enabled | devonly, cl, cheat | Default: true<br>Enable/disable stat value result caching
+cl_citadel_stat_value_cache_validate_interval | devonly, cl | Default: 500<br>Validate cached stat values against freshly computed results every N hits. 0=off.
+cl_citadel_unit_query_draw_registry | devonly, cl, cheat | Default: false<br>
+cl_citadel_unit_query_registry_report | devonly, cl, cheat | Print a per-bucket classname list of the unit query registry
 cl_citadel_wrecker_ultimate_debug_physics | devonly, cl | Default: false<br>
 cl_citadel_zipline_rebuildpaths | devonly, cl | Rebuilds all zipline splines
-cl_citadel_zoom_is_toggle | cl, a, user | Default: false<br>
+cl_citadel_zoom_is_toggle | cl, a, user, per_user | Default: false<br>
+cl_cleardraw | cl, cheat | Clears all lines drawn by drawline and drawcross
 cl_clock_buffer_ticks | devonly | Default: 1<br>Clock sync will try to maintain an additional margin of N ticks.  This is intended to smooth over packet loss, and is a replacement for cl_interp_ratio / cl_interp.  This value is simply added to cl_clock_recvmargin_desired
 cl_clock_buffer_ticks_spectator | devonly | Default: 2<br>Additional margin (in ticks) to apply when spectating.
 cl_clock_correction | cheat | Default: true<br>Enable/disable clock correction on the client.
@@ -2151,10 +2372,8 @@ cl_decal_clear_all_entities | devonly, cl | Clears decals from all entities
 cl_decal_clear_world | devonly, cl | Clears world decals
 cl_decal_debug | devonly, cl | Toggles client decal debug visualization
 cl_decal_shoot | devonly, cl | Shoots a client-side decal
-cl_demo_steadycam_blendframes | devonly, cl | Default: 5<br>blend over this many frames
-cl_demo_steadycam_deflection | devonly, cl | Default: 5<br>if camera orientation changes this much update orientation
-cl_demo_steadycam_enable | devonly, cl | Default: 0<br>Stabilize camera orientation/position during demo playback.  1 == remove roll, 2 == steadycam
-cl_demo_steadycam_radius | devonly, cl | Default: 16<br>if camera moves this much from last anchor update anchor
+cl_decryptdata_key | release | Default: <br>Key to decrypt encrypted GOTV messages
+cl_decryptdata_key_pub | release | Default: <br>Key to decrypt public encrypted GOTV messages
 cl_demo_view_offset_left | devonly, cl | Default: 0<br>View offset during demo playback (+/- 1.25 is a good default for human average left/right eye offset)
 cl_demoviewoverride | devonly, cl | Default: 0<br>Override view during demo playback
 cl_destroy_ragdolls | devonly, cl | Destroys all client-side ragdolls
@@ -2172,13 +2391,11 @@ cl_dump_projected_texture_count | devonly, cl | Print out number of active proje
 cl_dump_response_symbols | devonly, cl | print all response symbols to the console
 cl_dumpentity | cl, cheat | Dumps info about an entity
 cl_dumpsplithacks | devonly, cl | Dump split screen workarounds.
-cl_enable_eye_occlusion | devonly, cl | Default: true<br>
 cl_ent_absbox | cl, cheat | Displays the total bounding box for the given entity(s) in green.  Some entites will also display entity specific overlays.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cl_ent_actornames | cl, cheat | Displays the entity name for all entities that have ShouldDisplayInActorNames true in code
 cl_ent_animgraph2_open_graph | cl, cheat | Opens the graph and starts live debugging the AG2 graph for a given entity<br>	Arguments: entityName<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cl_ent_animgraph2_record | cl, cheat | Starts live debugging & recording the AG2 graph for a given entity<br>	Arguments: entityName<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cl_ent_animgraph_debug | cl, cheat | Displays debug draws about the given entity(ies) animgraph<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
-cl_ent_animgraph_record | cl, cheat | Toggles recording of animgraph replay of the given entity(s)<br>	Arguments: entityName automaticallyOpenInAnimgraphEditor<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cl_ent_attachment_filter_substrings | cl, cheat | Default: <br>If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '\|' character.
 cl_ent_attachments | cl, cheat | Displays the attachment points on an entity.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cl_ent_bbox | cl, cheat | Displays the movement bounding box for the given entity(ies) in orange.  Some entites will also display entity specific overlays.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
@@ -2190,6 +2407,7 @@ cl_ent_grab | cl, cheat | grabs the object in front of the player. Options: -loo
 cl_ent_hierarchy | cl, cheat | Prints the entity hierarchy tree rooted at the specified ent(s)
 cl_ent_hitbox | cl, cheat | Displays the hitboxes for the given entity(ies).<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cl_ent_joint_axis_size | devonly, cl | Default: 4<br>
+cl_ent_joint_filter_name | cl, cheat | Default: <br>If a joint's entire name matches (case insensitive), it will be displayed.
 cl_ent_joint_filter_substrings | cl, cheat | Default: <br>If a joint's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '\|' character.
 cl_ent_joint_lines | cl, cheat | Default: true<br>Draw a line between a rendered joint and its parent.
 cl_ent_joint_names | cl, cheat | Default: true<br>Draw the name of a rendered joint.
@@ -2238,28 +2456,13 @@ cl_ents | devonly, cl | List client entities, sorted by spawn group
 cl_error_report_time | cl, release | Default: 0<br>Minimum time in seconds that must elapse before printing prediction error summary. 0 to disable.
 cl_extrapolate | cl, cheat | Default: true<br>Enable/disable extrapolation if interpolation history runs out.
 cl_extrapolate_amount | cl, cheat | Default: 0.25<br>Set how many seconds the client will extrapolate entities for.
-cl_eye_occlusion_debug | cl, cheat | Default: false<br>
-cl_eye_sin_wave | devonly, cl | Default: false<br>
-cl_eye_target_override | devonly, cl | Default: 0 0 0<br>
-cl_eye_yaw_multiplier | devonly, cl | Default: 1<br>
 cl_fasttempentcollision | devonly, cl | Default: 5<br>
 cl_flushentitypacket | cheat | Default: 0<br>For debugging. Force the engine to flush an entity packet.
 cl_force_next_signon_to_reset | devonly | Default: false<br>
+cl_frame_perf_sample_buffer_max | rep, release | Default: 100<br>If &gt;0, enable random sampling of frames, and limit random sample buffer size to N.  Set to 0 to disable frame perf sampling entirely.
 cl_frametime_summary_report_detailed | cl, release | Default: true<br>When a perf report is dumped at the end of the session, should it be detailed?
 cl_fullupdate | cheat | Force uncompressed update
 cl_generate_postdataupdatepreserved | devonly | Default: true<br>Do we invoke PostDataUpdatePreserved callbacks for entities that had no changes but are still in the PVS?
-cl_globallight_debug | devonly, cl | Default: false<br>
-cl_globallight_depth_bias | devonly, cl | Default: -999<br>
-cl_globallight_expansion | devonly, cl | Default: 200<br>
-cl_globallight_freeze | devonly, cl | Default: false<br>
-cl_globallight_orig_calc_frustum | devonly, cl | Default: true<br>
-cl_globallight_shadow_mode | devonly, cl | Default: 2<br>
-cl_globallight_slope_scale_depth_bias | devonly, cl | Default: -999<br>
-cl_globallight_use_alt_focus_region | devonly, cl | Default: false<br>
-cl_globallight_use_optimized_calc_frustum | devonly, cl | Default: true<br>
-cl_globallight_use_shaadow_near_offset | devonly, cl | Default: true<br>
-cl_globallight_world_bottom_height | devonly, cl | Default: 0<br>
-cl_globallight_world_top_height | devonly, cl | Default: 4096<br>
 cl_glow_brightness | cl, cheat | Default: 1<br>Brightness of player halos
 cl_glow_item_far_b | cl, release | Default: 1<br>
 cl_glow_item_far_g | cl, release | Default: 0.4<br>
@@ -2272,7 +2475,7 @@ cl_hold_game_events_until_server_tick | cl, cheat | Default: true<br>Holds game 
 cl_hud_telemetry_frametime_poor | cl, a, release | Default: 100<br>Frame time greater than this is considered 'poor'.
 cl_hud_telemetry_frametime_show | cl, a, release | Default: 1<br>Show frame time (FPS) in the HUD.  0=never, 1=only if poor, 2=always
 cl_hud_telemetry_net_detailed | cl, a, release | Default: 0<br>Show breakdown network misdelivery (loss, late delivery, and peak jitter).  0=never, 1=only in poor network conditions, 2=always
-cl_hud_telemetry_net_misdelivery_poor | cl, a, release | Default: 5<br>Packet delivery anomaly rate (0..100) higher than this is considered 'poor'.
+cl_hud_telemetry_net_misdelivery_poor | cl, a, release | Default: 2<br>Packet delivery anomaly rate (0..100) higher than this is considered 'poor'.
 cl_hud_telemetry_net_misdelivery_show | cl, a, release | Default: 1<br>Show percentage of user commands & server snapshots that are missed due to network conditions.  0=never, 1=only in poor conditions, 2=always
 cl_hud_telemetry_net_quality_graph_show | cl, a, release | Default: 0<br>Show packet jitter and netframe loss/reordering in the HUD.  0=never, 1=only in poor conditions, 2=always
 cl_hud_telemetry_ping_poor | cl, a, release | Default: 100<br>Ping higher than this (ms) is considered 'poor'.
@@ -2291,7 +2494,7 @@ cl_interp_all | devonly, cl | Default: false<br>Disable interpolation list optim
 cl_interp_animationvars | devonly, cl | Default: true<br>Interpolate LATCH_ANIMATION_BIT vars if interpolation interval is greater than simulation interval
 cl_interp_hermite | cl, cheat | Default: true<br>Set to zero do disable hermite interpolation.
 cl_interp_npcs | devonly, cl | Default: 0<br>Interpolate NPC positions starting this many seconds in past (or the value as per cl_interp_ratio, if greater)
-cl_interp_parallel | devonly, cl | Default: false<br>Run interpolation in parallel for entities with no children.
+cl_interp_parallel | devonly, cl | Default: true<br>Run interpolation in parallel for entities with no children.
 cl_interp_ratio | cl, user | Default: 0<br>Sets the client simulation interpolation amount, in terms of server updates (final amount is cl_interp_ratio / cl_updaterate).
 cl_interp_simulationvars | devonly, cl | Default: true<br>Interpolate LATCH_SIMULATION_BIT vars if interpolation interval is greater than animation interval
 cl_interp_threadmodeticks | devonly, cl | Default: 0<br>Additional interpolation ticks to use when interpolating with threaded engine mode set.
@@ -2310,6 +2513,8 @@ cl_log_tick_skips | devonly | Default: 0<br>Log when the tick delta &gt;= this
 cl_massreport | devonly, cl | Default: false<br>
 cl_max_particle_pvs_aabb_edge_length | release | Default: 100<br>
 cl_meep_mop_volume_trigger_max_count | cl, cheat | Default: 10<br>Number of triggers before meemop reaches full volume
+cl_modifier_cache_report | devonly, cl | Print per-EModifierValue cache statistics sorted by query volume. Use modifier_cache_reset_stats to clear.
+cl_modifier_cache_reset_stats | devonly, cl | Reset modifier value cache statistics.
 cl_modifier_debug | devonly, cl | Default: false<br>
 cl_modifier_dump | cl, cheat | Display all modifiers for the unit: &lt;entityindex/name&gt;
 cl_modifier_dump_list | cl, cheat | Dumps all modifiers that exist in the game
@@ -2317,10 +2522,11 @@ cl_modifier_dump_visible | cl, cheat | Print out non-hidden modifiers.
 cl_modifier_parallel_gather_status_effect_updates | devonly, cl, rep | Default: false<br>
 cl_modifier_spew_states | cl, cheat | Call to have the client spew their unit states affecting them,
 cl_modifier_stringtable_dump | cl, cheat | Displays the contents of the modifier string table
+cl_modifier_value_cache_enabled | devonly, cl | Default: false<br>Enable/disable modifier value result caching
+cl_modifier_value_cache_validate_interval | devonly, cl, rep | Default: 500<br>Validate cached modifier values against freshly computed results every N hits. 0=off.
 cl_net_printsummary | norecord, release | Print a summary report of Source2 engine networking statistics.  (Ticks, netchan messages, etc.)
 cl_net_showeventlisteners | devonly, cl | Default: false<br>Show listening addition/removals
 cl_net_showevents | devonly, cl | Default: 0<br>Dump game events to console (1=client only, 2=all).
-cl_network_quality2 | cl, a | Default: -1<br>
 cl_panel_freeze_time_after_press | devonly, cl | Default: 0.5<br>time to freeze mouse/pointer motion after a mouse button press
 cl_parallel_readpacketentities | devonly | Default: true<br>Set to 1 to use threading snapshot reading (if game supports and server is sending bitcounts).
 cl_parallel_readpacketentities_threshold | devonly | Default: 2<br>Use parallel processing of snapshot reading if above this many entries.
@@ -2378,7 +2584,7 @@ cl_pred_track | devonly, cl | &lt;entindex&gt; &lt;fieldname&gt;:  Track changes
 cl_pred_track_off | devonly, cl | clear field track changes.
 cl_predict | cl, user, cheat | Default: true<br>Perform client side prediction.
 cl_prediction_savedata_postentitypacketreceived | cl, release | Default: false<br>Experimental optimization.  If you are reading this in 2026, please delete this convar.
-cl_predictioncopy_describe | devonly, cl | Describe datamap_t for entindex
+cl_predictioncopy_describe | devonly, cl | Describe PredictionMap_t for entindex
 cl_predictioncopy_print | devonly, cl | Print simple description of prediction copy fields for entindex
 cl_predictioncopy_runs | devonly, cl | Default: true<br>
 cl_printfps | devonly, cl | Print information from cl_showfps.
@@ -2397,12 +2603,9 @@ cl_resend | release | Default: 0.5<br>Delay in seconds before the client will re
 cl_resetfps | devonly, cl | Reset information from cl_showfps.
 cl_retire_low_priority_lights | devonly, cl | Default: false<br>Low priority dlights are replaced by high priority ones
 cl_rr_dump_rules | cl, cheat | Print all response rules
-cl_rr_reloadresponsesystems | cl, cheat | Reload all response system scripts.
 cl_sat_volume_debug | devonly, cl | Toggles client sat volume debug visualization
-cl_save_animgraph_recording | cl, cheat | Saves all active animgraph recordings to disk<br>	Arguments: automaticallyOpenInAnimgraphEditor
 cl_scale_function_dump | cl, cheat | Print out all scale functions.
 cl_sceneentity_debug | devonly, cl | Default: false<br>Display all thinking scene entities and its data.
-cl_screenmessage_notifytime | devonly, cl | Default: 8<br>How long to display screen message text
 cl_script_add_debug_filter | cl, cheat | Add a filter to the game debug overlay
 cl_script_add_watch | cl, cheat | Add a watch to the game debug overlay
 cl_script_add_watch_pattern | cl, cheat | Add a watch to the game debug overlay
@@ -2445,7 +2648,6 @@ cl_showtextmsg | devonly, cl | Default: true<br>Enable/disable text messages pri
 cl_showtick | cl, release | Default: 0<br>Show current tick/time values.  Bitmask:  1='render time'  2='GameTime'   4=time of predicted entities  8=offset of predicted entities    (-1 means 'everything')
 cl_showusercmd | devonly, cl | Default: false<br>Show user command encoding
 cl_simulate_dormant_entities | devonly, cl | Default: true<br>
-cl_skel_constraints_enable | rep, cheat | Default: true<br>
 cl_skeleton_instance_smear_boneflags | cl, cheat | Default: false<br>Smear boneflags across the model.  Costs computation, but tests to make sure your bone flags are consistent.
 cl_skip_hierarchy_update_for_unchanged_entities | devonly, sv, cl, rep | Default: true<br>Skip updating hierarchy information in PostDataUpdate for entities that have not changed
 cl_skip_update_animations | devonly, cl | Default: false<br>Enable to skip game animations
@@ -2468,8 +2670,10 @@ cl_spawngroup_spewresources | devonly | Default: false<br>Spew all manifest add/
 cl_spewserializers | cheat | Spew serializers
 cl_spewworldgroups | devonly | Spew world groups (client)
 cl_ss_origin | devonly, cl | print origin in script format
+cl_stat_cache_reset_stats | devonly, cl, cheat | Reset stat value cache statistics.
+cl_svc_usercmds_delta_validate | devonly, cl | Default: false<br>Validate consistency of delta-encoded user commands.  Requires server to have sv_cq_validate_encoded_svc_usercmds enabled.
 cl_test_list_entities | cl, cheat | test-list entities
-cl_tickpacket_desired_queuelength | user | Default: 0<br>This value, multiplied by the tick interval, is added to cl_tickpacket_recvmargin_desired to obtain the effective desired recv margin.
+cl_tickpacket_desired_queuelength | user | Default: 1<br>This value, multiplied by the tick interval, is added to cl_tickpacket_recvmargin_desired to obtain the effective desired recv margin.
 cl_tickpacket_recvmargin_adjust_limit | devonly | Default: 5<br>Recvmargin-based usercommand pacing will not speed up or slow down command pacing by more than N% compared to realtime
 cl_tickpacket_recvmargin_desired | devonly | Default: 5<br>Recvmargin-based usercommand pacing will try to maintain N ms margin between user command arriving at the server and the server needing that user command.  See also cl_tickpacket_desired_queuelength.
 cl_tickpacket_recvmargin_minsamples | devonly | Default: 10<br>Recvmargin-based usercommand pacing will not take action unless we have N samples
@@ -2483,13 +2687,12 @@ cl_timeout | a | Default: 30<br>After this many seconds without receiving a pack
 cl_tracer_whiz_distance | devonly, cl | Default: 72<br>
 cl_tracer_whiz_infront_distance | devonly, cl | Default: 32<br>
 cl_trueview_show_status | cl, release | Default: 2<br>0=Never; 1=Only if there is a problem; 2=always
-cl_updaterate | cl, a, user | Default: 20<br>Number of packets per second of updates you are requesting from the server
+cl_updaterate | cl, a, user | Default: 128<br>Number of packets per second of updates you are requesting from the server
 cl_updatevisibility | devonly, cl | Updates visibility bits.
 cl_usercmd_dbg | devonly | Default: 0<br>show usercmd payload sizing info for packets with more than this many usercmds
 cl_usercmd_max_per_movemsg | release | Default: 4<br>max number of CUserCmds to send in one client move message
 cl_usercmd_showsize | devonly | Default: false<br>
 cl_usesocketsforloopback | devonly | Default: true<br>When connecting to local listen server (for example, using the 'map' command), default to loopback=false, which connects to '127.0.0.1' instead of 'loopback'.  This uses the network stack so that fake lag/loss can be simulated.
-cl_viewtarget_clamp | devonly, cl | Default: true<br>
 cl_voice_transmit_lobby | cl, a, release | Default: false<br>
 cl_voiceenabled | devonly, cl | Default: true<br>
 cl_vsnd_morph_override_ease_enabled | devonly, cl | Default: true<br>Controls whether the compiled in vsnd morph data ease in/out values are used or values set from the convars (cl_vsnd_morph_override_ease_in, cl_vsnd_morph_override_ease_out) are used
@@ -2499,6 +2702,7 @@ cl_yawspeed | devonly, cl | Default: 210<br>
 clear | norecord, release | Clear console output.
 clear_debug_flags_on_death | devonly, sv | Default: true<br>
 clearall | norecord, release | Clear console output from all views.
+cleardraw | sv, cheat | Clears all lines drawn by drawline and drawcross
 cli_ent_attachments | cl, cheat | Displays the interpolated attachment points on an entity.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cli_ent_hitbox | cl, cheat | Displays the skeleton for the given entity(ies).<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 cli_ent_pivot | cl, cheat | Displays the interpolated pivot for the given entity(ies).<br>	(y=up=green, z=forward=blue, x=left=red). <br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
@@ -2507,10 +2711,11 @@ cli_ent_vcollide_wireframe | cl, cheat | Displays the interpolated vcollide wire
 client_metrics_upload_batch_seconds | devonly, cl | Default: 300<br>
 client_metrics_upload_immediate | devonly, cl | 
 clientport | release | Default: 0<br>If non-zero, client binds port to specific address.  Usually you should leave this blank to use a different random system-assigned port for each connection.
-closecaption | cl, a, user | Default: false<br>Enable close captioning.
+closecaption | cl, a, user, per_user | Default: false<br>Enable close captioning.
 cloth_debug_draw | devonly, cl | Default: 0<br>
 cloth_filter_transform_stateless | devonly | Default: false<br>Enable the new, stateless version of FilterTransform
 cloth_ground_plane_thickness | devonly | Default: 3<br>Raise ground by this much for all cloth that traces the ground; should be 0 ideally
+cloth_interp_rot | devonly, cl | Default: false<br>
 cloth_iv_dump | devonly, cl | Default: 4<br>
 cloth_iv_store_back | devonly, cl, rep | Default: false<br>
 cloth_sim_on_tick | devonly, cl | Default: true<br>
@@ -2555,12 +2760,13 @@ crash_error_job | cheat | Cause the engine to crash by Plat_FatalError on job th
 crash_error_thread | cheat | Cause the engine to crash by Plat_FatalError on non-main thread (Debug!!)
 crash_job | cheat | Cause the engine to crash in a job thread (Debug!!)
 crash_thread | cheat | Cause the engine to crash in a brand new non-main thread (Debug!!)
-create_flare | devonly, sv | Create a flare on the local player's team
+create_explosion_damage | sv, cheat | Explosion where you're looking, or at x y z, with a real explosion's physics force (unlike create_radius_damage).
 create_orb | devonly, sv | Create an orb on the local player's team
 create_radius_damage | sv, cheat | Causes radius damage where you're looking, at the passed in radius.
 create_test_portal | devonly, sv | creates a portal
 creditsdone | devonly, sv | 
 crosshair_spread_scale | devonly, cl | Default: 3.6<br>
+cs2_bomb_damage_showdebugwindow | devonly, cl, a, rep, cheat | Default: false<br>CSGO/Bomb Damage
 csm_bias_override_0 | cheat | Default: 1<br>
 csm_bias_override_1 | cheat | Default: 1<br>
 csm_bias_override_2 | cheat | Default: 1<br>
@@ -2580,24 +2786,23 @@ csm_res_override_2 | cheat | Default: 0<br>
 csm_res_override_3 | cheat | Default: 0<br>
 csm_shadow_worldview_align_x_to_u | cheat | Default: false<br>
 csm_shadow_worldview_shear_align_z_to_v | cheat | Default: false<br>
-csm_split_log_scalar | cheat | Default: 0.85<br>
 csm_sst_max_visible_dist | cheat | Default: 2000<br>
 csm_sst_pushback_distance | cheat | Default: 1500<br>default pushback
+csm_sst_shadow_focus_region_caster_headroom | cl, cheat | Default: 256<br>
 csm_sst_shadow_focus_region_maxz | cheat | Default: 2000<br>
 csm_sst_shadow_focus_region_minz | cheat | Default: -2000<br>
+csm_sst_vertical_depth_shear_enable | cheat | Default: true<br>
 csm_viewdir_shadow_bias | cheat | Default: 0<br>
-csm_viewmodel_farz | cheat | Default: 30<br>
 csm_viewmodel_max_shadow_dist | cheat | Default: 21<br>
 csm_viewmodel_max_visible_dist | cheat | Default: 1000<br>
 csm_viewmodel_nearz | cheat | Default: 0.5<br>
 csm_viewmodel_shadows | devonly | Default: false<br>
 ctadel_camera_clear_ops | devonly, cl | Clear any camera operations that are active
 cv_collect_assert_stack_for_gc | devonly, sv, cl, rep | Default: false<br>When enabled and collecting asserts for the GC, this will generate stacks for the asserts
-cvar_unhide |  | 
+cvar_unhide | sv, release | 
 cvarlist | release | Show the list of convars/concommands.
-cvarlist_md |  | List all convars/concmds in Markdown format. Format: \[hidden\]
+cvarlist_md | sv, release | List all convars/concmds in Markdown format. Format: \[hidden\]
 cyclevar | norecord, release | Cycle through specified convar values.
-d3d_max_feature_level | devonly | Default: &lt;Not set&gt;<br>Report the maximum D3D feature level available.
 damage_indicator_safe_area | devonly, cl | Default: 6<br>
 dbghist_addline | devonly, sv | Add a line to the debug history. Format: &lt;category id&gt; &lt;line&gt;
 dbghist_dump | devonly, sv | Dump the debug history to the console. Format: &lt;category id&gt;<br>    Categories:<br>     0: Entity I/O<br>     1: AI Decisions<br>     2: Scene Print<br>     3: Alyx Blind<br>     4: Log of damage done to player<br>	 5: Player Teleport<br>	 6: Blind Zombie Sounds<br>	 7: Player Continuous<br>
@@ -2608,7 +2813,6 @@ deadlock_hero_debuts_seen | cl, a, release | Default: <br>
 deadlock_mm_preference | cl, a, release | Default: 1<br>What style of player do we want to try and match with in matchmaking
 deadlock_steam_input_debug | devonly, cl | Default: false<br>Show Steam Input Error Messages and Spew in console
 deadlock_steam_input_on_disc_manifest | devonly, cl | Default: false<br>Use local cfg\\steam_input_manifest.vdf as opposed to cloud manifest
-debug_ai_heat_sensing | devonly, sv | Default: false<br>
 debug_async_data_panel_override_state | devonly, cl | Default: -1<br>Force ALL async data panels to be in a specific state. -1:disabled, 0:failure, 1:loading, 2:success
 debug_destructible_parts | devonly, sv, cl, rep | Default: false<br>Draw debug information for destructible parts.
 debug_destructible_parts_enabled | sv, cl, rep, cheat | Default: true<br>Toggle enabling/disabling the destructible parts system for debug.
@@ -2616,22 +2820,24 @@ debug_destructible_parts_radius_damage | devonly, sv, cl, rep | Default: false<b
 debug_destructible_parts_ttl | devonly, sv, cl, rep | Default: 1<br>How long the debug draws stick around for, unless they're per-tick.
 debug_draw_enable | devonly, rep | Default: true<br>
 debug_error_model | sv, cl, rep, cheat | Default: false<br>
+debug_font_name | devonly | Default: Courier New<br>Debug font name
 debug_font_size | devonly | Default: 14<br>Font size for the debug font
 debug_hltv | devonly, cl, rep, clientcmd_can_execute | Default: 0<br>Print out hltv events
 debug_overlay_fullposition | devonly, sv | Default: false<br>
 debug_physimpact | devonly, sv | Default: false<br>
 debug_radial_damage | sv, cl, rep, cheat | Default: false<br>
 debug_shared_random | devonly, sv, cl, rep | Default: false<br>
-debug_squad_surround | devonly, sv | Default: 0<br>
 debug_takedamage_summaries | sv, cheat | Default: false<br>
 debug_visibility_monitor | sv, cheat | Default: 0<br>
+debugoverlay_circle_verts | cheat | Default: 24<br>
 debugoverlay_cycle_domain | sv, cheat | Toggles visibility of the debug overlay system.
 debugoverlay_cycle_state | sv, cheat | Toggles visibility of the debug overlay system.
 debugoverlay_dashboard | sv, cheat | Makes the debug overlay dashboard visible.
+debugoverlay_enable_dotted_dashed | cheat | Default: true<br>Toggle the use of dotted/dashed debugoverlay lines to indicate source
 debugoverlay_force_respect_ttl | cheat | Default: false<br>Force respect TTL even when clearing scopes
 debugoverlay_hide_imgui | sv, cheat | Hides the overlay.
 debugoverlay_show_text_outline | cheat | Default: false<br>Toggle display of box around text
-debugoverlay_text_scale | a, cheat | Default: 1<br>Scale of the text used for 3d display
+debugoverlay_text_scale | a, cheat | Default: 1<br>Scale of the text used for 3d display, but see also debug_font_{size,name}
 debugoverlay_toggle | sv, cheat | Toggles visibility of the debug overlay system.
 decalfrequency | devonly, sv, nf | Default: 10<br>
 default_fov | cl, cheat | Default: 70<br>
@@ -2673,6 +2879,7 @@ disable_dynamic_prop_loading | sv, cheat | Default: false<br>If non-zero when a 
 disable_priority_boost | devonly | Disable focus based priority boost
 disable_source_soundscape_trace | devonly, sv | Default: true<br>Bypasses lookup of soundscapes for indvidual audio sources when enabled.
 disconnect | release | Disconnect from server
+display_convars_onscreen_in_big_text | devonly, sv, cl, rep, cheat | Default: <br>Display the convars on the screen in big text. Use semicolons to separate multiple convars
 display_game_events | sv, cheat | Default: false<br>
 dlight_debug | cl, cheat | Creates a dlight in front of the player
 dota_enable_spatial_audio | release | Default: false<br>Flag to enable spatial audio in Dota 2.
@@ -2736,8 +2943,6 @@ engine_platform_name_extended | devonly | Default: <br>Platform the engine is ru
 engine_relaunch_app_before_exiting | devonly, release | Default: false<br>Use this to tell Steam to relaunch the app right after existing
 engine_render_only | devonly | Default: false<br>
 engine_rendersystem_init | devonly | Default: <br>Rendersystem option requested (changing this does not change the rendersystem).
-engine_rendersystem_meets_min_dx_110 | devonly | Default: Unknown<br>Rendersystem meets min DX110 feature level (changing this does not change the shader model).
-engine_rendersystem_meets_min_dx_110_simple | devonly | Default: Unknown<br>Rendersystem meets min DX110 feature level (changing this does not change the shader model).
 engine_rendersystem_shader_model | devonly | Default: 0<br>Rendersystem shader model in use (changing this does not change the shader model).
 engine_rendersystem_used | devonly | Default: <br>Rendersystem option in use (changing this does not change the rendersystem).
 engine_show_frame_dispatch | devonly | Default: false<br>show frame dispatch names.
@@ -2753,8 +2958,6 @@ ent_actornames_fontsize | sv, cl, rep, cheat | Default: 24<br>ent_actornames fon
 ent_animgraph2_open_graph | sv, cheat | Opens the graph and starts live debugging the AG2 graph for a given entity<br>	Arguments: entityName<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_animgraph2_record | sv, cheat | Starts live debugging & recording the AG2 graph for a given entity<br>	Arguments: entityName<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_animgraph_debug | sv, cheat | Displays debug draws about the given entity(ies) animgraph<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
-ent_animgraph_record | sv, cheat | Toggles recording of animgraph replay of the given entity(s)<br>	Arguments: entityName automaticallyOpenInAnimgraphEditor<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
-ent_animgraph_setvar | sv, cheat | Sets a variable on the animgraph of the given entity(s)<br>	Arguments:   &lt;varname&gt;=&lt;value&gt;	&lt;{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}&gt;
 ent_attachment_filter_substrings | sv, cheat | Default: <br>If an attachment's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '\|' character.
 ent_attachments | sv, cheat | Displays the attachment points on an entity.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_autoaim | sv, cheat | Displays the entity's autoaim radius.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
@@ -2771,14 +2974,17 @@ ent_debug_draw_thinkers | devonly, sv, cl, rep | Default: false<br>
 ent_debug_origin_changes | devonly, sv | turn on, off, or toggle origin changes on server for entity by index
 ent_find | sv, cheat | Find and list all entities with classnames or targetnames that contain the specified substrings.<br>Format: find_ent &lt;substring&gt;<br>
 ent_find_index | sv, cheat | Display data for entity matching specified index.<br>Format: find_ent_index &lt;index&gt;<br>
-ent_fire | sv, cheat | Usage:<br>   ent_fire &lt;target&gt; \[action\] \[value\] \[delay\]<br>
-ent_fire_output | sv, cheat | Usage:<br>   ent_fire_output &lt;target&gt; \[output name\] \[value\] \[delay\]<br>
+ent_fire | sv, cheat | Usage:<br>   ent_fire &lt;target&gt; \[action\] \[value0\] \[value1\] ... \[valueN\]<br>
+ent_fire_delay | sv, cheat | Usage:<br>   ent_fire_delay &lt;target&gt; \[action\] \[value0\] \[value1\] ... \[valueN\] \[delay\]<br>
+ent_fire_output | sv, cheat | Usage:<br>   ent_fire_output &lt;target&gt; \[output name\] \[value0\] \[value1\] ... \[valueN\]<br>
+ent_fire_output_delay | sv, cheat | Usage:<br>   ent_fire_output_delay &lt;target&gt; \[output name\] \[value0\] \[value1\] ... \[valueN\] \[delay\]<br>
 ent_gib | sv, cheat | Gibs the given entity(s)<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_grab | sv, cheat | grabs the object in front of the player. Options: -loose -multiple -toggle
 ent_hierarchy | sv, cheat | Prints the entity hierarchy tree rooted at the specified ent(s)
 ent_hitbox | sv, cheat | Displays the hitboxes for the given entity(ies).<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_info | sv, cheat | Usage:<br>   ent_info &lt;class name&gt;<br>
 ent_joint_axis_size | devonly, sv | Default: 4<br>
+ent_joint_filter_name | sv, cheat | Default: <br>If a joint's entire name matches (case insensitive), it will be displayed.
 ent_joint_filter_substrings | sv, cheat | Default: <br>If a joint's name has any of the given substrings in it, it will be displayed. Substrings can be delimited by the ',' or '\|' character.
 ent_joint_lines | sv, cheat | Default: true<br>Draw a line between a rendered joint and its parent.
 ent_joint_names | sv, cheat | Default: true<br>Draw the name of a rendered joint.
@@ -2813,7 +3019,6 @@ ent_showonlyattachment | sv, cheat | Default: <br>
 ent_skeleton | sv, cheat | Displays the skeleton for the given entity(ies).<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_skeleton_duration | sv, cl, rep, cheat | Default: 0<br>Duration of ent_skeleton display
 ent_skeleton_only_ik_joints | devonly, sv | Default: false<br>
-ent_skeleton_snapshot | devonly, sv | Default: false<br>
 ent_spew_derived_classes | devonly, sv | Prints out all entity classes which inherit from a specified base class
 ent_steadystate_batchsize | devonly, sv | Default: 20<br>Max number of entities to transmit to player
 ent_steadystate_delay | devonly, sv | Default: 5<br>Time in seconds without network state changes until an entity is considered for trickle updates
@@ -2838,13 +3043,22 @@ ent_viewentity | devonly, sv | Selects the picked entity as the view entity
 ent_viewoffset | sv, cheat | Displays the eye position for the given entity(ies) in red.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 ent_viewpunch | devonly, sv | Used to debug ViewPunch
 ent_visibility_traces | sv, cheat | Displays visibility traces for the given entity<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
+entity_debug_snapshot_enabled | devonly, sv, cl, rep, cheat | Default: true<br>
 entity_log_load_unserialize | sv, cl, rep, cheat | Default: 0<br>Output unserialization of entities on map load. 0 - off, 1 - client/server, 2 - server, 3 - client
 entity_lump_list | devonly | List all known entity lumps
 entity_lump_spew | devonly | Dump the contents of an entity lump
 entityreport | devonly, sv | Reports all extant entities. Optional 2nd arg is a substring of a classname that the list will be filtered by.
 entitysummary | devonly, sv | Summarizes (by class) all extant entities. Optional 2nd arg is a substring of a classname that the list will be filtered by.
 ents | devonly, sv | List server entities, sorted by spawn group
+env_shake_debug | devonly, sv, rep | Default: false<br>Draw debug info for active env_shakes: query radius, affected physics bodies/particles, and the forces/velocity deltas applied to them.
 escape | release, clientcmd_can_execute | Escape key pressed.
+event_grant_points | devonly, cl | Reset all state on your account relating to the given event id
+event_override_clear | devonly, cl | &lt;event id&gt; - Clear any clientside overrides for an event
+event_override_owned | devonly, cl | &lt;event id&gt; \[owned\] - Set a clientside override of whether an event is owned. -1 for not owned, 1 for owned, 0 for no override.
+event_override_points | devonly, cl | &lt;event id&gt; \[points\] - Set a clientside override of the point value for an event
+event_override_premium_points | devonly, cl | &lt;event id&gt; \[premium points\] - Set a clientside override of the premium points for an event. -1 to remove the override.
+event_reload_schema | devonly, sv, cl | 
+event_reset_state | devonly, cl | Reset all state on your account relating to the given event id
 exec | norecord, release | Execute a cfg file
 exec_async | cheat, norecord | Execute a cfg file over time
 execifexists | norecord, release | Execute a cfg file if file exists
@@ -2871,15 +3085,9 @@ firstperson | cl, release, per_tick | Switch to firstperson camera.
 fish_debug | cl, cheat | Default: false<br>Show debug info for fish
 fish_dormant | sv, rep, cheat | Default: false<br>Turns off interactive fish behavior. Fish become immobile and unresponsive.
 fog_color | cl, cheat | Default: -1 -1 -1<br>
-fog_colorskybox | cl, cheat | Default: -1 -1 -1<br>
 fog_enable | cl, cheat | Default: true<br>Enable fog
-fog_enableskybox | cl, cheat | Default: true<br>
 fog_end | cl, cheat | Default: -1<br>
-fog_endskybox | cl, cheat | Default: -1<br>
 fog_hdrcolorscale | cl, cheat | Default: -1<br>
-fog_hdrcolorscaleskybox | cl, cheat | Default: -1<br>
-fog_maxdensity | cl, cheat | Default: -1<br>
-fog_maxdensityskybox | cl, cheat | Default: -1<br>
 fog_override | cl, cheat | Default: 0<br>Overrides the map's fog settings (-1 populates fog_ vars with map's values)
 fog_override_color | cheat | Sets the fog color override
 fog_override_enable | cheat | Default: false<br>Use fog_override convars instead of world fog data
@@ -2888,7 +3096,6 @@ fog_override_exponent | cheat | Default: 2<br>
 fog_override_max_density | cheat | Default: 0.4<br>
 fog_override_start | cheat | Default: 1000<br>
 fog_start | cl, cheat | Default: -1<br>
-fog_startskybox | cl, cheat | Default: -1<br>
 fog_volume_debug | devonly, sv | Default: false<br>If enabled, prints diagnostic information about the current fog volume
 font_show_glyph_miss | devonly | Default: false<br>
 footstep_debug | devonly, sv, cl, rep | Default: false<br>
@@ -2896,13 +3103,11 @@ footstep_force_volume | devonly, sv, cl, rep | Default: -1<br>
 force_assert | devonly | Fire an assertion failure
 force_fatal_error | devonly | Fire a fatal error
 force_floating_point_exceptions | devonly | Enable floating point exceptions to find bugs
-force_hibernate | devonly | Force toggle hibernation state
 fov_desired | cl, a, user | Default: 75<br>Sets the base field-of-view.
 fp_trace | devonly | Toggle field path tracing to file<br>
 fps_max | a, release | Default: 400<br>Frame rate limiter.  0=no limit.  Does not apply to dedicated server.
 fps_max_tools | a | Default: 120<br>Additional frame rate limit while in tools mode and a window other than the game window has focus. Note that fps_max still applies, this only allows the maximum frame rate for tools mode to be lower. 0=no tools specific limit.
 fps_max_ui | a | Default: 120<br>Frame rate limiter while the game UI is displayed.  0=no limit.  Does not apply to dedicated server.
-free_pass_peek_debug | devonly, sv | Default: false<br>
 freecamera_accel | devonly, cl | Default: 5<br>Tweak this parameter to adjust Free Camera movement acceleration.
 freecamera_fog_end | devonly, cl | Default: 2500<br>Fog end for Free Camera.
 freecamera_fog_start | devonly, cl | Default: 1800<br>Fog start for Free Camera.
@@ -2925,13 +3130,22 @@ func_breakdmg_bullet | devonly, sv | Default: 0.5<br>
 func_breakdmg_club | devonly, sv | Default: 1.5<br>
 func_breakdmg_explosive | devonly, sv | Default: 1.25<br>
 func_mover_async_movable_navmesh_updates | devonly, sv | Default: true<br>
+func_mover_count | sv, cheat | 
 func_mover_debug | devonly, sv | Default: false<br>
 func_mover_debug_all | devonly, sv | Default: false<br>
 func_mover_debug_follower | devonly, sv | Default: false<br>
+func_mover_debug_parallel | devonly, sv | Default: false<br>
+func_mover_debug_showtext | devonly, sv | Default: false<br>
 func_mover_debug_verbose | devonly, sv | Default: false<br>
+func_mover_disable_movement | devonly, sv | Default: false<br>
+func_mover_enable_debug_all | sv, cheat | 
+func_mover_force_transition_start_direction | devonly, sv | Default: false<br>
 func_mover_get_speed_override | devonly, sv | Default: 0<br>
 func_mover_imgui_log_count | devonly, sv | Default: 30<br>
+func_mover_run_parallel | devonly, sv | Default: true<br>
+func_mover_step_movement | sv, cheat | 
 func_rotator_debug | devonly, sv | Default: false<br>
+func_rotator_run_parallel | devonly, sv | Default: true<br>
 fx_drawmetalspark | devonly, cl | Default: true<br>Draw metal spark effects.
 g_debug_angularsensor | sv, cheat | Default: false<br>
 g_debug_constraint_sounds | sv, cheat | Default: false<br>Enable debug printing about constraint sounds.
@@ -2965,7 +3179,6 @@ gameui_allowescapetoshow | devonly, release | Escape key allowed to show game UI
 gameui_hide | release | Hides the game UI
 gameui_preventescape | devonly, release | Escape key doesn't hide game UI
 gameui_preventescapetoshow | devonly, release | Escape key doesn't show game UI
-gc_secret_key | devonly, sv, prot | Default: <br>Secret key for authenticating with the GC<br>
 generate_minidump_comment | devonly | Generate a minidump comment and spew the results to the console
 generate_null_container | devonly | Generated a nulled out container.
 generate_trash_synth | devonly | Args: \[Asset directory Path\]
@@ -2991,7 +3204,7 @@ hairsim_force_fixed_timestep | devonly, cheat | Default: true<br>
 hairsim_reset | devonly, cheat | Default: false<br>
 healme | sv, cheat | Heals the player.<br>	Arguments: &lt;health to gain&gt;
 help | release | Find help about a convar/concommand.
-hero_data_inspect | devonly, sv, cl, a, rep, cheat | Default: false<br>Citadel/Hero Stats
+hero_data_inspect | devonly, cl, a, rep, cheat | Default: false<br>Citadel/Hero Stats
 hide_party_code | cl, a | Default: false<br>When set, this will hide the party code in the client
 hideconsole | norecord, release | Hide the console.
 hideout_search_key | devonly, cl | Default: <br>Allows specifying a search key for hideout server allocation (dev only)
@@ -3014,7 +3227,7 @@ hud_damagemeter | cl, cheat | Default: false<br>
 hud_damagemeter_ooctimer | devonly, cl | Default: 3<br>How many seconds after the last damage event before we consider the player out of combat.
 hud_damagemeter_report | devonly, cl | Default: true<br>Display end-of-combat DPS result (from first damage even to last before OOC timer hit).
 hud_fastswitch | cl, a | Default: 0<br>
-hud_free_cursor | cl, release | Default: -1<br>If -1 use the hud default, otherwise 0 is disabled, 1 is enabled
+hud_free_cursor | cl, release | Default: 0<br>0 is disabled, 1 is enabled
 hud_free_cursor_toggle | cl, release | Toggles free cursor convar.
 hud_minimap_spectator_fow_team_view_amber | cl, release | While a spectator, view team amber's minimap view
 hud_minimap_spectator_fow_team_view_both_teams | cl, release | While a spectator, view both teams' minimap view
@@ -3022,10 +3235,10 @@ hud_minimap_spectator_fow_team_view_sapphire | cl, release | While a spectator, 
 hud_minimap_spectator_fow_team_view_target_team | cl, release | While a spectator and viewing a player, view team their minimap view
 hud_mouselook_always | devonly, cl | Default: false<br>
 hud_reloadscheme | devonly, cl | Reloads hud layout and animation scripts.
-hullivr_edge_merge_tan | devonly, sv, rep | Default: 0.02<br>Should we try to straighten two faces connected to this edge? (tangent)
-hullivr_faceisland_merge_disp | devonly, sv, rep | Default: 0<br>Should we straighten face island if the displacement is this much? (inches)
-hullivr_faceisland_merge_tan | devonly, sv, rep | Default: 0.04<br>Should we try to straighten an island of faces deviating from their average normal (tangent)?
-hullivr_version | devonly, sv, rep | Default: 3<br>
+hullivr_edge_merge_tan | devonly, sv, cl, rep | Default: 0.02<br>Should we try to straighten two faces connected to this edge? (tangent)
+hullivr_faceisland_merge_disp | devonly, sv, cl, rep | Default: 0<br>Should we straighten face island if the displacement is this much? (inches)
+hullivr_faceisland_merge_tan | devonly, sv, cl, rep | Default: 0.04<br>Should we try to straighten an island of faces deviating from their average normal (tangent)?
+hullivr_version | devonly, sv, cl, rep | Default: 3<br>
 hurtme | sv, cheat | Hurts the player.<br>	Arguments: &lt;health to lose&gt;
 hurtthem | sv, cheat | Hurts the enemy in front of you.<br>	Arguments: &lt;health to lose&gt;
 ic | devonly, cl | interp entity count<br>
@@ -3092,7 +3305,6 @@ instant_replay | devonly | Default: true<br>Enable instant replay recording.
 instant_replay_goto_tick | devonly | Goto a direct timestamp of the replay
 instant_replay_goto_tick_relative | devonly | Goto a direct timestamp of the replay
 instant_replay_history_limit | devonly | Default: 120<br>Maximum amount of minutes to save history (0 is unlimited).
-instant_replay_history_limit_low | devonly | Default: 10<br>Maximum amount of minutes to save history on low memory (32 bit) systems (0 is unlimited).
 instant_replay_live | devonly | If in replay, jumps back to live
 instant_replay_pause | devonly | Pauses instant replay.
 instant_replay_resume | devonly | Resumes instant replay.
@@ -3101,6 +3313,8 @@ instant_replay_skip_live | devonly | Number of seconds to skip back to instant r
 instant_replay_timescale | devonly | Sets instant replay speed.
 instant_replay_togglepause | devonly | Toggles instant replay.
 interesting_events_draw_debug | sv, cheat | Default: false<br>When enabled, draws a sphere representing active events
+internal_bot_test_private | devonly, cl | \[difficulty = 1-4\] Starts a private internal bot test
+internal_bot_test_queue_mm | devonly, cl | Queues for internal bot test using matchmaking
 ip | release | Default: <br>Overrides IP for multihomed hosts
 item_debug | devonly, sv, cl, rep | Default: false<br>
 iv_debug | devonly, cl | Spew interpolated var info for entity.
@@ -3194,9 +3408,7 @@ labelled_debug_helper_scale | sv, cl, rep, cheat | Default: 1<br>
 labelled_debug_helper_show_position | sv, cl, rep, cheat | Default: false<br>
 labelled_debug_helper_show_text | sv, cl, rep, cheat | Default: true<br>
 labelled_debug_helper_skeleton_show_bone_names | sv, cl, rep, cheat | Default: true<br>
-last_viewed_announce_id | cl, a | Default: -1<br>Tracks the last announcement ID viewed so we can know when new announcements are available
 lb_allow_shadow_rotation | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Shadow Rotation
-lb_allow_time_sliced_shadow_map_rendering | devonly | Default: true<br>Allow time-sliced shadow buffer rendering when enabled via gameinfo.gi
 lb_barnlight_shadow_use_precomputed_vis | devonly | Default: true<br>
 lb_barnlight_shadowmap_scale | release | Default: 1<br>Scale for computed barnlight shadowmap size
 lb_bin_slices | devonly | Default: 8192<br>
@@ -3213,8 +3425,10 @@ lb_csm_override_staticgeo_cascades_animated_verts | devonly | Default: true<br>I
 lb_csm_override_staticgeo_cascades_value | devonly | Default: -1<br>If lb_csm_override_staticgeo_cascades, override value used to determine which cascades render static objects
 lb_csm_receiver_plane_depth_bias | devonly | Default: 1.526e-05<br>Shader depth bias applied to shadow receiver (Note this conflicts with renderstate depth bias, both now default to 0)
 lb_csm_receiver_plane_depth_bias_transmissive_backface | devonly | Default: 0.00015<br>Depth bias applied to shadow receiver for transmissive backface geo (based on renderstate depthbias being 0)
-lb_cubemap_normalization_max | devonly | Default: 32<br>
+lb_cubemap_normalization_max | devonly | Default: 1<br>
 lb_cubemap_normalization_roughness_begin | devonly | Default: 0.1<br>
+lb_cull_offscreen_bounce_light_shadows | devonly, cheat | Default: true<br>Skip shadowmaps for offscreen dynamic bounce lights that indirect diffuse isn't going to sample
+lb_cull_onscreen_bounce_light_shadows | devonly, cheat | Default: false<br>Skip shadowmaps for *onscreen* dynamic bounce lights which will probably not be visible
 lb_debug_light_bounds | devonly, cheat | Default: false<br>SceneSystem/LightBinner/Debug Light Bounds
 lb_debug_shadow_atlas | devonly, cheat | Default: false<br>SceneSystem/LightBinner/Debug Shadow Atlas
 lb_debug_shadowtile_atlas | devonly, cheat | Default: false<br>SceneSystem/LightBinner/Debug ShadowTile Atlas
@@ -3228,7 +3442,7 @@ lb_debug_visualize_shadowed_lights | devonly, cheat | Default: 0<br>SceneSystem/
 lb_dynamic_shadow_penumbra | devonly | Default: true<br>Adjust shadow penumbra based on light size
 lb_dynamic_shadow_resolution | devonly | Default: true<br>Dynamically adjust shadow resolution
 lb_dynamic_shadow_resolution_base | devonly | Default: 1024<br>Base resolution for dynamic shadowmap sizing.  Shadowmap size of a screen sized light
-lb_dynamic_shadow_resolution_base_cmp_shadowmapsize | devonly, cheat | Default: false<br>take min of lb_dynamic_shadow_resolution and barnlight shadowmapsize as base shadowmapsize
+lb_dynamic_shadow_resolution_base_cmp_shadowmapsize | devonly | Default: false<br>take min of lb_dynamic_shadow_resolution and barnlight shadowmapsize as base shadowmapsize
 lb_dynamic_shadow_resolution_delay | devonly | Default: 0.85<br>Update delay for shadow size
 lb_dynamic_shadow_resolution_hysteresis | devonly | Default: 0.33<br>Update hysteresis for shadow size
 lb_dynamic_shadow_resolution_quantization | devonly | Default: 64<br>Quantization of dynamically computed shadow size
@@ -3238,7 +3452,6 @@ lb_enable_dynamic_lights | devonly, cheat | Default: true<br>Allows rendering dy
 lb_enable_envmaps | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable EnvMaps
 lb_enable_fog_mixed_shadows | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable Fog Mixed Shadows
 lb_enable_lights | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable Lights
-lb_enable_newsum | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable New Sum
 lb_enable_shadow_casting | devonly | Default: true<br>Allow stationary/dynamic lights to cast shadows.
 lb_enable_stationary_lights | devonly, cheat | Default: true<br>Allows rendering stationary/mixed lights
 lb_enable_sunlight | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable Sunlight
@@ -3249,7 +3462,8 @@ lb_mixed_shadows | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Ena
 lb_override_barn_light_fade_sizes | devonly, cheat | Default: 0.05 0.025<br>
 lb_override_barn_light_fade_sizes_enable | devonly, cheat | Default: false<br>
 lb_override_barn_light_shadow_fade_sizes | devonly, cheat | Default: 0.1 0.05<br>
-lb_precomputed_shadowmap_depth_bias | devonly | Default: 0.0001<br>
+lb_precomputed_shadowmap_depth_bias | devonly | Default: 0.00035<br>
+lb_precomputed_shadowmap_depth_bias_perspective | devonly | Default: 0.01<br>Depth bias for perspective precomputed shadowmaps, as a fraction of the distance to the light
 lb_precomputed_shadowmap_enable | devonly | Default: true<br>
 lb_shadow_map_cull_empty_mixed | cheat | Default: false<br>Don't render shadows for mixed shadowmaps with no dynamics objects in view
 lb_shadow_map_culling | cheat | Default: true<br>
@@ -3259,9 +3473,13 @@ lb_ssss_importance_sample | devonly | Default: false<br>
 lb_ssss_samples | devonly | Default: 11<br>Subsurface sample count
 lb_sun_csm_size_cull_threshold_texels | devonly | Default: 10<br>Size, in texels, where we will cull an object in the shadowmap
 lb_tile_pixels | devonly | Default: 8<br>
+lb_time_sliced_shadow_map_reallocation_age | devonly | Default: 0.7<br>Age of cached allocation to be considered for re-allocation
+lb_time_sliced_shadow_map_reallocation_pct | devonly | Default: 0.2<br>Likelyhood we'll re-allocate a timesliced shadowmap (to try to improve packing)
+lb_time_sliced_shadow_map_rendering_enable | devonly | Default: true<br>Allow time-sliced shadow buffer rendering when enabled via gameinfo.gi
 lb_timesliced_shadows_dynamic_size | devonly | Default: true<br>
 lb_use_ellipsoid_bounds | devonly, cheat | Default: true<br>
 lb_use_illumination_silhouette | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Use Illumination Bounds
+lb_use_illumination_volume | devonly, cheat | Default: true<br>Disables use of illumination volume (may cause precomputed lighting errors)
 leaderboards_cache_duration | devonly, cl | Default: 600<br>
 legacy_models_supported | devonly | Default: true<br>Whether to support legacy (pre-modeldoc) models
 lifesteal_ability_non_hero_multiplier | devonly, sv, rep | Default: 0.4<br>
@@ -3269,8 +3487,6 @@ lifesteal_bullet_non_hero_multiplier | devonly, sv, rep | Default: 0.6<br>
 lightbinner_precompute | devonly | 
 lightbinner_test_computespheresilhouette | devonly | 
 lightbinner_test_computesumsilhouette | devonly | 
-lightquery_debug_direct_lighting | sv, cl, rep, cheat | Default: true<br>
-lightquery_debug_indirect_lighting | sv, cl, rep, cheat | Default: true<br>
 listRecentNPCSpeech | devonly, sv, norecord | Displays a list of the last 5 lines of speech from NPCs.
 listdemo | release | List demo file contents.
 listid | devonly | Lists banned users.
@@ -3284,6 +3500,7 @@ log_dumpchannels | norecord, release | Dumps information about all logging chann
 log_flags | norecord, release | Set the flags on a logging channel.
 log_level | norecord, release | Set the spew level of a logging channel.
 log_verbosity | norecord, release | Set the verbosity of a logging channel.
+logic_entity_analyzer_debug | sv, rep, cheat | Default: false<br>
 logic_npc_counter_debug | sv, rep, cheat | Default: false<br>
 loop_dump | devonly | Print the listeners of the current loop mode
 lrucache_flush | devonly | Flushes the specified cache
@@ -3306,7 +3523,6 @@ markup_group_spew | sv, cheat | Spew all current markup groups and their members
 markup_volume_ref_cone_angle | devonly, sv | Default: 135<br>
 mat_assert_on_error_shader_use | devonly | Default: false<br>
 mat_assert_on_shader_use | devonly | Assert on shader used based on substring of shader name
-mat_async_shader_load | release | Default: false<br>
 mat_cache_and_skip_commandbuffers | devonly | Default: true<br>
 mat_cache_renderablepasses | devonly | Default: true<br>
 mat_clearshadercache | devonly | Clears the shader cache used for dynamic shader compile.
@@ -3315,7 +3531,6 @@ mat_colcorrection_editor | devonly, cl | Default: false<br>
 mat_colcorrection_forceentitiesclientside | cl, cheat | Default: false<br>Forces color correction entities to be updated on the client
 mat_colorcorrection | devonly | Default: true<br>
 mat_debug | devonly, cl | Sets a mat_fullbright debug visualization mode
-mat_depthbias_shadowmap | devonly, cl | Default: 0.0005<br>
 mat_disable_dynamic_shader_compile | devonly | Reloads all shaders from vcs files until the next time mat_reloadshaders is called
 mat_execute_skipbuffers | devonly | Default: true<br>
 mat_forcereloadshaders | devonly | Force reloads all shaders (skips MD5 check). Takes optional substrings of shader names to recompile as arguments.
@@ -3334,6 +3549,8 @@ mat_print_materials | devonly | Print loaded materials. Takes an optional substr
 mat_print_materials_last_frame | devonly | Print materials used last frame
 mat_print_materials_unused | devonly | Print materials that have never been used
 mat_print_modes | devonly | Print supported rendering modes.
+mat_print_non_virtual_textures | devonly | Print textures that are neither procedural nor virtual, i.e. the ones the mip streaming system manages, in alphabetical order. Takes an optional substring as an argument.
+mat_print_procedural_textures | devonly | Print procedural textures ( render targets, UAVs, atlases and other textures created by code ) in ascending in memory size order. Takes an optional substring as an argument.
 mat_print_shader_info | devonly | Print detailed info about a single shader. Takes a shader name (hero.vfx) as an argument.
 mat_print_shader_quality | devonly | Print current shader quality setting
 mat_print_shaders | devonly | Print loaded shaders. Takes a substring as an argument.
@@ -3344,6 +3561,7 @@ mat_reinitmaterials | devonly | Reinitializes all loaded materials, reloading th
 mat_reloadshaders | devonly | Reloads all shaders. Takes optional substrings of shader names to recompile as arguments.
 mat_reset_material_costs | devonly | Reset material cost heuristic
 mat_set_shader_quality | devonly | Force shader quality setting (valid values are 0 or 1)
+mat_shader_asserts | devonly | Default: false<br>Enables DebugDraw_AssertMsg() in Vulkan shaders (S_DEBUG_ASSERTS_ENABLED).
 mat_shader_cache | devonly | Default: true<br>
 mat_shading_complexity | cheat | Default: false<br>Visualize shading complexity
 mat_shading_complexity_color | cheat | Default: 1 0.5 0.25<br>
@@ -3352,7 +3570,6 @@ mat_shading_complexity_max_register_count | cheat | Default: 128<br>
 mat_shadowmap_luxels | cheat | Default: false<br>
 mat_show_distance_field | cheat | Default: 0<br>0=Off, 1=Visualize trace from camera, 2=Visualize occlusion, 3=Visualize far field trace from camera
 mat_skip_static_const_eval | devonly | Default: true<br>
-mat_slopescaledepthbias_shadowmap | devonly, cl | Default: 4<br>
 mat_tonemap_bloom_scale | cheat | Default: -1<br>
 mat_tonemap_bloom_start_value | cheat | Default: -1<br>
 mat_tonemap_debug | devonly | Default: 0<br>
@@ -3385,25 +3602,26 @@ memory_check_limit | devonly | Assert if peak memory use is over the limit.
 mesh_calculate_curvature_smooth_invert | sv, cl, rep, cheat | Default: false<br>
 mesh_calculate_curvature_smooth_pass_count | sv, cl, rep, cheat | Default: 3<br>
 mesh_calculate_curvature_smooth_weight | sv, cl, rep, cheat | Default: 1<br>
+mesh_trace_data_memory_report | devonly | Logs information about memory consumption by TraceDataForDraw_t/ToolsTraceData
 mic_listen_while_nonfocused | devonly, cl | Default: false<br>Enables the ability for the mic to remain open if the window loses focus such as when a caster tabs out to adjust settings
-minimap_add_glow_modifier | devonly, sv | Default: false<br>
-minimap_update_rate_hz | sv, release | Default: 30<br>
+minimap_trooper_update_rate_hz | devonly, sv | Default: 5<br>
+minimap_update_rate_hz | devonly, sv | Default: 30<br>
 minimap_zoom_in | cl, release | Ping button pressed
 minimap_zoom_out | cl, release | Ping button released
 mm_idle_enabled | devonly, cl | Default: true<br>Kill switch for the idle detection system
 mm_idle_show_warning_at_s | devonly, cl | Default: 300<br>How many seconds to wait before showing the idle warning dialog
 mm_idle_warning_duration_s | devonly, cl | Default: 60<br>How long should the warning be up before it boots the user from the MM queue
 mm_prefer_solo_only | cl, a, release | Default: false<br>Prefer being matched with other solo players when not in a party
-mobile_fps_increase_during_charging | a | Default: false<br>MOBILE_FPS_CONTROL: If true we increase framerate limit while charging
-mobile_fps_increase_during_hfr_animations | devonly | Default: true<br>MOBILE_FPS_CONTROL: If true we increase framerate limit during HFR-tagged animations and transitions.
-mobile_fps_increase_during_touch | a | Default: true<br>MOBILE_FPS_CONTROL: If true we increase framerate limit during touch
-mobile_fps_limit | a | Default: 30<br>MOBILE_FPS_CONTROL: Mobile FPS limit - 15, 30, 60
+mmpri | devonly, cl | &lt;Clear\|Hero&gt; \[target account ID\] Indicates that you want to be prioritized in matchmaking with optionally a specific hero. Clear will clear your status
 mod_status | cl, release | &lt;Account ID&gt;
 model_default_preview_sequence_name | sv, cl, a, rep | Default: <br>
 model_dump_convert_info | devonly, sv, cl | Print model load-time conversion info
 modifier_aura_debug | sv, cl, rep, cheat | Default: false<br>Set to 1 to draw the radii of all active auras
 modifier_broadcast_event | devonly, sv | Debug broadcasts an event will all empty fields
-modifier_capture_data_descs | devonly, sv, cl, rep | Default: false<br>
+modifier_cache_force_all_invalidate_on_tick | devonly, sv, cl, rep | Default: false<br>Force all modifier values to CacheEnabled_InvalidateOnTick for diagnostics. See modifier_cache_report.
+modifier_cache_force_all_persist | devonly, sv, cl, rep | Default: false<br>Force all modifier values to CacheEnabled (persist) for diagnostics. See modifier_cache_report.
+modifier_cache_report | devonly, sv | Print per-EModifierValue cache statistics sorted by query volume. Use modifier_cache_reset_stats to clear.
+modifier_cache_reset_stats | devonly, sv | Reset modifier value cache statistics.
 modifier_create | sv, cheat | Creates a test modifier on unit: modifier_create &lt;entityindex&gt; &lt;modifiername&gt; &lt;duration&gt;
 modifier_debug | devonly, sv | Default: false<br>
 modifier_dump | sv, cheat | Display all modifiers for the unit: &lt;entityindex/name&gt;
@@ -3414,14 +3632,6 @@ modifier_spew_states | sv, cheat | Call to have the client spew their unit state
 modifier_stringtable_dump | sv, cheat | Displays the contents of the modifier string table
 modifier_test_scripted_event | sv, cheat | Tests firing a scripted event
 modifier_test_scripted_event_end | sv, cheat | Tests firing ending a scripted event
-mortar_sentry_angle_offset_above | devonly, sv, rep | Default: 0<br>
-mortar_sentry_angle_offset_below | devonly, sv, rep | Default: -1<br>
-mortar_sentry_destroy | devonly, sv, rep | Default: false<br>
-mortar_sentry_forced_pitch | devonly, sv, rep | Default: 0<br>
-mortar_sentry_no_target_distance | devonly, sv, rep | Default: 1500<br>
-mortar_sentry_noise_factor_x | devonly, sv, rep | Default: 84<br>
-mortar_sentry_noise_factor_y | devonly, sv, rep | Default: 84<br>
-mortar_sentry_use_npc_projectile_calc | devonly, sv, rep | Default: false<br>
 motdfile | sv, release | Default: motd.txt<br>The MOTD file to load.
 mouse_disableinput | devonly | Default: false<br>Set to disable mouse input
 mouse_inverty | cl, a, user | Default: false<br>
@@ -3436,7 +3646,6 @@ mp_forcerespawn | devonly, sv, nf | Default: true<br>
 mp_friendlyfire | sv, cl, nf, rep, release | Default: false<br>Allows team members to injure other members of their team
 mp_restartgame | sv, release | Default: 0<br>If non-zero, game will restart in the specified number of seconds
 mp_teamplay | devonly, sv, nf | Default: false<br>
-mp_tournament | devonly, sv, nf, rep | Default: false<br>
 multigpu_skip_semaphores | devonly | Default: false<br>
 multigpu_skip_transfers | devonly | Default: false<br>
 multvar | norecord, release | Multiply specified convar value.
@@ -3451,13 +3660,6 @@ music_resume_fade_time_seconds | devonly, cl | Default: 2<br>When resuming, fade
 music_resume_window_seconds | devonly, cl | Default: 15<br>Seeks into music if resumed during this period of time.
 muzzle_flash_debug | devonly, cl | Default: false<br>
 name | a, per_user | Default: unnamed<br>
-nano_rollermine_brake_factor | devonly, sv, rep | Default: 0.8<br>
-nano_rollermine_stuck_threshold | devonly, sv, rep | Default: 5<br>
-nano_rollermine_stuck_time | devonly, sv, rep | Default: 0.25<br>
-nano_rollermine_target_max_range | devonly, sv, rep | Default: 1600<br>
-nano_rollermine_turn_speed | devonly, sv, rep | Default: 180<br>
-nano_rollermine_vision | devonly, sv, rep | Default: 1000<br>
-nano_rollermine_waypoint_threshold | devonly, sv, rep | Default: 128<br>
 nano_use_los_ultimate | devonly, sv, cl, rep | Default: true<br>
 nav_add_to_selected_set | sv, cheat | Add current area to the selected set.
 nav_add_to_selected_set_by_id | sv, cheat | Add specified area id to the selected set.
@@ -3487,8 +3689,9 @@ nav_curve_set | sv, cheat | Default: -1<br>
 nav_curve_step | sv, cheat | Default: 0.02<br>
 nav_debug_blocked | sv, cheat | Default: false<br>
 nav_delete | sv, cheat | Deletes the currently highlighted Area.
-nav_drag_selection_volume_zmax_offset | devonly, sv, rep | Default: 32<br>The offset of the nav drag volume top from center
-nav_drag_selection_volume_zmin_offset | devonly, sv, rep | Default: 32<br>The offset of the nav drag volume bottom from center
+nav_drag_selection_volume_zmax_offset | devonly, sv | Default: 32<br>The offset of the nav drag volume top from center
+nav_drag_selection_volume_zmin_offset | devonly, sv | Default: 32<br>The offset of the nav drag volume bottom from center
+nav_draw_area_color_by_game_attribute | sv, cheat | Default: false<br>
 nav_draw_area_connections | sv, cheat | Default: false<br>
 nav_draw_area_filled | sv, cheat | Default: true<br>
 nav_draw_area_gravity | sv, cheat | Default: false<br>
@@ -3509,12 +3712,12 @@ nav_draw_boundary_areas | sv, cheat | Default: false<br>
 nav_draw_connected_area_radius | sv, cheat | Default: 1000<br>
 nav_draw_dormant_movable_meshes | sv, cheat | Default: false<br>Draw dormant movable meshes.
 nav_draw_externally_created | sv, cheat | Default: false<br>
-nav_draw_flow_map | sv, cheat | Default: false<br>
-nav_draw_indirect_connections | sv, cheat | Default: false<br>
+nav_draw_flow_map | devonly, sv | Default: false<br>
+nav_draw_indirect_connections | devonly, sv | Default: false<br>
 nav_draw_jump_links | sv, cheat | Default: false<br>
-nav_draw_limit | sv, cheat | Default: 300<br>The maximum number of areas to draw in edit mode
-nav_draw_link_alignment | sv, cheat | Default: false<br>
-nav_draw_links | sv, cheat | Default: false<br>
+nav_draw_limit | devonly, sv | Default: 300<br>The maximum number of areas to draw in edit mode
+nav_draw_link_alignment | devonly, sv | Default: false<br>
+nav_draw_links | devonly, sv | Default: false<br>
 nav_draw_markup | sv, cheat | Default: true<br>
 nav_draw_mesh | sv, cheat | Default: true<br>
 nav_draw_mesh_grid | sv, cheat | Default: false<br>Draw the mesh's spatial grid structure around the edit cursor position.
@@ -3528,6 +3731,8 @@ nav_draw_space_radius | devonly, sv | Default: 0<br>
 nav_draw_space_swim | devonly, sv | Default: false<br>
 nav_draw_space_transitions | devonly, sv | Default: true<br>
 nav_edit | sv, cheat | Default: 0<br>Set to one to interactively edit the Navigation Mesh. Set to zero to leave edit mode.
+nav_edit_draw_navlink_ranges | sv, cheat | Default: true<br>Add base metrics horizontal/vertical target range text to the navlink debug label when the movement defines one.
+nav_edit_draw_navlinks | sv, cheat | Default: true<br>
 nav_edit_use_camera | sv, cheat | Default: true<br>
 nav_edit_validate | sv, cheat | Default: false<br>Validate navmesh structures.
 nav_end_deselecting | sv, cheat | Stop continuously removing from the selected set.
@@ -3543,7 +3748,7 @@ nav_gen_clip_polys_to_clearance_debug | sv, cheat | Default: false<br>
 nav_gen_connect_allow_multiple | sv, cheat | Default: true<br>
 nav_gen_connect_angle | sv, cheat | Default: 0.75<br>
 nav_gen_connect_angle_ignore_z | sv, cheat | Default: true<br>
-nav_gen_connect_dist_a | sv, cheat | Default: 1<br>
+nav_gen_connect_dist_a | sv, cheat | Default: 2<br>
 nav_gen_connect_dist_b | sv, cheat | Default: 1.5<br>
 nav_gen_connect_dist_z_mult | sv, cheat | Default: 0.5<br>
 nav_gen_connect_overlap | sv, cheat | Default: 0.5<br>
@@ -3569,7 +3774,7 @@ nav_gen_opt_to_quads_planar_deviation_limit | sv, cheat | Default: 4<br>
 nav_gen_opt_to_quads_se_limit_end | sv, cheat | Default: 0.1<br>
 nav_gen_opt_to_quads_se_limit_start | sv, cheat | Default: 1e-05<br>
 nav_gen_opt_to_quads_weld_limit_end | sv, cheat | Default: 0.01<br>
-nav_gen_opt_to_quads_weld_limit_start | sv, cheat | Default: 1e-07<br>
+nav_gen_opt_to_quads_weld_limit_start | sv, cheat | Default: 0<br>
 nav_gen_oriented_angle_tol | sv, cheat | Default: 15<br>Max abrupt orientation difference an NPC can tolerate when moving through the mesh (degrees).
 nav_gen_oriented_max_region_range | sv, cheat | Default: 15<br>Max orientation range allowed within a region before it gets further split.
 nav_gen_remove_vertical_polys | sv, cheat | Default: true<br>
@@ -3587,13 +3792,9 @@ nav_lower_drag_volume_min | sv, cheat | Lower the bottom of the drag select volu
 nav_mark | sv, cheat | Marks the Area or Ladder under the cursor for manipulation by subsequent editing commands.
 nav_mark_attribute | sv, cheat | Set nav attribute for all areas in the selected set.
 nav_max_vis_delta_list_length | cheat | Default: 64<br>
-nav_msr_test_add_agent | devonly, sv | Default: false<br>
-nav_msr_test_add_goal | devonly, sv | Default: false<br>
-nav_msr_test_freeze | devonly, sv | Default: false<br>
-nav_msr_test_select_agent | devonly, sv | Default: false<br>
-nav_msr_test_select_goal | devonly, sv | Default: false<br>
 nav_navlink_debug_connections | devonly, sv | Default: true<br>
 nav_navlink_enable_splits | devonly, sv | Default: true<br>Split wide nav links into narrower ones to increase lanes and alleviate 'crossing' effect.
+nav_navlink_range_hysteresis | devonly, sv | Default: 4<br>Distance a nav link end target must move past its base metrics range boundary before the split disconnects or reconnects.
 nav_navlink_save_movable_connections | devonly, sv | Default: true<br>TEMP: Save nav link connections to movable meshes?
 nav_navlink_split_max_width | devonly, sv | Default: 144<br>The maximum desired width of a nav link split.
 nav_navlink_split_scale_with_length | devonly, sv | Default: true<br>Nav link splits' widths are proportional to the nav link's length.
@@ -3634,31 +3835,42 @@ nav_raise_drag_volume_min | sv, cheat | Raise the bottom of the drag select volu
 nav_recall_selected_set | sv, cheat | Re-selects the stored selected set.
 nav_recorder_enabled | sv, cheat | Default: true<br>
 nav_remove_from_selected_set | sv, cheat | Remove current area from the selected set.
-nav_select_allow_blocked | sv, cheat | Default: true<br>When selecting an area under nav_edit, allow area marked as blocked.
-nav_select_area_id | sv, cheat | Default: -1<br>Select nav area with matching ID.
-nav_select_block_id | sv, cheat | Default: -1<br>Select nav space block with matching ID.
-nav_select_hull | sv, cheat | Default: 0<br>Restrict area selection to areas that can support a hull of the given category
+nav_search_on_path_debug_duration | devonly, sv | Default: 5<br>
+nav_search_on_path_debug_enabled | devonly, sv | Default: false<br>
+nav_select_allow_blocked | devonly, sv | Default: true<br>When selecting an area under nav_edit, allow area marked as blocked.
+nav_select_area_id | devonly, sv | Default: -1<br>Select nav area with matching ID.
+nav_select_block_id | devonly, sv | Default: -1<br>Select nav space block with matching ID.
+nav_select_hull | devonly, sv | Default: 0<br>Restrict area selection to areas that can support a hull of the given category
 nav_select_radius | sv, cheat | Adds all areas in a radius to the selection set
 nav_select_with_attribute | sv, cheat | Selects areas with the given attribute.
 nav_set_movable_mesh_dormant_flag | sv, cheat | Set the movable mesh dormant flag (0=active, 1=dormant)
-nav_show_area_connections | sv, cheat | Default: true<br>Show connections to selected area when true
-nav_show_area_verts | sv, cheat | Default: true<br>Show area vertex positions
-nav_show_area_water_info | sv, cheat | Default: true<br>
-nav_show_elem_info | sv, cheat | Default: true<br>
-nav_show_elem_info_font | sv, cheat | Default: Consolas<br>
-nav_show_elem_info_font_size | sv, cheat | Default: -1<br>
-nav_show_elem_info_font_voffset | sv, cheat | Default: -11<br>
+nav_show_area_connections | devonly, sv | Default: true<br>Show connections to selected area when true
+nav_show_area_verts | devonly, sv | Default: true<br>Show area vertex positions
+nav_show_area_water_info | devonly, sv | Default: true<br>
+nav_show_elem_info | devonly, sv | Default: true<br>
+nav_show_elem_info_font | devonly, sv | Default: Consolas<br>
+nav_show_elem_info_font_size | devonly, sv | Default: -1<br>
+nav_show_elem_info_font_voffset | devonly, sv | Default: -11<br>
 nav_show_potentially_visible | cheat | Default: 0<br>Show areas that are potentially visible from the current nav area
+nav_smooth_arrival_enable | sv, cheat | Default: false<br>
+nav_smooth_arrival_spline | sv, cheat | Default: true<br>
+nav_smooth_arrival_spring | sv, cheat | Default: false<br>
 nav_smooth_constrain_spline | sv, cheat | Default: true<br>
 nav_smooth_constrain_spline_relax | sv, cheat | Default: 0.006<br>
 nav_smooth_constrain_spring | sv, cheat | Default: 2<br>
 nav_smooth_constrain_spring_relax | sv, cheat | Default: 0.01<br>
+nav_smooth_draw_arrival_calc | sv, cheat | Default: false<br>
 nav_smooth_draw_boundary | sv, cheat | Default: 0<br>
 nav_smooth_draw_calc | sv, cheat | Default: 0<br>
 nav_smooth_draw_constraint_spline | sv, cheat | Default: false<br>
 nav_smooth_draw_constraint_spring | sv, cheat | Default: 0<br>
 nav_smooth_draw_speed | sv, cheat | Default: 0<br>
-nav_smooth_enable | sv, cheat | Default: true<br>
+nav_smooth_enable | sv, cheat | Default: 1<br>
+nav_smooth_handle_scale | sv, cheat | Default: 3<br>
+nav_smooth_navlink_entry_enable | sv, cheat | Default: true<br>
+nav_smooth_navlink_entry_spline | sv, cheat | Default: true<br>
+nav_smooth_navlink_entry_spring | sv, cheat | Default: false<br>
+nav_smooth_push_from_walls | devonly, sv | Default: 12<br>
 nav_smooth_relax | sv, cheat | Default: true<br>
 nav_smooth_relax_use_timesteps | sv, cheat | Default: false<br>
 nav_smooth_spring_const_override | sv, cheat | Default: -1<br>
@@ -3701,7 +3913,6 @@ nav_test_boundary_zone_rays_margin | sv, cheat | Default: -1<br>
 nav_test_boundary_zone_rays_random | sv, cheat | Default: false<br>
 nav_test_boundary_zone_sphere | sv, cheat | Default: 0<br>
 nav_test_curve_opt | sv, cheat | Default: 0<br>
-nav_test_detour | sv, cheat | Default: false<br>
 nav_test_find_nearest | sv, cheat | Default: false<br>Calculate the nearest point on the navmesh to the trace point.  Uses selection from nav_select_hull.
 nav_test_find_nearest_clear | sv, cheat | Default: false<br>Calculate the nearest point on the navmesh to the trace point.  Uses selection from nav_select_hull.
 nav_test_find_random_connected | sv, cheat | Default: false<br>Demonstrates finding random points that are connected in the nav mesh to the start point.
@@ -3716,27 +3927,30 @@ nav_test_genrt_tile_removal_place | sv, cheat | Default: false<br>
 nav_test_getareaoverlapping_gravity | sv, cheat | Default: false<br>
 nav_test_getnearestnav_gravity | sv, cheat | Default: false<br>
 nav_test_level_hull | sv, cheat | Find entities that intrude into the nav mesh.  List those entities in console output, and display bounding boxes around them for a while.
-nav_test_level_hull_move | sv, cheat | 
 nav_test_multi_connection | sv, cheat | Default: false<br>
 nav_test_npc_area | sv, cheat | Default: 0<br>
 nav_test_npc_collision | sv, cheat | Default: 0<br>
 nav_test_npc_collision_range | sv, cheat | Default: 250<br>
 nav_test_npc_collision_show_geometry | sv, cheat | Default: false<br>
-nav_test_path | sv, cheat | Default: false<br>Calculate and draw a path from player/camera position to the test position.
-nav_test_path_expansion_search | sv, cheat | Default: 0<br>Extend nav_test_path by doing an expansion search on that path.  Convar value defines dist.
-nav_test_path_lock_goal | sv, cheat | Default: false<br>Lock the pathfinding goal to the current intersection point.
-nav_test_path_lock_start | sv, cheat | Default: false<br>Lock the pathfinding start to the current intersection point.
-nav_test_path_move | sv, cheat | Default: false<br>
-nav_test_path_opt | sv, cheat | Default: true<br>Enable path optimization for nav_edit_path paths.
-nav_test_path_opt_transitions | sv, cheat | Default: false<br>
-nav_test_path_return | sv, cheat | Default: false<br>Calculate a return path from cursor position to the path calculated by nav_test_path.
-nav_test_path_space | sv, cheat | Default: 0<br>Should nav_test_path test 3d navigation?  1 = space to space, 2 = multi-modal space/ground
-nav_test_path_space_fly | sv, cheat | Default: true<br>Test flight paths
-nav_test_path_space_swim | sv, cheat | Default: true<br>Test swim paths
+nav_test_path | devonly, sv | Default: false<br>Calculate and draw a path from player/camera position to the test position.
+nav_test_path_lock_goal | devonly, sv | Default: false<br>Lock the pathfinding goal to the current intersection point.
+nav_test_path_lock_start | devonly, sv | Default: false<br>Lock the pathfinding start to the current intersection point.
+nav_test_path_npc | devonly, sv | Default: false<br>Calculate and draw a path for the selected NPC to the test position.
+nav_test_path_npc_success_radius_when_blocked | devonly, sv | Default: -1<br>Calculate and draw a path for the selected NPC to the test position.
+nav_test_path_opt | devonly, sv | Default: true<br>Enable path optimization for nav_edit_path paths.
+nav_test_path_opt_transitions | devonly, sv | Default: false<br>
+nav_test_path_return | devonly, sv | Default: false<br>Calculate a return path from cursor position to the path calculated by nav_test_path.
+nav_test_path_space | devonly, sv | Default: 0<br>Should nav_test_path test 3d navigation?  1 = space to space, 2 = multi-modal space/ground
+nav_test_path_space_fly | devonly, sv | Default: true<br>Test flight paths
+nav_test_path_space_swim | devonly, sv | Default: true<br>Test swim paths
 nav_test_pos_name | devonly, sv | Default: <br>
 nav_test_pos_place | devonly, sv | Default: -1<br>
 nav_test_ray_space | sv, cheat | Default: 0<br>
 nav_test_rays | sv, cheat | Default: false<br>
+nav_test_rays_use_npc_move | sv, cheat | Default: false<br>
+nav_test_search_on_path | sv, cheat | Default: false<br>Test the 'on path' search mode for tactical searches. Requires a selected NPC with a current path.
+nav_test_search_on_path_boundary_edges_only | sv, cheat | Default: false<br>Activate the 'boundary edges only' constraint when testing the 'on path' search mode for tactical searches.
+nav_test_search_on_path_setgoal | sv, cheat | Default: false<br>Test the 'on path' search mode for tactical searches using SetGoal w/ possible path clipping (flips between 2 searches). Requires a selected NPC.
 nav_test_smooth | sv, cheat | Default: false<br>
 nav_test_smooth_extern_push | sv, cheat | Default: 0<br>
 nav_test_smooth_in_speed | sv, cheat | Default: 120<br>
@@ -3765,14 +3979,16 @@ navlocal_debug_isect | devonly, sv | Default: 0<br>
 navlocal_debug_island_calc | devonly, sv | Default: 0<br>
 navlocal_debug_island_calc_solid_exit | devonly, sv | Default: 0<br>
 navlocal_debug_mantles | devonly, sv | Default: 0<br>
+navlocal_debug_navlink_isect | devonly, sv | Default: false<br>Draw the obstacle island path intersection used to build an obstacle navlink
+navlocal_debug_navlink_isect_duration | devonly, sv | Default: 5<br>
 navlocal_debug_obstructions | devonly, sv | Default: 0<br>
 navlocal_debug_path_still_valid | devonly, sv | Default: 0<br>
 navlocal_lead_in_dist | devonly, sv | Default: 64<br>
 navlocal_lead_out_dist | devonly, sv | Default: 18<br>
 navlocal_parallel_trace_path_for_obstacle | devonly, sv | Default: true<br>
 navlocal_path_tight_buffer | devonly, sv | Default: 2<br>
-navlocal_start_solid_calc_path | devonly, sv | Default: true<br>
 navspace_create_water_smooth_connections | sv, cheat | Default: true<br>
+navspace_create_water_surface_connections | sv, cheat | Default: true<br>
 navspace_create_water_transition_connections | sv, cheat | Default: true<br>
 navspace_debug_pathfind | sv, cheat | Default: -1<br>
 navspace_debug_stringpull | sv, cheat | Default: 1<br>
@@ -3797,18 +4013,30 @@ net_fakeloss | release | Shortcut to set both FakePacketLoss_Recv and FakePacket
 net_fakestatus | release | Print current simulated network condifions
 net_filelogging | devonly | Default: false<br>Log packets to files
 net_fs_showindirections | devonly | Default: false<br>
-net_limit_sv_recv_max_message_size_kb | release | Default: 32<br>Server will reject message larger than N kb
-net_limit_sv_recv_segments_per_packet | release | Default: 50<br>Server will reject packets with more than N segments
-net_limit_sv_recvbuffer_kb | release | Default: 128<br>Server will not buffer more than N kb from connected clients
-net_limit_sv_recvbuffer_msg | release | Default: 100<br>Server will not buffer more than N messages from connected clients
+net_gather_child_fields_only | release | Default: true<br>GatherSendProxyResults only walks struct and array fields, skipping scalar fields.
+net_limit_sv_listen_max_message_size_kb | release | Default: 3<br>Server: max SteamNetworkingSockets message size in kb accepted from a connection that does not yet have a netchan
+net_limit_sv_listen_recvbuffer_kb | release | Default: 16<br>Server: SteamNetworkingSockets will not buffer more than N kb from a connection that does not yet have a netchan
+net_limit_sv_listen_recvbuffer_msg | release | Default: 4<br>Server: SteamNetworkingSockets will not buffer more than N messages from a connection that does not yet have a netchan
+net_limit_sv_message_process_time_ms_drop_burst | release | Default: 200<br>Drop a client if processing their messages consumes more than N ms of CPU time in a burst (token bucket capacity)
+net_limit_sv_message_process_time_ms_drop_rate | release | Default: 20<br>Drop a client if processing their messages consumes more than N ms of CPU time per second, sustained (token bucket fill rate)
+net_limit_sv_message_process_time_ms_warn_burst | release | Default: 50<br>Warn if processing messages from a client consumes more than N ms of CPU time in a burst (token bucket capacity)
+net_limit_sv_message_process_time_ms_warn_rate | release | Default: 5<br>Warn if processing messages from a client consumes more than N ms of CPU time per second, sustained (token bucket fill rate)
+net_limit_sv_recv_chan_buffer_messages | release | Default: 1000<br>Max number of source engine messages that can be queued in a netchan receive buffer for an ordinary connection from a client.
+net_limit_sv_recv_chan_msgs_per_frame | release | Default: 500<br>Max number of source engine messages an ordinary client connection may put in a single network frame.  Exceeding this disconnects the client.
+net_limit_sv_recv_max_frame_size_kb | release | Default: 64<br>Server will reject uncompressed Source engine frame larger than N kb.  Also sets limit on SteamNetworkingSockets message size
+net_limit_sv_recv_segments_per_packet | release | Default: 50<br>Server: SteamNetworkingSockets will reject packets with more than N message segments
+net_limit_sv_recvbuffer_kb | release | Default: 128<br>Server: SteamNetworkingSockets will not buffer more than N kb from connected clients
+net_limit_sv_recvbuffer_msg | release | Default: 100<br>Server: SteamNetworkingSockets will not buffer more than N messages from connected clients
 net_listallmessages | cheat | List all registered net messages
 net_log_processing | devonly | Default: false<br>Log network processing
 net_max_message_process_count | devonly | Default: 0<br>Maximum number of messages to process from a client in a single frame (0 == no limit).
 net_max_message_queue_size | devonly | Default: 0<br>Maximum number of messages to allow waiting in queue after processing; exceeding this disconnects the client. 0 == no limit
 net_max_polymorphic_spew | devonly | Default: 5<br>Max polymorphic variants to spew when spewing a flattened serializer.
+net_message_size_enforce | release | Default: 1<br>Check declared engine message size limit, and either warn or reject.  Note that this is ignored in -tools mode.  0=ignore, 1=warn/log, 2=warn/assert, 3=reject
 net_messageinfo | cheat | Display info about a message (by classname or id)
 net_option | release | Get or set SteamNetworkingSockets options such as fake packet lag and loss
 net_p2p_listen_dedicated | devonly | Default: false<br>Should dedicated server listen for new-style P2P?
+net_permutation_info | cheat | show permutation information for serializer
 net_print_sdr_ping_times | release | Print current ping times to SDR points of presence, and selected route
 net_public_adr | release | Default: <br>For servers behind NAT/DHCP meant to be exposed to the public internet, this is the public facing ip address string: ("x.x.x.x" )
 net_qosinterval_spew | devonly | Default: false<br>Spew QoS interval data as we gather it
@@ -3831,7 +4059,6 @@ net_spewcounts | devonly | Spew serializer counts, client only by default, speci
 net_spewserializer | devonly | Spew serializer info<br>
 net_stats_json | devonly | Output server networking statistics in json format
 net_status | release | Shows current network status
-net_use_delta_property_fastpath | devonly | Default: 1<br>
 net_use_packet_compression | devonly | Default: true<br>Compress network traffic
 net_validatemessages | cheat | Activates/deactivates net message validation
 net_why_field_excluded | devonly | &lt;classname&gt; &lt;fieldname&gt;:  spew why field was excluded from networking for classname.
@@ -3841,6 +4068,7 @@ noclip_fixup | sv, cheat | Default: true<br>
 notarget | sv, cheat | Toggle. Player becomes hidden to NPCs.
 npc_ability_range_debug | sv, cheat | Draws range indicators for abilities for the given NPC(s).  Uses the NPCs enemy for range drawing.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_bodylocations | sv, cheat | Displays labelled body locations of NPCs.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
+npc_buddha | sv, cheat | Tag an NPC so they don't die or become incapacitated<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_cancel_handshake | devonly, sv | 
 npc_combat | sv, cheat | Displays text debugging information about the squad and enemy of the selected NPC  (See Overlay Text)<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_conditions | sv, cheat | Displays all the current AI conditions that an NPC has in the overlay text.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
@@ -3859,11 +4087,13 @@ npc_go_last | sv, cheat | Go to the last position you told an NPC to go.
 npc_go_loop | sv, cheat | Toggles whether the selected NPC(s) will loop between the last set of waypoints you used 'npc go' on.
 npc_go_loop_clear_waypoints | sv, cheat | Clear waypoints for npc_go_loop.
 npc_go_loop_max_waypoints | devonly, sv | Default: 2<br>
-npc_go_max_distance | devonly, sv | Default: 56755.8<br>How far is the trace we shoot when using NPC Go
+npc_go_max_distance | devonly, sv | Default: 113512<br>How far is the trace we shoot when using NPC Go
 npc_go_no_arrow | sv, a | Default: false<br>Don't draw the go arrow of selected NPCs
 npc_go_random | sv, cheat | Sends all selected NPC(s) to a random node.<br>	Arguments:   	-none-
 npc_go_testmode | devonly, sv, cheat | Default: <br>Set mode of nav to test with for npc_go. Left empty, it'll just SetGoal(). Other options: 'random', 'radial', 'radialalt', 'directional', 'wander', and 'vector'.
 npc_go_update_path | sv, cheat | Selected NPC(s) will go to the location that the player is looking (shown with a purple box), WITHOUT CHANGING SCHEDULE!<br>	Arguments: \[dest_fly\]
+npc_god | sv, cheat | Tag an NPC so they don't take damage<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
+npc_handshakes_text | sv, cheat | Outputs text debugging information to the console about the Animation handshaking in the NPC's AI<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_heal | devonly, sv | Heals the target back to full health
 npc_hist_draw | devonly, sv | Default: false<br>
 npc_hist_dump | devonly, sv | Dump the NPC history to the console.<br>
@@ -3875,7 +4105,9 @@ npc_hist_filter_type | devonly, sv | Default: -1<br>
 npc_history_record_snapshot | devonly, sv | Default: true<br>
 npc_kill | sv, cheat | Kills the given NPC(s)<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_kill_unselected | sv, cheat | Properly kills all NPCs from the universe that aren't currently selected
-npc_record_snapshot_data | devonly, sv | Default: true<br>
+npc_pathquery_text | sv, cheat | Outputs text debugging information to the console about the NPC's path query processing<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
+npc_record_skeleton_snapshot | devonly, sv | Default: false<br>
+npc_record_snapshot_data | devonly, sv | Default: false<br>
 npc_relationships | sv, cheat | Displays the relationships between this NPC and all others.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_reportstate | sv, cheat | Outputs the current state of the NPC
 npc_reset | sv, cheat | Reloads schedules for all NPC's from their script files<br>	Arguments:	-none-
@@ -3883,9 +4115,9 @@ npc_route | sv, cheat | Displays the current route of the given NPC as a line on
 npc_scripted_commands | sv, cheat | Displays the state of scripted commands on the NPC<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_select | sv, cheat | Select or deselects the given NPC(s) for later manipulation.  Selected NPC's are shown surrounded by a red translucent box<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_sethealth | devonly, sv | Sets the target's health, even above max. Optionally matches based on npc name to set multiple npc's health.<br>	Args: \[npc\] &lt;amount&gt;
-npc_speakall | devonly, sv | Force the npc to try and speak all their responses
 npc_squads | sv, cheat | Obsolete.  Replaced by npc_combat
-npc_start_handshake | devonly, sv | 
+npc_start_handshake_full_body | devonly, sv | 
+npc_start_handshake_upper_body | devonly, sv | 
 npc_steering | sv, cheat | Displays the steering obstructions of the NPC (used to perform local avoidance)<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 npc_steering_all | sv, cheat | Displays the steering obstructions of all NPCs (used to perform local avoidance)<br>
 npc_steering_scalar | devonly, sv | Default: 1<br>
@@ -3919,6 +4151,7 @@ npcsolve_separation_r2 | devonly, sv | Default: false<br>
 npctester_path_lookahead_time | devonly, sv | Default: 3<br>
 open_asset | devonly | Opens an asset in it's primary editor of choice. Specify the full path to the asset from the mod directory.
 open_current_map_in_hammer | devonly | opens the current map in hammer.
+open_current_map_pulse_in_tool | devonly | Opens the specified pulse used in this map in the editor.<br>	Arguments: &lt;pulse_file&gt;
 option_duck_method | cl, a, user, per_user | Default: false<br>Input toggle control
 opus_decode_test_signal | devonly | Default: false<br>
 opus_encode_test_signal | devonly | Default: false<br>
@@ -3928,9 +4161,9 @@ orb_timing_debug | sv, release | Default: false<br>Spew a bunch of timing info a
 p2p_listpeers | devonly | List currently known peers.
 p2p_ping | devonly, cl | Ping a peer.
 panorama_2d_translate_no_comp_layer | devonly | Default: true<br>
-panorama_alignment_fixes | devonly | Default: true<br>Fix alignment issues
 panorama_allow_texture_composition_layer_fast_path | devonly | Default: true<br>
 panorama_allow_transitions | devonly | Default: true<br>
+panorama_apply_styles_for_invisible_parents | devonly | Default: false<br>Specifies whether to short circuit applying styles when a parent is invisible.
 panorama_assert_loading_panel_type | devonly | Default: false<br>Force style invalidation of the entire panel subtree when adding / removing classes.
 panorama_async_compute_mipgen | devonly, cl | Default: true<br>use asynchronous compute for mipmap generation.
 panorama_box_shadow_no_comp_layer | devonly | Default: true<br>
@@ -3938,14 +4171,13 @@ panorama_cache_command_list_repaint_threshold | devonly | Default: 0.25<br>
 panorama_cache_command_list_size_threshold | devonly | Default: 384<br>
 panorama_classes_force_invalidate | devonly | Default: false<br>Force style invalidation of the entire panel subtree when adding / removing classes.
 panorama_clear_frames_on_device_restore | devonly | Default: 2<br>
-panorama_command_reordering | devonly | Default: true<br>
 panorama_comp_layer_lru_lifetime | devonly | Default: 1<br>
 panorama_composition_atlas | devonly | Default: true<br>
 panorama_console_max_autocomplete | devonly, cl | Default: 100<br>
 panorama_console_max_history | devonly, cl | Default: 100<br>
 panorama_console_max_lines | devonly, cl | Default: 2000<br>
 panorama_console_position_and_size | devonly, cl, a | Default: <br>
-panorama_content_size_fixes | devonly | Default: true<br>Fix content size issues
+panorama_console_reset_size_and_position | devonly, cl | Resets the panorama console to its default size and position
 panorama_daisy_wheel | devonly, cl | Default: ABXY<br>Daisy wheel input mode: RS \| ABXY
 panorama_dash_gap_ratio | devonly | Default: 0.5<br>
 panorama_dash_len | devonly | Default: 20<br>
@@ -3954,6 +4186,7 @@ panorama_debug_overlay_opacity | devonly, a | Default: 0.25<br>
 panorama_debug_overlay_opacity_max | devonly, a | Default: 0.25<br>
 panorama_debug_overlay_opacity_min | devonly, a | Default: 0.01<br>
 panorama_debug_ready_for_display | devonly | Default: false<br>
+panorama_debug_treat_all_addons_as_untrusted | devonly | Default: false<br>
 panorama_debugger_theme | cl, a | Default: Light<br>
 panorama_disable_blur | devonly | Default: false<br>
 panorama_disable_box_shadow | devonly | Default: false<br>
@@ -3972,12 +4205,14 @@ panorama_dragscroll_maxflickvelocity | devonly, cl | Default: 8000<br>Maximum ve
 panorama_dragscroll_minflickvelocity | devonly, cl | Default: 60<br>Minimum velocity that the mouse must be moving as mouse up time to qualify as a drag scroll flick
 panorama_dragscroll_mintime | devonly | Default: 0.02<br>Minimum time that the mouse button must be down before a move is treated as a drag scroll
 panorama_dragscroll_velocitymultiplier | devonly | Default: 0.5<br>Multiplier for flick velocity off of actual measured velocity
+panorama_draw_fast_path_img_shadow | devonly | Default: true<br>
 panorama_draw_text_fast_path | devonly | Default: true<br>
 panorama_draw_text_fast_path_text_shadow | devonly | Default: true<br>
 panorama_dump_symbols | devonly | &lt;ESymbolType&gt; Dump all of the symbols in the Panorama symbol table
 panorama_enable_secondary_layout_pass | devonly | Default: true<br>
 panorama_focus_world_panels | cl, a | Default: false<br>when set request key focus when a world panel is enabled
 panorama_force_active_controller_type | devonly | Default: -1<br>
+panorama_force_atlas_clear | devonly | Default: false<br>
 panorama_force_desired_layout_traverse | devonly | Default: false<br>Force desired layout traverse, even if the cached values are up to date.
 panorama_generate_layout_xsd | devonly | Generate the Layout XML Schema Definition for the current run-time (types are dependent on which game DLL is running).
 panorama_highlight_bad_opacity_masks | devonly | Default: false<br>
@@ -3995,9 +4230,6 @@ panorama_js_minidumps | devonly | Default: true<br>Enable sending minidumps on J
 panorama_label_draw_rects | devonly, cl | Default: 0<br>When labels paint, draw the rectangles for the character ranges. 0 = none, 1 = all, 2 = text only, 3 = inline objects only
 panorama_label_wrap_before_shrink | devonly, cl | Default: true<br>Should labels try to wrap text before using text-overflow: shrink
 panorama_large_dispatch_event_queue | devonly | Default: 0<br>
-panorama_max_fps | devonly | Default: 120<br>
-panorama_max_oof_overlay_up_fps | devonly | Default: 4<br>
-panorama_max_overlay_fps | devonly | Default: 60<br>
 panorama_max_text_shadow_strength | devonly | Default: 10<br>
 panorama_might_scroll_no_comp_layer | devonly | Default: true<br>
 panorama_min_comp_layer_cache_cost | devonly | Default: 4096<br>
@@ -4005,6 +4237,7 @@ panorama_movie_async_load_size_bytes | devonly, cl | Default: 20971520<br>
 panorama_movie_force_not_ready_behavior | devonly, cl | Default: -1<br>
 panorama_panel_occlusion | devonly | Default: true<br>
 panorama_print_cache_status | devonly | Print internal panorama refcounts for every file
+panorama_print_render_tree | devonly | Default: <br>Print the RenderOperation_t tree for the given root window; set to * to print all
 panorama_print_svg_stats | devonly | 
 panorama_reload_animations | devonly | Default: 2<br>
 panorama_render_target_cache_max_size | devonly | Default: 31457280<br>
@@ -4024,16 +4257,17 @@ panorama_suspend_paint | devonly | Default: false<br>
 panorama_temp_comp_layer_min_dimension | devonly | Default: 512<br>
 panorama_toggledebugger_mode | devonly, a | Default: 0<br>Toggledebugger key operation : 0 = open/inspect, 1 = open/close
 panorama_track_render_commands | devonly | Default: false<br>
-panorama_transform_parents_no_layer_for_perspective | devonly | Default: false<br>
-panorama_transforms_no_comp_layer | devonly | Default: false<br>
 panorama_transition_time_factor | devonly | Default: 1<br>A float representing a scale factor for transitions. 1.0 is normal, 2.0 would be twice as fast as normal, 0.5 half as fast
+panorama_unlink_from_render_tree | devonly | Default: true<br>
 panorama_use_backbuffer_directly | devonly | Default: true<br>
+panorama_use_composite_cmd_for_cached_layers | devonly | Default: true<br>
 panorama_use_new_occlusion_invalidation | devonly | Default: true<br>
 panorama_worldpanel_update_cull_distance | devonly, cl | Default: 1000<br>
 panorama_worldpanel_update_cull_size_threshold | devonly, cl | Default: 5<br>
 panorama_worldpanel_update_culling | devonly, cl | Default: false<br>
-parallel_perform_invalidate_physics | devonly, sv, cl, rep | Default: false<br>
-parallel_update_surrounding_bounds_in_spatial_partition_update | devonly, sv, cl, rep | Default: false<br>
+parallel_perform_invalidate_physics | devonly, sv, cl, rep | Default: true<br>
+parallel_update_surrounding_bounds_in_spatial_partition_update | devonly, sv, cl, rep | Default: true<br>
+particle_cluster_bounds_debug | devonly, sv, cl, rep | Default: 0<br>
 particle_cluster_debug | devonly, sv, cl, rep | Default: 0<br>
 particle_cluster_manager_search_dist | devonly, sv, cl, rep | Default: 256<br>
 particle_cluster_nodraw | devonly, sv, cl, rep | Default: false<br>
@@ -4051,7 +4285,7 @@ particle_stop_specified | devonly, cl, cheat | Stops all particle systems that m
 particle_stop_unspecified | devonly, cl, cheat | Stops all particle systems that don't match specified name
 particle_test_attach_attachment | sv, cheat | Default: 0<br>Attachment index for attachment mode
 particle_test_attach_mode | sv, cheat | Default: follow_attachment<br>Possible Values: 'start_at_attachment', 'follow_attachment', 'start_at_origin', 'follow_origin'
-particle_test_create | sv, cheat | Creates the named particle system where the player is looking.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
+particle_test_create | sv, cheat | Creates the named particle system where the player is looking.  Can be used on an entity if pointed at the entity.  Optionally takes a particle config name.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 particle_test_destroy | sv, cheat | Destroys all particle systems matching the specified name.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
 particle_test_file | sv, cheat | Default: <br>Name of the particle system to dynamically spawn
 particle_test_start | sv, cheat | Dispatches the test particle system with the parameters specified in particle_test_file,<br> particle_test_attach_mode and particle_test_attach_param on the entity the player is looking at.<br>	Arguments:   	{entity_name} / {class_name} / {entity_index} / {no argument = pick what player is looking at}
@@ -4068,20 +4302,16 @@ party_start_match | devonly, cl | Starts matchmaking for a party
 password | a, norecord, server_cannot_query | Default: <br>Current server access password
 path | devonly | Show the filesystem path.
 path_closest_point_debug | devonly, sv, cl, rep | Default: false<br>
+path_mover_enable_high_resolution_debug_rendering | devonly, sv | Default: false<br>
+path_mover_entity_spawner_debug | devonly, sv | Default: false<br>
+path_node_evaluation_debug | devonly, sv, cl, rep | Default: 0<br>
 pause | release | Toggle the server pause state.
 pawn_mimic_all | devonly, sv, cl, rep | Default: false<br>
-pestilence_drone_brake_factor | devonly, sv, rep | Default: 1<br>
-pestilence_drone_healthbar_pos | cl, cheat | Default: 80<br>
-pestilence_drone_max_torque | devonly, sv, rep | Default: 5<br>
-pestilence_drone_scale | devonly, sv, rep | Default: 0.75<br>
-pestilence_drone_stuck_threshold | devonly, sv, rep | Default: 4<br>
-pestilence_drone_stuck_time | devonly, sv, rep | Default: 0.2<br>
-pestilence_drone_torque_accel | devonly, sv, rep | Default: 2<br>
-pestilence_drone_vision | devonly, sv, rep | Default: 1024<br>
-pestilence_drone_waypoint_threshold | devonly, sv, rep | Default: 128<br>
+periodic_resource_cache_duration_s | devonly, cl | Default: 600<br>
 phonemedelay | devonly, cl | Default: 0<br>Phoneme delay to account for sound system latency.
 phonemefilter | devonly, cl | Default: 0.08<br>Time duration of box filter to pass over phonemes.
 phonemesnap | devonly, cl | Default: 2<br>Lod at level at which visemes stops always considering two phonemes, regardless of duration.
+phys_agg_world_compounds | devonly, sv, cl, rep | Default: false<br>
 phys_batch_ray_test | devonly, cl | Default: 0<br>
 phys_continuous_kinematic_update | devonly, sv, cl, rep | Default: 1<br>
 phys_create_test_character_proxy | devonly, sv | Create test character proxy
@@ -4123,9 +4353,7 @@ phys_use_block_solver | sv, cheat | Default: true<br>Use block solving for const
 phys_vehicleimpactforcescale | devonly, sv | Default: 1.5<br>
 phys_visualize_awake_dynamic_only | devonly, sv, cl, rep | Default: false<br>
 phys_visualize_awake_unattached_only | devonly, sv, cl, rep | Default: false<br>
-phys_visualize_traces | sv, cl, rep, cheat | Default: false<br>
 phys_wakeup | devonly, sv | Wake all physics objects in the Main physics up
-phys_wind_force_scale | devonly, sv, cl, rep | Default: 1<br>Scale on the force wind applies to physics bodies
 physics_add_test | devonly, sv | add test object
 physics_debug_entity | devonly, sv | Dumps debug info for an entity
 physics_highlight_active | devonly, sv | Turns on the absbox for all active physics objects.<br>  0 : un-highlight.<br>
@@ -4143,9 +4371,9 @@ ping_wheel_phrase_0 | cl, a, per_user | Default: 1<br>
 ping_wheel_phrase_1 | cl, a, per_user | Default: 2<br>
 ping_wheel_phrase_2 | cl, a, per_user | Default: 4<br>
 ping_wheel_phrase_3 | cl, a, per_user | Default: 34<br>
-ping_wheel_phrase_4 | cl, a, per_user | Default: 18<br>
+ping_wheel_phrase_4 | cl, a, per_user | Default: 12<br>
 ping_wheel_phrase_5 | cl, a, per_user | Default: 5<br>
-ping_wheel_phrase_6 | cl, a, per_user | Default: 42<br>
+ping_wheel_phrase_6 | cl, a, per_user | Default: 18<br>
 ping_wheel_phrase_7 | cl, a, per_user | Default: 6<br>
 pingkeypress | cl, release | Ping keybind pressed
 pixelvis_debug | cheat | Dump debug info
@@ -4153,18 +4381,18 @@ play | server_can_execute | Play a sound.
 playcast | release | Play a broadcast
 playdemo | release | Play a recorded demo file (.dem ).
 player0_using_joystick | a | Default: false<br>
-player_ammobalancing_debug | sv, cheat | Default: false<br>
 player_debug_off_nav | sv, cheat | Default: false<br>
 player_debug_print_damage | sv, cheat | Default: false<br>When true, print amount and type of all damage received by player to console.
 player_ping_indicator_boss_offset | devonly, cl | Default: 110<br>
 player_ping_indicator_default_offset | devonly, cl | Default: 50<br>
-player_ping_indicator_enabled | devonly, cl | Default: true<br>
+player_ping_indicator_enabled | cl, a, per_user | Default: true<br>
 player_ping_indicator_local_player | devonly, cl | Default: false<br>
 player_ping_indicator_player_offset | devonly, cl | Default: 60<br>
 player_ping_indicator_scale_max_distance | devonly, cl | Default: 4000<br>
 player_ping_indicator_scale_max_scale | devonly, cl | Default: 1<br>
 player_ping_indicator_scale_min_distance | devonly, cl | Default: 1300<br>
 player_ping_indicator_scale_min_scale | devonly, cl | Default: 0.5<br>
+player_test_prediction_smoothing | sv, cheat | Teleport the player on the server, use with cl_smooth_root_infiniteteleporttolerance
 playsound | devonly | playsound &lt;soundname&gt;
 playsoundscape | cl, cheat | Forces a soundscape to play
 playvol | devonly | Play a sound at a specified volume.
@@ -4203,6 +4431,7 @@ prop_physics_create | sv, cheat | Creates a physics prop with a specific .vmdl a
 props_break_apply_radial_forces | devonly, sv, cl, rep | Default: true<br>
 props_break_max_pieces_perframe | devonly, sv, cl, rep | Default: 16<br>Maximum prop breakable piece count per frame (-1 = model default)
 props_break_radial_force_ratio | devonly, sv, cl, rep | Default: 0.33<br>
+pulse_cursor_infinite_loop_detection_threshold | devonly, sv, cl, rep | Default: 20000<br>
 pulse_debug_entity | sv, cheat | Opens a graph referencing the selected entity. If it is referenced by more than 1 graph, list all the active pulse graph instances referring to that entity so you can pick which one you want.
 pulse_debug_print | devonly | Usage: pulse_debug_print &lt;vpulse_resource&gt;
 pulse_list_game_blackboards | sv, cheat | List all the active pulse graph instances
@@ -4225,16 +4454,24 @@ r_JeepViewDampenFreq | sv, cl, nf, rep, cheat | Default: 7<br>
 r_JeepViewZHeight | sv, cl, nf, rep, cheat | Default: 10<br>
 r_RainAllowInSplitScreen | devonly, cl | Default: false<br>Allows rain in splitscreen
 r_RainParticleDensity | devonly, cl | Default: 1<br>Density of Particle Rain 0-1
-r_add_views_in_pre_output | devonly | Default: true<br>
+r_add_views_in_pre_output | devonly, cl | Default: true<br>
 r_allow_low_gpu_memory_mode | release | Default: true<br>Allow Low GPU Memory mode (i.e. when building maps).
 r_allow_onesweep_gpusort | devonly | Default: true<br>
 r_always_render_all_windows | devonly | Default: false<br>Always force all engine & tools to render
+r_animatable_mesh_shaders | cheat | Default: false<br>
+r_animatable_mesh_shaders_visualize_bounds | cheat | Default: false<br>
 r_aoproxy_cull_dist | devonly | Default: 12<br>Distance to cull the AO proxy as a factor of size
+r_aoproxy_default_ambient_strength | devonly | Default: 1<br>
+r_aoproxy_default_light_cone_angles | devonly | Default: 0.3 0.3 0.3 1<br>
+r_aoproxy_default_light_cone_strengths | devonly | Default: 3 8 1 4<br>
+r_aoproxy_default_light_position_0 | devonly | Default: 0.816497 0 0.57735<br>
+r_aoproxy_default_light_position_1 | devonly | Default: -0.408248 0.707107 0.57735<br>
+r_aoproxy_default_light_position_2 | devonly | Default: -0.408248 -0.707107 0.57735<br>
+r_aoproxy_default_light_position_3 | devonly | Default: 0 0 1<br>
 r_aoproxy_min_dist | devonly | Default: 3<br>
 r_aoproxy_min_dist_box | devonly | Default: 1<br>
 r_arealights | devonly, cl | Default: true<br>
 r_aspectratio | devonly | Default: 0<br>
-r_async_compute_fog | devonly, cl | Default: false<br>
 r_async_shader_compile_notify_frequency | devonly | Default: 10<br>
 r_bloom_tent_filter_radius | devonly, cl, cheat | Default: 0<br>bloom mip up-sample filtering radius (using 3x3 tent filter, radius in mip level texels), 0.0 radius =&gt; box (2x2) filter with (fixed) 1.0 radius
 r_cache_pool_allocations | devonly | Default: true<br>
@@ -4250,24 +4487,20 @@ r_citadel_clip_sphere_dist | devonly, cl, cheat | Default: 0.45<br>
 r_citadel_clip_sphere_distance_max | devonly, cl, cheat | Default: 75<br>
 r_citadel_clip_sphere_min_opacity | devonly, cl, cheat | Default: 0.4<br>
 r_citadel_clip_sphere_skin | devonly, cl, cheat | Default: 0.4<br>
-r_citadel_cloak_blur_amount | cl, cheat | Default: 0.01<br>cloak
-r_citadel_cloak_blur_factor_max_roughness | cl, cheat | Default: 1<br>cloak
-r_citadel_cloak_blur_factor_min_roughness | cl, cheat | Default: 1<br>cloak
-r_citadel_cloak_blur_noise_amount | cl, cheat | Default: 0.5<br>cloak
-r_citadel_cloak_color_tint | cl, cheat | Default: 230 230 230 255<br>cloak
-r_citadel_cloak_fresnel_effect | cl, cheat | Default: 0<br>cloak
-r_citadel_cloak_intensity | cl, cheat | Default: 1<br>cloak
-r_citadel_cloak_refract_amount | cl, cheat | Default: 0<br>cloak
-r_citadel_cosmic_veil_fade_dist | cl, cheat | Default: 32<br>cosmic veil
-r_citadel_depth_prepass_cull_threshold | devonly, cl | Default: 60<br>
-r_citadel_depth_prepass_dynamic_objects | devonly, cl | Default: true<br>
+r_citadel_cloak_blur_amount | devonly, cl, cheat | Default: 0.01<br>cloak
+r_citadel_cloak_blur_factor_max_roughness | devonly, cl, cheat | Default: 1<br>cloak
+r_citadel_cloak_blur_factor_min_roughness | devonly, cl, cheat | Default: 1<br>cloak
+r_citadel_cloak_blur_noise_amount | devonly, cl, cheat | Default: 0.5<br>cloak
+r_citadel_cloak_color_tint | devonly, cl, cheat | Default: 230 230 230 255<br>cloak
+r_citadel_cloak_fresnel_effect | devonly, cl, cheat | Default: 0<br>cloak
+r_citadel_cloak_intensity | devonly, cl, cheat | Default: 1<br>cloak
+r_citadel_cloak_refract_amount | devonly, cl, cheat | Default: 0<br>cloak
 r_citadel_depthoffield_aperture_diameter | devonly, cl | Default: 0<br>Depth of field aperture diameter in inches
 r_citadel_depthoffield_debug | devonly, cl | Default: false<br>Enable depth of field debug drawing
 r_citadel_depthoffield_enable | devonly, cl | Default: false<br>Enable/Disable Depth of Field
 r_citadel_depthoffield_focus_distance | devonly, cl | Default: 200<br>Depth of field focus distance in inches
 r_citadel_depthoffield_mode | devonly, cl | Default: 0<br>Depth of field mode, 0: Normal 1: Near field only 2: Far field only
 r_citadel_depthoffield_sensor_size | devonly, cl | Default: 1<br>Depth of field sensor size in inches
-r_citadel_disable_npr_lighting | devonly, cl | Default: false<br>
 r_citadel_distancefield_ao_quality | devonly, cl | Default: 0<br>Distance Field AO quality
 r_citadel_distancefield_blur | devonly, cl | Default: true<br>Enable/Disable distance field blur
 r_citadel_distancefield_blur_depth_threshold | devonly, cl | Default: 1<br>Distance field blur depth threshold
@@ -4284,7 +4517,10 @@ r_citadel_distancefield_ray_origin_bias_max | devonly, cl | Default: 3<br>Distan
 r_citadel_distancefield_ray_origin_bias_min | devonly, cl | Default: 0.25<br>Distance field ray origin bias min
 r_citadel_distancefield_shadows | devonly, cl | Default: true<br>
 r_citadel_dlss_settings_mode | devonly, cl | Default: 0<br>
-r_citadel_enable_pano_world_blur | devonly, cl | Default: true<br>Enable world-blur style
+r_citadel_drop_shadow_direction | cl, cheat | Default: 0.1 0.1<br>Drop Shadow Offset
+r_citadel_drop_shadow_flare | devonly, cl, cheat | Default: 25<br>Percentage the shadow grows in each dimension per 100 game units below the character's feet.
+r_citadel_drop_shadow_max_dist | devonly, cl, cheat | Default: 2048<br>
+r_citadel_drop_shadow_update_frequency | cl, release | Default: 1<br>
 r_citadel_fog_quality | devonly, cl | Default: 1<br>Fog Quality
 r_citadel_fsr2_sharpness | devonly, cl | Default: 0.5<br>
 r_citadel_fsr3_min_reactiveness | devonly, cl | Default: 0.1<br>minimum reactiveness for the FSR3 shader
@@ -4292,10 +4528,9 @@ r_citadel_fsr_enable_mip_bias | devonly, cl | Default: true<br>Apply negative mi
 r_citadel_fsr_rcas_sharpness | devonly, cl | Default: 0.25<br>RCAS sharpness when using FSR + RCAS upsample.
 r_citadel_glow_health_bar_debug | cl, cheat | Default: false<br>
 r_citadel_glow_health_bars | devonly, cl | Default: true<br>
-r_citadel_gpu_culling | devonly, cl | Default: true<br>Citadel/Graphics/GPU Culling
-r_citadel_gpu_culling_shadows | devonly, cl | Default: false<br>Citadel/Graphics/GPU Cull Shadow Views
-r_citadel_gpu_culling_two_pass | devonly, cl | Default: true<br>Citadel/Graphics/GPU Culling (Two Pass)
-r_citadel_gpu_debug_draw | devonly, cl | Default: false<br>
+r_citadel_gpu_culling | devonly, cl, cheat | Default: true<br>Citadel/Graphics/GPU Culling
+r_citadel_gpu_culling_shadows | devonly, cl, cheat | Default: false<br>Citadel/Graphics/GPU Cull Shadow Views
+r_citadel_gpu_culling_two_pass | devonly, cl, cheat | Default: true<br>Citadel/Graphics/GPU Culling (Two Pass)
 r_citadel_gpu_preview_baked_shadows | devonly, cl | Default: true<br>
 r_citadel_gpu_preview_denoise | devonly, cl | Default: true<br>
 r_citadel_gpu_preview_denoise_depth_phi | devonly, cl | Default: 20<br>
@@ -4303,62 +4538,57 @@ r_citadel_gpu_preview_denoise_normal_phi | devonly, cl | Default: 96<br>
 r_citadel_gpu_preview_denoise_passes | devonly, cl | Default: 3<br>
 r_citadel_gpu_preview_denoise_shadow_passes | devonly, cl | Default: 1<br>
 r_citadel_gpu_preview_denoise_signal_phi | devonly, cl | Default: 1<br>
-r_citadel_mboit_bias | devonly, cl, cheat | Default: 5e-06<br>
-r_citadel_mboit_enabled | devonly, cl | Default: false<br>enable moments oit
-r_citadel_mboit_overestimation | devonly, cl, cheat | Default: 0.25<br>
 r_citadel_mboit_quality | devonly, cl | Default: 0<br> MBOIT quality, 0: 4 Moments
-r_citadel_npr_force_solid_outline | devonly, cl | Default: false<br>
 r_citadel_npr_outlines | devonly, cl, cheat | Default: true<br>Enable/Disable NPR Outlines
 r_citadel_npr_outlines_max_dist | devonly, cl, cheat | Default: 1000<br>Maximum distance at which NPR outlines are rendered
 r_citadel_portrait_allow_particle_only | devonly, cl | Default: true<br>
 r_citadel_portrait_highlight_particle_only | devonly, cl | Default: false<br>
 r_citadel_render_game | devonly, cl, cheat | Default: true<br>Should you render the main game world
-r_citadel_screenspace_particles_full_res | devonly, cl | Default: true<br>Render screen space particles at full resolution
 r_citadel_see_thru_walls_opacity | devonly, cl, cheat | Default: 0.3<br>Opacity scale for see-thru UI
-r_citadel_selection_outline2_alpha | devonly, cl | Default: 0.8<br>Selection Outline Alpha
-r_citadel_selection_outline2_fade_pow | devonly, cl | Default: 1.5<br>Selection Outline Fade Pow
-r_citadel_selection_outline2_offset | devonly, cl | Default: 0.3<br>Selection Outline Offset: -1 for interior, 0 for centered, 1 for exterior.
-r_citadel_selection_outline2_width | devonly, cl | Default: 4<br>Selection Outline Width
+r_citadel_selection_outline2_alpha | cl, cheat | Default: 0.8<br>Selection Outline Alpha
+r_citadel_selection_outline2_fade_pow | cl, cheat | Default: 1.5<br>Selection Outline Fade Pow
+r_citadel_selection_outline2_offset | cl, cheat | Default: 0.3<br>Selection Outline Offset: -1 for interior, 0 for centered, 1 for exterior.
+r_citadel_selection_outline2_width | cl, cheat | Default: 4<br>Selection Outline Width
 r_citadel_shadow_caching | devonly, cl | Default: true<br>
 r_citadel_shadow_caching_stats | devonly, cl | Print information about shadow caching
 r_citadel_shadow_quality | devonly, cl | Default: 1<br>Shadow Quality
 r_citadel_shadowdb | devonly, cl | Default: 2048<br>
 r_citadel_ssao_quality | devonly, cl | Default: 3<br>
-r_citadel_ssao_thin_occluder_compensation | devonly, cl | Default: 0.5<br>
 r_citadel_sun_shadow_slope_scale_depth_bias | devonly, cl | Default: 3.54<br>
 r_citadel_upscaling | devonly, cl | Default: 4<br>
-r_citadel_use_exposure_control_in_panorama_scenes | devonly, cl | Default: false<br>
 r_cleardecals | devonly, cl | Clears all decals
+r_colorblindsim_fullscreen_cycletime | cl, release | Default: 0<br>Cycle between deficiencies, holding at each for this many seconds
+r_colorblindsim_fullscreen_weight_deuteranopia | cl, release | Default: 0<br>Deuteranopia simulation weight. Affects ~6% of males & 0.39% of females.
+r_colorblindsim_fullscreen_weight_protanopia | cl, release | Default: 0<br>Protanopia simulation weight. Affects ~2% of males & 0.04% of females.
+r_colorblindsim_fullscreen_weight_tritanopia | cl, release | Default: 0<br>Tritanopia simulation weight. Affects ~0.002% of males & 0.001% of females.
+r_colorblindsim_mode | cl, release | Default: 1<br>0 = off, 1 = fullscreen, 2 = mouse quadrants
+r_colorblindsim_rendermethod | cl, release | Default: 3<br>0 = disabled, 1 = render pipeline, 2 = render service, 3 = game ui service
 r_cubemap_debug_colors | cheat | Default: 0<br>
-r_cubemap_normalization | devonly, cl | Default: true<br>
 r_dashboard_render_quality | devonly, cl | Default: true<br>
-r_debug_draw_safe_area_insets | devonly | Default: false<br>Render safe area insets as wireframe.
 r_debug_precipitation | cl, cheat | Default: false<br>Show precipitation volumes
 r_decals | devonly, sv, cl, rep | Default: 2048<br>
 r_decals_additional_offset | devonly, sv, cl, rep | Default: 0<br>
 r_decals_default_fade_duration | devonly, sv, cl, rep | Default: 3<br>
 r_decals_default_start_fade | devonly, sv, cl, rep | Default: 30<br>
-r_decals_max_on_deformables | devonly, sv, cl, rep | Default: 512<br>
+r_decals_max_triangle_anchored | devonly, sv, cl, rep | Default: 512<br>
 r_decals_overlap_threshold | devonly, sv, cl, rep | Default: 0<br>
+r_decals_triangle_max_stretch | devonly, sv, cl, rep | Default: 1.25<br>Max stretch (and 1/x compression) ratio a triangle-anchored decal may show relative to its shape at placement. 1 = rigid follow, &lt;= 0 = unlimited.
 r_depth_of_field | devonly, cl | Default: true<br>
 r_directional_lightmaps | devonly | Default: true<br>
 r_directlighting | cheat | Default: true<br>Set to use direct lighting
 r_distancefield_enable | devonly, cl | Default: true<br>Graphics/Enable Distance Field rendering
 r_dlss_preset | devonly | Default: 5<br>
-r_dof1_d0 | devonly, cl | Default: 0.2<br>
-r_dof1_d1 | devonly, cl | Default: 0.3<br>
 r_dof_override | cheat | Default: false<br>
 r_dof_override_far_blurry | cheat | Default: 2000<br>
 r_dof_override_far_crisp | cheat | Default: 180<br>
 r_dof_override_near_blurry | cheat | Default: -100<br>
 r_dof_override_near_crisp | cheat | Default: 0<br>
-r_dof_override_ranges | devonly, cl | Default: 0 0 0 0<br>
+r_dof_override_ranges | devonly, cl, cheat | Default: 0 0 0 0<br>
 r_dof_override_tilt_to_ground | cheat | Default: 0.5<br>
 r_dopixelvisibility | cheat | Default: true<br>
 r_draw3dskybox | devonly, cl | Default: true<br>
 r_draw_first_tri_only | cheat | Default: false<br>
 r_draw_instances | cheat | Default: true<br>
-r_draw_overlays | devonly, cl | Default: true<br>
 r_draw_particle_children_with_parents | cheat | Default: -1<br>Draw particle children with parents (-1=use gameinfo, 0=no, 1=yes)
 r_drawblankworld | cheat | Default: false<br>Render blank instead of the game world
 r_drawdecals | cheat | Default: true<br>Set to render decals
@@ -4376,10 +4606,10 @@ r_dx11_debug_clean | release | Default: false<br>Aggressively unbind bound resou
 r_dx11_report_live_objects | devonly | Prints out live D3D11 objects (requires -dx11debug)
 r_dx11_software_cmd_lists | devonly | Default: true<br>Enable Software Command lists for DX11 (Avoid using deferred contexts)
 r_effects_bloom | devonly, cl | Default: true<br>
-r_enable_cubemap_fog | devonly, cl | Default: true<br>Citadel/Graphics/Fog/Enable Cubemap Fog
-r_enable_gradient_fog | devonly, cl | Default: true<br>Citadel/Graphics/Fog/Enable Gradient Fog
+r_enable_cubemap_fog | devonly, cl, cheat | Default: true<br>Citadel/Graphics/Fog/Enable Cubemap Fog
+r_enable_gradient_fog | devonly, cl, cheat | Default: true<br>Citadel/Graphics/Fog/Enable Gradient Fog
 r_enable_rigid_animation | devonly, cl | Default: false<br>
-r_enable_volume_fog | devonly, cl | Default: true<br>Citadel/Graphics/Fog/Enable Volume Fog
+r_enable_volume_fog | devonly, cl, cheat | Default: true<br>Citadel/Graphics/Fog/Enable Volume Fog
 r_entpos | devonly | Moves the camera position + orientation to the named entity
 r_environment_map_roughness_range | devonly, cl, cheat | Default: 0.2 0.3<br>Fade region for sampling environment maps on lightmapped nonmetals. Smoother values than the first param sample envmaps. Rougher values than the second sample only lightmap SH. r_environment_map_roughness_range 1 1 to always sample envmaps for comparison.
 r_experimental_lag_limiter | devonly | Default: false<br>
@@ -4406,17 +4636,16 @@ r_flashlightshadowatten | cl, cheat | Default: 0.35<br>
 r_flashlighttracedistcutoff | cl, cheat | Default: 128<br>
 r_flashlighttracedistwatercutoff | cl, cheat | Default: 80<br>
 r_flashlightvisualizetrace | cl, cheat | Default: false<br>
-r_flush_on_pooled_ib_resize | release | Default: true<br>
 r_force_engine_render_frame | devonly | Force a single render of the engine viewport.
 r_force_no_present | cheat | Default: false<br>Force the render device to not present frames.
 r_force_render_frame_count | devonly | Default: 5<br>The number of frames to render when a
 r_force_thick_hair | devonly, cheat | Default: false<br>
-r_force_zprepass | cheat | Default: -1<br>0: Force z prepass off. 1: Force on. -1: Don't force
 r_frame_sync_enable | devonly | Default: true<br>
 r_freeze_sceneobjects | devonly, cl | Default: false<br>
 r_freezeparticles | cheat | Default: false<br>Pause particle simulation
 r_fullscreen_gamma | a | Default: 2.2<br>Screen Gamma (only in fullscreen modes)
 r_fullscreen_quad_single_triangle | devonly | Default: true<br>
+r_gpu_debug_draw_freeze | devonly, cl | Default: false<br>
 r_gpu_mem_stats | devonly | Display GPU memory usage.
 r_grass_allow_flattening | devonly | Default: false<br>
 r_grass_alpha_test | devonly | Default: 0<br>
@@ -4456,9 +4685,7 @@ r_light_probe_volume_debug_grid_metalness | cheat | Default: 0<br>metalness for 
 r_light_probe_volume_debug_grid_prim | cheat | Default: 0<br>0: spheres, 1: cubes
 r_light_probe_volume_debug_grid_roughness | cheat | Default: 0.5<br>roughness for LPV debug grid
 r_light_probe_volume_debug_grid_samplesize | cheat | Default: 4<br>sphere radius (world) for LPV debug grid
-r_light_sensitivity_mode | devonly, cl | Default: false<br>
-r_lighting_only | devonly, cl | Default: false<br>
-r_lightmap_bicubic_filtering | devonly, cl | Default: true<br>
+r_light_sensitivity_mode | cl, a, per_user | Default: false<br>
 r_lightmap_set | cheat | Default: lightmaps<br>Lightmap set to use, only works on map load
 r_lightmap_size | devonly | Default: 65536<br>Maximum lightmap resolution.
 r_lightmap_size_directional_irradiance | devonly | Default: -1<br>Maximum lightmap resolution for directional_irradiance channel. -1 = use value of r_lightmap_size
@@ -4476,13 +4703,12 @@ r_monitor_3dskybox | devonly, cl | Default: true<br>
 r_morphing_enabled | cheat | Default: true<br>
 r_multigpu_num_gpus_found | devonly | Default: 1<br>
 r_multigpu_num_gpus_used | devonly | Default: 1<br>
-r_multiscattering | devonly, cl | Default: true<br>
 r_muzzleflashbrightness | cl, rep, cheat | Default: 0.4<br>
 r_muzzleflashlinear | cl, rep, cheat | Default: 0.05<br>
 r_nearz | cl, cheat | Default: -1<br>Override the near clipping plane. -1 means use the default.
-r_opaque | devonly, cl | Default: true<br>
 r_particle_allowprerender | devonly | Default: true<br>
-r_particle_batch_collections | devonly | Default: false<br>
+r_particle_batch_collections | devonly | Default: true<br>
+r_particle_batch_in_fullsort | devonly | Default: false<br>
 r_particle_cables_cast_shadows | devonly | Default: true<br>
 r_particle_cables_culling | devonly | Default: 1<br>
 r_particle_cables_culling_bounds_scale | devonly | Default: 1.2<br>
@@ -4498,8 +4724,8 @@ r_particle_debug_show_attribute | devonly | Default: -1<br>Show specific attribu
 r_particle_debug_show_control_points | devonly | Default: false<br>Show all used controlpoints
 r_particle_debug_show_rope_segments | devonly | Default: 0<br>Show rope segments when debugging particle systems - specify a number to isolate to that segment id
 r_particle_debug_show_sort_position | devonly | Default: false<br>Show the sorting position when debugging particle systems
+r_particle_debug_vector_attribute_scale | devonly | Default: 1<br>Scale attribute vectors by this much for 3d rendering
 r_particle_enable_fastpath | devonly | Default: true<br>
-r_particle_explicit_fetch | devonly | Default: false<br>
 r_particle_fixedrandomseeds | devonly | Default: false<br>Use fixed seeds for easier debugging
 r_particle_gpu_implicit | devonly | Default: true<br>
 r_particle_gpu_implicit_cull_columns | devonly | Default: true<br>
@@ -4519,6 +4745,7 @@ r_particle_model_per_thread_count | devonly | Default: 32<br>
 r_particle_multiplier | cheat | Default: 1<br>Render each particle system N times for perf testing
 r_particle_newinput | devonly | Default: false<br>Enable input path in particle ops
 r_particle_render_refreshes_sleep_timer | devonly | Default: true<br>Disable to get a better look at what's happening offscreen
+r_particle_render_sprites_issue_vizquery | devonly | Default: true<br>
 r_particle_render_test | devonly | Default: false<br>render particles 100 times and show perf
 r_particle_skip_postsim | devonly | Default: false<br>
 r_particle_testbuffers | devonly | Default: false<br>
@@ -4534,24 +4761,21 @@ r_pixelvisibility_partial | cheat | Default: true<br>
 r_pixelvisibility_spew | cheat | Default: false<br>
 r_post_bloom | devonly, cl | Default: false<br>
 r_post_bloom_strength | devonly, cl | Default: -1<br>
-r_postprocess_enable | devonly, cl | Default: true<br>
+r_postprocess_enable | cl, cheat | Default: true<br>
 r_prefer_loop_unrolling | devonly | Default: true<br>Prefer shader loop unrolling.
 r_print_buffers | devonly | Print Vertex/Index/GPU buffers.
 r_print_texture_stats | devonly | Texture stats
 r_printdecalinfo | devonly, cl | Prints info about decals currently in the scene
 r_propsmaxdist | devonly, cl | Default: 1200<br>Maximum visible distance
 r_render_coordination_state | devonly | Prints out the current render coordination state.
-r_render_deferred_opaque | devonly, cl | Default: true<br>
-r_render_forward_opaque | devonly, cl | Default: true<br>
 r_render_hair | devonly, cheat | Default: true<br>
-r_render_portals | devonly, cl | Default: true<br>
-r_render_to_cubemap_debug | devonly, cl | Default: false<br>
-r_render_world_node_bounds | cheat | Default: false<br>Render world node bounds
+r_render_to_cubemap_debug | cl, cheat | Default: false<br>
 r_renderdoc_auto_shader_pdbs | devonly | Default: true<br>Automatically generate shader debug info on capture
 r_renderdoc_capture_frame | devonly | Triggers a RenderDoc capture
 r_renderdoc_capture_window_dx11 | devonly | Triggers a RenderDoc capture of a specific Window
 r_renderdoc_capture_window_vulkan | devonly | Triggers a RenderDoc capture of a specific Window
 r_renderdoc_open_captures | devonly | Default: true<br>
+r_renderdoc_show_overlay | devonly | Default: true<br>Show RenderDoc overlay
 r_renderdoc_validation_error_capture_limit | devonly | Default: 5<br>
 r_rendersun | cheat | Default: true<br>Render sun lighting
 r_replay_post_effect | cl, cheat | Default: -1<br>
@@ -4563,10 +4787,7 @@ r_shadows | cheat | Default: true<br>
 r_shadowtile_waveops |  | Default: false<br>
 r_show_gpu_memory_visualizer | devonly, cheat | Default: false<br>SceneSystem/Vulkan GPU Memory Visualizer
 r_showdebugoverlays | cheat | Default: false<br>Set to render debug overlays
-r_showdebugrendertarget | cheat | Default: false<br>Set the debug render target to show, 0 == disable
 r_showsceneobjectbounds | cheat | Default: false<br>Show scenesystem object bounding boxes
-r_showsunshadowdebugrendertargets | cheat | Default: false<br>Set to render sun shadow render targets
-r_showsunshadowdebugsplitvis | cheat | Default: false<br>Set to render sun shadow split visibility debugger
 r_size_cull_threshold | devonly | Default: 0.8<br>Threshold of screen size percentage below which objects get culled
 r_size_cull_threshold_fade | devonly | Default: 0<br>% above the screen size percentage where we will start fading out (==0 will disable fading).
 r_size_cull_threshold_shadow | cheat | Default: 0.2<br>Threshold of shadow map size percentage below which objects get culled
@@ -4579,7 +4800,6 @@ r_ssao_blur | devonly | Default: true<br>
 r_ssao_radius | devonly | Default: 30<br>
 r_ssao_strength | devonly | Default: 1.2<br>
 r_strip_invisible_during_sceneobject_update | devonly, cl | Default: false<br>
-r_suppress_redundant_state_changes | devonly | Default: true<br>
 r_texture_budget_dynamic | devonly | Default: true<br>Dynamically adjust texture streaming budget based on GPU memory usage.
 r_texture_budget_threshold | devonly | Default: 0.9<br>Reduce texture memory pool size when this percentage of the budget is full.
 r_texture_budget_update_period | devonly | Default: 0.1<br>Time (in seconds) between updating texture memory budget.
@@ -4592,7 +4812,6 @@ r_texture_pool_reduce_rate | devonly | Default: 256<br>Reduce texture memory poo
 r_texture_pool_size | devonly | Default: 1600<br>Total size of the texture pool in MB
 r_texture_stream_max_resolution | devonly | Default: 2147483647<br>Maximum resolution for top mip level in streaming textures
 r_texture_stream_mip_bias | devonly | Default: 0<br>Biases the mip level the texture streaming system choses to stream for each texture.
-r_texture_stream_resolution_bias | devonly | Default: 1<br>
 r_texture_stream_resolution_bias_decrease_rate | devonly | Default: 0.1<br>
 r_texture_stream_resolution_bias_increase_rate | devonly | Default: 0.05<br>
 r_texture_stream_resolution_bias_min | devonly | Default: 1<br>
@@ -4610,6 +4829,7 @@ r_threaded_scene_object_update | devonly, cl | Default: true<br>
 r_timestamp_query_multiplier | devonly | Default: 1<br>Set the TIMESTAMP query cycle multiplier, for drivers that lie
 r_toggleviewportsize | devonly | Toggles viewport size between small + full window.
 r_translucent | cheat | Default: true<br>Enable rendering of translucent geometry
+r_ui_update_parallel_with_server | devonly | Default: false<br>
 r_update_particles_on_render_only_frames | devonly, cl | Default: false<br>
 r_use_memory_budget_model | devonly | Default: false<br>Use a model of GPU memory use to determine budget rather than querying the OS.
 r_validate_texture_streaming | devonly | Default: false<br>Dumps state of texture streaming at the next frame boundary.
@@ -4623,6 +4843,7 @@ r_vma_defrag_moves_per_frame | devonly | Default: 20<br>During a VMA defrag, num
 r_vma_defrag_threshold_mb | release | Default: 256<br>
 r_vulkan_accurate_renderarea | release | Default: true<br>Sets the renderArea of a render pass to its viewport bounds (false will use RT size). More accurate renderArea, but results in more render passes.
 r_vulkan_force_sync1 | devonly | Default: false<br>
+r_vulkan_print_pipeline_compile_times | devonly | Prints out information on pipeline compile times.
 r_vulkan_sw_cmd_lists | release | Default: true<br>Enable Software Command lists for Vulkan
 r_vulkan_validation_filter_in | devonly | Default: <br>Comma delimited list of stristr filters for including validation messages.  Only messages matching filter will be included.
 r_vulkan_validation_filter_out | devonly | Default: <br>Comma delimited list of stristr filters for excluding validation messages.  Any messages matching filter will be excluded.
@@ -4634,7 +4855,6 @@ r_world_wind_frequency_trees | devonly | Default: 0.003<br>
 r_world_wind_offset_speed | devonly | Default: 0.25 0.3 0.2<br>
 r_world_wind_smooth_time | devonly | Default: 2<br>
 r_world_wind_strength | devonly | Default: 40<br>
-r_zprepass_normals | cheat | Default: false<br>0: Use normals reconstructed from depth. 1: Output correct normals in z prepass.
 ragdoll_biped_settle_duration | sv, cheat | Default: 1.5<br>
 ragdoll_biped_settle_force | sv, cheat | Default: 0.5<br>
 ragdoll_biped_settle_lift_force | sv, cheat | Default: 0.2<br>
@@ -4664,6 +4884,7 @@ ragdoll_visualize_creation_skeleton | devonly, sv, rep | Default: false<br>
 ragdoll_vphysics_scale | devonly, sv, rep | Default: 0.5<br>How much we scale physics impacts against the ragdoll.
 rangefinder | sv, cheat | Measures distance along a ray
 rangefinder2d | sv, cheat | Measures distance along a ray, only measuring along XY plane.
+ranked_set_active_season | devonly, cl, cheat | &lt;interval&gt; Sets the override of the currently active ranked season to be the specified interval
 rate | a, user | Default: 786432<br>Min bytes/sec the host can receive data
 ray_bench | devonly, sv | Load the rays and run the benchmark
 rcon | norecord, release | Issue an rcon command.
@@ -4700,7 +4921,6 @@ resource_log_allocate_timing | devonly | Log time spent in Allocate for all reso
 resource_manifest_validate_modules | devonly | Scan all of the loaded modules and validate any resource manifests found
 resource_repeated_reload | devonly | resource_repeated_reload &lt;count&gt; &lt;resource_name&gt; (&lt;resource name&gt; ...): Load and unload the specified resource(s)
 resource_reset_allocate_timing | devonly | Reset tracked time spent in Allocate (see resource_log_allocate_timing)
-resourcesystem_multiframe_finalize_time_msec | devonly | Default: 10<br>Max time to spend finalizing resources per frame in miliseconds.
 respawn_player | sv, cheat | Respawns the player from death!<br>
 restart | cheat | Poor man's restart: reload the current map from disk.
 rope_averagelight | devonly, cl | Default: true<br>Makes ropes use average of cubemap lighting instead of max intensity.
@@ -4719,9 +4939,9 @@ rr_debugresponseconcept | devonly, sv, cl, rep | Default: <br>If set, rr_debugre
 rr_debugresponses | devonly, sv, cl, rep | Default: 0<br>Show verbose matching output (1 for simple, 2 for rule scoring, 3 for noisy). If set to 4, it will only show response success/failure for npc_selected NPCs.
 rr_debugrule | devonly, sv, cl, rep | Default: <br>If set to the name of the rule, that rule's score will be shown whenever a concept is passed into the response rules system.
 rr_dump_rules | sv, cheat | Print all response rules
+rr_dumpresponses | devonly, sv, cl, rep | Default: false<br>
 rr_followup_maxdist | sv, cheat | Default: 1800<br>'then ANY' or 'then ALL' response followups will be dispatched only to characters within this distance.
 rr_forceconcept | sv, cheat | fire a response concept directly at a given character.<br>USAGE: rr_forceconcept &lt;target name or index&gt; &lt;concept&gt; "criteria1:value1,criteria2:value2,..."<br>criteria values are optional.<br>
-rr_reloadresponsesystems | sv, cheat | Reload all response system scripts.
 rr_thenany_score_slop | sv, a, cheat | Default: 0<br>When computing respondents for a 'THEN ANY' rule, all rule-matching scores within this much of the best score will be considered.
 rs_dump_stats | devonly | rs_dump_stats - Dump resourcesystem stats.
 rtx_allow_blas_compact | devonly | Default: true<br>
@@ -4730,23 +4950,23 @@ rtx_dynamic_blas | devonly | Default: true<br>Allow dynamic BLAS creation for ge
 rtx_dynamic_blas_caching | devonly | Default: true<br>Cache dynamic BLAS if geometry has not changed
 rtx_force_default_hitgroup | devonly | Default: false<br>Forces all ray traced geometry to use default hit shaders instead of specialized ones.
 rtx_perf_stats | devonly, cl | Default: -1<br>Report RTX perf stats at N bounces. -1 means no report
+rtx_preview_dynamic_bounce | devonly | Default: true<br>Show dynamic bounce lights and real-time emissive as baked bounce in the Hammer GPU lighting preview.
 rtx_texture_resolution | devonly | Default: 512<br>Sets the texture resolution the raytracer will mark to stream in
 run_perftest | cheat, norecord | Execute perftest.cfg
 run_voicecontainer_async | devonly | Default: false<br>
 save | devonly, sv, norecord | Save Game
-save_animgraph_recording | sv, cheat | Saves all active animgraph recordings to disk<br>	Arguments: automaticallyOpenInAnimgraphEditor
 save_async | devonly, sv | Default: true<br>
 save_clear_subdirectory | devonly, sv, rep | 
+save_debug_snapshots | devonly, sv, cl, rep | Default: true<br>Save/Load debug snapshot data
 save_fake_hitch | devonly, sv | Default: 0<br>Force a busy wait for the specified number of milliseconds during save to simulate a hitch
 save_finish_async | devonly, sv | 
 save_history_count | devonly, sv | Default: 1<br>Keep this many old copies in history of autosaves and quicksaves.
 save_maxarray_spew | sv, release | Default: 10<br>Max number of array entries to spew when using SaveRestoreIO spewing.
-save_parallel | devonly, sv, cl, rep | Default: false<br>
+save_parallel | devonly, sv, cl, rep | Default: true<br>
 save_screenshot | devonly, sv | Default: 2<br>0 = none, 1 = non-autosave, 2 = always, 3 = bug_only
 save_set_subdirectory | devonly, sv, rep | 
 save_showelapsedtime | devonly, sv | display up-to-date elapsed play time
 save_spew | devonly, sv, cl, rep | Default: false<br>
-save_version | devonly, sv, cl, rep | Default: 1<br>0: (V0) Legacy save format, 1: (V1) KeyValues3 save format, 2: (V2) KV3Transfer saves
 save_watchclass | devonly, sv | Restrict spew to entities with matching classname
 save_watchentity | devonly, sv | Restrict spew to entity index
 save_write_kv3 | devonly, sv, cl, rep | Default: false<br>Write the KV3 entity data as a text file in the save directory
@@ -4760,12 +4980,12 @@ sc_aggregate_bvh_threshold | devonly | Default: 128<br>
 sc_aggregate_debug_draw_meshlets | devonly | Default: 0<br>SceneSystem/Aggregates/Visualize Meshlets
 sc_aggregate_debug_draw_meshlets_bounds | devonly | Default: false<br>Visualize meshlet bounds and cone axis. Mesh shader only.
 sc_aggregate_debug_visualizer | devonly, cheat | Default: false<br>SceneSystem/Aggregates/Debug Visualizer
+sc_aggregate_fragment_culling_boxes | cheat | Default: true<br>Test aggregate fragments against culling boxes individually instead of per aggregate.
 sc_aggregate_fragment_merging | devonly | Default: true<br>
 sc_aggregate_gpu_culling | devonly | Default: true<br>Toggles GPU culling of aggregate meshes
 sc_aggregate_gpu_culling_conservative_bounds | devonly | Default: false<br>
 sc_aggregate_gpu_culling_show_culled | devonly | Default: false<br>SceneSystem/Aggregates/Show GPU Culled Meshes
 sc_aggregate_gpu_occlusion_culling | devonly | Default: true<br>
-sc_aggregate_gpu_vis_culling | devonly | Default: true<br>
 sc_aggregate_indirect_draw_compaction | release | Default: true<br>Use multidrawindirect...count if the driver/hardware supports it
 sc_aggregate_indirect_draw_compaction_threshold | release | Default: 8<br>Threshold of indirect draws when we will do compaction
 sc_aggregate_instance_streams | devonly | Default: true<br>Enable instance streams
@@ -4774,6 +4994,7 @@ sc_aggregate_render_mesh_shader | devonly | Default: true<br>Using mesh shaders 
 sc_aggregate_rtproxy_debug_visualizer | devonly, cheat | Default: false<br>SceneSystem/Aggregates/RT Proxy Debug Visualizer
 sc_aggregate_rtproxy_instanced_geo | devonly, cheat | Default: true<br>
 sc_aggregate_rtproxy_unique_geo | devonly, cheat | Default: true<br>
+sc_aggregate_rtproxy_visualize | devonly, cheat | Default: false<br>
 sc_aggregate_show_outside_vis | devonly | Default: false<br>
 sc_allow_dithered_lod | devonly | Default: true<br>Allow use of dithered lod transitions
 sc_allow_dynamic_constant_batching | devonly | Default: true<br>
@@ -4786,6 +5007,7 @@ sc_clutter_density_full_size | devonly | Default: 0.0075<br>Screen-size where cl
 sc_clutter_density_none_size | devonly | Default: 0.0035<br>Screen-size where clutter will be gone
 sc_clutter_desity_override | devonly | Default: false<br>
 sc_clutter_enable | devonly | Default: true<br>SceneSystem/Clutter/Draw Clutter
+sc_cycleclassdebuglevel | cheat | Increment the debug level associated with an object class. sc_CycleClassDebugLevel &lt;classname&gt; &lt;optional: max level&gt;<br>
 sc_disableThreading | cheat | Default: false<br>
 sc_disable_baked_lighting | devonly | Default: false<br>
 sc_disable_culling_boxes | cheat | Default: false<br>
@@ -4793,6 +5015,7 @@ sc_disable_procedural_layer_rendering | cheat | Default: false<br>
 sc_disable_shadow_fastpath | cheat | Default: false<br>
 sc_disable_spotlight_shadows | cheat | Default: false<br>
 sc_disable_world_materials | cheat | Default: false<br>
+sc_distancefield_visualize_atlas | devonly | Default: false<br>
 sc_dithered_lod_transition_amt | devonly | Default: 0.075<br>Percentage of the transition between two lods we will apply a dither
 sc_draw_aggregate_meshes | devonly | Default: true<br>SceneSystem/Aggregates/Draw Aggregates
 sc_dump_lists | cheat | Default: <br>
@@ -4801,6 +5024,7 @@ sc_dumpworld3d | cheat | Dump the objects in a sceneworld into a 3d geoview buff
 sc_enable_discard | devonly | Default: true<br>
 sc_extended_stats | cheat | Default: false<br>
 sc_fade_distance_scale_override | cheat | Default: -1<br>
+sc_fog_cull | cheat | Default: true<br>
 sc_force_lod_level | cheat | Default: -1<br>
 sc_force_materials_batchable | cheat | Default: false<br>
 sc_force_single_display_list_per_layer | devonly | Default: false<br>
@@ -4814,24 +5038,30 @@ sc_instanced_gpu_culling_show_culled | devonly | Default: false<br>SceneSystem/I
 sc_instanced_material_solo | devonly, cheat | Default: <br>
 sc_instanced_mesh_enable | devonly, cheat | Default: true<br>SceneSystem/Instanced/Draw Instanced
 sc_instanced_mesh_gpu_culling | devonly | Default: true<br>Toggles GPU culling of instanced meshes
+sc_instanced_mesh_gpu_culling_boxes | cheat | Default: true<br>Test instanced mesh instances against info_visibility_box culling boxes.
 sc_instanced_mesh_gpu_density_culling | devonly | Default: true<br>Toggles density culling (if enabled)
 sc_instanced_mesh_gpu_occlusion_culling | devonly | Default: true<br>Toggles GPU occlusion of instanced meshes
 sc_instanced_mesh_gpu_vis_culling | devonly | Default: true<br>Toggles GPU vis of instanced meshes
 sc_instanced_mesh_lod_bias | devonly | Default: 1.25<br>Bias for LOD selection of instanced meshes
 sc_instanced_mesh_lod_bias_shadow | devonly | Default: 1.75<br>Bias for LOD selection of instanced meshes in shadowmaps
-sc_instanced_mesh_mesh_shader | devonly | Default: true<br>Toggles mesh shader rendering for instanced meshes
 sc_instanced_mesh_motion_vectors | devonly | Default: true<br>Toggles motion vector support for instanced meshes
 sc_instanced_mesh_opaque_fade | devonly | Default: true<br>Toggles fade support for instanced meshes
+sc_instanced_mesh_shadows_batch_across_materials | devonly | Default: false<br>Toggles whether mesh shader instanced can batch on reflectivity
 sc_instanced_mesh_size_cull_bias | devonly | Default: 1.5<br>Bias for size culling of instanced meshes
 sc_instanced_mesh_size_cull_bias_shadow | devonly | Default: 2<br>Bias for size culling instanced meshes in shadowmaps
 sc_instanced_mesh_solo | devonly, cheat | Default: <br>
 sc_keep_all_layers | devonly | Default: false<br>
 sc_layer_batch_threshold | devonly | Default: 128<br>
-sc_layer_batch_threshold_fullsort | devonly | Default: 80<br>
+sc_layer_batch_threshold_fullsort | devonly | Default: 20<br>
 sc_list_extradata_allocations | devonly | Prints out the overall extra data allocation counts
 sc_listworlds | cheat | List all the active sceneworlds
 sc_max_framebuffer_copies_per_layer | devonly | Default: 1<br>
+sc_mesh_allow_batch_across_primitives | devonly | Default: true<br>
 sc_mesh_backface_culling | devonly | Default: true<br>
+sc_mesh_gpu_occlusion_culling | devonly | Default: true<br>
+sc_mesh_gpu_volume_culling | devonly | Default: true<br>
+sc_mesh_mesh_shaders | devonly | Default: false<br>
+sc_mesh_shadows_batch_across_materials | devonly | Default: true<br>
 sc_no_cull | devonly | Default: false<br>
 sc_no_vis | devonly | Default: false<br>
 sc_only_render_opaque | cheat | Default: false<br>
@@ -4851,18 +5081,19 @@ sc_show_hair_debug_ui | devonly, cheat | Default: false<br>SceneSystem/Hair Debu
 sc_show_object_browser | devonly, cheat | Default: false<br>SceneSystem/SceneObject Browser
 sc_show_texture_visualizer | devonly, cheat | Default: false<br>SceneSystem/Texture Visualizer
 sc_show_view_profiler | devonly, cheat | Default: false<br>SceneSystem/View Profiler
+sc_show_vt_stats | devonly, cheat | Default: false<br>SceneSystem/Virtual Texturing
 sc_showclasses | cheat | List the object class names known by scenesystem<br>
 sc_skip_traversal | cheat | Default: false<br>
 sc_spew_cmt_usage | devonly | Default: false<br>
+sc_stats_sections | devonly, a, cheat | Default: SCENE_STATS_FRAME\|SCENE_STATS_GEOMETRY\|SCENE_STATS_CULLING\|SCENE_STATS_MATERIALS\|SCENE_STATS_LIGHTING\|SCENE_STATS_RAYTRACING\|SCENE_STATS_INTERNALS<br>Which stats groups to show
 sc_throw_away_all_layers | devonly | Default: false<br>
 sc_use_clear_subrect | devonly | Default: false<br>
 sc_view_profiler_frame_averaging | devonly | Default: 10<br>
 sc_visualize_batches | devonly | Default: 0<br>color per batch
 sc_visualize_sceneobjects | devonly | Default: SCENEOBJECT_VIS_NONE<br>SceneSystem/Visualize SceneObject Mode
+sc_visualize_sceneobjects_meshlets | devonly | Default: SCENEOBJECT_MESHLET_VIS_NONE<br>SceneSystem/Visualize Base SceneObject Meshlets
 scale_function_dump | sv, cheat | Print out all scale functions.
 scene_clientflex | devonly, sv, cl, rep | Default: true<br>Do client side flex animation.
-scene_coordinator_add_request | devonly, sv | Add a request to the scene coordinator
-scene_maxcaptionradius | devonly, sv | Default: 1200<br>Only show closed captions if recipient is within this many units of speaking actor (0==disabled).
 scene_panel_rotate_drag | devonly, cl | Default: 0.19<br>
 scene_panel_rotate_frametime_multiplier | devonly, cl | Default: 1<br>
 scene_panel_rotate_grab_scale | devonly, cl | Default: 0.5<br>
@@ -4870,7 +5101,6 @@ scene_panel_rotate_scale | devonly, cl | Default: 2<br>
 scene_playvcd | sv, cheat | Play the given VCD as an instanced scripted scene.
 scene_print | devonly, sv, cl, rep | Default: 0<br>When playing back a scene, print timing and event info to console.
 scene_showfaceto | sv, a, cheat | Default: false<br>When playing back, show the directions of faceto events.
-scene_showmoveto | sv, a | Default: false<br>When moving, show the end location.
 scene_vcdautosave | devonly, cl | Default: false<br>Create a savegame before VCD playback
 schema_all_list_bindings | devonly | schema_all_list_bindings &lt;substring&gt; - List all scopes registered schema bindings (classes & enums). If no substring, list them all.
 schema_detailed_class_layout | devonly | schema_detailed_class_layout &lt;class_name&gt; - Print a detailed memory layout of the class (including inline structs).
@@ -4878,8 +5108,6 @@ schema_dump_binding | devonly | schema_dump_binding &lt;class_or_enum_name&gt; -
 schema_list_bindings | devonly | schema_list_bindings &lt;substring&gt; - List registered global-scope schema bindings (classes & enums). If no substring, list them all.
 schema_meta_stats | devonly | schema_meta_stats \[&lt;options&gt;\]- Print a summary of schemasystem metadata statistics.
 schema_stats | devonly | schema_stats - Print a summary of various schemasystem statistics.
-screenmessage_notifytime | devonly, sv | Default: 8<br>How long to display screen message text
-screenmessage_show | cheat | Default: -1<br>Enable display of console messages on screen. 1 = Enabled, 0 = Disabled, -1 = Enabled if vgui is not present
 screenshot | devonly | Take a screenshot: screenshot \[filename\]
 screenshot_height | devonly | Default: -1<br>Screenshot height. -1 for screen height.
 screenshot_prefix | devonly | Default: shot<br>Set the screenshot auto naming prefix.
@@ -4976,13 +5204,23 @@ skeleton_physics_joint_fixup | devonly, sv, cl, rep, cheat | Default: true<br>
 skill | sv, cl, a, rep, per_user | Default: 1<br>Game skill level.
 smoothstairs | devonly, sv, cl, rep | Default: true<br>Smooth player eye z coordinate when traversing stairs.
 snapto | devonly, cl | 
-snd_arrangement_start | cheat | Starts the specified arrangement.
+snd__beatpattern_stop_track | cheat | Stops the specified track
 snd_async_flush | devonly | Flush all unlocked async audio data
 snd_async_showmem | devonly | Show async memory stats
 snd_async_showmem_music | devonly | Show async memory stats for just non-streamed music
 snd_async_showmem_summary | devonly | Show brief async memory stats
 snd_async_spew_blocking | devonly | Default: 0<br>Spew message to console any time async sound loading blocks on file i/o.
 snd_autodetect_latency | a | Default: true<br>
+snd_beatpattern_flush | cheat | Purge and reload all beat pattern data and files.
+snd_beatpattern_print_activetracks | cheat | List all active tracks
+snd_beatpattern_print_patterns | cheat | List all available beat patterns
+snd_beatpattern_set_track_bpm | cheat | Sets the tempo of the specified track
+snd_beatpattern_set_track_transpose | cheat | Sets the transposition of the specified track
+snd_beatpattern_show_bpm | cheat | Default: false<br>
+snd_beatpattern_show_events | cheat | Default: false<br>
+snd_beatpattern_show_quantize_queue | cheat | Default: false<br>
+snd_beatpattern_stop_all_tracks | cheat | Stops all currently playing patterns
+snd_beatpattern_use_lookahead | cheat | Default: false<br>
 snd_boxverb_simd | devonly | Default: true<br>Enable SIMD code path for shoebox reverb processor.
 snd_boxverb_simd_svf | devonly | Default: 1<br>0 = use biquad instead of svf, 1 = use vectorized svf, 2 = use scalar svf
 snd_break_on_start_soundevent | sv, cl, rep, cheat | Default: <br>Use to debug break on any soundevent that is started matching this name
@@ -5019,10 +5257,12 @@ snd_gain_min | cheat | Default: 0.01<br>
 snd_gamevoicevolume | a | Default: 1<br>Game v.o. volume
 snd_gamevolume | a | Default: 1<br>Game volume
 snd_get_physics_surface_properties | cheat | Get physics surface properties for all the materials.
+snd_granulator_imgui | devonly, a, cheat | Default: false<br>Game/Granulator Debugger
 snd_group_cluster_debug | rep, cheat | Default: false<br>
 snd_group_occlusion_debug | devonly | Default: false<br>
 snd_group_priority_debug | rep, cheat | Default: false<br>
 snd_group_priority_max_tolerance | rep, cheat | Default: 0.05<br>
+snd_group_steamaudio_dimension_probes_debug | devonly | Default: false<br>
 snd_headphone_pan_exponent | devonly | Specifies the exponent for the pan xfade from phone to phone if the "exp" pan law is being used.
 snd_headphone_pan_radial_weight | devonly | Apply cos(angle) * weight before pan law
 snd_hrtf_distance_behind | devonly | Default: 0<br>HRTF calculations will calculate the player as being this far behind the camera.
@@ -5052,14 +5292,16 @@ snd_occlusion_rays | rep, cheat | Default: 4<br>
 snd_occlusion_report | devonly, cheat | Default: false<br>
 snd_occlusion_visualize | devonly, cheat | Default: false<br>
 snd_op_test_convar | cheat | Default: 720<br>
+snd_opvar_set_dome_catchup_distance | devonly, sv, cl, rep | Default: 64<br>
+snd_opvar_set_dome_catchup_rate | devonly, sv, cl, rep | Default: 1<br>
+snd_opvar_set_dome_churn_fraction | devonly, sv, cl, rep | Default: 0.25<br>
+snd_opvar_set_dome_cluster_steps_per_think | devonly, sv, cl, rep | Default: 32<br>
 snd_opvar_set_point_debug | sv, cl, rep, cheat | Default: false<br>
 snd_opvar_set_point_update_interval | devonly, sv, cl, rep | Default: 0.2<br>
 snd_opvar_set_point_update_interval_fast | devonly, sv, cl, rep | Default: 0.0333<br>
-snd_print_activetracks | cheat | List all active tracks
-snd_print_arrangements | cheat | List all available sequence arrangments
+snd_opvar_set_precipitation_debug | sv, cl, rep, cheat | Default: false<br>
 snd_print_current_mixer_mixgroup | devonly | Get data related to mix group matching string
 snd_print_samplers | cheat | List all available samplers
-snd_print_sequences | cheat | List all available midi sequences
 snd_print_soundevent | devonly | Print the data associated with the specified soundevent.
 snd_print_soundevent_default_public_properties | devonly | Print the default public properties of a specified soundevent. Values do not reflect values set on the soundevent. For that see "snd_print_soundevent"
 snd_purge_vsnd_table | devonly | Purges the VSnd table
@@ -5075,22 +5317,17 @@ snd_report_audio_nan | release | Default: true<br>
 snd_report_verbose_error | cheat | Default: false<br>If set to 1, report more error found when playing sounds.<br>
 snd_samplers_play_note | cheat | Play a note from a specified sampler
 snd_samplers_stop_note | cheat | Stop a note from a specified sampler
-snd_sequence_set_track_bpm | cheat | Sets the tempo of the specified track
-snd_sequence_set_track_transpose | cheat | Sets the transposition of the specified track
-snd_sequence_stop_all_tracks | cheat | Stops all currently playing sequences
-snd_sequence_stop_track | cheat | Stops the specified track
-snd_sequencer_show_bpm | cheat | Default: false<br>
-snd_sequencer_show_events | cheat | Default: false<br>
-snd_sequencer_show_quantize_queue | cheat | Default: false<br>
 snd_set_physics_surface_properties | cheat | Set physics surface properties for materials. Usage: &lt;heuristic #&gt; &lt;commit&gt;
 snd_setmixer | devonly | Set named Mixgroup of current mixer to mix vol, mute, solo.
 snd_setmixlayer | devonly | Set named Mixgroup of named mix layer to mix vol, mute, solo.
 snd_showclassname | cheat | Default: 0<br>
 snd_showstart | cheat | Default: 0<br>
 snd_side_surround_speaker_position | devonly | Specifies the position (in degrees) of the virtual rear left/right speakers.
+snd_sos_beatpattern_show_operator_updates | devonly | Default: false<br>
 snd_sos_block_global_stack | cheat | Default: false<br>
 snd_sos_block_stop_global_stack | cheat | Default: true<br>
 snd_sos_calc_angle_debug | rep, cheat | Default: false<br>
+snd_sos_capture_soundevent_overwrites | a | Default: true<br>When enabled, soundevent definitions overwritten while a game is active (e.g. by an addon) are captured and restored when the game deactivates.
 snd_sos_cl_soundevent_pause_last | devonly, cl | Test
 snd_sos_cl_soundevent_start | devonly, cl | Test
 snd_sos_cl_soundevent_stop_last | devonly, cl | Test
@@ -5113,6 +5350,7 @@ snd_sos_print_class_sizes | cheat | Prints the sizes of relevant sos classes.
 snd_sos_print_field_name_strings | cheat | Prints a list of currently cached field name strings
 snd_sos_print_field_references | cheat | Default: false<br>
 snd_sos_print_fps | cheat | Default: false<br>
+snd_sos_print_frametime | cheat | Default: false<br>
 snd_sos_print_full_field_info | cheat | Default: false<br>
 snd_sos_print_groups | cheat | Prints the current state of the groups system
 snd_sos_print_operator_stack | cheat | Prints a master list of currently exposed variables
@@ -5171,6 +5409,7 @@ snd_sos_sv_soundevent_stop_last | devonly, sv | Test
 snd_sos_sv_soundevent_unpause_last | devonly, sv | Test
 snd_sos_sv_test_gender | devonly, sv | Test
 snd_sos_test_soundmessage | cheat | test
+snd_sos_tools_detailed_debugging | devonly, a | Default: true<br>
 snd_sos_unpause_soundevent | cheat | UnPause the first soundevent in the list
 snd_sound_areas_debug | cl, rep, cheat | Default: false<br>
 snd_sound_areas_debug_interval | cl, rep, cheat | Default: 0.2<br>
@@ -5186,36 +5425,61 @@ snd_soundmixer_update_maximum_frame_rate | cheat | Default: 0<br>
 snd_soundmixer_version | devonly | Default: 2<br>
 snd_spatialize_lerp | a, release | Default: 0<br>
 snd_steamaudio_active_hrtf | devonly | Default: 0<br>Index of active HRTF.
+snd_steamaudio_ambisonics_correction_type | devonly | Default: 1<br>0: Use order-truncated Ambisonics HRTF without correction. 1: Use diffuse field equalization to correct order-truncated Ambisonics HRTFs.
 snd_steamaudio_baked_data_stats | cheat | Display baked data stats for the current mod.
-snd_steamaudio_baked_occlusion_mode | cheat | Default: 0<br>0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2
+snd_steamaudio_baked_dimensions_probelookup_usealternate | devonly | Default: true<br>Use alternate probe lookup algorithm to query dimensions for listener position based on kd-tree of probe points.
+snd_steamaudio_baked_occlusion_air_absorption_coefficient | devonly | Default: 0<br>Air absorption coefficient sued for baked occlusion calculation.
+snd_steamaudio_baked_occlusion_mode | cheat | Default: 0<br>0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2, 5: Mode 2 and exponential pathing delta, 6: reflection energy ratios. 7: no baked value - occlusion is traced per probe pair the way the calc_occlusion_info operator does, then interpolated like any other mode.
+snd_steamaudio_baked_occlusion_pathing_deviation_slope | cheat | Default: 0.1<br>Adjust how much occlusion goes does with deviation angle.
+snd_steamaudio_baked_occlusion_pathing_exponent | cheat | Default: 0.1<br>Adjust scaling of pathing energy by exponentiall scaling with pathing delta.
+snd_steamaudio_baked_occlusion_probelookup_usealternate | devonly | Default: false<br>Use alternate probe lookup algorithm to query occlusion for source and listener position based on kd-tree of probe points.
+snd_steamaudio_baked_occlusion_reflection_factor | cheat | Default: 1<br>Adjust scaling for reflection energy when combining it to calculate occlusion value.
+snd_steamaudio_baked_occlusion_reflection_regularization | cheat | Default: 0<br>Ambient noise energy to serve as a floor for reflection energy.
+snd_steamaudio_baked_occlusion_spatialfilter_mode | devonly | Default: 0<br>0: No spatial filtering. 1: bidirectional spatial filter.
+snd_steamaudio_baked_occlusion_spatialfilter_radius_factor | devonly | Default: 2<br>Radius factor to multiply the distance between probes with to get the radius withing which probes are averaged.
+snd_steamaudio_custombake_dimensions_outsidefield_bake_enabled | devonly | Default: false<br>Enable baking outside field for probes baking custom dimensions data.
+snd_steamaudio_custombake_dimensions_size_and_inout_bake_enabled | devonly | Default: true<br>Enable baking size and inout data for probes when baking custom dimensions data.
+snd_steamaudio_custombake_dimensions_smallsizefield_bake_enabled | devonly | Default: false<br>Enable baking insize size field for probes when baking custom dimensions data.
+snd_steamaudio_custombake_occlusion_bidirectional | devonly | Default: false<br>Run simulation from both source and listner and average the results. Potential way to reduce noise.
+snd_steamaudio_custombake_occlusion_numsimulations | devonly | Default: 1<br>Number of reflection simulations to run when baking occlusion. Potential way to reduce noise.
+snd_steamaudio_customdata_dimensions_inout_mode | devonly | Default: 0<br>Inside / outside estimator used when baking dimensions. 0 - direct sky fraction, 1 - multi-bounce escape. Any other value bakes mode 0.
 snd_steamaudio_default_hrtf_volume_gain | devonly | Default: 0<br>Adjust overall volume of the default HRTF by the specified gain (dB).
+snd_steamaudio_diagnostic_baked_occlusion_single_probe | devonly | Default: -1<br>Bake occlusion for a single source probe with the given probe id.
+snd_steamaudio_dimensions_grid_height_max | devonly | Default: 100<br>The maximum height (from the ground) we allow probes to be added above the initial layer. (meters)
+snd_steamaudio_dimensions_max_ray_length | devonly | Default: 2500<br>0 is disabled, but otherwise sets a limit the maximum ray size in the dimension size calculation. Used to model the enclosure algorithm. Game units
+snd_steamaudio_display_dimension_data_inside | devonly | Default: true<br>When visualizing dimensions data at runtime, draw the inside direction.
+snd_steamaudio_display_dimension_data_outside | devonly | Default: true<br>When visualizing dimensions data at runtime, draw the outisde direction.
+snd_steamaudio_display_dimension_data_size | devonly | Default: true<br>When visualizing dimensions data at runtime, draw the size of the space.
 snd_steamaudio_display_probes | devonly | Load all the probes from a file and display probes based on the passed on arguments.
 snd_steamaudio_dynamicpathing_max_samples | devonly, sv, cl, rep | Default: 16<br>
 snd_steamaudio_enable_compressed_reverb_lookup | devonly | Default: true<br>Use compressed reverb data if available.
 snd_steamaudio_enable_custom_hrtf | devonly | Default: false<br>Enable custom HRTF loading.
 snd_steamaudio_enable_editor_profiling | devonly | Default: false<br>Enables tracy profiling when baking steam audio data in Hammer.
+snd_steamaudio_enable_occlusion_caching | devonly | Default: true<br>Continue using previous occlusion if probe lookup for occlusion fails.
+snd_steamaudio_enable_ordertruncated_ambisonics_hrtf | devonly | Default: false<br>Enable order-truncated Ambisonics HRTF loading.
 snd_steamaudio_enable_pathing | cheat | Default: false<br>This variable is checked by soundstack to globally enabling pathing for audio processing.
 snd_steamaudio_enable_perspective_correction | a, release | Default: false<br>Enable perspective correction for 3D audio.
 snd_steamaudio_enable_probeneighborhood_caching | devonly | Default: true<br>Enable caching listener probe neighborhood for pathing.
 snd_steamaudio_enable_reverb | release | Default: 0<br>Enable Steam Audio Reverb processor.
-snd_steamaudio_enable_reverb_probe_caching_for_missing_probes | devonly | Default: true<br>Continue using previous prrobes if probe lookup for reverb fails.
+snd_steamaudio_enable_reverb_caching | devonly | Default: true<br>Continue using previous reverb if probe lookup for reverb fails.
 snd_steamaudio_enable_spatial_blend_fix | cheat | Toggles the speculative fix for low-frequency issues when using spatial blend.
 snd_steamaudio_halton_sequence | cheat | Generate Halton Sequence for a given order and number of samples.
 snd_steamaudio_hybrid_reverb_overlap | devonly | Default: 0.25<br>Set the overlap fraction (0 to 1) for hybrid reverb.
 snd_steamaudio_hybrid_reverb_transition_time | devonly | Default: 1<br>Set the transition time (in seconds) between convolution and parametric reverb.
 snd_steamaudio_invalid_path_length | devonly | Default: 0<br>Path length of invalid path in inches. Set this to .0 to use direct distance as path length.
-snd_steamaudio_ir_duration | cheat | Default: 1<br>The time delay between a sound being emitted and the last audible reflection in Steam Audio.
+snd_steamaudio_ir_duration | cheat | Default: 2<br>The time delay between a sound being emitted and the last audible reflection in Steam Audio.
 snd_steamaudio_irradiancemindistance_reverb | devonly | Default: 1<br>Minimum distance (in meters) of a source from a surface for the purposes of energy calculations.
 snd_steamaudio_load_dimensions_data | devonly | Default: true<br>If set, baked dimensions data is loaded.
-snd_steamaudio_load_materials_data | devonly | Default: true<br>If set, baked materials data is loaded.
-snd_steamaudio_load_occlusion_data | devonly | Default: true<br>If set, baked occlusion data is loaded.
+snd_steamaudio_load_materials_data | devonly | Default: false<br>If set, baked materials data is loaded.
+snd_steamaudio_load_occlusion_data | devonly | Default: false<br>If set, baked occlusion data is loaded.
 snd_steamaudio_load_pathing_data | devonly | Default: false<br>If set, baked pathing data is loaded. Steam Audio Hammer entities can successfully use pathing in this case.
 snd_steamaudio_load_reverb_data | devonly | Default: false<br>If set, baked reverb data is loaded. Reset it to zero during an format changes of baked data until all data is updated.
+snd_steamaudio_max_ambisonics_order | devonly | Default: 3<br>Maximum order for Ambisonics binaural rendering and Ambisonics panning.
 snd_steamaudio_max_convolution_sources | cheat | Default: 4<br>The maximum number of simultaneous sources that can be modeled by Steam Audio.
 snd_steamaudio_max_hrtf_normalization_gain_db | devonly | Default: 6<br>Maximum gain any HRTF could have during volume normalization.
 snd_steamaudio_max_occlusion_samples | cheat | Default: 64<br>The maximum number of rays that can be traced for volumetric occlusion by Steam Audio.
 snd_steamaudio_max_probes_customdata | devonly | Default: 4294967295<br>Maximum number of probes to create when baking custom data (occlusion).
-snd_steamaudio_max_probes_customdata_dimensions | devonly | Default: 4294967295<br>Maximum number of probes to create when baking custom data (dimensions).
+snd_steamaudio_max_probes_customdata_dimensions | devonly | Default: 100000<br>Maximum number of probes to create when baking custom data (dimensions).
 snd_steamaudio_max_probes_customdata_materials | devonly | Default: 4294967295<br>Maximum number of probes to create when baking custom data (occlusion).
 snd_steamaudio_max_probes_pathing | devonly | Default: 4294967295<br>Maximum number of probes to create when baking paths.
 snd_steamaudio_max_probes_reverb | devonly | Default: 4294967295<br>Maximum number of probes to create when baking reverb.
@@ -5227,14 +5491,14 @@ snd_steamaudio_num_threads | cheat | Default: 2<br>Sets the number of threads us
 snd_steamaudio_pathing_caching_threshold | devonly, sv, cl, rep | Default: 5<br>
 snd_steamaudio_pathing_enable_caching | devonly, sv, cl, rep | Default: true<br>
 snd_steamaudio_pathing_enable_source_probe_interp | devonly | Default: false<br>If set, all the probes near a source withing probe range are used to find paths instead of nearest probe.
-snd_steamaudio_pathing_order | cheat | Default: 1<br>The amount of directional detail in the simulated by Steam Audio.
-snd_steamaudio_pathing_order_rendering | cheat | Default: 1<br>The amount of directional detail in the rendered audio by Steam Audio.
+snd_steamaudio_pathing_order | cheat | Default: 3<br>The amount of directional detail in the simulated by Steam Audio.
+snd_steamaudio_pathing_order_rendering | cheat | Default: 3<br>The amount of directional detail in the rendered audio by Steam Audio.
 snd_steamaudio_perspective_correction_factor | devonly | Default: 1<br>Perspective correction factor, ratio of screen size and view depth from screen, for 3D audio.
 snd_steamaudio_perspective_correction_front_only | devonly | Default: true<br>Use perspective correction for 3D audio only in the frontal directions.
-snd_steamaudio_reverb_level_db | release | Default: -3<br>Adjust overall volume (dB) of the output from Steam Audio Reverb processor.
+snd_steamaudio_reverb_level_db | release | Default: -6<br>Adjust overall volume (dB) of the output from Steam Audio Reverb processor.
 snd_steamaudio_reverb_order | devonly | Default: 1<br>Ambisonics order to use for simulating reverb.
 snd_steamaudio_reverb_order_rendering | devonly | Default: 1<br>Ambisonics order to use for convolution reverb. 0th order = 1 channel, 1st order = 4 channels.
-snd_steamaudio_reverb_update_rate | devonly | Default: 10<br>Set the maximum update rate (in Hz) for reverb.
+snd_steamaudio_reverb_update_rate | devonly | Default: 30<br>Set the maximum update rate (in Hz) for reverb.
 snd_steamaudio_source_pathing_debug | a | Default: false<br>Enable path visualization for steam_audio_source operator.
 snd_steamaudio_source_pathing_debug_duration | devonly | Default: 0.01<br>Duration for which path remains visible. Should be close to update rate of the sound operator stack.
 snd_steamaudio_source_pathing_enable_validation | devonly | Default: false<br>Enable real-time pathing validation against dynamic geometry.
@@ -5246,9 +5510,7 @@ snd_toolvolume | a | Default: 1<br>Volume of sounds in tools (e.g. Hammer, SFM)
 snd_ui_positional | devonly, cheat | Default: true<br>
 snd_ui_spatialization_spread | devonly, cheat | Default: 2.4<br>
 snd_use_baked_occlusion | rep, cheat, release | Default: 0<br>
-snd_vmidi_flush | cheat | Purge and reload all vmidi data and files.
 snd_vmix_override_mix_decay_time | cheat | Default: -1<br>If set &gt; 0, overrides how long the decay time is on all mix graphs (in seconds).<br>
-snd_vmix_show_input_updates | cheat | Default: false<br>If set to 1, show all incoming updates to vmix inputs.<br>
 snd_voipvolume | a | Default: 1<br>Voice volume
 sndplaydelay | devonly | 
 sos_debug_emit | devonly, sv, cl, rep | Default: false<br>
@@ -5279,7 +5541,7 @@ sparseshadowtree_debug_tile_range_ymax | devonly | Default: 1<br>SST Tile range 
 sparseshadowtree_debug_tile_range_ymin | devonly | Default: 0<br>SST Tile range for renderdoc/debug capturing.
 sparseshadowtree_disable_add_layers | devonly | Default: false<br>Disable SST runtime layers, for debugging (will exclude geo that CAN render into SST if SST otherwise enabled)
 sparseshadowtree_disable_for_viewmodel | devonly | Default: true<br>Disable SST generation and runtime for viewmodel (use original CSM rendering).
-sparseshadowtree_enable_rendering | devonly | Default: false<br>Enable use of SST at runtime (static geo rendered into cascades via SST).
+sparseshadowtree_enable_rendering | devonly | Default: true<br>Enable use of SST at runtime (static geo rendered into cascades via SST).
 sparseshadowtree_leaf_compress_scaleoffset | devonly | Default: true<br>Compress leaf node depths using scale & offset.
 sparseshadowtree_leaf_precision | devonly | Default: 0.0004<br>precision for depth compression at SST leaf nodes.
 sparseshadowtree_leaf_precision_viewmodel | devonly | Default: 0.0005<br>(viewmodel) precision for depth compression at SST leaf nodes.
@@ -5303,11 +5565,11 @@ spawngroup_ignore_timeouts | devonly | Default: false<br>
 speaker_config | a | Default: 0<br>
 spec_autodirector | cl, clientcmd_can_execute | Default: true<br>Auto-director chooses best view modes while spectating
 spec_centerchasecam | cl, a | Default: false<br>Looks at the target player's center, instead of his eye position, in chase came mode
-spec_chase | cl, release | Changes the spectate mode to chase
 spec_chasedistance | devonly, cl | Default: 96<br>Chase cam's ideal distance from target
 spec_chasedistancespeed | devonly, cl | Default: 144<br>Chase cam's ideal distance from target
-spec_goto | cl, release | Changes the spectate mode to roaming and go to the location
-spec_in_eye | cl, release | Changes the spectate mode to in-eye
+spec_dolly_in | cl, release | Moves the spectator camera position toward target. At zero, this will switch to in eye mode.
+spec_dolly_out | cl, release | Moves the spectator camera position away from target target. This is otherwise known as Chase Mode.
+spec_goto | cl, release | Changes the spectate mode to roaming and go to the location: spec_goto x y z &lt;pitch yaw optional&gt;
 spec_lock_to_current_player | devonly, cl | As an observer, lock the spectator target to the currently observed target
 spec_mode | cl, clientcmd_can_execute | Set spectator mode
 spec_next | cl, clientcmd_can_execute | Spectate next player
@@ -5334,8 +5596,12 @@ spec_replay_sound_fadein | devonly, cl | Default: 0.05<br>Amount of time in seco
 spec_replay_sound_fadeout | devonly, cl | Default: 0<br>Amount of time in seconds it takes to fade out the audio before or after replay
 spec_replay_victim_pov | devonly, cl | Default: false<br>Killer Replay - replay from victim's point of view (1); the default is killer's (0). Experimental.
 spec_replay_winddown_time | sv, release | Default: 2<br>The trailing time, in seconds, of replay past the event, including fade-out
+spec_setang | cl, release | Points the spectator camera: spec_setang pitch yaw
+spec_setpos | cl, release | Changes the spectate mode to roaming and moves the spectator camera: spec_setpos x y &lt;z optional&gt;
+spec_stopsound | cl, release | (Spectators only) Stop all sounds
 spec_target | cl, release | Changes the target being spectated
 spec_track | devonly, cl | Default: 0<br>Tracks an entity in spec mode
+speedometer_ui_enable | cl, a, per_user, release | Default: false<br>Enables speed testing functionality.
 spew_fonts | devonly | Spew information about font manager fonts
 spew_gold_sources | devonly, sv | 
 splitscreen_mode | a, cheat | Default: 0<br>
@@ -5345,8 +5611,10 @@ ss_mimic | devonly, cl, cheat | Default: 0<br>Split screen users mimic base play
 ss_remove | devonly | Removes a splitscreen user.
 ss_teleport | devonly, cl, cheat | Teleport other splitscreen player to my location.
 ss_voice_hearpartner | devonly | Default: false<br>Route voice between splitscreen players on same system.
+start_rec_mic | devonly | Start recording to a desired wav.
 startdemos | release | Play demos in demo sequence.
 startmovie | devonly, norecord | Start recording movie frames.
+stat_cache_reset_stats | devonly, sv, cheat | Reset stat value cache statistics.
 stats | devonly | Prints server performance variables
 stats_collect_gpu | devonly | Default: false<br>While doing stats_display, collect GPU perf counters. Used for stats_print_gpu.
 stats_display | devonly | Default: 0<br>Displays perf statistics information
@@ -5358,13 +5626,12 @@ status_json | release | Print status in JSON format
 steam_inputhandler_analog_data_to_enable_controller | devonly, cl | Default: 0.9<br>Amount of analog data needed to switch to controller mode
 steam_inputhandler_enabled | devonly, cl | Default: true<br>Enable steaminput
 steam_inputhandler_fake_steamdeck | devonly, cl | Default: false<br>Pretend to be a steam deck for purposes of automatically turning on the controller
-steam_inputhandler_glyph_lock_mode | cl, a, release | Default: 0<br>0: Automatic (Default) - switch glyphs when a keyboard bind or controller bind activates. 1: Keyboard and Mouse only. 2: Controller Only
-steamaudio_customdata_dimensions_numrays | devonly | Default: 32768<br>Number of rays to trace for estimating inside outside status of a probe.
+steam_inputhandler_glyph_lock_mode | cl, a, per_user, release | Default: 0<br>0: Automatic (Default) - switch glyphs when a keyboard bind or controller bind activates. 1: Keyboard and Mouse only. 2: Controller Only
 steaminput_glyph_neutral | devonly, cl | Default: 0<br>Fallback values for unspecified style in steam input Glyphs. 0: Use Colors, 1: Solid
 steaminput_glyph_solid | devonly, cl | Default: 1<br>Fallback values for unspecified style in steam input Glyphs. 0: Not Solid, 1: Solid
 steaminput_glyph_style | devonly, cl | Default: 1<br>Fallback values for unspecified style in steam input Glyphs. 0: Knockout, 1: Light, 2: Dark
 steaminput_glyph_use_svg | devonly, cl | Default: true<br>Use SVG vs PNG
-steaminput_glyph_use_universal_face_buttons | cl, a, release | Default: true<br>When enabled, Face Buttons use a diamond of circles, rather than controller specific glyphs for faces
+steaminput_glyph_use_universal_face_buttons | cl, a, per_user, release | Default: true<br>When enabled, Face Buttons use a diamond of circles, rather than controller specific glyphs for faces
 steamlearn_data_submit_enable | devonly, sv | Default: true<br>Whether we should be submitting data to SteamLearn
 steamlearn_inference_http | devonly, sv | Default: false<br>If we should use HTTP for inference queries
 steamlearn_max_in_flight | devonly, sv | Default: 100<br>Maximum number of steamlearn requests that we can have in flight at once
@@ -5376,6 +5643,8 @@ steamlearn_spew_um_times | devonly, sv | Default: true<br>If we should spew how 
 steamvrevent_quit | devonly, sv | steamvrevent_quit
 sticky_tooltips | devonly, cl | Default: false<br>Don't ever hide tooltips. Helpful when debugging complicated tooltip layouts.
 stop | release | Finish recording demo.
+stop_rec_mic | devonly | Stop recording to a desired wav.
+stop_rec_mic_all | devonly | Stop recording all mic streams.
 stopdemos | release | Stop looping demos (current demo will complete).
 stopsound | cheat | 
 stopsoundscape | cl, cheat | Stops all soundscape processing and fades current looping sounds
@@ -5388,14 +5657,12 @@ survey_chance | cl, release | Default: 0<br>Percentage chance of showing the sur
 survey_force_question_type | devonly, cl | Default: 0<br>Force a specific survey question type for survey questions
 survey_min_games_played | cl, release | Default: 75<br>Don't allow for showing the survey unless a minimum number of games have been played
 sv_accelerate | sv, cl, nf, rep, release | Default: 10<br>
-sv_ag2_low_skel_lod | devonly, sv | Default: false<br>
 sv_ag2_record_entity_graph | devonly, sv | Default: <br>Automatically start AG2 recording when an entity with this name (wildcard) or id is created.
 sv_airaccelerate | sv, cl, nf, rep, release | Default: 10<br>
 sv_allchat | sv, nf, release | Default: true<br>Players can receive all other players' text chat, no death restrictions
 sv_alltalk | sv, nf, release | Default: false<br>Players can hear all other players' voice communication, no team restrictions
 sv_audio_debug_bullet_material | sv, cheat | Default: false<br>Visualize bullet material info.
 sv_audio_debug_pawn_surface_data | sv, cheat | Default: false<br>Visualize pawn surface data.
-sv_audio_draw_enclosure_debug | devonly, sv, rep | Default: false<br>Draws debug associated with amount interior vs exterior
 sv_audio_log_citadel_audio_filter | devonly, sv | Default: false<br>Logs sound event information for CCitadelAudioFilter.
 sv_audio_log_participant_start_messages | sv, cheat | Default: false<br>Prints when a participant sound message was sent.
 sv_autosave | devonly, sv, rep | Default: true<br>Set to 1 to autosave game on level transition. Does not affect autosave triggers.
@@ -5407,27 +5674,34 @@ sv_bullet_travel_debug_trace | sv, cheat | Default: 0<br>Debug: visualization ti
 sv_cheats | nf, rep, release | Default: false<br>Allow cheats on server
 sv_citadel_ability_test_fail_all | devonly, sv, cheat | Default: false<br>
 sv_citadel_bebop_beam_draw_points | sv, cheat | Default: false<br>
-sv_citadel_camera_ops_debug | devonly, sv | Default: <br>
+sv_citadel_camera_ops_debug | devonly, sv | Default: <br>Valid Values: \[ dist \| fov \| pos \| vert \| offset \].  Note, use "cl_citadel_camera_ops_debug" or "sv_cl_citadel_camera_ops_debug" depending on debugging client or server.
 sv_citadel_camera_sequences_debug | devonly, sv | Default: false<br>
 sv_citadel_debug_player_look_target | devonly, sv, rep | Default: false<br>Draw player look target data.  White is server, cyan is client.
+sv_citadel_enemy_player_target_update_time | devonly, sv | Default: 0.1<br>How often to update the enemy player target (per pawn)
+sv_citadel_enemy_player_target_width | devonly, sv | Default: 80<br>Setting for the targeting check cylindrical width.
 sv_citadel_hornet_blast_debug_physics | devonly, sv | Default: false<br>
 sv_citadel_log_ability_use | sv, release | Default: false<br>
 sv_citadel_log_server_fow_entities | devonly, sv | Default: false<br>
 sv_citadel_random_strength | devonly, sv | Default: 0.35<br>
+sv_citadel_stat_value_cache_enabled | devonly, sv, cheat | Default: true<br>Enable/disable stat value result caching
+sv_citadel_stat_value_cache_validate_interval | devonly, sv | Default: 500<br>Validate cached stat values against freshly computed results every N hits. 0=off.
 sv_citadel_wrecker_ultimate_debug_physics | devonly, sv | Default: false<br>
+sv_clanserver_gms | devonly | Default: false<br>
 sv_client_max_interp_ratio | devonly, sv, cl, rep | Default: 5<br>This can be used to limit the value of cl_interp_ratio for connected clients (only while they are connected).
 sv_client_min_interp_ratio | devonly, sv, cl, rep | Default: 0<br>This can be used to limit the value of cl_interp_ratio for connected clients (only while they are connected).<br>
 sv_client_predict | devonly, sv, cl, rep | Default: -1<br>This can be used to force the value of cl_predict for connected clients (only while they are connected).<br>   -1 = let clients set cl_predict to anything<br>    0 = force cl_predict to 0<br>    1 = force cl_predict to 1
 sv_clientrates | devonly | Show client rates.
 sv_clockcorrection_msecs | sv, release | Default: 60<br>The server tries to keep each player's m_nTickBase withing this many msecs of the server absolute tickcount
 sv_clockdbg | devonly | Default: false<br>Print spew related to server clock and ticking
+sv_cloth_interp_rot | devonly, sv | Default: false<br>
 sv_cluster | release | Default: 0<br>Data center cluster this server lives in.
 sv_condense_late_buttons | devonly, sv | Default: true<br>When condensing late commands. Should we compress multiple moves of button presses into the target move?
-sv_connectionless_legacy_events_allowed | devonly | Default: false<br>
+sv_cq_delta_encode_svc_usercmds | devonly, sv | Default: true<br>Delta encode svc_UserCmds message
 sv_cq_min_queue | devonly, rep | Default: 0<br>Server min buffer size.
 sv_cq_trim_bloat_remainder | sv, release | Default: 1<br>When trimming a bloated CQ, leave at least N more commands than the minimum
 sv_cq_trim_bloat_space | sv, release | Default: 0<br>When trimming a bloated CQ, try to leave room for N more commands to be added.  0 will trim only what is needed to remove the immediate bloat, a very large value will reset the whole queue.
 sv_cq_trim_catchup_remainder | sv, release | Default: 1<br>When trimming an overful CQ due to app 'catchup' request, leave at least N more commands than the minimum
+sv_cq_validate_encoded_svc_usercmds | devonly, sv | Default: false<br>VERY EXPENSIVE: serialize non-delta-encoded commands along with delta-encoded for validation
 sv_crash_sentinel_filename | sv, release | Default: <br>Filename of crash detection sentinel
 sv_debug_client_not_in_pvs | sv, cheat | Default: false<br>If set, draw failed client PVS checks with red box
 sv_debug_kali_straffing_aim | devonly, sv | Default: false<br>
@@ -5448,21 +5722,21 @@ sv_disable_querycache | devonly, sv, cl, rep, cheat | Default: false<br>debug - 
 sv_disable_reliable_delta_retransmit | devonly | Default: true<br>Assume that a reliable entity delta will be ack'ed and send future deltas relative to the last reliable delta.
 sv_early_network_message_processing | devonly, sv | Default: false<br>Processes network messages on the server before entities think, instead of at the end of the tick.
 sv_enable_alternate_baselines | release | Default: 1<br>Allow alternate baseline system, set to 2 for debugging spew.
-sv_enable_delta_packing | release | Default: true<br>When enabled, this allows for entity packing to use the property changes for building up the data. This is many times faster, but can be disabled for error checking.
 sv_enable_donttransmit | devonly | Default: true<br>When encoding entity deltas, instead of unreliably deducing explicit deletions, actually send list of existing but not networked entities (dont_transmit list) to each client.
 sv_enable_hideout | sv, rep, release | Default: true<br>When registering for MM, we can be assigned hideouts
 sv_enable_lost_lobby | sv, rep, release | Default: true<br>Kill switch for the lost lobby functionality
 sv_enable_match | sv, rep, release | Default: true<br>When registering for MM, we can be assigned normal matches
 sv_enable_removearrayelementsoutsidemetadatabounds | release | Default: false<br>
 sv_ent_showonlyhitbox | sv, cheat | Default: -1<br>
-sv_ents_write_alarm | release | Default: 0<br>Print callstack every time CNetworkGameServerBase::WriteEntityUpdate takes more than this amount of milliseconds
 sv_extra_client_connect_time | devonly | Default: 15<br>Seconds after client connect during which extra frames are buffered to prevent non-delta'd update
 sv_filterban | devonly | Default: 1<br>Set packet filtering by IP mode
 sv_footsteps | devonly, sv, cl, nf, rep | Default: 1<br>Play footstep sound for players
 sv_force_transmit_ents | devonly, sv | Default: false<br>Will transmit all entities to client, regardless of PVS conditions (will still skip based on transmit flags, however).
 sv_fps_max | devonly | Default: 0<br>Dedicated server frame rate limiter. 0=tick rate. Only applies to the dedicated server.
+sv_frame_perf_sample_buffer_max | release | Default: 100<br>Same as cl_frame_perf_sample_buffer_max, but for dedicated servers only.
+sv_frame_snapshot_async_delete | devonly | Default: false<br>
+sv_frame_snapshot_sort_entities | devonly | Default: true<br>
 sv_friction | sv, cl, nf, rep, release | Default: 4<br>World friction.
-sv_friendly_dmg_immune | devonly, sv | Default: true<br>For npc's so marked, don't take damage caused by friendly (D_LI) npc's
 sv_fullupdate | devonly | Force a full update for all clients.
 sv_gameinstructor_disable | cl, rep, release | Default: false<br>Force all clients to disable their game instructors.
 sv_gameinstructor_enable | cl, rep, release | Default: false<br>Force all clients to enable their game instructors.
@@ -5483,7 +5757,6 @@ sv_lan | release | Default: false<br>Server is a lan server ( no heartbeat, no a
 sv_late_commands_allowed | sv, release | Default: 5<br>Allow N late commands to run at 0 timescale prior to running an on-time command. Negative values for network round trip based calculation with a hard cap of the of absolute value
 sv_lightquery_debug | sv, cheat | Default: false<br>
 sv_listen_directudp | release | Default: true<br>Server will listen for direct UDP connections on the configured port.  This can be turned off to only listen for P2P/SDR connections.
-sv_log_change_offsets | devonly, sv | Default: false<br>Log change offsets to game/varchangeinfoN.log files.
 sv_log_onefile | a, release | Default: false<br>Log server information to only one file.
 sv_logbans | a, release | Default: false<br>Log server bans in the server logs.
 sv_logblocks | release | Default: false<br>If true when log when a query is blocked (can cause very large log files)
@@ -5494,9 +5767,7 @@ sv_logsdir | a, release | Default: logs<br>Folder in the game directory where se
 sv_long_frame_ms | devonly | Default: 0<br>If a server frame takes longer than N ms, complain about it.  (Dedicated server only.)  See also engine_frametime_warnings_enable.
 sv_massreport | devonly, sv | Default: false<br>
 sv_matchmaking_enabled | sv, rep, release | Default: false<br>Register with the GC for matchmaking
-sv_matchperfstats_maxclientperfsamples | devonly, sv | Default: 100<br>Don't retain more than N perf samples for any given client
 sv_matchperfstats_send_to_steam | sv, release | Default: true<br>Set to false to disable sending match perf stats to steam
-sv_max_change_offsets | devonly, sv | Default: 48<br>How many network changes to track before requiring full diff check.
 sv_max_queries_sec | release | Default: 3<br>Maximum queries per second to respond to from a single IP address.
 sv_max_queries_sec_global | release | Default: 60<br>Maximum queries per second to respond to from anywhere.
 sv_max_queries_window | release | Default: 30<br>Window over which to average queries per second averages.
@@ -5517,20 +5788,22 @@ sv_minupdaterate | sv, cl, rep, release | Default: 10<br>Minimum updates per sec
 sv_mmqueue_reservation | devonly, norecord | Default: <br>Server queue reservation
 sv_mmqueue_reservation_extended_timeout | devonly | Default: 21<br>Extended time in seconds before mmqueue reservation expires.
 sv_mmqueue_reservation_timeout | devonly | Default: 21<br>Time in seconds before mmqueue reservation expires.
+sv_modifier_value_cache_enabled | devonly, sv | Default: false<br>Enable/disable modifier value result caching
+sv_modifier_value_cache_validate_interval | devonly, sv, rep | Default: 500<br>Validate cached modifier values against freshly computed results every N hits. 0=off.
 sv_mover_maxslope | devonly, sv, cl, nf, rep | Default: 0.7<br>The maximum slope the player can overcome \[-\]
 sv_mover_pogodampingratio | devonly, sv, cl, nf, rep | Default: 1<br>The capsule pogo stick damping ratio \[-\]
 sv_mover_pogofrequency | devonly, sv, cl, nf, rep | Default: 10<br>The capsule pogo stick frequency \[hz\].
 sv_networkvar_log_fullchanges | devonly, sv | Default: false<br>Log FUL_FULL_EDICT_CHANGED calls.
 sv_networkvar_perfieldtracking | release | Default: true<br>Track individual field offset changes, rather than a single dirty flag for the whole entity.
-sv_networkvar_validate | release | Default: false<br>Validate each StateChanged against known offsets.
 sv_no_navmesh | devonly, sv, cheat | Default: false<br>Block loading of the navmesh. Unplayable, only used for memory sampling.
 sv_noclipaccelerate | sv, cl, a, nf, rep | Default: 5<br>
 sv_noclipduringpause | sv, cl, rep, cheat | Default: false<br>If cheats are enabled, then you can noclip with the game paused (for doing screenshots, etc.).
 sv_noclipfriction | sv, cl, a, nf, rep | Default: 4<br>Friction during noclip move.
 sv_noclipspeed | sv, cl, a, nf, rep | Default: 1200<br>
+sv_noclipspeedscaleonshift | sv, cl, a, nf, rep | Default: 0.5<br>
 sv_outofpvsentityupdates | devonly | Default: false<br>
 sv_packstats | release | Show entity packing stats, pass 'clear' as argument to reset counts.
-sv_parallel_checktransmit | sv, release | Default: 0<br>Set to 1 to use threaded checkentities for transmit/pvs on listen servers, 2 for dedicated servers.
+sv_parallel_checktransmit | sv, release | Default: 2<br>Set to 1 to use threaded checkentities for transmit/pvs on listen servers, 2 for dedicated servers.
 sv_parallel_packentities | release | Default: 2<br>Set to 1 to use threaded snapshot sending on listen servers, 2 for dedicated servers.
 sv_parallel_prepare_client_updates | devonly | Default: false<br>
 sv_parallel_sendsnapshot | release | Default: 2<br>0: run all send jobs on main thread; 1: send jobs run asynchronously (except on dedicated server); 2: send jobs asynchronously; 3: send jobs run in parallel but block to not overlap the next tick; 4: main server clients' send jobs run in parallel, then HLTV server jobs; this approximately matches pre-async profile for a single HLTV server configuration
@@ -5550,6 +5823,7 @@ sv_phys_sleep_enable | sv, cheat | Default: true<br>Enable sleeping for dynamic 
 sv_phys_sound_disable_impact_sounds_under_hard_threshold | sv, cheat | Default: false<br>if true, impact sounds wont play if no soft impact sound is present and the impact is below the hard velocity threshold.
 sv_phys_stop_at_collision | sv, cheat | Default: <br>
 sv_phys_visualize_awake | devonly, sv | Default: false<br>
+sv_play_stats_AbilityActivenessValue_enabled | sv, release | Default: true<br>Enable / Disable Play Stat AbilityActivenessValue.
 sv_play_stats_CitadelHitMismatch_enabled | sv, release | Default: false<br>Enable / Disable Play Stat CitadelHitMismatch.
 sv_play_stats_CitadelLaneMatchup_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelLaneMatchup.
 sv_play_stats_CitadelLaneSwap_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelLaneSwap.
@@ -5558,8 +5832,11 @@ sv_play_stats_CitadelMatch_enabled | sv, release | Default: true<br>Enable / Dis
 sv_play_stats_CitadelObjective_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelObjective.
 sv_play_stats_CitadelPlayer_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelPlayer.
 sv_play_stats_CitadelServerLobby_enabled | sv, release | Default: true<br>Enable / Disable Play Stat CitadelServerLobby.
-sv_play_stats_CitadelTrooperUnstick_enabled | sv, release | Default: false<br>Enable / Disable Play Stat CitadelTrooperUnstick.
+sv_play_stats_ModifierCacheSummary_enabled | sv, release | Default: true<br>Enable / Disable Play Stat ModifierCacheSummary.
+sv_play_stats_ModifierCacheValue_enabled | sv, release | Default: true<br>Enable / Disable Play Stat ModifierCacheValue.
 sv_play_stats_S2MatchPerf_enabled | sv, release | Default: true<br>Enable / Disable Play Stat S2MatchPerf.
+sv_play_stats_StatCacheSummary_enabled | sv, release | Default: true<br>Enable / Disable Play Stat StatCacheSummary.
+sv_play_stats_StatCacheValue_enabled | sv, release | Default: true<br>Enable / Disable Play Stat StatCacheValue.
 sv_player_search_range | devonly, sv, cl, rep | Default: 64<br>
 sv_player_spray_collision_radius | devonly, sv | Default: 20<br>How big of a collision sprays should have
 sv_pushaway_clientside_size | devonly, sv, cl, rep | Default: 15<br>Minimum size of pushback objects
@@ -5575,8 +5852,6 @@ sv_rcon_log | devonly | Default: true<br>Enable/disable rcon logging.
 sv_rcon_maxfailures | devonly | Default: 10<br>Max number of times a user can fail rcon authentication before being banned
 sv_rcon_minfailures | devonly | Default: 5<br>Number of times a user can fail rcon authentication in sv_rcon_minfailuretime before being banned
 sv_rcon_minfailuretime | devonly | Default: 30<br>Number of seconds to track failed rcon authentications
-sv_recipients_check | release | Default: true<br>When packing entities, check that recipient bits match for fast path packing.
-sv_recvbuf_messages | devonly | Default: 1024<br>Max number of messages that can be queued in a netchan receive buffer for an ordinary connection from a client.
 sv_regeneration_force_on | sv, cheat | Default: false<br>Cheat to test regenerative health systems
 sv_regeneration_wait_time | devonly, sv, rep | Default: 1<br>
 sv_region | release | Default: -1<br>The region of the world to report this server in.
@@ -5617,6 +5892,7 @@ sv_specspeed | sv, cl, a, nf, rep | Default: 1200<br>
 sv_spewmeta | cheat | Spew serializer meta
 sv_spewworldgroups | devonly | Spew world groups (server)
 sv_stats | devonly | Default: true<br>Collect CPU usage stats
+sv_steamauth_correct | release | Default: false<br>Correct behavior
 sv_steamauth_enforce | release | Default: 2<br>By default, player must maintain a reliable connection to Steam servers. When player Steam session drops, enforce it: 2 = instantly kick, 1 = kick at next spawn, 0 = do not kick.
 sv_steamauth_ignore_localhost | release | Default: true<br>Ignore VAC and auth errors for client connected via localhost address or in-engine loopback
 sv_steamgroup | nf, release | Default: <br>The ID of the steam group that this server belongs to. You can find your group's ID on the admin profile page in the steam community.
@@ -5630,7 +5906,6 @@ sv_suppress_viewpunch | devonly, sv, cl, rep, cheat | Default: false<br>
 sv_tags | nf, release | Default: <br>Server tags. Used to provide extra information to clients when they're browsing for servers. Separate tags with a comma.
 sv_temp_baseline_string_table_buffer_size | devonly | Default: 524288<br>Buffer size for writing string table baselines
 sv_tick_parallel_with_client | devonly | Default: false<br>Runs the final server tick of the frame in parallel with client work
-sv_tick_snapshot_sort_entities | devonly | Default: true<br>
 sv_timeout | devonly | Default: 20<br>After this many seconds without a message from fully connected client, the client is dropped
 sv_timeout_hideout_lobby | devonly, sv, rep | Default: 600<br>The amount of time to keep a server active for a hideout in minutes
 sv_timeout_matchactive | devonly, sv, rep | Default: 240<br>To prevent zombie matches, if a match has been active longer than this many minutes, it should be timed out and the server restarted
@@ -5643,7 +5918,6 @@ sv_unlag_debug | devonly, sv | Default: false<br>
 sv_unlag_fixstuck | devonly, sv | Default: false<br>Disallow backtracking a player for lag compensation if it will cause them to become stuck
 sv_unlockedchapters | a | Default: 1<br>Highest unlocked game chapter.
 sv_unpause_on_console_close | a | Default: false<br>1 = Unpause the game when pressing ~ to close the console. 0 = Leave the game paused.
-sv_use_pvs_cache | devonly, sv | Default: true<br>
 sv_usenetworkvars | devonly | Default: true<br>Use networkvar system.
 sv_usercmd_custom_random_seed | sv, release | Default: false<br>When enabled server will populate an additional random seed independent of the client
 sv_usercmd_execute_warning_ms | sv, a | Default: 5<br>Emit a warning if we spend more than N ms executing user commands for a single player
@@ -5651,7 +5925,6 @@ sv_vac_webapi_auth_key | sv, release | Default: <br>Key for when posting to vac 
 sv_visiblemaxplayers | release | Default: -1<br>Overrides the max players reported to prospective clients
 sv_voicecodec | release | Default: vaudio_speex<br>Specifies which voice codec DLL to use in a game. Set to the name of the DLL without the extension.
 sv_voiceenable | a, nf, release | Default: true<br>
-sv_watchtransmit | sv, release | Default: -2<br>Watch NetworkStateChanged info for this entity index.
 sv_wateraccelerate | sv, cl, nf, rep, release | Default: 10<br>
 sv_waterdist | devonly, sv, cl, rep | Default: 12<br>Vertical view fixup when eyes are near water plane.
 sv_waterfriction | sv, cl, nf, rep, release | Default: 1<br>
@@ -5671,6 +5944,7 @@ test_play_stats_send | sv, cheat |
 test_shipping_assert | release | Generate an assert to test shipping assertion code
 test_voice_container_nesting | devonly | Test nesting voice containers.
 test_voice_containers | devonly | Quick example for how we'd derive traits from voice containers.
+testhero_force_spotted | devonly, sv, cl, rep | Default: -1<br>
 testscript_debug | devonly | Default: false<br>Debug test scripts.
 think_limit | sv, cl, rep, release | Default: 10<br>Maximum think time in milliseconds, warning is printed if this is exceeded.
 thirdperson | cl, cheat, per_tick | Switch to thirdperson camera.
@@ -5679,8 +5953,8 @@ thirdpersonshoulder | devonly, cl | Switch to thirdperson-shoulder camera.
 thread_pool_option | devonly, release | Default: -1<br>Thread pool option
 thumper_use_plane_reflection | devonly, sv, cl, rep | Default: true<br>
 timedemo | release | Play a demo and report performance info.
-timedemo_end | devonly | Default: -1<br>Ends timedemo on given tick.
-timedemo_start | devonly | Default: -1<br>Starts timedemo on given tick.
+timedemo_end | release | Default: -1<br>Ends timedemo on given tick.
+timedemo_start | release | Default: -1<br>Starts timedemo on given tick.
 timedemoquit | release | Play a demo, report performance info, and then exit
 timewarp_projectile_timescale_override | devonly, sv, cl, rep | Default: 0<br>Override timescale for objects that touch a times warp not handled by the wall itself
 toast_manager_override_duration | devonly, cl | Default: -1<br>
@@ -5690,6 +5964,7 @@ tool_spawned_model_scales | devonly, sv, rep | Default: 1 1 1<br>
 tools_stall_monitor_break_on_unknown_cause | devonly | Default: false<br>Break on unknown stall cause
 trigger_fan_debug | devonly, sv, cl, rep | Default: false<br>
 trigger_fan_player_windblock_debug | devonly, sv, cl, rep | Default: false<br>
+trigger_physics_debug | devonly, sv, cheat | Default: false<br>Toggle trigger_physics debug visualization.
 trooper_kill_all | sv, cheat | Kills all living troopers
 trooper_kill_non_bosses | sv, cheat | Kills all non-boss living troopers
 trooper_zipline_distance_to_drop_from_enemy | devonly, sv, cl, rep | Default: 2000<br>How many units away from an enemy captured zipline that troopers will exit
@@ -5725,12 +6000,13 @@ tv_debug | release | Default: 0<br>SourceTV debug info.
 tv_delay | sv, release | Default: 120<br>SourceTV broadcast delay in seconds
 tv_delay1 | sv, release | Default: 15<br>SourceTV\[instance 1\] broadcast delay in seconds
 tv_deltacache | release | Default: 2<br>Enable delta entity bit stream cache
-tv_demo_starttick | devonly | Default: 0<br>
 tv_dispatchmode | release | Default: 1<br>Dispatch clients to relay proxies: 0=never, 1=if appropriate, 2=always
 tv_enable | nf, release | Default: false<br>Activates SourceTV on server.
 tv_enable1 | nf, release | Default: false<br>Activates SourceTV\[1\] on server.
 tv_enable_delta_frames | release | Default: true<br>Indicates whether or not the tv should use delta frames for storage of intermediate frames. This takes more CPU but significantly less memory.
 tv_enable_dynamic | nf, release | Default: false<br>When enabled, changes in tv_enable convars cause immediate startup or shutdown of hltv server
+tv_encryptdata_key | release | Default: <br>When set to a valid key communication messages will be encrypted for GOTV
+tv_encryptdata_key_pub | release | Default: <br>When set to a valid key public communication messages will be encrypted for GOTV
 tv_extended_logging | devonly | Default: false<br>
 tv_grouprelaydatareliable | devonly | Default: false<br>When enabled, this will collect all information for relay sending into a single datagram to ensure that the data stays together through a potentially large number of relays
 tv_grouprelaydataunreliable | devonly | Default: false<br>When enabled, this will collect all information for relay sending into a single datagram to ensure that the data stays together through a potentially large number of relays
@@ -5761,6 +6037,7 @@ tv_playcast_max_rtdelay | devonly, release | Default: 300<br>
 tv_playcast_origin_auth | devonly, release | Default: <br>Get request X-Origin-Auth string
 tv_playcast_retry_timeout | release | Default: 25<br>In case of intermittent network problems, how long should playcast retry fragment retrieval before resorting to resync
 tv_playcast_showerrors | devonly, release | Default: <br>Set to display headers upon error (e.g. "CF-Ray,CF-Cache-Status,Body" )
+tv_playcast_slow_playback_fragment_count | devonly, release | Default: 3<br>Number of fragments we need to have in the buffer before slowing down playback. For use with tv_playcast_slow_playback_when_fragment_requests_fail
 tv_playcast_slow_playback_when_fragment_requests_fail | devonly, release | Default: true<br>Whether or not we slow playback rate if we start running out of buffered stream fragments.
 tv_port | release | Default: 27020<br>Host SourceTV\[0\] port
 tv_port1 | release | Default: 27021<br>Host SourceTV\[1\] port
@@ -5773,11 +6050,11 @@ tv_relay_quit_after_game | devonly | Default: true<br>Quit after a game has been
 tv_relay_rate | devonly | Default: 500000<br>default rate for relays
 tv_relay_secret_code | devonly | Default: true<br>When enabled, this will use a uniquely generated server code to authenticate relay to relay connections. This code is coordinated via the GC or some external means rather than by clients directly
 tv_relaypassword | prot, nf, norecord, release | Default: <br>SourceTV password for relay proxies
+tv_relaytextchat | sv, release | Default: 1<br>Relay text chat data to GOTV: 0=off, 1=say, 2=say+say_team
 tv_relayvoice | release | Default: true<br>Relay voice data: 0=off, 1=on
 tv_retry | release | Reconnects the SourceTV relay proxy.
 tv_secret_code | devonly | Default: true<br>When enabled, this will use a uniquely generated server code to authenticate relay connections. This code is coordinated via the GC or some external means rather than by clients directly
 tv_secure_bypass | release | Default: false<br>Bypass secure challenge on TV port
-tv_show_allchat | sv, release | Default: true<br>
 tv_snapshotrate | rep, release | Default: 20<br>Snapshots broadcast per second
 tv_snapshotrate1 | release | Default: 32<br>Snapshots broadcast per second, GOTV\[1\]
 tv_status | release | Show SourceTV server status.
@@ -5794,7 +6071,7 @@ ui_hud_dist | devonly, cl, rep | Default: 24<br>distance from the player to the 
 unbind | release | Unbind a key.
 unbindall | release | Unbind all keys.
 unpause | release | Clear the pause state of the server.
-update_all_keyframed_in_spatial_partition_update | devonly, sv, cl, rep | Default: true<br>
+update_all_keyframed_in_spatial_partition_update | devonly, sv, cl, rep | Default: false<br>
 update_voices_low_priority | devonly | Default: false<br>
 url_execute | devonly, cl | Executes url-based commands, used for incoming commands from url-based launches when the game's already running.
 users | devonly | Show user info for players on server.
@@ -5873,6 +6150,7 @@ volume_fog_shadow_penumbra_multiplier | devonly | Default: 3<br>Penumbra size mu
 volume_fog_temporal_filter | devonly | Default: true<br>
 volume_fog_temporal_weight | devonly | Default: 0.9<br>Temporal filtering weight
 volume_fog_width | devonly | Default: 240<br>Width of volume fog texture
+vprof_all_threads | devonly | Default: false<br>Capture VProf scopes on background threads as well as the target thread. Same option as the All Threads checkbox in the VProf tools -- setting either one updates the other
 vprof_counters | devonly | Default: 0<br>
 vprof_counters_show_minmax | devonly | Default: false<br>
 vprof_dump_counters | devonly | Dump vprof counters to the console
@@ -5890,6 +6168,8 @@ vprof_scope_entity_clientthink | devonly, cl | Default: false<br>Does nothing wh
 vprof_scope_entity_thinks | devonly, sv, cl, rep | Default: false<br>
 vprof_think_limit | devonly, sv | Default: false<br>
 vprof_time_scale | devonly | Scale used when displaying time (0 = use default)
+vt_page_atlas_size | devonly | Default: 6<br>Virtual texture page atlas size in 16k x 16k slices of about 256MB each, 2 to 32 ( 512MB to 8GB ). Changing it evicts every virtual texture tile.
+vt_sim_streaming_delay_ms | devonly | Default: 500<br>
 vtune | devonly | Controls VTune's sampling.
 vulkan_batch_size | devonly | Default: 500<br>
 vulkan_batch_submits | devonly | Default: true<br>
@@ -5907,7 +6187,6 @@ vulkan_vma_defrag | devonly | Force defragmenting memory with VMA
 vulkan_vma_gpu_mem_dump | devonly | Dump .json file for use by GpuMemDumpVis.py
 warp_onto_zipline | sv, cheat | warp onto the nearest point of the zipline lane passed in.  provides the zipline intro modifier as well
 weapon_switch | devonly, sv | Use a particular weapon	<br>Arguments: &lt;weapon_name&gt;
-wind_system_debug_volumes | devonly | Default: false<br>
 wind_system_default_resolution_xy | devonly | Default: 256<br>
 wind_system_default_resolution_z | devonly | Default: 32<br>
 wind_system_default_sample_min_spacing | devonly | Default: 12<br>
