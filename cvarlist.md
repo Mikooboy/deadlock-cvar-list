@@ -3,15 +3,17 @@
 +bugvoice | devonly, norecord | Start recording bug voice attachment.
 +camdistance | devonly, cl | 
 +cammousemove | devonly, cl | 
-+chatwheel | cl, release | Opens chatwheel menu while held
++chatwheel | cl, release | Opens the comms wheel instantly while held
 +citadel_swtich_player_cam | cl, release | Player Cam switching button pressed
-+in_ability_ping | cl, release | Ping button pressed
++in_ability_instant_ping | cl, release | Ping without radial
++in_ability_ping | cl, release | Ping button pressed. Long hold opens comms wheel.
 -bugvoice | devonly, norecord | Finish recording bug voice attachment.
 -camdistance | devonly, cl | 
 -cammousemove | devonly, cl | 
--chatwheel | cl, release | Executes the highlighted chatwheel menu item
+-chatwheel | cl, release | Sends the hovered comms wheel option
 -citadel_swtich_player_cam | cl, release | Player Cam switching button released
--in_ability_ping | cl, release | Ping button released
+-in_ability_instant_ping | cl, release | Ping without radial
+-in_ability_ping | cl, release | Ping button released. Long hold opens comms wheel.
 StackStats_Dump | devonly | Dump a named stackstats structure to disk. Usage: stackstats_dump "structname" \["filename"\]
 Test_Checkpoint | devonly | Indicate to a test script that a checkpoint has been reached
 Test_CreateEntity | sv, cheat | 
@@ -489,7 +491,6 @@ citadel_announcement_display_time | devonly, cl | Default: 8<br>
 citadel_assume_pawn_control | sv, cheat | Take control of the pawn under the crosshair, or by name if specified
 citadel_auto_highlight_seconds_after | cl, release | Default: 8<br>How many seconds after the highlight event to show when viewing highlights.
 citadel_auto_highlight_seconds_before | cl, release | Default: 20<br>How many seconds before the highlight event to show when viewing highlights.
-citadel_auto_ping_window | devonly, cl | Default: 0.35<br>If the ping button is opened and closed within this time, and no option is selected, chose this.
 citadel_auto_queue_build | cl, a, user | Default: false<br>Automatically queue the selected build at game start
 citadel_autobuy_refund_time | devonly, sv, cl, rep | Default: 12<br>Time Allowed for a full refund when buy anywhere (Auto/Quick Buy) is enabled
 citadel_autoqueue_build_window | devonly, cl | Default: 60<br>
@@ -756,11 +757,10 @@ citadel_catapult_respawn_pickup_trails | sv, cheat, release | Re-lays the pickup
 citadel_chat_fade_time | devonly, cl | Default: 10<br>
 citadel_chat_fade_time_extension | devonly, cl | Default: 7<br>
 citadel_chat_typing_indicator_fade_time | devonly, cl | Default: 5<br>
-citadel_chat_wheel_fade_out_duration | devonly, cl | Default: 0.35<br>Chat wheel must be propped open so that it can visible fade away while showing the user their selection. This controls that maximum time.
+citadel_check_walk_on_skyclip | sv, cl, rep, cheat | Default: true<br>
 citadel_cinematic_intro_duration_npc | sv, cheat | Default: 7.5<br>How long is the cinematic intro applied to npcs (shrine/patron)
 citadel_cinematic_intro_duration_player | sv, cheat | Default: 9.5<br>How long is the cinematic intro applied to the player
 citadel_cinematic_intro_enabled | sv, cheat | Default: 0<br>-1 = force disabled, 0 = default, 1 = force enabled
-citadel_clamp_mouse_when_using_ping_wheel | devonly, cl | Default: true<br>
 citadel_clear_all_post_process_effects | devonly, cl | Clear all post process effects that are active, and spew their state
 citadel_clear_killstreak | devonly, sv | citadel_clear_killstreak \[player_slot\]
 citadel_client_mm_ignore_engine_version | devonly, cl | Default: false<br>Ignore the engine version number for matchmaking. Useful for testing locally in release.
@@ -853,6 +853,7 @@ citadel_crosshair_outline_color_b | devonly, cl, per_user | Default: 0<br>
 citadel_crosshair_outline_color_g | devonly, cl, per_user | Default: 0<br>
 citadel_crosshair_outline_color_r | devonly, cl, per_user | Default: 0<br>
 citadel_crosshair_pip_gap | devonly, cl, per_user | Default: 4<br>
+citadel_crosshair_pip_gap_collapse | devonly, cl, per_user | Default: false<br>
 citadel_crosshair_pip_gap_static | devonly, cl, per_user | Default: false<br>
 citadel_crosshair_pip_height | devonly, cl, per_user | Default: 16<br>
 citadel_crosshair_pip_opacity | devonly, cl, per_user | Default: 0.5<br>
@@ -868,8 +869,6 @@ citadel_damage_indicator_width | devonly, cl | Default: 120<br>
 citadel_damage_offscreen_indicator_disabled | cl, release | Default: true<br>
 citadel_damage_radar_enemy_display_time | devonly, cl | Default: 2<br>
 citadel_damage_report_enable | devonly, cl | Default: true<br>If enabled, show damage report
-citadel_damage_report_ignore_neutral_subclass | devonly, cl | Default: 1<br>Treat all neutral damage as one attacker class bucket
-citadel_damage_report_ignore_trooper_subclass | devonly, cl | Default: 0<br>Treat all trooper damage as one attacker class bucket
 citadel_damage_report_show_adjusted_percent_min | devonly, cl | Default: 3<br>Hide buffed/resisted damage if it's below this percentage of change
 citadel_damage_report_show_always | devonly, cl, a | Default: false<br>If enabled, always show damage report, not just on alt.
 citadel_damage_summary_max_entries | devonly, cl | Default: 8<br>
@@ -885,7 +884,8 @@ citadel_damage_text_distance_far | devonly, cl | Default: 4000<br>Far distances 
 citadel_damage_text_distance_near | devonly, cl | Default: 100<br>Near distance at which we use the near offsets for damage numbers
 citadel_damage_text_dynamic_emphasis | devonly, cl | Default: true<br>Dynamically emphasize damage number over a certain percent of the targets max health. See citadel_damage_text_dynamic_emphasis_percent
 citadel_damage_text_dynamic_emphasis_percent | devonly, cl | Default: 0.25<br>Percent of the victims max health the damage needs to be, for it to be dynamically emphasized.
-citadel_damage_text_follow_healthbar_pos | devonly, cl | Default: true<br>Damage text follows the victim's healthbar position (only works on V2 healthbars)
+citadel_damage_text_follow_healthbar_pos | devonly, cl | Default: true<br>Damage text follows the victim's healthbar position
+citadel_damage_text_follow_healthbar_scale | devonly, cl | Default: true<br>Damage text follows the victim's healthbar scale
 citadel_damage_text_follow_victim_pos | devonly, cl | Default: true<br>Damage text follows victim's position
 citadel_damage_text_healing_offset_x | devonly, cl | Default: 0<br>
 citadel_damage_text_healing_offset_y | devonly, cl | Default: -30<br>
@@ -906,7 +906,7 @@ citadel_damage_text_show_unit_health | devonly, cl | Default: false<br>Show rema
 citadel_damage_text_spacing | devonly, cl | Default: 20<br>Spacing between floating damage numbers.
 citadel_damage_text_x_offset_far | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when far from the camera
 citadel_damage_text_x_offset_near | devonly, cl | Default: 0<br>How much to offset damage numbers left and right when near the camera
-citadel_dead_zone_radius | devonly, cl | Default: 0.075<br>
+citadel_deadpack_instant_shot | sv, cl, rep, cheat, release | Default: false<br>
 citadel_death_linger_time | devonly, sv | Default: 3<br>How logn does the player icon linger on the minimap after they die
 citadel_death_ragdoll_duration | devonly, cl | Default: 5<br>How long a dead hero's ragdoll exists for before it despawns. Can outlive the death camera ( citadel_death_return_to_spawn_delay ) so that other players still see the body.
 citadel_death_replay_enabled | sv, cl, rep, release | Default: false<br>
@@ -971,7 +971,6 @@ citadel_disable_duplicate_heroes | sv, cheat, release | Disable usage of Duplica
 citadel_disable_purchasing_in_combat | devonly, sv, cl, rep | Default: false<br>Disable purchasing if you deal or take damage from an enemy player.
 citadel_disable_quick_response | devonly, cl | Default: true<br>Turns quick response to ping messages off.
 citadel_display_new_player_recommendations | cl, release | Default: true<br>Do we want to show the decorations for new player friendly heroes?
-citadel_distance_mouse_move_for_minimap_drawing | cl, release | Default: 15<br>
 citadel_doorway_debug_draw | sv, cl, rep, cheat | Default: 0<br>
 citadel_doorway_glow_close_distance | sv, cl, rep, cheat | Default: 200<br>
 citadel_doorway_glow_other_distance | sv, cl, rep, cheat | Default: 1000<br>
@@ -999,10 +998,8 @@ citadel_dump_keybindings | devonly, cl | Default: false<br>
 citadel_dump_player_stats | devonly, cl | Dump stat component values for local player
 citadel_dump_rank_data | devonly, cl | Request rank confidence score from GC.
 citadel_enable_chat_rate_limiting | devonly, sv | Default: true<br>
-citadel_enable_double_ping | devonly, cl | Default: true<br>Turns off the ability to have aggressive and passive pings.
 citadel_enable_duplicate_heroes | sv, cheat, release | Enable usage of Duplicate Heroes
 citadel_enable_nearby_capture_point | sv, cheat, release | Enables the first capture point found within 20m
-citadel_enable_new_ping_particle | devonly, cl | Default: false<br>Convar to test new ping particle
 citadel_enable_parties | devonly, cl | Default: true<br>Enable client side party UI
 citadel_enable_ping_rate_limiting | devonly, sv | Default: true<br>
 citadel_enable_slows_affect_air_drag | sv, cl, rep, cheat, release | Default: true<br>Whether slows affect air drag
@@ -1149,6 +1146,7 @@ citadel_hero_roster_high_priority | cl, a, per_user, release | Default: <br>A co
 citadel_hero_roster_preferred | cl, a, per_user, release | Default: <br>A comma separated list of hero IDs that hold the currently preferred roster heroes
 citadel_hero_roster_random | cl, a, per_user, release | Default: false<br>Is the hero roster set to random
 citadel_hero_settings_cloud_disable | devonly, cl | Default: false<br>
+citadel_hero_specific_settings_enabled | cl, a, per_user | Default: false<br>Use hero-specific settings and keybinds
 citadel_hero_testing_dummy_bullet_resist | sv, cl, rep, cheat | Default: 0<br>Bonus bullet resist % given to Target Dummies in Hero Testing
 citadel_hero_testing_dummy_debuff_resist | sv, cl, rep, cheat | Default: 0<br>Bonus debuff resist % given to Target Dummies in Hero Testing
 citadel_hero_testing_dummy_health_regen | sv, cl, rep, cheat | Default: 0<br>Bonus health regen per second given to Target Dummies in Hero Testing
@@ -1211,16 +1209,17 @@ citadel_hud_announcement_display_time_max | devonly, cl | Default: 3<br>
 citadel_hud_announcement_display_time_override | devonly, cl | Default: -1<br>
 citadel_hud_announcement_force_single_levelup | devonly, cl | Default: false<br>
 citadel_hud_build_category_max_height | devonly, cl | Default: 600<br>
+citadel_hud_build_category_max_width | devonly, cl | Default: 5000<br>
 citadel_hud_build_category_min_height | devonly, cl | Default: 125<br>
 citadel_hud_build_category_min_width | devonly, cl | Default: 100<br>
 citadel_hud_build_compact_category_extra_height | devonly, cl | Default: 0<br>
 citadel_hud_build_compact_category_extra_width | devonly, cl | Default: 0<br>
-citadel_hud_chat_wheel | devonly, cl | Default: true<br>
 citadel_hud_damage_counter_duration | devonly, cl | Default: 2<br>
 citadel_hud_exclusive_visible_id | cl, cheat | Default: <br>When set, only show the panel with the corresponding id
 citadel_hud_experiments_enabled | devonly, cl, a | Default: false<br>Test hud experiments
 citadel_hud_heal_counter_duration | devonly, cl | Default: 2<br>
 citadel_hud_hide_own_health | cl, release | Default: false<br>Hides your own health bar on the HUD
+citadel_hud_high_unspent_souls_threshold | devonly, cl | Default: 7000<br>Unspent souls at or above this amount set gHighUnspentSouls on the HUD (pulsing soul count, quickbuy bounce)
 citadel_hud_objective_health_debug_show_midboss | devonly, cl | Default: false<br>
 citadel_hud_objective_health_debug_show_t3 | devonly, cl | Default: 0<br>0=default 1=friendly 2=enemy 3=both
 citadel_hud_objective_health_enabled | devonly, cl | Default: 2<br>Enable/Disable HUD-level objective health bars.  0=Off. 1=Shrines, Patron, Midboss. 2=T1s and T2s. 3=Barracks
@@ -1232,6 +1231,7 @@ citadel_hud_player_stats_delta_increment_time | devonly, cl | Default: 1<br>
 citadel_hud_player_stats_delta_time | devonly, cl | Default: 4<br>
 citadel_hud_top_bar_enable_dynamic_player_position | devonly, cl | Default: true<br>
 citadel_hud_unit_indicators_v2_enable | devonly, cl | Default: true<br>
+citadel_hud_unit_indicators_v2_show_distance | cl, a, user | Default: true<br>
 citadel_hud_visible | cl, release | Default: true<br>Turns on/off rendering the HUD
 citadel_idle_time | devonly, sv | Default: 180<br>How long a player needs to be idle before he counts as disconnected.
 citadel_idle_time_grace_period | devonly, sv | Default: 8<br>How long a player needs to be idle we start putting that time towards their stored idle time.
@@ -1245,6 +1245,7 @@ citadel_inactive_time_grace_period | devonly, sv | Default: 30<br>How long a pla
 citadel_increase_replay_speed | cl, release | Increase the Replay speed while watching a replay
 citadel_increment_killstreak | devonly, sv | citadel_increment_killstreak \[player_slot\] \[first_blood\]
 citadel_initial_wall_jump_stamina_cost | devonly, sv, cl, rep | Default: 0<br>How much stamina is required, and costs, to perform your first wall jump.
+citadel_instant_ping_cancel_time | devonly, cl | Default: 0.5<br>Holding the instant ping key longer than this cancels the ping.
 citadel_invalidate_player_stats_cache | devonly, cl | Invalidate player stats cache so it's pulled from the GC
 citadel_item_draft_enabled | sv, cl, rep, release | Default: 1<br>Use item drafting?  1=only street brawl 2=always
 citadel_item_draft_force_all_rares | devonly, sv | Default: false<br>
@@ -1358,11 +1359,6 @@ citadel_minimap_teleporter_active_dist | devonly, cl | Default: 400<br>
 citadel_minimap_teleporter_height_dist | devonly, cl | Default: 160<br>
 citadel_minimap_teleporter_nearby_dist | devonly, cl | Default: 1600<br>
 citadel_minimap_trooper_size | cl, release | Default: 3<br>
-citadel_minimap_unit_click_radius | cl, release | Default: 200<br>
-citadel_minimap_use_effects | devonly, cl | Default: false<br>
-citadel_minimap_zip_line_hover_radius | cl, release | Default: 16<br>Extra pixels either side of a minimap zipline that still count as hovering it
-citadel_minimap_zip_line_hover_thickness_scale | cl, release | Default: 2<br>How much thicker a hovered minimap zipline lane draws
-citadel_minimap_zip_line_thickness | cl, release | Default: 2<br>
 citadel_minimum_fire_rate | sv, cl, rep, cheat | Default: -50<br>Minimum value possible for fire rate
 citadel_minimum_players_to_show_postgame | devonly, cl | Default: 6<br>
 citadel_minion_gold_reward | devonly, sv, cl, rep | Default: 25<br>
@@ -1395,6 +1391,7 @@ citadel_nano_set_shouldercat_bodygroup | devonly, sv, cl, rep | Default: true<br
 citadel_napalm_projectile_show_debug | devonly, sv, cl, rep | Default: false<br>
 citadel_neutral_ability_dev_test | devonly, sv | Default: -1<br>Force use this ability. -1 off, 0 for Melee, 1-2-3 for Abilities
 citadel_neutral_aggro_time | devonly, sv | Default: 5<br>
+citadel_neutral_ai_pathfinder_max_path_detour | sv, cheat | Default: 1500<br>How far a path may detour from the direct route. Negative means no limit.
 citadel_neutral_camp_spawn_per_tick_limit | devonly, sv | Default: 1<br>Spawn this many neutral camps per tick (this is a limit, so if it's 1, we'll only spawn one per tick (perf)). Set this value to something large to effectively remove the limit. 0 or negative will prevent spawning.
 citadel_neutral_gold_ratio | devonly, sv | Default: 1<br>What percent of gold is transfered instantly on neutral kills
 citadel_neutral_health_growth_pct_per_min | devonly, sv | Default: 2.1<br>
@@ -1418,8 +1415,7 @@ citadel_new_mini_radial_delay_time | devonly, cl | Default: 0.125<br>
 citadel_new_ping_fow_window | devonly, cl | Default: 2<br>How long after an enemy drops off shared team vision they can still be pinged, in seconds.
 citadel_new_ping_free_cursor_world_trace | devonly, cl | Default: false<br>Allow free cursor pings to trace through the HUD into the world (entities and ziplines).
 citadel_new_ping_hitbox_self_test | devonly, cl | Default: false<br>When tracing in free cursor mode, turn on a more expensive trace vs the local player model (nearer objects will undergo more scrutiny)
-citadel_new_ping_minimap_left_click | devonly, cl | Default: true<br>With citadel_new_ping_system on, left clicking anywhere on the minimap opens the ping radial, same as the ping keybind. Never overrides a minimap targeting ability like Mirage's teleport.
-citadel_new_ping_system | devonly, cl, a | Default: 1<br>Allow Minimap Radial to appear. 0: Off. 1: On. 2: Spew
+citadel_new_ping_minimap_left_click | devonly, cl | Default: true<br>Left clicking anywhere on the minimap opens the ping radial, same as the ping keybind. Never overrides a minimap targeting ability like Mirage's teleport.
 citadel_new_ping_system_fixed_slot_icons | devonly, cl | Default: true<br>Draw the icon each slot pins in scripts/ping_targets.vdata on the radials whose layout is fixed, so the art stops moving when an override fires. A minimap sourced radial pins the generic_entity row's four, since one compass serves everything on the map; a radial from hud chrome pins its own row's, so a friendly and an enemy portrait stay distinct. 0 restores the per ping icons.
 citadel_new_ping_trace_pixel_radius | devonly, cl | Default: 60<br>Distance invariant capsule radius, in pixels at 1080 vertical res. This makes targets less finnicky to hit at a distance. Near range, we'll have already hit via hitbox.
 citadel_new_ping_world_volume_radius | devonly, cl | Default: 60<br>If we don't get a direct hit, iterate through entities that are inside a capsule constructed from the view or mouse ray.
@@ -1445,7 +1441,7 @@ citadel_npc_ticks_per_anim_update | devonly, sv, cl, rep | Default: 2<br>
 citadel_npc_visibility_cache_duration | devonly, sv | Default: 0.25<br>How long CAI_CitadelNPC::FVisible() results stay cached
 citadel_num_matches_in_profile_history | devonly, cl | Default: 16<br>
 citadel_num_team_pauses_allowed | devonly, sv | Default: 3<br>Number of times a team is allowed to pause the game. 0 Means unbounded
-citadel_observer_max_dolly_level | devonly, cl | Default: 8<br>
+citadel_observer_max_dolly_level | cl, a | Default: 16<br>Number of increments along the zoom dolly
 citadel_observer_roaming_speed | cl, a | Default: 600<br>
 citadel_one_on_one_match | sv, cl, rep, release | Default: false<br>
 citadel_one_on_one_match_starting_gold | sv, cl, rep, cheat, release | Default: 0<br>
@@ -1468,7 +1464,6 @@ citadel_orb_required_bullets_to_claim_override | devonly, sv, cl, rep | Default:
 citadel_orb_velocity_decay_in_lagcomp | devonly, sv | Default: 0.85<br>Decay velocity to 0 by this amount during lag comp window
 citadel_orbit_camera_in | cl, release | Move in the hideout zone camera
 citadel_orbit_camera_out | cl, release | Move in the hideout zone camera
-citadel_outer_radius_scaler | devonly, cl | Default: 0.2545<br>
 citadel_party_invite_in_game | cl, release | Default: true<br>When set, only users in game can be invited
 citadel_passive_items_area_display_time | devonly, cl | Default: 1<br>
 citadel_passthrough_fakewall_combat_lockout_time | devonly, sv, cl, rep | Default: 4<br>
@@ -1489,7 +1484,7 @@ citadel_pause_resume_time_disconnected | devonly, sv | Default: 30<br>Number of 
 citadel_pending_replay_force_failure | devonly, cl | Default: 0<br>
 citadel_pending_replay_num_retries | devonly, cl | Default: 30<br>
 citadel_pending_replay_retry_seconds | devonly, cl | Default: 300<br>
-citadel_per_unit_hotkeys_checked | cl, a, per_user | Default: false<br>
+citadel_per_unit_hotkeys_checked | devonly, cl, per_user, release | Default: false<br>Old name of citadel_hero_specific_settings_enabled
 citadel_per_weapon_per_surface_impact_effects | devonly, sv, cl, rep | Default: true<br>
 citadel_perf_interval_report_s | devonly, sv | Default: 60<br>The interval that we record performance stats to the log at measured in seconds
 citadel_perf_long_frame_time_threshold_ms | devonly, sv | Default: 17.5<br>The time in milliseconds where if a frame is beyond this, count it as a long frame
@@ -1503,7 +1498,8 @@ citadel_ping_allow_responses_to_yourself | devonly, cl | Default: false<br>Allow
 citadel_ping_almost_respawned_seconds | sv, cheat | Default: 10<br>Pinging a dead hero whose respawn is at most this many seconds away says they are almost back rather than dead.
 citadel_ping_below_us_z | sv, cheat | Default: 500<br>If the pinged hero is below us by this many units, use the "below_us" voice variant
 citadel_ping_can_heal_range | sv, cheat | Default: 2500<br>Pinging a low teammate offers a heal only if they are within this many units and in line of sight. Matches citadel_fow_player_range.
-citadel_ping_consecutive_window | devonly, cl | Default: 0.25<br>Seconds between taps on one subject for them to chain into a double (triple...) ping.
+citadel_ping_consecutive_window | devonly, cl | Default: 0.35<br>Seconds between taps on one subject for them to chain into a double (triple...) ping.
+citadel_ping_debug_spew | devonly, cl | Default: false<br>Log ping subject, radial and send decisions, and draw ping debug overlays.
 citadel_ping_enemy_count_radius | cl, cheat | Default: 1500<br>How close another visible enemy has to be to the pinged position to count toward the group callout.
 citadel_ping_indicator_display_time | devonly, cl | Default: 5.5<br>
 citadel_ping_indicator_duration | devonly, cl | Default: 6<br>The amount of time the in-world ping indicator stays.
@@ -1513,7 +1509,6 @@ citadel_ping_radial_debug_gesture | devonly, cl | Default: 0<br>Draw comms wheel
 citadel_ping_radial_early_open_deflection_deg | devonly, cl | Default: 10<br>Degrees of camera deflection away from the thing we pressed on that force the radial open ahead of its delay. Degrees rather than pixels so the mouse sensitivity slider already normalises it. &lt;= 0, ignore gesture angle don't open
 citadel_ping_spam_hides_marker | sv, cheat | Default: false<br>Restores the old behaviour where repeat pings hid the marker as well as the sound. The marker is positional information the team needs; the noise is the spam.
 citadel_ping_teammate_alone_radius | sv, cheat | Default: 1500<br>A pinged teammate with no other living ally (the pinger included) within this many units is told to be careful.
-citadel_ping_wheel_activation_radius | devonly, cl | Default: 0.6<br>Increase this to change how much you have to move your mouse to make the mousewheel visible.
 citadel_play_page_fake_data | devonly, cl | Default: false<br>
 citadel_play_page_finished_tutorial | devonly, cl | Default: false<br>
 citadel_play_stats_laning_end_time | devonly, sv | Default: 540<br>
@@ -1523,6 +1518,7 @@ citadel_player_aim_at_hero_query_half_width | devonly, cl | Default: 50<br>
 citadel_player_aim_at_hero_query_interval | devonly, cl | Default: 0.2<br>
 citadel_player_attack_enemy_npc_fow_reveal_duration | sv, cheat | Default: 2<br>How long a player is visible to enemy FOW after attacking an enemy trooper or boss
 citadel_player_attack_enemy_player_fow_reveal_duration | sv, cheat | Default: 1<br>How long a player is visible to enemy FOW after attacking an enemy player
+citadel_player_cam_toggle | cl, a, per_user | Default: false<br>Player Cam buttons toggle the teammate view instead of showing it while held
 citadel_player_client_reprediction_disabled | cl, cheat, release | Default: false<br>
 citadel_player_crit_multiplier | devonly, sv, cl, rep | Default: 1.25<br>How much to scale damage when landing crits against Players
 citadel_player_damage_from_trooper_scale | devonly, sv | Default: 0.5<br>
@@ -1554,6 +1550,7 @@ citadel_player_gold_reward_time | devonly, sv, cl, rep | Default: 2400<br>
 citadel_player_ground_dash_max_percent | sv, cl, rep, cheat | Default: 2<br>Max ground dash scale
 citadel_player_ground_dash_min_percent | sv, cl, rep, cheat | Default: 0.5<br>Min ground dash scale
 citadel_player_level_hiding_extra_duration | devonly, cl | Default: 0.45<br>
+citadel_player_model_force_highest_lod | cl, release | Default: true<br>Forces the local player pawn to render using the highest LOD level.
 citadel_player_move_speed_min | sv, cl, rep, cheat | Default: 80<br>Min walk speed
 citadel_player_move_speed_scale | sv, cl, rep, cheat | Default: 1<br>Scales how fast players can move
 citadel_player_neutral_gold_drop_min | devonly, sv | Default: 50<br>
@@ -1734,7 +1731,6 @@ citadel_recent_comms_session_attempt_throttled_count | sv, rep, release | Defaul
 citadel_recent_comms_throttling_limit | sv, rep, release | Default: 50<br>
 citadel_recent_comms_throttling_penalty | sv, rep, release | Default: 10<br>
 citadel_reduce_camera_shake | cl, a, per_user | Default: false<br>Turns off screen shake.
-citadel_region_override | cl, release | Default: -1<br>Override the region of the client
 citadel_reload_rank_data | devonly, cl | Request rank confidence score from GC.
 citadel_render_minimap | cl, release | Render the minimap
 citadel_replay_manager_download_chunk_size | cl, a | Default: 1048576<br>
@@ -1829,7 +1825,6 @@ citadel_show_account_ids | cl, release | Default: false<br>When set, account IDs
 citadel_show_active_slot_popup | cl, a, per_user, release | Default: false<br>
 citadel_show_all_purchase_toasts | cl, a | Default: false<br>If enabled, show purchase toasts for all item transactions, not just ones in your quickbuy queue
 citadel_show_bullet_lag_compensation | sv, cl, rep, cheat | Default: 0<br>if &gt; 0.0, show lag compensated hitboxes (value is seconds) whenever a bullet is lag compensated and hits something.
-citadel_show_chat_wheel_debug | devonly, cl | Default: false<br>Increase this to change how much you have to move your camera angle to make the mousewheel visible (degrees)
 citadel_show_chat_wheel_time | cl, a | Default: 0.23<br>How long it takes after pressing the +ping command for the chat wheel to appear.
 citadel_show_combatlog | devonly, cl | 
 citadel_show_disabled_heroes | devonly, cl, a | Default: false<br>Shows disabled heroes in hero selection
@@ -1949,10 +1944,12 @@ citadel_street_brawl_test_drafts | devonly, sv | Simulates and spews the results
 citadel_stuck_camera_trace_extra_length | sv, cl, rep, cheat | Default: 100<br>
 citadel_stuck_normal_find_trace_fallback_elevation | sv, cl, rep, cheat | Default: 24<br>
 citadel_stunme | devonly, sv | Stun the local player
-citadel_sub_nav_outer_radius_scaler | devonly, cl | Default: 0.412<br>
-citadel_subnav_select_time | devonly, cl | Default: 0<br>
 citadel_subtick_aim_data | devonly, sv, cl, rep | Default: false<br>Server wants sub-tick aim data
 citadel_subtitles_all_caps | cl, a, per_user | Default: false<br>Show the HUD subtitles in all caps.
+citadel_subtitles_ally_abilities | cl, a, per_user | Default: true<br>Show subtitles for ability and item voice lines from your hero and allies.
+citadel_subtitles_ally_conversations | cl, a, per_user | Default: true<br>Show subtitles for conversations between your hero and allies.
+citadel_subtitles_ally_kills | cl, a, per_user | Default: true<br>Show subtitles for kill, reaction, and match voice lines from your hero and allies.
+citadel_subtitles_ally_pings | cl, a, per_user | Default: true<br>Show subtitles for ping and chat wheel voice lines from your hero and allies.
 citadel_subtitles_background_color_b | cl, a, per_user | Default: 0<br>Blue channel of the HUD subtitle background color.
 citadel_subtitles_background_color_g | cl, a, per_user | Default: 0<br>Green channel of the HUD subtitle background color.
 citadel_subtitles_background_color_r | cl, a, per_user | Default: 0<br>Red channel of the HUD subtitle background color.
@@ -1960,9 +1957,16 @@ citadel_subtitles_background_opacity | cl, a, per_user | Default: 93<br>Opacity,
 citadel_subtitles_background_style | cl, a, per_user | Default: 0<br>Style of the HUD subtitle background: 0 solid, 1 outline.
 citadel_subtitles_bold_font | cl, a, per_user | Default: true<br>Show the HUD subtitles in a semi-bold font rather than normal weight.
 citadel_subtitles_custom_style | cl, a, per_user | Default: false<br>Show the HUD subtitles in the player's custom size, colors, and font rather than the default style.
+citadel_subtitles_enemy_abilities | cl, a, per_user | Default: true<br>Show subtitles for ability and item voice lines from enemies.
+citadel_subtitles_enemy_kills | cl, a, per_user | Default: true<br>Show subtitles for kill, reaction, and match voice lines from enemies.
 citadel_subtitles_font | cl, a, per_user | Default: 0<br>Font of the HUD subtitles: 0 default, 1 block, 2 stylized.
 citadel_subtitles_font_size | cl, a, per_user | Default: 16<br>Font size of the HUD subtitles.
+citadel_subtitles_newscaster | cl, a, per_user | Default: true<br>Show subtitles for the Newscaster.
 citadel_subtitles_outline_thickness | cl, a, per_user | Default: 2<br>Thickness, in pixels, of the outline around the HUD subtitles when their background style is outline.
+citadel_subtitles_patrons | cl, a, per_user | Default: true<br>Show subtitles for the Patrons.
+citadel_subtitles_shopkeeper | cl, a, per_user | Default: true<br>Show subtitles for the Shopkeeper and the Broker.
+citadel_subtitles_soul_urn | cl, a, per_user | Default: true<br>Show subtitles for the Soul Urn.
+citadel_subtitles_speaker_names | cl, a, per_user | Default: 0<br>How the HUD subtitles show who is speaking: 0 icon and name, 1 icon only, 2 name only. Speakers without an icon always get their name.
 citadel_subtitles_text_color_b | cl, a, per_user | Default: 198<br>Blue channel of the HUD subtitle text color.
 citadel_subtitles_text_color_g | cl, a, per_user | Default: 198<br>Green channel of the HUD subtitle text color.
 citadel_subtitles_text_color_r | cl, a, per_user | Default: 198<br>Red channel of the HUD subtitle text color.
@@ -2134,8 +2138,8 @@ citadel_unit_query_validate | devonly, sv, cl, rep, cheat | Default: false<br>
 citadel_unit_status_allies_see_thru_walls | devonly, cl | Default: true<br>
 citadel_unit_status_breakpoint_line_large_amt | devonly, cl | Default: 1000<br>
 citadel_unit_status_breakpoint_line_small_amt | devonly, cl | Default: 250<br>
-citadel_unit_status_delta_decay_delay | devonly, cl | Default: 0.3<br>
-citadel_unit_status_delta_decay_rate | devonly, cl | Default: 3<br>
+citadel_unit_status_delta_decay_delay | devonly, cl | Default: 0<br>
+citadel_unit_status_delta_decay_rate | devonly, cl | Default: 10000<br>
 citadel_unit_status_draw_local | devonly, cl | Default: false<br>
 citadel_unit_status_enabled | cl, cheat, release | Default: true<br>Show health bars and nameplates above units
 citadel_unit_status_fadeout_dist | devonly, cl | Default: 200<br>How far out of the players effective gun range do we show the health bar
@@ -2159,6 +2163,7 @@ citadel_unit_status_offset_smooth_min_rate | devonly, cl | Default: 2<br>Smoothi
 citadel_unit_status_offset_smooth_small_delta | devonly, cl | Default: 2<br>Around this is a small delta
 citadel_unit_status_opaque_dist_sq | devonly, cl | Default: 50000<br>
 citadel_unit_status_recent_damage_time | devonly, cl | Default: 0.25<br>
+citadel_unit_status_release_delay_time | devonly, cl | Default: 5<br>Delay releasing unit status overlays back to the pool until after they've been hidden this long (seconds). &lt;= 0 disables.
 citadel_unit_status_show_ally_health_value | cl, a, per_user | Default: false<br>Show health numbers on allied heroes' health bars when they take damage.
 citadel_unit_status_show_critical_state | cl, a, user | Default: true<br>
 citadel_unit_status_show_health_value | cl, a, user | Default: true<br>
@@ -2340,6 +2345,7 @@ cl_citadel_stat_value_cache_validate_interval | devonly, cl | Default: 500<br>Va
 cl_citadel_unit_query_draw_registry | devonly, cl, cheat | Default: false<br>
 cl_citadel_unit_query_registry_report | devonly, cl, cheat | Print a per-bucket classname list of the unit query registry
 cl_citadel_wrecker_ultimate_debug_physics | devonly, cl | Default: false<br>
+cl_citadel_zipline_and_mantle_same_bind | devonly, cl, user | Default: true<br>
 cl_citadel_zipline_rebuildpaths | devonly, cl | Rebuilds all zipline splines
 cl_citadel_zoom_is_toggle | cl, a, user, per_user | Default: false<br>
 cl_cleardraw | cl, cheat | Clears all lines drawn by drawline and drawcross
@@ -3455,7 +3461,7 @@ lb_enable_lights | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Ena
 lb_enable_shadow_casting | devonly | Default: true<br>Allow stationary/dynamic lights to cast shadows.
 lb_enable_stationary_lights | devonly, cheat | Default: true<br>Allows rendering stationary/mixed lights
 lb_enable_sunlight | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable Sunlight
-lb_low_quality_shader_fade_region_rescale | devonly, cheat | Default: 0<br>For envmaps in low quality shader mode, how much of the fade region to scale the envmap box by.
+lb_low_quality_shader_fade_region_rescale | devonly | Default: 0<br>For envmaps in low quality shader mode, how much of the fade region to scale the envmap box by.
 lb_max_visible_barn_lights_override | devonly, cheat | Default: -1<br>Override maximum visible barn lights
 lb_max_visible_envmaps_override | devonly, cheat | Default: -1<br>Override maximum visible envmaps
 lb_mixed_shadows | devonly, cheat | Default: true<br>SceneSystem/LightBinner/Enable Mixed Shadows
@@ -4254,6 +4260,7 @@ panorama_streaming_load_local_images | devonly, cl | Default: false<br>
 panorama_style_flag_force_invalidate | devonly | Default: false<br>Force style invalidation of the entire panel subtree when adding / removing style flags.
 panorama_suspend_animation | devonly | Default: false<br>
 panorama_suspend_paint | devonly | Default: false<br>
+panorama_synced_font_size_spew | devonly, cl | Default: false<br>Log SyncedFontSizeLabel group constraints and shared font size changes
 panorama_temp_comp_layer_min_dimension | devonly | Default: 512<br>
 panorama_toggledebugger_mode | devonly, a | Default: 0<br>Toggledebugger key operation : 0 = open/inspect, 1 = open/close
 panorama_track_render_commands | devonly | Default: false<br>
@@ -4363,10 +4370,6 @@ pickup_check_period | devonly, sv | Default: 0.25<br>
 ping_indicator_safe_area_x | devonly, cl | Default: 480<br>
 ping_indicator_safe_area_y | devonly, cl | Default: 200<br>
 ping_quick_response | cl, release | Responds to the last ping message received
-ping_target_reset_time | devonly, cl | Default: 1.2<br>
-ping_trace_radius | devonly, cl | Default: 5<br>
-ping_trace_radius_expanded | devonly, cl | Default: 60<br>
-ping_trace_radius_minimap | devonly, cl | Default: 60<br>
 ping_wheel_phrase_0 | cl, a, per_user | Default: 1<br>
 ping_wheel_phrase_1 | cl, a, per_user | Default: 2<br>
 ping_wheel_phrase_2 | cl, a, per_user | Default: 4<br>
@@ -4375,7 +4378,7 @@ ping_wheel_phrase_4 | cl, a, per_user | Default: 12<br>
 ping_wheel_phrase_5 | cl, a, per_user | Default: 5<br>
 ping_wheel_phrase_6 | cl, a, per_user | Default: 18<br>
 ping_wheel_phrase_7 | cl, a, per_user | Default: 6<br>
-pingkeypress | cl, release | Ping keybind pressed
+pingkeypress | cl, release | Quick ping keybind pressed. Arg is the slot, 1-12.
 pixelvis_debug | cheat | Dump debug info
 play | server_can_execute | Play a sound.
 playcast | release | Play a broadcast
@@ -4501,6 +4504,7 @@ r_citadel_depthoffield_enable | devonly, cl | Default: false<br>Enable/Disable D
 r_citadel_depthoffield_focus_distance | devonly, cl | Default: 200<br>Depth of field focus distance in inches
 r_citadel_depthoffield_mode | devonly, cl | Default: 0<br>Depth of field mode, 0: Normal 1: Near field only 2: Far field only
 r_citadel_depthoffield_sensor_size | devonly, cl | Default: 1<br>Depth of field sensor size in inches
+r_citadel_disable_particle_lights | cl, release | Default: false<br>Disable particle lights except when explicitly overriden in particle renderer ops.
 r_citadel_distancefield_ao_quality | devonly, cl | Default: 0<br>Distance Field AO quality
 r_citadel_distancefield_blur | devonly, cl | Default: true<br>Enable/Disable distance field blur
 r_citadel_distancefield_blur_depth_threshold | devonly, cl | Default: 1<br>Distance field blur depth threshold
@@ -4541,8 +4545,6 @@ r_citadel_gpu_preview_denoise_signal_phi | devonly, cl | Default: 1<br>
 r_citadel_mboit_quality | devonly, cl | Default: 0<br> MBOIT quality, 0: 4 Moments
 r_citadel_npr_outlines | devonly, cl, cheat | Default: true<br>Enable/Disable NPR Outlines
 r_citadel_npr_outlines_max_dist | devonly, cl, cheat | Default: 1000<br>Maximum distance at which NPR outlines are rendered
-r_citadel_portrait_allow_particle_only | devonly, cl | Default: true<br>
-r_citadel_portrait_highlight_particle_only | devonly, cl | Default: false<br>
 r_citadel_render_game | devonly, cl, cheat | Default: true<br>Should you render the main game world
 r_citadel_see_thru_walls_opacity | devonly, cl, cheat | Default: 0.3<br>Opacity scale for see-thru UI
 r_citadel_selection_outline2_alpha | cl, cheat | Default: 0.8<br>Selection Outline Alpha
@@ -5008,11 +5010,11 @@ sc_clutter_density_none_size | devonly | Default: 0.0035<br>Screen-size where cl
 sc_clutter_desity_override | devonly | Default: false<br>
 sc_clutter_enable | devonly | Default: true<br>SceneSystem/Clutter/Draw Clutter
 sc_cycleclassdebuglevel | cheat | Increment the debug level associated with an object class. sc_CycleClassDebugLevel &lt;classname&gt; &lt;optional: max level&gt;<br>
-sc_disableThreading | cheat | Default: false<br>
+sc_disableThreading | devonly | Default: false<br>
 sc_disable_baked_lighting | devonly | Default: false<br>
 sc_disable_culling_boxes | cheat | Default: false<br>
 sc_disable_procedural_layer_rendering | cheat | Default: false<br>
-sc_disable_shadow_fastpath | cheat | Default: false<br>
+sc_disable_shadow_fastpath | devonly | Default: false<br>
 sc_disable_spotlight_shadows | cheat | Default: false<br>
 sc_disable_world_materials | cheat | Default: false<br>
 sc_distancefield_visualize_atlas | devonly | Default: false<br>
@@ -5067,9 +5069,9 @@ sc_no_vis | devonly | Default: false<br>
 sc_only_render_opaque | cheat | Default: false<br>
 sc_only_render_shadowcasters | cheat | Default: false<br>
 sc_particle_debug_visualizer | devonly, cheat | Default: false<br>SceneSystem/Particles/Debug Visualizer
-sc_reject_all_objects | cheat | Default: false<br>
+sc_reject_all_objects | devonly | Default: false<br>
 sc_rendergraph_debug_visualizer | devonly | Default: false<br>SceneSystem/RenderGraph Visualizer
-sc_screen_size_lod_scale_override | cheat | Default: -1<br>
+sc_screen_size_lod_scale_override | devonly | Default: -1<br>
 sc_setclassflags | cheat | Low level command to set the flags byte associated with an object class. sc_SetClassFlags &lt;classname&gt; &lt;value&gt;<br>
 sc_shadow_depth_bias | devonly | Default: 256<br>
 sc_shadow_depth_bias_clamp | devonly | Default: 0<br>
@@ -5083,7 +5085,7 @@ sc_show_texture_visualizer | devonly, cheat | Default: false<br>SceneSystem/Text
 sc_show_view_profiler | devonly, cheat | Default: false<br>SceneSystem/View Profiler
 sc_show_vt_stats | devonly, cheat | Default: false<br>SceneSystem/Virtual Texturing
 sc_showclasses | cheat | List the object class names known by scenesystem<br>
-sc_skip_traversal | cheat | Default: false<br>
+sc_skip_traversal | devonly | Default: false<br>
 sc_spew_cmt_usage | devonly | Default: false<br>
 sc_stats_sections | devonly, a, cheat | Default: SCENE_STATS_FRAME\|SCENE_STATS_GEOMETRY\|SCENE_STATS_CULLING\|SCENE_STATS_MATERIALS\|SCENE_STATS_LIGHTING\|SCENE_STATS_RAYTRACING\|SCENE_STATS_INTERNALS<br>Which stats groups to show
 sc_throw_away_all_layers | devonly | Default: false<br>
